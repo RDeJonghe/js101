@@ -1,0 +1,18 @@
+{
+  "language" : "Type 'en' for English / Teclear 'es' para Español",
+  "language error" : "Invalid language selection / Idioma elegido es inválido",
+  "en" : {
+    "loan" : "Enter in the amount of the loan that you would like to take out.",
+    "credit score" : "Enter in your credit score.",
+    "apr message" : "Based on your credit score your APR rate is",
+    "has decimal" : "Your loan will be rounded to the nearest dollar.",
+    "rounded" : "Your rounded loan amount is",
+    "entered NaN" : "INVALID ENTRY: Please enter in a number for the loan amount."
+  },
+  "es" : {},
+  "credit" : {
+    "bad" : 12.5,
+    "average" : 8.0,
+    "good" : 4.5
+  }
+}

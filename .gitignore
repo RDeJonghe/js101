@@ -1,3 +1,4 @@
 .DS_Store
 *.html
-*node
+lesson2/node_modules/
+lesson2/package-lock.json/

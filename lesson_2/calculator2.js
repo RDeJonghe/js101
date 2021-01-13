@@ -29,6 +29,11 @@ function getOperation(operationEntered) {
 }
 
 getNumber1('Please enter a number.');
+
+if (Number.isNaN(Number(input1)) === true) {
+  console.log('Please enter a number');
+}
+
 getNumber2('Please enter a second number.');
 getOperation('Please type in the operation you would like: add, subtract, multiply, divide');
 
@@ -49,7 +54,7 @@ if (operation.toLowerCase() === 'add') {
 } else if (operation === '/') {
   result = input1 / input2;
 } else {
-  console.log('The operation you entered is not valid. Please refresh the browser and submit a correct entry.');
+  console.log('The operation you entered is not valid. Please refresh and submit a correct entry.');
 }
 
 if (result) {

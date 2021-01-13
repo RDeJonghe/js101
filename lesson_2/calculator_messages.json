@@ -1,0 +1,25 @@
+{
+"language" : "Type en for English / Teclear es para EspaNol",  
+"en" :
+  {
+    "welcome" : "Welcome to calculator!",
+    "num1" : "What's the first number?",
+    "num2" : "What's the second number?",
+    "invalidNum" : "That is not a valid number, please enter a valid number",
+    "operation" : "What operation would you like to perform? 1) Add 2) Subtract 3) Multiply 4) Divide",
+    "invalidOperation" : "Must choose 1, 2, 3 or 4",
+    "result" : "The result is:",
+    "again" : "Would you like to perform another calculation? (y/n)"
+  }, 
+"es" :
+  {
+    "welcome" : "Bienvenido al calculador!",
+    "num1" : "Cual es el primer numero?",
+    "num2" : "Cual es el segundo numero?",
+    "invalidNum" : "No es un numero valido, favor de entrar un numero valido",
+    "operation" : "Cual operacion gustas de hacer? 1) Sumar 2) Restar 3) Multiplicar 4) Dividir",
+    "invalidOperation" : "Ha de escoger 1, 2, 3, 4",
+    "result" : "El resultado es:",
+    "again" : "Gustas de hacer otra calculacion? (Si => teclear y / no => teclear n)"
+  }
+}
