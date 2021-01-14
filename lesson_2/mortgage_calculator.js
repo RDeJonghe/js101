@@ -66,10 +66,11 @@ if (!Number.isInteger(loanAmount)) {
 }
 console.log(loanAmount);
 
-userMessages(MESSAGES_DISPLAYED['en']['credit score']);
+userMessages(MESSAGES_DISPLAYED[language]['credit score']);
 let creditScore = parseFloat(readline.question());
 
 // Have to make sure entry for credit score is a valid number here, just like above with loan amount
+// Also make sure it is within range of credit score numbers between y and z.
 
 let apr;
 if (creditScore < 630) {
@@ -77,4 +78,42 @@ if (creditScore < 630) {
   userMessages(`${MESSAGES_DISPLAYED[language]['apr message']} ${apr}%`);
 }
 
-console.log(typeof apr);
+userMessages(MESSAGES_DISPLAYED[language]['loan duration']);
+let loanYears = parseFloat(readline.question('YEARS: '));
+
+/*
+// prettier-ignore
+while (!(loanYears.isInteger)) { // not working
+  userMessages(MESSAGES_DISPLAYED[language]['invalid year']);
+  loanYears = parseFloat(readline.question('YEARZ: ')); // not breaking out of the loop, check that number is set to integer
+}
+*/
+
+let loanMonths = parseFloat(readline.question('MONTHS: '));
+
+// Have to check for valid entries, no decimals in years, check that 0 gets set if they skip the question and only enter months
+
+let yearsToMonths = loanYears * 12;
+console.log(yearsToMonths);
+let loanDuration = yearsToMonths + loanMonths;
+
+console.log(loanDuration);
+
+// prettier-ignore
+let monthlyInterestRate = (apr / 12) / 100;
+
+console.log(monthlyInterestRate);
+
+// prettier-ignore
+let monthlyPayment = loanAmount * (monthlyInterestRate / (1 - Math.pow((1 + monthlyInterestRate), (-loanDuration))));
+
+// Also look for another way to round to practice, use some of the built in objects
+function rounder(value, precision) {
+  // This doesn't leave 0 on decimals 47.00
+  let multiplier = Math.pow(10, precision || 0);
+  return Math.round(value * multiplier) / multiplier;
+}
+
+let roundedMonthlyPayment = rounder(monthlyPayment, 2);
+console.log(`Your monthly payment is: ${monthlyPayment}`);
+console.log(`Your rounded monthly payment is: ${roundedMonthlyPayment}`);

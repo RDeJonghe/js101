@@ -7,7 +7,9 @@
     "apr message" : "Based on your credit score your APR rate is",
     "has decimal" : "Your loan will be rounded to the nearest dollar.",
     "rounded" : "Your rounded loan amount is",
-    "entered NaN" : "INVALID ENTRY: Please enter in a number for the loan amount."
+    "entered NaN" : "INVALID ENTRY: Please enter in a number for the loan amount.",
+    "loan duration" : "What will be the duration of the loan? Enter years first, then months.",
+    "invalid year" : "Please enter a valid number for years."
   },
   "es" : {},
   "credit" : {
