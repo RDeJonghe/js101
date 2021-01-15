@@ -38,7 +38,6 @@ function userMessages(messageDisplayed) {
 
 userMessages(MESSAGES_DISPLAYED['language']); // also have to take out ' and ' in 'en' in case they enter that
 let language = readline.question().replace(/['"]+/g, '').trim().toLowerCase().replace('glish', '').replace('pañol', '');
-console.log('this is the language' + ' ' + language);
 
 while (language !== 'en' && language !== 'es') {
   userMessages(MESSAGES_DISPLAYED['language error']);
@@ -64,7 +63,6 @@ if (!Number.isInteger(loanAmount)) {
   loanAmount = Math.round(loanAmount);
   userMessages(`${MESSAGES_DISPLAYED[language]['rounded']} $${loanAmount}`);
 }
-console.log(loanAmount);
 
 userMessages(MESSAGES_DISPLAYED[language]['credit score']);
 let creditScore = parseFloat(readline.question());
@@ -81,28 +79,40 @@ if (creditScore < 630) {
 userMessages(MESSAGES_DISPLAYED[language]['loan duration']);
 let loanYears = parseFloat(readline.question('YEARS: '));
 
-/*
-// prettier-ignore
-while (!(loanYears.isInteger)) { // not working
+while (isNaN(loanYears)) {
   userMessages(MESSAGES_DISPLAYED[language]['invalid year']);
-  loanYears = parseFloat(readline.question('YEARZ: ')); // not breaking out of the loop, check that number is set to integer
+  loanYears = parseFloat(readline.question('YEARS: '));
 }
-*/
+
+while (!Number.isInteger(loanYears)) {
+  userMessages(MESSAGES_DISPLAYED[language]['decimal year']);
+  loanYears = parseFloat(readline.question('YEARS: '));
+}
 
 let loanMonths = parseFloat(readline.question('MONTHS: '));
 
+while (!Number.isInteger(loanMonths)) {
+  userMessages(MESSAGES_DISPLAYED[language]['invalid month']);
+  loanMonths = parseFloat(readline.question('MONTHS: '));
+}
+// have to check the decimal here also
+
+while (loanYears === 0 && loanMonths === 0) {
+  userMessages(MESSAGES_DISPLAYED[language]['zero year and month']);
+  loanYears = parseFloat(readline.question('YEARS: '));
+  loanMonths = parseFloat(readline.question('MONTHS: ')); // since this is down here it will accept decimals, etc. so probably have to nest
+}
+
+// Also have to check if they enter zero monhts and zero years, make them go back.
 // Have to check for valid entries, no decimals in years, check that 0 gets set if they skip the question and only enter months
+// can always have a second check if a decimal is entered, say enter months in later.
 
 let yearsToMonths = loanYears * 12;
-console.log(yearsToMonths);
-let loanDuration = yearsToMonths + loanMonths;
 
-console.log(loanDuration);
+let loanDuration = yearsToMonths + loanMonths;
 
 // prettier-ignore
 let monthlyInterestRate = (apr / 12) / 100;
-
-console.log(monthlyInterestRate);
 
 // prettier-ignore
 let monthlyPayment = loanAmount * (monthlyInterestRate / (1 - Math.pow((1 + monthlyInterestRate), (-loanDuration))));
@@ -115,5 +125,5 @@ function rounder(value, precision) {
 }
 
 let roundedMonthlyPayment = rounder(monthlyPayment, 2);
-console.log(`Your monthly payment is: ${monthlyPayment}`);
-console.log(`Your rounded monthly payment is: ${roundedMonthlyPayment}`);
+
+userMessages(`${MESSAGES_DISPLAYED[language]['payment message']} is ${roundedMonthlyPayment}`);

@@ -8,8 +8,12 @@
     "has decimal" : "Your loan will be rounded to the nearest dollar.",
     "rounded" : "Your rounded loan amount is",
     "entered NaN" : "INVALID ENTRY: Please enter in a number for the loan amount.",
-    "loan duration" : "What will be the duration of the loan? Enter years first, then months.",
-    "invalid year" : "Please enter a valid number for years."
+    "loan duration" : "What will be the duration of the loan? Enter number of years first, then number of months.",
+    "invalid year" : "Please enter a valid number for years.",
+    "decimal year" : "Enter years only, no decimals. You can enter months next.",
+    "invalid month" : "Please enter a valid number for months.",
+    "zero year and month" : "Please enter a loan duration, cannot enter 0 years and 0 months",
+    "payment message" : "Your monthly payment is"
   },
   "es" : {},
   "credit" : {
