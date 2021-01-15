@@ -1,4 +1,4 @@
-// Main Branch
+// BRANCH: while_testing
 
 // Mortgage Calculator Assignment from JS101
 
@@ -32,14 +32,14 @@ GET perform another calculation
 
 const readline = require('readline-sync'); // I think readline sync returns strings!!!
 const MESSAGES_DISPLAYED = require('./messages_displayed.json');
-// require json files here when it is made (messages file and rates file)
 
 function userMessages(messageDisplayed) {
   console.log(`>>> ${messageDisplayed}`);
 }
 
-userMessages(MESSAGES_DISPLAYED['language']); // also have to take out ' and ' in 'en' in case they enter that
+userMessages(MESSAGES_DISPLAYED['language']);
 let language = readline.question().replace(/['"]+/g, '').trim().toLowerCase().replace('glish', '').replace('pañol', '');
+// double check first replace for quotes.
 
 while (language !== 'en' && language !== 'es') {
   userMessages(MESSAGES_DISPLAYED['language error']);
@@ -48,38 +48,35 @@ while (language !== 'en' && language !== 'es') {
 }
 
 userMessages(MESSAGES_DISPLAYED[language]['loan']);
-//let loanAmount = parseFloat(readline.question());
 let loanAmount = readline.question('$').replace('$', '').replace(',', '');
-//loanAmount = loanAmount.replace('$', ''); Included above
-//loanAmount = loanAmount.replace(',', ''); Included above
 loanAmount = parseFloat(loanAmount);
 
-while (Number.isNaN(loanAmount)) {
-  userMessages(MESSAGES_DISPLAYED[language]['entered NaN']);
-  userMessages(MESSAGES_DISPLAYED[language]['loan']);
-  loanAmount = parseFloat(readline.question('$'));
-}
-
-if (!Number.isInteger(loanAmount)) {
-  userMessages(MESSAGES_DISPLAYED[language]['has decimal']);
-  loanAmount = Math.round(loanAmount);
-  userMessages(`${MESSAGES_DISPLAYED[language]['rounded']} $${loanAmount}`);
+while (Number.isNaN(loanAmount) || !Number.isInteger(loanAmount)) {
+  if (Number.isNaN(loanAmount)) {
+    userMessages(MESSAGES_DISPLAYED[language]['entered NaN']);
+    userMessages(MESSAGES_DISPLAYED[language]['loan']);
+    loanAmount = parseFloat(readline.question('$').replace('$', '').replace(',', '')); // added .replace looks to work.
+  } else if (!Number.isInteger(loanAmount)) {
+    userMessages(MESSAGES_DISPLAYED[language]['has decimal']);
+    loanAmount = Math.round(loanAmount);
+    userMessages(`${MESSAGES_DISPLAYED[language]['rounded']} $${loanAmount}`);
+  }
 }
 
 userMessages(MESSAGES_DISPLAYED[language]['credit score']);
 let creditScore = parseFloat(readline.question());
 
-while (Number.isNaN(creditScore)) {
-  userMessages(MESSAGES_DISPLAYED[language]['entered NaN']);
-  creditScore = parseFloat(readline.question());
-}
-while (creditScore < 300 || creditScore > 850) {
-  userMessages(MESSAGES_DISPLAYED[language]['out of range']);
-  creditScore = parseFloat(readline.question());
-}
-if (!Number.isInteger(creditScore)) {
-  creditScore = Math.round(creditScore);
-  userMessages(`${MESSAGES_DISPLAYED[language]['credit score is']} ${creditScore}`);
+while (Number.isNaN(creditScore) || (creditScore < 300 || creditScore > 850) || !Number.isInteger(creditScore)) {
+  if (Number.isNaN(creditScore)) {
+    userMessages(MESSAGES_DISPLAYED[language]['entered NaN']);
+    creditScore = parseFloat(readline.question());
+  } else if (creditScore < 300 || creditScore > 850) {
+    userMessages(MESSAGES_DISPLAYED[language]['out of range']);
+    creditScore = parseFloat(readline.question());
+  } else if (!Number.isInteger(creditScore)) {
+    creditScore = Math.round(creditScore);
+    userMessages(`${MESSAGES_DISPLAYED[language]['credit score is']} ${creditScore}`);
+  }
 }
 
 let apr;
@@ -96,34 +93,33 @@ if (creditScore < 630) {
 
 userMessages(MESSAGES_DISPLAYED[language]['loan duration']);
 let loanYears = parseFloat(readline.question('YEARS: '));
-
-while (isNaN(loanYears)) {
-  userMessages(MESSAGES_DISPLAYED[language]['invalid year']);
-  loanYears = parseFloat(readline.question('YEARS: '));
-}
-
-while (!Number.isInteger(loanYears)) {
-  userMessages(MESSAGES_DISPLAYED[language]['decimal year']);
-  loanYears = parseFloat(readline.question('YEARS: '));
-}
-
 let loanMonths = parseFloat(readline.question('MONTHS: '));
 
-while (!Number.isInteger(loanMonths)) {
-  userMessages(MESSAGES_DISPLAYED[language]['invalid month']);
-  loanMonths = parseFloat(readline.question('MONTHS: '));
+while (
+  isNaN(loanYears) ||
+  !Number.isInteger(loanYears) ||
+  !Number.isInteger(loanMonths) ||
+  (loanYears === 0 && loanMonths === 0)
+) {
+  if (isNaN(loanYears)) {
+    userMessages(MESSAGES_DISPLAYED[language]['invalid year']);
+    loanYears = parseFloat(readline.question('YEARS: '));
+    loanMonths = parseFloat(readline.question('MONTHS: '));
+  } else if (!Number.isInteger(loanYears)) {
+    userMessages(MESSAGES_DISPLAYED[language]['decimal year']);
+    loanYears = parseFloat(readline.question('YEARS: '));
+    loanMonths = parseFloat(readline.question('MONTHS: '));
+  } else if (!Number.isInteger(loanMonths)) {
+    userMessages(MESSAGES_DISPLAYED[language]['invalid month']);
+    loanYears = parseFloat(readline.question('YEARS: '));
+    loanMonths = parseFloat(readline.question('MONTHS: ')); // don't need seperate decimal edge case for months, it just says invalid entry, no one is like 2.5 months the way you talk like 2.5 years.
+  }
+  if (loanYears === 0 && loanMonths === 0) {
+    userMessages(MESSAGES_DISPLAYED[language]['zero year and month']);
+    loanYears = parseFloat(readline.question('YEARS: '));
+    loanMonths = parseFloat(readline.question('MONTHS: '));
+  }
 }
-// have to check the decimal here also
-
-while (loanYears === 0 && loanMonths === 0) {
-  userMessages(MESSAGES_DISPLAYED[language]['zero year and month']);
-  loanYears = parseFloat(readline.question('YEARS: '));
-  loanMonths = parseFloat(readline.question('MONTHS: ')); // since this is down here it will accept decimals, etc. so probably have to nest
-}
-
-// Also have to check if they enter zero monhts and zero years, make them go back.
-// Have to check for valid entries, no decimals in years, check that 0 gets set if they skip the question and only enter months
-// can always have a second check if a decimal is entered, say enter months in later.
 
 let yearsToMonths = loanYears * 12;
 
@@ -135,13 +131,4 @@ let monthlyInterestRate = (apr / 12) / 100;
 // prettier-ignore
 let monthlyPayment = loanAmount * (monthlyInterestRate / (1 - Math.pow((1 + monthlyInterestRate), (-loanDuration))));
 
-// Also look for another way to round to practice, use some of the built in objects
-function rounder(value, precision) {
-  // This doesn't leave 0 on decimals 47.00
-  let multiplier = Math.pow(10, precision || 0);
-  return Math.round(value * multiplier) / multiplier;
-}
-
-let roundedMonthlyPayment = rounder(monthlyPayment, 2);
-
-userMessages(`${MESSAGES_DISPLAYED[language]['payment message']} is ${roundedMonthlyPayment}`);
+userMessages(`${MESSAGES_DISPLAYED[language]['payment message']} $${monthlyPayment.toFixed(2)}`);
