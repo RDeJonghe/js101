@@ -1,4 +1,4 @@
-// BRANCH: while_testing
+// MERGED while_testing BRANCH. Branch deleted.
 
 // Mortgage Calculator Assignment from JS101
 
