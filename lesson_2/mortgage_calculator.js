@@ -1,3 +1,5 @@
+// Main Branch
+
 // Mortgage Calculator Assignment from JS101
 
 /* PSEUDO CODE
@@ -67,12 +69,28 @@ if (!Number.isInteger(loanAmount)) {
 userMessages(MESSAGES_DISPLAYED[language]['credit score']);
 let creditScore = parseFloat(readline.question());
 
-// Have to make sure entry for credit score is a valid number here, just like above with loan amount
-// Also make sure it is within range of credit score numbers between y and z.
+while (Number.isNaN(creditScore)) {
+  userMessages(MESSAGES_DISPLAYED[language]['entered NaN']);
+  creditScore = parseFloat(readline.question());
+}
+while (creditScore < 300 || creditScore > 850) {
+  userMessages(MESSAGES_DISPLAYED[language]['out of range']);
+  creditScore = parseFloat(readline.question());
+}
+if (!Number.isInteger(creditScore)) {
+  creditScore = Math.round(creditScore);
+  userMessages(`${MESSAGES_DISPLAYED[language]['credit score is']} ${creditScore}`);
+}
 
 let apr;
 if (creditScore < 630) {
   apr = MESSAGES_DISPLAYED['credit']['bad'];
+  userMessages(`${MESSAGES_DISPLAYED[language]['apr message']} ${apr}%`);
+} else if (creditScore >= 630 && creditScore < 720) {
+  apr = MESSAGES_DISPLAYED['credit']['average'];
+  userMessages(`${MESSAGES_DISPLAYED[language]['apr message']} ${apr}%`);
+} else if (creditScore >= 720) {
+  apr = MESSAGES_DISPLAYED['credit']['good'];
   userMessages(`${MESSAGES_DISPLAYED[language]['apr message']} ${apr}%`);
 }
 

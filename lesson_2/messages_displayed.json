@@ -4,10 +4,12 @@
   "en" : {
     "loan" : "Enter in the amount of the loan that you would like to take out.",
     "credit score" : "Enter in your credit score.",
+    "out of range" : "The score you entered is out of range. Please enter a score between 300 and 850",
+    "credit score is" : "Your credit score is",
     "apr message" : "Based on your credit score your APR rate is",
     "has decimal" : "Your loan will be rounded to the nearest dollar.",
     "rounded" : "Your rounded loan amount is",
-    "entered NaN" : "INVALID ENTRY: Please enter in a number for the loan amount.",
+    "entered NaN" : "INVALID ENTRY: Please enter in a number.",
     "loan duration" : "What will be the duration of the loan? Enter number of years first, then number of months.",
     "invalid year" : "Please enter a valid number for years.",
     "decimal year" : "Enter years only, no decimals. You can enter months next.",
