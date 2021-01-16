@@ -1,24 +1,26 @@
 // Mortgage Calculator Assignment from JS101
 
+const readline = require('readline-sync');
+const DISPLAY = require('./messages_displayed.json');
+function userMessages(messageDisplayed) {
+  console.log(`>>> ${messageDisplayed}`);
+}
+
 let again;
+let language = null;
 
 while (again !== 'n') {
-  const readline = require('readline-sync');
-  const DISPLAY = require('./messages_displayed.json');
-
-  function userMessages(messageDisplayed) {
-    console.log(`>>> ${messageDisplayed}`);
-  }
-
-  userMessages(DISPLAY['language']);
-  // prettier-ignore
-  let language = readline.question()
+  while (language === null) {
+    userMessages(DISPLAY['language']);
+    // prettier-ignore
+    language = readline.question()
     .replace(/['"]+/g, '')
     .trim()
     .toLowerCase()
     .replace('glish', '')
-    .replace('pañol', '');
-
+    .replace('pañol', '')
+    .replace('panol', '');
+  }
   // prettier-ignore
   while (language !== 'en' && language !== 'es') {
     userMessages(DISPLAY['language error']);
@@ -28,7 +30,8 @@ while (again !== 'n') {
       .trim()
       .toLowerCase()
       .replace('glish', '')
-      .replace('pañol', '');
+      .replace('pañol', '')
+      .replace('panol', '');
   }
 
   userMessages(DISPLAY[language]['loan']);
@@ -81,36 +84,48 @@ while (again !== 'n') {
   userMessages(DISPLAY[language]['loan duration']);
   let loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
   let loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+  let yearsToMonths = loanYears * 12;
+  let loanDuration = yearsToMonths + loanMonths;
 
   while (
     isNaN(loanYears) ||
     !Number.isInteger(loanYears) ||
     !Number.isInteger(loanMonths) ||
-    (loanYears === 0 && loanMonths === 0)
+    (loanYears === 0 && loanMonths === 0) ||
+    loanDuration > 360
   ) {
     if (isNaN(loanYears)) {
       userMessages(DISPLAY[language]['invalid year']);
-      loanYears = parseFloat(readline.question('YEARS: '));
-      loanMonths = parseFloat(readline.question('MONTHS: '));
+      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+      yearsToMonths = loanYears * 12;
+      loanDuration = yearsToMonths + loanMonths;
     } else if (!Number.isInteger(loanYears)) {
       userMessages(DISPLAY[language]['decimal year']);
-      loanYears = parseFloat(readline.question('YEARS: '));
-      loanMonths = parseFloat(readline.question('MONTHS: '));
+      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+      yearsToMonths = loanYears * 12;
+      loanDuration = yearsToMonths + loanMonths;
     } else if (!Number.isInteger(loanMonths)) {
       userMessages(DISPLAY[language]['invalid month']);
-      loanYears = parseFloat(readline.question('YEARS: '));
-      loanMonths = parseFloat(readline.question('MONTHS: '));
-    }
-    if (loanYears === 0 && loanMonths === 0) {
+      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+      yearsToMonths = loanYears * 12;
+      loanDuration = yearsToMonths + loanMonths;
+    } else if (loanYears === 0 && loanMonths === 0) {
       userMessages(DISPLAY[language]['zero year and month']);
-      loanYears = parseFloat(readline.question('YEARS: '));
-      loanMonths = parseFloat(readline.question('MONTHS: '));
+      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+      yearsToMonths = loanYears * 12;
+      loanDuration = yearsToMonths + loanMonths;
+    } else if (loanDuration > 360) {
+      userMessages(DISPLAY[language]['max duration']);
+      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+      yearsToMonths = loanYears * 12;
+      loanDuration = yearsToMonths + loanMonths;
     }
   }
-
-  let yearsToMonths = loanYears * 12;
-
-  let loanDuration = yearsToMonths + loanMonths;
 
   // prettier-ignore
   let monthlyInterestRate = (apr / 12) / 100;
@@ -148,8 +163,11 @@ while (again !== 'n') {
   again = readline.question()
     .replace(/['"]+/g, '')
     .trim()
-    .toLowerCase()
-    .substring(0, 1);
+    .toLowerCase();
+
+  if (again === 'yes' || again === 'no' || again === 'si' || again === 'sí') {
+    again = again.replace('es', '').replace('o', '').replace('i', '').replace('í', '');
+  }
 
   if (language === 'es' && again === 's') {
     again = 'y';
@@ -162,11 +180,19 @@ while (again !== 'n') {
       .replace(/['"]+/g, '')
       .trim()
       .toLowerCase()
-      .substring(0, 1);
+      
+      if (again === 'yes' || again === 'no' || again === 'si' || again === 'sí') {
+        again = again.replace('es', '')
+          .replace('o', '')
+          .replace('i', '')
+          .replace('í', '');
+      }
+      
     if (language === 'es' && again === 's') {
       again = 'y';
     }
   }
-
-  userMessages(DISPLAY[language]['thank you']);
+  if (again === 'n') {
+    userMessages(DISPLAY[language]['thank you']);
+  }
 }
