@@ -2,7 +2,7 @@
   "language" : "Type 'en' for English / Teclear 'es' para Español",
   "language error" : "Invalid language selection / Idioma elegido es inválido",
   "en" : {
-    "loan" : "Enter in the amount of the loan that you would like to take out.",
+    "loan" : "Enter in the amount in USD for the loan that you would like to take out.",
     "credit score" : "Enter in your credit score.",
     "out of range" : "The score you entered is out of range. Please enter a score between 300 and 850.",
     "credit score is" : "Your credit score is",
@@ -23,10 +23,13 @@
     "total paid" : "The total amount paid during the loan period will be",
     "total interest" : "The total interest paid will be",
     "percent interest" : "The percent of total paid that is interest is",
-    "percent principal" : "and the percent of total paid that is principal is"
+    "percent principal" : "and the percent of total paid that is principal is",
+    "again" : "Would you like to perform another calculation? Enter 'yes' or 'no'.",
+    "again error" : "Invalid Entry. Would you like to perform another calculation? Enter 'yes' or 'no'.",
+    "thank you" : "Thank you for using the calculator!"
   },
   "es" : {
-    "loan" : "Entrar el valor del préstamo que le gustaría pedir.",
+    "loan" : "Entrar el valor del préstamo en USD (dólares estadounidenses) que le gustaría pedir.",
     "credit score" : "Entrar su puntaje de crédito.",
     "out of range" : "El número que se ha entrado es fuera del rango permitido. Favor de entrar un puntaje entre 300 y 850.",
     "credit score is" : "Su puntaje de credito es",
@@ -47,7 +50,10 @@
     "total paid" : "El total pagado durante la duración del préstamo será",
     "total interest" : "El total de interés pagado será",
     "percent interest" : "El porcentaje del total pagado que es interés es",
-    "percent principal" : "y el porcentaje del total pagado que es princiapl es"
+    "percent principal" : "y el porcentaje del total pagado que es princiapl es",
+    "again" : "¿Le gustaría hacer otro cálculo? Entre sí o no.",
+    "again error" : "Entrada inválida. ¿Le gustaría hacer otro cálculo? Entre 'sí' o 'no'.",
+    "thank you" : "¡Gracias por usar la calculadora!"
   },
   "credit" : {
     "bad" : 12.5,
