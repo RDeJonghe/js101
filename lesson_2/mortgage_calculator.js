@@ -14,12 +14,12 @@ while (again !== 'n') {
     userMessages(DISPLAY['language']);
     // prettier-ignore
     language = readline.question()
-    .replace(/['"]+/g, '')
-    .trim()
-    .toLowerCase()
-    .replace('glish', '')
-    .replace('pañol', '')
-    .replace('panol', '');
+      .replace(/['"]+/g, '')
+      .trim()
+      .toLowerCase()
+      .replace('glish', '')
+      .replace('pañol', '')
+      .replace('panol', '');
   }
   // prettier-ignore
   while (language !== 'en' && language !== 'es') {
@@ -49,14 +49,21 @@ while (again !== 'n') {
     } else if (!Number.isInteger(loanAmount)) {
       userMessages(DISPLAY[language]['has decimal']);
       loanAmount = Math.round(loanAmount);
-      userMessages(`${DISPLAY[language]['rounded']} $${loanAmount}`);
+      userMessages(
+        `${DISPLAY[language]['rounded']} ${loanAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`
+      );
     }
   }
 
   userMessages(DISPLAY[language]['credit score']);
   let creditScore = parseFloat(readline.question());
 
-  while (Number.isNaN(creditScore) || (creditScore < 300 || creditScore > 850) || !Number.isInteger(creditScore)) {
+  // prettier-ignore
+  while (
+    Number.isNaN(creditScore) ||
+    (creditScore < 300 || creditScore > 850) ||
+    !Number.isInteger(creditScore)
+  ) {
     if (Number.isNaN(creditScore)) {
       userMessages(DISPLAY[language]['entered NaN']);
       creditScore = parseFloat(readline.question());
@@ -131,7 +138,8 @@ while (again !== 'n') {
   let monthlyInterestRate = (apr / 12) / 100;
 
   // prettier-ignore
-  let monthlyPayment = loanAmount * (monthlyInterestRate / (1 - Math.pow((1 + monthlyInterestRate), (-loanDuration))));
+  let monthlyPayment = loanAmount * (monthlyInterestRate /
+    (1 - Math.pow((1 + monthlyInterestRate), (-loanDuration))));
 
   let totalPaid = monthlyPayment * loanDuration;
 
@@ -155,7 +163,7 @@ while (again !== 'n') {
   userMessages(`${DISPLAY[language]['total paid']} ${totalPaid.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}. ${DISPLAY[language]['total interest']} ${totalInterest.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}.`);
 
   // prettier-ignore
-  userMessages(`${DISPLAY[language]['percent interest']} ${percentInterest.toFixed(0)}% ${DISPLAY[language]['percent principal']} ${percentPrincipal.toFixed(0)}%.`)
+  userMessages(`${DISPLAY[language]['percent interest']} ${percentInterest.toFixed(0)}% ${DISPLAY[language]['percent principal']} ${percentPrincipal.toFixed(0)}%.`);
 
   userMessages(DISPLAY[language]['again']);
 
@@ -179,15 +187,15 @@ while (again !== 'n') {
     again = readline.question()
       .replace(/['"]+/g, '')
       .trim()
-      .toLowerCase()
-      
-      if (again === 'yes' || again === 'no' || again === 'si' || again === 'sí') {
-        again = again.replace('es', '')
-          .replace('o', '')
-          .replace('i', '')
-          .replace('í', '');
-      }
-      
+      .toLowerCase();
+
+    if (again === 'yes' || again === 'no' || again === 'si' || again === 'sí') {
+      again = again.replace('es', '')
+        .replace('o', '')
+        .replace('i', '')
+        .replace('í', '');
+    }
+
     if (language === 'es' && again === 's') {
       again = 'y';
     }
