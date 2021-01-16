@@ -1,33 +1,5 @@
 // Mortgage Calculator Assignment from JS101
 
-/* PSEUDO CODE
-- Ask for the loan amount
-- Ask for credit score to determine the APR
-- Determine and print the APR
-- Ask for the loan duration
-- with above info calculate monthly interest rate and loan duration
-- using formula, calculate monthly payment
-- ask if they would like to perform another calcuation
-*/
-
-/* FORMAL PSEUDO CODE
-START
-GET loan amount
-GET credit score
-SET APR
-IF/ELSE determine APR based on credit
-  - READ APR info from json file
-  - DETERMINE APR
-  - PRINT APR
-GET loan duration
-SET monthly interest rate
-SET loan duration
-FUNCTION monthly interest rate
-FUNCTION load duration
-FUNCTION montly payment - use formula
-GET perform another calculation
-*/
-
 let again;
 
 while (again !== 'n') {
