@@ -41,7 +41,7 @@ while (again !== 'n') {
     .replace(/[,]+/g, '');
   loanAmount = parseFloat(loanAmount);
 
-  while (Number.isNaN(loanAmount) || !Number.isInteger(loanAmount)) {
+  while (Number.isNaN(loanAmount) || !Number.isInteger(loanAmount) || Math.sign(loanAmount) !== 1) {
     if (Number.isNaN(loanAmount)) {
       userMessages(DISPLAY[language]['entered NaN']);
       userMessages(DISPLAY[language]['loan']);
@@ -52,6 +52,9 @@ while (again !== 'n') {
       userMessages(
         `${DISPLAY[language]['rounded']} ${loanAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`
       );
+    } else if (Math.sign(loanAmount) !== 1) {
+      userMessages(DISPLAY[language]['invalid loan']);
+      loanAmount = parseFloat(readline.question('$').replace('$', '').replace(/[,]+/g, ''));
     }
   }
 
@@ -99,34 +102,43 @@ while (again !== 'n') {
     !Number.isInteger(loanYears) ||
     !Number.isInteger(loanMonths) ||
     (loanYears === 0 && loanMonths === 0) ||
-    loanDuration > 360
-  ) {
-    if (isNaN(loanYears)) {
-      userMessages(DISPLAY[language]['invalid year']);
-      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
-      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
-      yearsToMonths = loanYears * 12;
-      loanDuration = yearsToMonths + loanMonths;
-    } else if (!Number.isInteger(loanYears)) {
-      userMessages(DISPLAY[language]['decimal year']);
-      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
-      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
-      yearsToMonths = loanYears * 12;
-      loanDuration = yearsToMonths + loanMonths;
-    } else if (!Number.isInteger(loanMonths)) {
-      userMessages(DISPLAY[language]['invalid month']);
-      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
-      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
-      yearsToMonths = loanYears * 12;
-      loanDuration = yearsToMonths + loanMonths;
-    } else if (loanYears === 0 && loanMonths === 0) {
-      userMessages(DISPLAY[language]['zero year and month']);
-      loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
-      loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
-      yearsToMonths = loanYears * 12;
-      loanDuration = yearsToMonths + loanMonths;
-    } else if (loanDuration > 360) {
-      userMessages(DISPLAY[language]['max duration']);
+    loanDuration > 360 ||
+    (Math.sign(loanYears) !== 1 && Math.sign(loanYears) !== 0) ||
+    (Math.sign(loanMonths) !==1 && Math.sign(loanMonths) !== 0)
+    ) {
+      if (isNaN(loanYears)) {
+        userMessages(DISPLAY[language]['invalid year']);
+        loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+        loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+        yearsToMonths = loanYears * 12;
+        loanDuration = yearsToMonths + loanMonths;
+      } else if (!Number.isInteger(loanYears)) {
+        userMessages(DISPLAY[language]['decimal year']);
+        loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+        loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+        yearsToMonths = loanYears * 12;
+        loanDuration = yearsToMonths + loanMonths;
+      } else if (!Number.isInteger(loanMonths)) {
+        userMessages(DISPLAY[language]['invalid month']);
+        loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+        loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+        yearsToMonths = loanYears * 12;
+        loanDuration = yearsToMonths + loanMonths;
+      } else if (loanYears === 0 && loanMonths === 0) {
+        userMessages(DISPLAY[language]['zero year and month']);
+        loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+        loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+        yearsToMonths = loanYears * 12;
+        loanDuration = yearsToMonths + loanMonths;
+      } else if (loanDuration > 360) {
+        userMessages(DISPLAY[language]['max duration']);
+        loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+        loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+        yearsToMonths = loanYears * 12;
+        loanDuration = yearsToMonths + loanMonths;
+      } else if ((Math.sign(loanYears) !== 1 && Math.sign(loanYears) !== 0) ||
+      (Math.sign(loanMonths) !==1 && Math.sign(loanMonths) !== 0)) {
+      userMessages(DISPLAY[language]['negative duration']);
       loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
       loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
       yearsToMonths = loanYears * 12;
@@ -203,4 +215,5 @@ while (again !== 'n') {
   if (again === 'n') {
     userMessages(DISPLAY[language]['thank you']);
   }
+  console.clear();
 }
