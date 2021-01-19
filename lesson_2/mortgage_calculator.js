@@ -6,68 +6,87 @@ const DISPLAY = require('./messages_displayed.json');
 
 let again;
 let language = null;
+let loanYears;
+let loanMonths;
+let yearsToMonths;
+let loanDuration;
+let loanAmount;
 
-while (again !== 'no') {
+function userMessages(messageDisplayed) {
+  console.log(`>>> ${messageDisplayed}`);
+}
 
-  function userMessages(messageDisplayed) {
-    return console.log(`>>> ${messageDisplayed}`);  
-  }
-
-  function languageCleanUp(languageVar) {
-    return language = languageVar.replace(/['"]+/g, '')
+function languageCleanUp(languageVar) {
+  language = languageVar.replace(/['"]+/g, '')
     .trim()
     .toLowerCase()
     .replace('glish', '')
     .replace('pañol', '')
     .replace('panol', '');
-  }
-  function loanCleanUp(moneyVar) {
-    return loanAmount = moneyVar.replace('$', '').replace(/[,]+/g, '');
-  }
-  
-  function showUser(key) {
-    return userMessages(DISPLAY[language][key]);
-  }
+}
 
-  function languageMessage(key) {
-    return userMessages(DISPLAY[key]);
-  }
+function showUser(key) {
+  userMessages(DISPLAY[language][key]);
+}
+
+function languageMessage(key) {
+  userMessages(DISPLAY[key]);
+}
+
+function loanDurationError(key) {
+  userMessages(DISPLAY[language][key]);
+  loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+  loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+  yearsToMonths = loanYears * 12;
+  loanDuration = yearsToMonths + loanMonths;
+}
+
+function againCleanUp () {
+  again = again.replace(/['"]+/g, '')
+    .trim()
+    .toLowerCase();
+}
+
+while (again !== 'no') {
 
   while (language === null) {
     languageMessage('language');
     language = readline.question();
-    languageCleanUp(language); 
+    languageCleanUp(language);
   }
-  
   while (language !== 'en' && language !== 'es') {
     languageMessage('language error');
     languageMessage('language');
-    language = readline.question()
-    languageCleanUp(language); 
+    language = readline.question();
+    languageCleanUp(language);
   }
 
   showUser('loan');
-  let loanAmount = readline.question('$')
+  loanAmount = readline.question('$')
     .replace('$', '')
     .replace(/[,]+/g, '');
   loanAmount = parseFloat(loanAmount);
 
-  while (Number.isNaN(loanAmount) || !Number.isInteger(loanAmount) || Math.sign(loanAmount) !== 1) {
+  while (Number.isNaN(loanAmount) ||
+    !Number.isInteger(loanAmount) ||
+    Math.sign(loanAmount) !== 1) {
     if (Number.isNaN(loanAmount)) {
       showUser('entered NaN');
       showUser('loan');
-      loanAmount = parseFloat(readline.question('$'));
-      loanCleanUp(loanAmount);
+      loanAmount = parseFloat(readline.question('$')
+        .replace('$', '')
+        .replace(/[,]+/g, ''));
     } else if (!Number.isInteger(loanAmount)) {
       showUser('has decimal');
       loanAmount = Math.round(loanAmount);
       userMessages(
         `${DISPLAY[language]['rounded']} ${loanAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`
-       );
+      );
     } else if (Math.sign(loanAmount) !== 1) {
       showUser('invalid loan');
-      loanAmount = parseFloat(readline.question('$'));
-      loanCleanUp(loanAmount);
+      loanAmount = parseFloat(readline.question('$')
+        .replace('$', '')
+        .replace(/[,]+/g, ''));
     }
   }
 
@@ -107,19 +126,10 @@ while (again !== 'no') {
   }
 
   showUser('loan duration');
-  let loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
-  let loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
-  let yearsToMonths = loanYears * 12;
-  let loanDuration = yearsToMonths + loanMonths;
-
-
-  function loanDurationError(key) {
-    userMessages(DISPLAY[language][key]);
-        loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
-        loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
-        yearsToMonths = loanYears * 12;
-        loanDuration = yearsToMonths + loanMonths;
-  }
+  loanYears = parseFloat(readline.question(`${DISPLAY[language]['pm4']}`));
+  loanMonths = parseFloat(readline.question(`${DISPLAY[language]['pm5']}`));
+  yearsToMonths = loanYears * 12;
+  loanDuration = yearsToMonths + loanMonths;
 
   while (
     isNaN(loanYears) ||
@@ -128,20 +138,20 @@ while (again !== 'no') {
     (loanYears === 0 && loanMonths === 0) ||
     loanDuration > 360 ||
     (Math.sign(loanYears) !== 1 && Math.sign(loanYears) !== 0) ||
-    (Math.sign(loanMonths) !==1 && Math.sign(loanMonths) !== 0)
-    ) {
-      if (isNaN(loanYears)) {
-        loanDurationError('invalid year');
-      } else if (!Number.isInteger(loanYears)) {
-        loanDurationError('decimal year');
-      } else if (!Number.isInteger(loanMonths)) {
-        loanDurationError('invalid month');
-      } else if (loanYears === 0 && loanMonths === 0) {
-        loanDurationError('zero year and month')
-      } else if (loanDuration > 360) {
-        loanDurationError('max duration');
-      } else if ((Math.sign(loanYears) !== 1 && Math.sign(loanYears) !== 0) ||
-      (Math.sign(loanMonths) !==1 && Math.sign(loanMonths) !== 0)) {
+    (Math.sign(loanMonths) !== 1 && Math.sign(loanMonths) !== 0)
+  ) {
+    if (isNaN(loanYears)) {
+      loanDurationError('invalid year');
+    } else if (!Number.isInteger(loanYears)) {
+      loanDurationError('decimal year');
+    } else if (!Number.isInteger(loanMonths)) {
+      loanDurationError('invalid month');
+    } else if (loanYears === 0 && loanMonths === 0) {
+      loanDurationError('zero year and month');
+    } else if (loanDuration > 360) {
+      loanDurationError('max duration');
+    } else if ((Math.sign(loanYears) !== 1 && Math.sign(loanYears) !== 0) ||
+      (Math.sign(loanMonths) !== 1 && Math.sign(loanMonths) !== 0)) {
       loanDurationError('negative duration');
     }
   }
@@ -171,33 +181,25 @@ while (again !== 'no') {
 
   userMessages(`${DISPLAY[language]['pm5']} ${loanMonths}`);
 
-  
   userMessages(`${DISPLAY[language]['total paid']} ${totalPaid.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}. ${DISPLAY[language]['total interest']} ${totalInterest.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}.`);
 
   userMessages(`${DISPLAY[language]['percent interest']} ${percentInterest.toFixed(0)}% ${DISPLAY[language]['percent principal']} ${percentPrincipal.toFixed(0)}%.`);
 
-  
-  function againCleanUp (againVar) {
-    again = again.replace(/['"]+/g, '')
-    .trim()
-    .toLowerCase();
-  }
-  
   showUser('again');
 
-  again = readline.question()
-  againCleanUp(again);
+  again = readline.question();
+  againCleanUp();
 
   while (again !== 'yes' && again !== 'si' && again !== 'sí' && again !== 'no') {
-      showUser('again error');
-      again = readline.question()
-      againCleanUp(again);
+    showUser('again error');
+    again = readline.question();
+    againCleanUp();
   }
-    
+
   if (again === 'no') {
     showUser('thank you');
   }
   if (again === 'yes' || again === 'sí' || again === 'si') {
-  console.clear();
+    console.clear();
   }
 }
