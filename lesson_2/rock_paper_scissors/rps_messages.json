@@ -1,0 +1,12 @@
+{
+"welcome" : "Welcome to Rock, Paper, Scissors.",
+"choose" : "Make a selection:\n>>> Type 'Rock', 'Paper' or 'Scissors'.",
+"error message" : "Invalid entry:\n>>> Type 'Rock', 'Paper' or 'Scissors'.",
+"computer chooses message" : "The computer chooses:",
+"tie message" : "The result is a tie.",
+"computer wins message" : "Sorry, the computer wins.",
+"user wins message" : "Congratulations! You win!",
+"play again message" : "Would you like to play again?\n>>> Type 'Yes' or 'No'.",
+"again error message" : "Invalid entry:\n>>> Type 'Yes' or 'No'",
+"goodbye" : "Thanks for playing! Goodbye!"
+}
