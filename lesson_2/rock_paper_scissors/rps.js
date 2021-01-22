@@ -3,12 +3,50 @@
 const READLINE = require('readline-sync');
 const DISPLAY = require('./rps_messages.json');
 
+let userEntry;
+let userChoice;
+let computerEntry;
+let computerChoice;
+let again;
+let againAnswer;
+
 function showUser(key) {
   console.log(`${DISPLAY[key]}`);
 }
 
-function validateUserEntry(entryVariable) {
+function validateUserEntrySetUserChoice(entryVariable) {
   userChoice = entryVariable.toLowerCase()
+    .replace(/['"]+/g, '');
+}
+
+function scissorChange() {
+  if (userChoice === 'scissor') {
+    userChoice = 'scissors';
+  }
+}
+
+function compareChoices() {
+  if (userChoice === computerChoice) {
+    showUser('tie message');
+  } else if ((userChoice === 'rock' && computerChoice === 'scissors') ||
+    (userChoice === 'paper' && computerChoice === 'rock') ||
+    (userChoice === 'scissors' && computerChoice === 'paper')
+  ) {
+    showUser('user wins message');
+  } else if ((computerChoice === 'rock' && userChoice === 'scissors') ||
+    (computerChoice === 'paper' && userChoice === 'rock') ||
+    (computerChoice === 'scissors' && userChoice === 'paper')
+  ) {
+    showUser('computer wins message');
+  }
+}
+
+function showResult(key, variable1, key2, variable2) {
+  console.log(`${DISPLAY[key]} ${variable1} and ${DISPLAY[key2]} ${variable2}.`);
+}
+
+function validateAgain() {
+  againAnswer = again.toLowerCase()
     .replace(/['"]+/g, '');
 }
 
@@ -18,17 +56,9 @@ while (true) {
 
   showUser('choose');
 
-  let userEntry = READLINE.question();
+  userEntry = READLINE.question();
 
-  let userChoice;
-
-  validateUserEntry(userEntry);
-
-  function scissorChange() {
-    if (userChoice === 'scissor') {
-      userChoice = 'scissors';
-    }
-  }
+  validateUserEntrySetUserChoice(userEntry);
 
   scissorChange(userChoice);
 
@@ -38,62 +68,22 @@ while (true) {
     userChoice !== 'scissor') {
     showUser('error message');
     userEntry = READLINE.question();
-    validateUserEntry(userEntry);
+    validateUserEntrySetUserChoice(userEntry);
   }
 
   const COMPUTER_CHOICE_ARRAY = ['rock', 'paper', 'scissors'];
 
-  let computerEntry = Math.floor(Math.random() * 3);
+  computerEntry = Math.floor(Math.random() * 3);
 
-  let computerChoice = COMPUTER_CHOICE_ARRAY[computerEntry];
+  computerChoice = COMPUTER_CHOICE_ARRAY[computerEntry];
 
-  function showResult(key, variable) {
-    console.log(`${DISPLAY[key]} ${variable}`);
-  }
+  showResult('computer chooses message', computerChoice, 'user chooses message', userChoice);
 
-  showResult('computer chooses message', computerChoice);
-
-  function compareChoices() {
-    if (userChoice === computerChoice) {
-      showUser('tie message');
-    } else if (
-      userChoice === 'rock' && computerChoice === 'scissors'
-    ) {
-      showUser('user wins message');
-    } else if (
-      userChoice === 'paper' && computerChoice === 'rock'
-    ) {
-      showUser('user wins message');
-    } else if (
-      userChoice === 'scissors' && computerChoice === 'paper'
-    ) {
-      showUser('user wins message');
-    } else if (
-      computerChoice === 'rock' && userChoice === 'scissors'
-    ) {
-      showUser('computer wins message');
-    } else if (
-      computerChoice === 'paper' && userChoice === 'rock'
-    ) {
-      showUser('computer wins message');
-    } else if (
-      computerChoice === 'scissors' && userChoice === 'paper'
-    ) {
-      showUser('computer wins message');
-    }
-  }
   compareChoices();
 
   showUser('play again message');
 
-  let again = READLINE.question();
-
-  let againAnswer;
-
-  function validateAgain() {
-    againAnswer = again.toLowerCase()
-      .replace(/['"]+/g, '');
-  }
+  again = READLINE.question();
 
   validateAgain();
 
