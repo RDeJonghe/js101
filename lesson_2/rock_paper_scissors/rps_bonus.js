@@ -33,6 +33,29 @@ function scissorChange() {
   }
 }
 
+function firstLetterChangeS() {
+  if (userChoice === '1') {
+    userChoice = 'scissors';
+  }
+  else if (userChoice === '2') {
+    userChoice = 'spock';
+  }
+}
+
+function firstLetterConversion() {
+  if (userChoice === 'r') {
+    userChoice = 'rock';
+  } else if (
+    userChoice === 'p'
+  ) {
+    userChoice = 'paper';
+  } else if (
+    userChoice === 'l'
+  ) {
+    userChoice = 'lizard';
+  }
+}
+
 function compareTie() {
   if (userChoice === computerChoice) {
     showUser('tie message');
@@ -105,11 +128,29 @@ while (true) {
     userChoice !== 'scissors' &&
     userChoice !== 'scissor' &&
     userChoice !== 'lizard' &&
-    userChoice !== 'spock') {
+    userChoice !== 'spock' &&
+    userChoice !== 'r' &&
+    userChoice !== 'p' &&
+    userChoice !== 's' &&
+    userChoice !== 'l') {
     showUser('error message');
     userEntry = READLINE.question();
     validateUserEntrySetUserChoice(userEntry);
   }
+
+  firstLetterConversion();
+
+  if (userChoice === 's') {
+    showUser('first letter s message');
+    userChoice = READLINE.question();
+
+    while (userChoice !== '1' && userChoice !== '2') {
+      showUser('first letter s message');
+      userChoice = READLINE.question();
+    }
+  }
+
+firstLetterChangeS();
 
   const COMPUTER_CHOICE_ARRAY = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 
