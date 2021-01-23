@@ -1,7 +1,7 @@
 {
-"welcome" : "Welcome to Rock, Paper, Scissors.",
-"choose" : "Make a selection:\n>>> Type 'Rock', 'Paper' or 'Scissors'.",
-"error message" : "Invalid entry:\n>>> Type 'Rock', 'Paper' or 'Scissors'.",
+"welcome" : "Welcome to Rock, Paper, Scissors, Spock, Lizard.",
+"choose" : "Make a selection:\n>>> Type 'Rock', 'Paper', 'Scissors', 'Spock' or 'Lizard'.",
+"error message" : "Invalid entry:\n>>> Type 'Rock', 'Paper', 'Scissors', 'Spock' or 'Lizard'.",
 "computer chooses message" : "The computer chooses",
 "user chooses message" : "you chose",
 "tie message" : "The result is a tie.",
