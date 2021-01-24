@@ -16,14 +16,14 @@ let userChoice;
 let computerEntry;
 let computerChoice;
 let again;
-// let againAnswer;
+let againAnswer;
 let bestOfFive;
 let userWinTally = 0;
 let computerWinTally = 0;
 
-
 function showUser(key, optional = '') {
   console.log(`${DISPLAY[key]}` + ' ' + optional);
+  "\n";
 }
 
 function validateBestofFive(bestOfFiveVariable) {
@@ -112,12 +112,12 @@ function showResult(key1, variable1, key2, variable2) {
 function showScore(key1, variable1, key2, variable2) {
   console.log(`${DISPLAY[key1]} ${variable1}. ${DISPLAY[key2]} ${variable2}.`)
 }
-/*
+
 function validateAgain() {
   againAnswer = again.toLowerCase()
     .replace(/['"]+/g, '');
 }
-*/
+
 showUser('welcome');
 
 showUser('best of five');
@@ -131,95 +131,20 @@ while (bestOfFive !== 'yes' && bestOfFive !== 'no') {
   validateBestofFive(bestOfFive);
 }
 
-if (bestOfFive === 'no') {
+while (true) {
 
-  showUser('once message');
-  
-  showUser('choose');
+  if (bestOfFive === 'no') {
 
-  userEntry = READLINE.question();
-
-  validateUserEntrySetUserChoice(userEntry);
-
-  scissorChange(userChoice);
-
-  while (userChoice !== 'rock' &&
-    userChoice !== 'paper' &&
-    userChoice !== 'scissors' &&
-    userChoice !== 'scissor' &&
-    userChoice !== 'lizard' &&
-    userChoice !== 'spock' &&
-    userChoice !== 'r' &&
-    userChoice !== 'p' &&
-    userChoice !== 's' &&
-    userChoice !== 'l') {
-    showUser('error message');
-    userEntry = READLINE.question();
-    validateUserEntrySetUserChoice(userEntry);
-  }
-
-  firstLetterConversion();
-
-  if (userChoice === 's') {
-    showUser('first letter s message');
-    userChoice = READLINE.question();
-
-    while (userChoice !== '1' && userChoice !== '2') {
-      showUser('first letter s message');
-      userChoice = READLINE.question();
-    }
-  }
-
-firstLetterChangeS();
-
-  const COMPUTER_CHOICE_ARRAY = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-
-  computerEntry = Math.floor(Math.random() * 5);
-
-  computerChoice = COMPUTER_CHOICE_ARRAY[computerEntry];
-
-  showResult('computer chooses message', computerChoice, 'user chooses message', userChoice);
-
-  // compareChoices();
-
-  compareTie();
-  compareUserWins();
-  compareComputerWins();
-
-  /*
-  showUser('play again message');
-
-  again = READLINE.question();
-
-  validateAgain();
-
-  while (againAnswer !== 'yes' && againAnswer !== 'no') {
-    showUser('again error message');
-    again = READLINE.question();
-    validateAgain();
-  }
-
-  if (againAnswer === 'no') break;
-
-  console.clear();
-*/
-showUser('goodbye');
-}
-
-if (bestOfFive === 'yes') {
-
-  
-  for (let counter = 1; counter < 6; counter++) {
-    showUser('round message', counter);
+    showUser('once message');
     
     showUser('choose');
 
     userEntry = READLINE.question();
-  
+
     validateUserEntrySetUserChoice(userEntry);
-  
+
     scissorChange(userChoice);
-  
+
     while (userChoice !== 'rock' &&
       userChoice !== 'paper' &&
       userChoice !== 'scissors' &&
@@ -234,46 +159,110 @@ if (bestOfFive === 'yes') {
       userEntry = READLINE.question();
       validateUserEntrySetUserChoice(userEntry);
     }
-  
+
     firstLetterConversion();
-  
+
     if (userChoice === 's') {
       showUser('first letter s message');
       userChoice = READLINE.question();
-  
+
       while (userChoice !== '1' && userChoice !== '2') {
         showUser('first letter s message');
         userChoice = READLINE.question();
       }
     }
-  
-  firstLetterChangeS();
-  
+
+    firstLetterChangeS();
+
     const COMPUTER_CHOICE_ARRAY = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-  
+
     computerEntry = Math.floor(Math.random() * 5);
-  
+
     computerChoice = COMPUTER_CHOICE_ARRAY[computerEntry];
-  
+
     showResult('computer chooses message', computerChoice, 'user chooses message', userChoice);
-  
-    // compareChoices();
-  
+
     compareTie();
     compareUserWins();
     compareComputerWins();
-
-    showScore('user win tally message', userWinTally, 'computer win tally message', computerWinTally);
-  }
-  if (userWinTally > computerWinTally) {
-    showUser('total winner user');
-  } else if (computerWinTally > userWinTally) {
-    showUser('total winner computer');
-  } else if (userWinTally === computerWinTally) {
-    showUser('total winner tied');
   }
 
-  showUser('goodbye');
+  if (bestOfFive === 'yes') {
+    for (let counter = 1; counter < 6; counter++) {
+      showUser('round message', counter);
+      showUser('choose');
+      userEntry = READLINE.question();
+    
+      validateUserEntrySetUserChoice(userEntry);
+      scissorChange(userChoice);
+    
+      while (userChoice !== 'rock' &&
+        userChoice !== 'paper' &&
+        userChoice !== 'scissors' &&
+        userChoice !== 'scissor' &&
+        userChoice !== 'lizard' &&
+        userChoice !== 'spock' &&
+        userChoice !== 'r' &&
+        userChoice !== 'p' &&
+        userChoice !== 's' &&
+        userChoice !== 'l') {
+        showUser('error message');
+        userEntry = READLINE.question();
+        validateUserEntrySetUserChoice(userEntry);
+      }
+    
+      firstLetterConversion();
+    
+      if (userChoice === 's') {
+        showUser('first letter s message');
+        userChoice = READLINE.question();
+    
+        while (userChoice !== '1' && userChoice !== '2') {
+          showUser('first letter s message');
+          userChoice = READLINE.question();
+        }
+      }
+    
+    firstLetterChangeS();
+    
+      const COMPUTER_CHOICE_ARRAY = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+      computerEntry = Math.floor(Math.random() * 5);
+      computerChoice = COMPUTER_CHOICE_ARRAY[computerEntry];
+      showResult('computer chooses message', computerChoice, 'user chooses message', userChoice);
+    
+      compareTie();
+      compareUserWins();
+      compareComputerWins();
+
+      showScore('user win tally message', userWinTally, 'computer win tally message', computerWinTally);
+    }
+    if (userWinTally > computerWinTally) {
+      showUser('total winner user');
+    } else if (computerWinTally > userWinTally) {
+      showUser('total winner computer');
+    } else if (userWinTally === computerWinTally) {
+      showUser('total winner tied');
+    }
+  }
+
+  showUser('play again message');
+  again = READLINE.question();
+  validateAgain();
+
+  while (againAnswer !== 'yes' && againAnswer !== 'no') {
+    showUser('again error message');
+    again = READLINE.question();
+    validateAgain();
+  }
+
+  if (againAnswer === 'yes') {
+    computerWinTally = 0;
+    userWinTally = 0;
+  }
+
+  if (againAnswer === 'no') break;
+  console.clear();
+
 }
-
-
+console.clear();
+showUser('goodbye');
