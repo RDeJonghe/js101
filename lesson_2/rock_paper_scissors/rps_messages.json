@@ -4,7 +4,6 @@
 "once message" : "Okay, playing once. Everything is on the line! Make a good choice!",
 "choose" : "Make a selection:\n>>> Type 'Rock', 'Paper', 'Scissors', 'Spock' or 'Lizard'. \nYou can also enter in an abbrevaition, the first letter for all options except those that begin with 'S'. In those cases enter in the first two letters.",
 "error message" : "Invalid entry:\n>>> Type 'Rock', 'Paper', 'Scissors', 'Spock' or 'Lizard'.\nYou can also enter in an abbrevaition, the first letter for all options except those that begin with 'S'. In those cases enter in the first two letters.",
-"first letter s message" : "Type 'sc' for Scissors, and 'sp' for Spock.",
 "round message" : "It's Round",
 "computer chooses message" : "The computer chooses",
 "user chooses message" : "you chose",

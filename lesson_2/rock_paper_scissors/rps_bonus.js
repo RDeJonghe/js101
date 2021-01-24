@@ -1,13 +1,5 @@
 // Rock Paper Scissors Bonus Features
 
-// Rock crushes lizard,
-// Lizard poisons Spock,
-// Spock Smashes scissors,
-// Scissors decapitates lizard,
-// Lizard eats paper
-// paper disproves spock
-// Spock vaporizes rock
-
 const READLINE = require('readline-sync');
 const DISPLAY = require('./rps_messages.json');
 
