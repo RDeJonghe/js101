@@ -25,8 +25,8 @@ function languageCleanUp(languageVar) {
     .replace('panol', '');
 }
 
-function showUser(key) {
-  userMessages(DISPLAY[language][key]);
+function showUser(key, optionalMessage = '') {
+  userMessages(DISPLAY[language][key] + " " + optionalMessage);
 }
 
 function languageMessage(key) {
@@ -79,9 +79,10 @@ while (again !== 'no') {
     } else if (!Number.isInteger(loanAmount)) {
       showUser('has decimal');
       loanAmount = Math.round(loanAmount);
-      userMessages(
+      showUser('rounded', loanAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD'}));
+      /*userMessages(
         `${DISPLAY[language]['rounded']} ${loanAmount.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}`
-      );
+      )*/
     } else if (Math.sign(loanAmount) !== 1) {
       showUser('invalid loan');
       loanAmount = parseFloat(readline.question('$')
