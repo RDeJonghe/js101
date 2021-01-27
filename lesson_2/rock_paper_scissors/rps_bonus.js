@@ -89,6 +89,7 @@ function compareUserWins2() {
   }
 }
 
+
 function compareComputerWins1() {
   if ((computerChoice === 'rock' && userChoice === 'scissors') ||
   (computerChoice === 'paper' && userChoice === 'rock') ||
