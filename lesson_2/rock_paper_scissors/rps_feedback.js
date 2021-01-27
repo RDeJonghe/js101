@@ -23,7 +23,7 @@ const WINNING_COMBOS = {
   scissors : ['paper', 'lizard'],
   lizard : ['paper', 'spock'],
   spock : ['rock', 'scissors']
-}
+};
 
 const VALID_CHOICES = [
   'rock',
@@ -111,62 +111,13 @@ function compareTie() {
     showUser('tie message');
   }
 }
-/*
-function compareUserWins1() {
-  if ((userChoice === 'rock' && computerChoice === 'scissors') ||
-  (userChoice === 'paper' && computerChoice === 'rock') ||
-  (userChoice === 'scissors' && computerChoice === 'paper') ||
-  (userChoice === 'rock' && computerChoice === 'lizard') ||
-  (userChoice === 'lizard' && computerChoice === 'spock')
-  ) {
-    showUser('user wins message');
-    userWinTally += 1;
-  }
+
+function showResult(key1, userMessage1, key2, userMessage2) {
+  console.log(`${DISPLAY[key1]} ${userMessage1} and ${DISPLAY[key2]} ${userMessage2}.`);
 }
 
-function compareUserWins2() {
-  if ((userChoice === 'spock' && computerChoice === 'scissors') ||
-  (userChoice === 'scissors' && computerChoice === 'lizard') ||
-  (userChoice === 'lizard' && computerChoice === 'paper') ||
-  (userChoice === 'paper' && computerChoice === 'spock') ||
-  (userChoice === 'spock' && computerChoice === 'rock')
-  ) {
-    showUser('user wins message');
-    userWinTally += 1;
-  }
-}
-
-
-function compareComputerWins1() {
-  if ((computerChoice === 'rock' && userChoice === 'scissors') ||
-  (computerChoice === 'paper' && userChoice === 'rock') ||
-  (computerChoice === 'scissors' && userChoice === 'paper') ||
-  (computerChoice === 'rock' && userChoice === 'lizard') ||
-  (computerChoice === 'lizard' && userChoice === 'spock')
-  ) {
-    showUser('computer wins message');
-    computerWinTally += 1;
-  }
-}
-
-function compareComputerWins2() {
-  if ((computerChoice === 'spock' && userChoice === 'scissors') ||
-  (computerChoice === 'scissors' && userChoice === 'lizard') ||
-  (computerChoice === 'lizard' && userChoice === 'paper') ||
-  (computerChoice === 'paper' && userChoice === 'spock') ||
-  (computerChoice === 'spock' && userChoice === 'rock')
-  ) {
-    showUser('computer wins message');
-    computerWinTally += 1;
-  }
-}
-*/
-function showResult(key1, variable1, key2, variable2) {
-  console.log(`${DISPLAY[key1]} ${variable1} and ${DISPLAY[key2]} ${variable2}.`);
-}
-
-function showScore(key1, variable1, key2, variable2) {
-  console.log(`${DISPLAY[key1]} ${variable1}. ${DISPLAY[key2]} ${variable2}.`);
+function showScore(key1, userMessage1, key2, userMessage2) {
+  console.log(`${DISPLAY[key1]} ${userMessage1}. ${DISPLAY[key2]} ${userMessage2}.`);
 }
 
 function validateAgain() {
@@ -191,6 +142,7 @@ while (true) {
 
   if (bestOfFive === 'no') {
 
+    showUser('newline');
     showUser('once message');
     showUser('choose');
 
@@ -199,24 +151,6 @@ while (true) {
     validateUserEntrySetUserChoice(userEntry);
 
     scissorChange(userChoice);
-
-    // see if I can put this in a data structure.
-    /*while (userChoice !== 'rock' &&
-      userChoice !== 'paper' &&
-      userChoice !== 'scissors' &&
-      userChoice !== 'scissor' &&
-      userChoice !== 'lizard' &&
-      userChoice !== 'spock' &&
-      userChoice !== 'r' &&
-      userChoice !== 'p' &&
-      userChoice !== 'sc' &&
-      userChoice !== 'sp' &&
-      userChoice !== 'l') {
-      showUser('error message');
-      userEntry = READLINE.question();
-      validateUserEntrySetUserChoice(userEntry);
-    }*/
-
 
     while (!madeValidChoice(userChoice)) {
       showUser('error message');
@@ -239,13 +173,6 @@ while (true) {
 
     userWins(userChoice, computerChoice);
     computerWins(computerChoice, userChoice);
-
-    /*
-    compareUserWins1();
-    compareUserWins2();
-    compareComputerWins1();
-    compareComputerWins2();
-    */
   }
 
   if (bestOfFive === 'yes') {
@@ -256,23 +183,7 @@ while (true) {
 
       validateUserEntrySetUserChoice(userEntry);
       scissorChange(userChoice);
-      /*
-      while (userChoice !== 'rock' &&
-        userChoice !== 'paper' &&
-        userChoice !== 'scissors' &&
-        userChoice !== 'scissor' &&
-        userChoice !== 'lizard' &&
-        userChoice !== 'spock' &&
-        userChoice !== 'r' &&
-        userChoice !== 'p' &&
-        userChoice !== 'sp' &&
-        userChoice !== 'sc' &&
-        userChoice !== 'l') {
-        showUser('error message');
-        userEntry = READLINE.question();
-        validateUserEntrySetUserChoice(userEntry);
-      }
-      */
+
       while (!madeValidChoice(userChoice)) {
         showUser('error message');
         userEntry = READLINE.question();
@@ -290,14 +201,9 @@ while (true) {
       compareTie();
       userWins(userChoice, computerChoice);
       computerWins(computerChoice, userChoice);
-      /*
-      compareUserWins1();
-      compareUserWins2();
-      compareComputerWins1();
-      compareComputerWins2();
-      */
 
       showScore('user win tally message', userWinTally, 'computer win tally message', computerWinTally);
+      showUser('newline');
     }
     if (userWinTally > computerWinTally) {
       showUser('total winner user');
@@ -306,6 +212,8 @@ while (true) {
     } else if (userWinTally === computerWinTally) {
       showUser('total winner tied');
     }
+
+    showUser('newline');
   }
 
   showUser('play again message');
@@ -318,12 +226,10 @@ while (true) {
     validateAgain();
   }
 
-  if (againAnswer === 'yes') {
-    computerWinTally = 0;
-    userWinTally = 0;
-  }
-
   if (againAnswer === 'no') break;
+
+  computerWinTally = 0;
+  userWinTally = 0;
   console.clear();
 
 }

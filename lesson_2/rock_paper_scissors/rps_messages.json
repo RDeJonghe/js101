@@ -17,5 +17,6 @@
 "total winner tied" : "The best of 5 match resulted in an overall tie.",
 "play again message" : "Would you like to play again?\n>>> Type 'Yes' or 'No'.",
 "again error message" : "Invalid entry:\n>>> Type 'Yes' or 'No'",
-"goodbye" : "Thanks for playing! Goodbye!"
+"goodbye" : "Thanks for playing! Goodbye!",
+"newline" : " \n "
 }
