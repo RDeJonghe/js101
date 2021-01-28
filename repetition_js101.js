@@ -192,22 +192,41 @@ varName.toFixed(2);
 READLINE.prompt();
 READLINE.prompt();
 
-// put strings together .concat()
-variable.concat(' hey', variable2
+// put strings together .concat(), can do with variables also like this:
+let var1 = 'Hello';
+let var2 = 'world';
+console.log(var1.concat('you', var2));
+var1.concat(' hey', var2);
+var1.concat('whaddup');
+var2.concat('no duh');
+var1.concat(var1);
 
 // .length NO PARENS!!!
-.length
-.length
+var2.length
+var1.length
+var2.length
+var1.length
 
-// .join() THIS IS USED TO JOIN ARRAY ELEMENTS TOGETHER, CAN PUT IN PARENTHESIS WHATEVER YOU WANT TO SPACE IT. Need the quotes to show what goes in between.
+// .join() THIS IS USED TO JOIN ARRAY ELEMENTS TOGETHER AND PUT IT INTO A STRING. CAN PUT IN PARENTHESIS WHATEVER YOU WANT TO SPACE IT. Need the quotes to show what goes in between.
+let arr = ['November Rain', 'Paradise City', 'Welcome to the Jungle'];
+let newVar = arr.join('<<>>');
+console.log(typeof newVar);
+console.log(newVar);
+// Prints> "string"
+//Prints> "November Rain<<>>Paradise City<<>>Welcome to the Jungle"
 sampleArray.join(' ');
 sampleArray.join(' ');
 sampleArray.join(' ');
 sampleArray.join(' ');
 sampleArray.join(' <<>> ');
+sampleArray.join(' $$$ ');
 
 // Object.values() this is used to take the values of an object and put them in an array.
 
+Object.values(objectNameHere);
+Object.values(objectNameHere);
+Object.values(objectNameHere);
+Object.values(objectNameHere);
 Object.values(objectNameHere);
 Object.values(objectNameHere);
 Object.values(objectNameHere);
@@ -219,15 +238,24 @@ stringVariable[5] // will show 5th character in index
 stringVariable[6] // will show 6th character in string
 stringVariable[stringVariable.length - 1] // will show last character in string. Note have to kinda do it twice to get to it.
 console.log(name[name.length - 1]);
+stringVariable[3];
+stringVariable[stringVariable.length - 1];
+console.log(variableName[variableName.length - 1]);
 
 // startsWith() endsWith() - used for strings
 stringVariable.endsWith('?');
 stringVariable.startsWith('"');
 stringVariable.endsWith('!');
 stringVariable.startsWith('Hello');
+strVar.startsWith('$');
+strVar.endsWith('.');
 
 // .includes() this works to check an array or a string. Checks the array for what you put in, for a string it can check for a string portion
 stringVar.includes('The');
 arrayVar.inculdes('Back');
 stringVar.includes('The');
 arrayVar.includes('Back');
+stringVar.includes('What');
+arrayVar.includes('Yo');
+
+// .split() takes a string and splits these and puts these in an array. Commonly this is done with ' ' to look for where to split
