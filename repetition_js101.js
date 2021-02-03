@@ -182,7 +182,12 @@ continue
 continue
 continue
 
-// .toFixed() will round the decimal to that many places. Can use with a variable
+// .toFixed() will round the decimal to that many places. Can use with a variable. Will always give the number
+varName.toFixed(2);
+varName.toFixed(2);
+varName.toFixed(2);
+varName.toFixed(2);
+varName.toFixed(2);
 varName.toFixed(2);
 varName.toFixed(2);
 varName.toFixed(2);
@@ -200,12 +205,16 @@ var1.concat(' hey', var2);
 var1.concat('whaddup');
 var2.concat('no duh');
 var1.concat(var1);
+var1.concat('also put this on');
+var2.concat(var1, var3);
+var1.concat('yo');
 
 // .length NO PARENS!!!
 var2.length
 var1.length
 var2.length
 var1.length
+var3.length
 
 // .join() THIS IS USED TO JOIN ARRAY ELEMENTS TOGETHER AND PUT IT INTO A STRING. CAN PUT IN PARENTHESIS WHATEVER YOU WANT TO SPACE IT. Need the quotes to show what goes in between.
 let arr = ['November Rain', 'Paradise City', 'Welcome to the Jungle'];
@@ -221,7 +230,7 @@ sampleArray.join(' ');
 sampleArray.join(' <<>> ');
 sampleArray.join(' $$$ ');
 
-// Object.values() this is used to take the values of an object and put them in an array.
+// Object.values() this is used to take the values of an object and put them in an array. Also there is Object.keys()
 
 Object.values(objectNameHere);
 Object.values(objectNameHere);
@@ -230,6 +239,8 @@ Object.values(objectNameHere);
 Object.values(objectNameHere);
 Object.values(objectNameHere);
 Object.values(objectNameHere);
+Object.values(objectNameHere);
+Object.keys(objectName);
 
 // To check a character in a string, or check .length - 1
 // Key is that names have indexes just like an array. So have to access the index.
@@ -241,6 +252,7 @@ console.log(name[name.length - 1]);
 stringVariable[3];
 stringVariable[stringVariable.length - 1];
 console.log(variableName[variableName.length - 1]);
+stringVar[stringVar.length - 1];
 
 // startsWith() endsWith() - used for strings
 stringVariable.endsWith('?');
@@ -259,3 +271,57 @@ stringVar.includes('What');
 arrayVar.includes('Yo');
 
 // .split() takes a string and splits these and puts these in an array. Commonly this is done with ' ' to look for where to split
+str.split(' ');
+str.split(' - ');
+str.split(' ');
+str.split(' ');
+str.split(' ');
+
+// map() this is used with an array. It will make a new array by using a function to do something to each element in the array
+// So set the result equal to a new array. newArray = oldArray.map(function here);
+
+newArray = numArray.map(num => num + 2);
+newArray = numArray.map(num => num * 3);
+newArray = stringArray.map(str => str.toUpperCase());
+
+// .slice() this can be used with a string OR an array. Doesn't modify original array so if you want to keep it then store it to
+// a variable. You can slice based on index, the first number you enter is where you start (inclusive, keeps that value), The second number is where it ends (exclusive) so that index won't be included
+
+str.slice(2, 5);
+str.slice(0, 10); // Takes the elements 0 - 9, 10 not included.
+
+// .hasOwnProperty() used with Objects, check to see if something is in that object. Will check the key. This works for own properties not properties that were inherited.
+objectNameHere.hasOwnProperty('Axl');
+objectNameHere.hasOwnProprty('Slash');
+
+// .charAt() This is a way to get at a string character based on index.
+strName.charAt(4);
+strName.charAt(5);
+
+// .substring() This works the same as .slice() I think
+strName.substring(3);
+strName.substring(3, 6);
+strName.substring(2);
+
+// Object.assign() This will take the properties of one object and add it to another. In parenthesis goes the target object, then the source object. So it will add the source objects to the end of the target object
+Object.assign(obj1, obj2);
+Object.assign(obj1, obj2);
+Object.assign(obj1, obj2);
+Object.assign(obj1, obj2);
+Object.assign(obj1, obj2);
+
+// .splice() for arrays. in parens put starting index, delete count, then everything that will be added.
+arr.splice(2, 2, 'Hello', 'world');
+
+// .concat can be used for arrays, used to merge arrays, does not change existing arrays returns new array
+arr1.concat(['Back', 'Once']);
+arr1.concat(arr2);
+
+// spread syntax with concat. First spread syntax will look at everything in an array or object
+// Spread syntax can be used when all elements from an object or array need to be included in a list of some kind.
+// can be used with nested arrays, will go and take each element
+newArr = [].concat(...oldArr) // thiswill look at every element in the oldArr, so spread syntax says look at everything
+
+
+
+
