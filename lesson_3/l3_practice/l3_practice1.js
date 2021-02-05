@@ -593,3 +593,12 @@ console.log(sports);
 // console.log(numbers);
 // console.log(nums);
 
+// let nums = [];
+
+// numbers.forEach(el => {
+//   return nums.unshift(el);
+// })
+
+// console.log(nums);
+
+// console.log(numbers);
