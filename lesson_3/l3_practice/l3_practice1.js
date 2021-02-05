@@ -1,3 +1,9 @@
+// EXTRA PRACTICE
+// EASY 2 Q2
+// EASY 2 Q5
+// easy 2 q6
+// easy 2 q7
+
 
 
 // forEach practice
@@ -202,25 +208,388 @@ console.log(sports);
 // arr.splice(1, 1, 8948372);
 // console.log(arr);
 
-let arr = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
-let arr2 = ['George Jetson', 'Judy Jetson'];
+// let arr = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
+// let arr2 = ['George Jetson', 'Judy Jetson'];
 
-let newArr = [].concat(...arr).concat(...arr2);
+// let newArr = [].concat(...arr).concat(...arr2);
+// // console.log(newArr);
+
+// let newerArr = [];
+// arr.forEach(element => {
+//   newerArr = newerArr.concat(element);
+// })
+
+// arr2.forEach(element => {
+//   newerArr = newerArr.concat(element);
+// })
+
+// //console.log(newerArr);
+
+// let newestArr = arr.reduce((accum, el) => {
+//   return accum.concat(el)
+// }, []);
+
+// console.log(newestArr);
+
+
+// let str1 = "Come over here!"; // true
+// let str2 = "What's up, Doc?"; // false
+
+// console.log(str1.endsWith('!'));
+// console.log(str2.endsWith('1'));
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 402, Eddie: 10 };
+
+// console.log(ages.hasOwnProperty('Spot')); // this is like .includes for arrays, hasOwnProperty for objects
+
+// console.log(ages.hasOwnProperty('Herman'));
+
+// console.log(ages.hasOwnProperty('Joe'));
+// console.log(ages.hasOwnProperty('Lily'));
+// console.log(ages.hasOwnProperty('Grandpa'));
+
+// let munstersDescription = "the Munsters are CREEPY and Spooky.";
+// // => The munsters are creepy and spooky.
+
+// let newString = munstersDescription.charAt(0).toUpperCase() + munstersDescription.substring(1).toLowerCase();
+// console.log(newString);
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 5843, Eddie: 10 };
+
+// let additionalAges = { Marilyn: 22, Spot: 237 };
+
+// // Object.assign(ages, additionalAges);
+
+// // console.log(ages);
+
+// let allAges = Object.assign({}, ages, additionalAges);
+// console.log(allAges);
+
+// let str1 = "Few things in life are as important as house training your pet dinosaur.";
+// let str2 = "Fred and Wilma have a pet dinosaur named Dino.";
+
+// console.log(str1.includes('Dino'));
+// console.log(str2.includes('Dino'));
+
+// let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Bambam", "Pebbles"];
+
+// flintstones.push('Dino');
+// console.log(flintstones);
+
+// let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Bambam", "Pebbles"];
+// flintstones.push("Dino", 'Hoppy');
+
+// console.log(flintstones);
+
+// let advice = "Few things in life are as important as house training your pet dinosaur.";
+
+// // Expected return value:
+// // => 'Few things in life are as important as '
+
+// console.log(advice.slice(0, advice.indexOf('house')));
+
+// let advice = "Few things in life are as important as house training your pet dinosaur.";
+
+// let newString = advice.replace('important', 'urgent');
+// console.log(newString);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let newNums = [...numbers].sort((a, b) => {
+//   return b - a;
+// });
+
+// // console.log(numbers);
+// // console.log(newNums);
+
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let newNums = [];
+
+// numbers.forEach(el => {
+//   newNums.unshift(el);
+// })
+
+// console.log(numbers);
+// console.log(newNums);
+
+// let numbers = [1, 2, 3, 4, 5, 15, 16, 17, 95, 96, 99];
+
+// let number1 = 8;  // false
+// let number2 = 95; // true
+
+// console.log(numbers.includes(number1));
+// console.log(numbers.includes(number2));
+
+// let famousWords = "seven years ago...";
+
+// // famousWords = 'Four score and '.concat(famousWords);
+// console.log(famousWords);
+
+// console.log('Four score and ' + famousWords);
+
+// Given an array of numbers [1, 2, 3, 4, 5], mutate the array by removing the number at index 2, so that the array becomes [1, 2, 4, 5].
+
+// let nums = [1, 2, 3, 4, 5];
+// 
+// nums.splice(2, 1);
+// console.log(nums);
+// nums.splice(3, 0, 2394, 2192);
+// console.log(nums);
+
+// let flintstones = ["Fred", "Wilma"];
+// flintstones.push(["Barney", "Betty"]);
+// flintstones.push(["Bambam", "Pebbles"]);
+
+// let newArr = [];
+
+// // flintstones.reduce((accum, el) => {
+// //   return newArr = accum.concat(el);
+// // }, [])
+
+// flintstones.forEach(el => {
+//   return newArr = newArr.concat(el);
+// })
+
 // console.log(newArr);
 
-let newerArr = [];
-arr.forEach(element => {
-  newerArr = newerArr.concat(element);
-})
+// let flintstones = { Fred: 0, Wilma: 1, Barney: 2, Betty: 3, Bambam: 4, Pebbles: 5 };
 
-arr2.forEach(element => {
-  newerArr = newerArr.concat(element);
-})
+// // Create an array from this object that contains only two elements: Barney's name and Barney's number: 
 
-//console.log(newerArr);
+// console.log(Object.entries(flintstones).filter(pair => pair[0] === 'Barney').shift());
+// console.log(flintstones);
 
-let newestArr = arr.reduce((accum, el) => {
-  return accum.concat(el)
-}, []);
 
-console.log(newestArr);
+// let numbers = [1, 2, 3, 4]; // true
+// let table = { field1: 1, field2: 2, field3: 3, field4: 4 }; // false
+
+// console.log(Array.isArray(numbers));
+// console.log(Array.isArray(table));
+
+// let statement1 = "The Flintstones Rock!";
+// let statement2 = "Easy come, easy go.";
+
+// console.log(statement1.split('').filter(char => char === 't').length);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let nums = [].concat(numbers).reverse();
+
+// console.log(numbers);
+// console.log(nums);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let nums = [...numbers].sort((a, b) => b - a);
+
+// console.log(numbers);
+// console.log(nums);
+
+// let newNums = [2, 56, 34, 2, 89837, 45, 1, 39485, 9, 382, 3, 45];
+
+// let sorted = [...newNums].sort((a, b) => a - b);
+
+// let backsort = [...newNums].sort((a, b) => b - a)
+
+// console.log(sorted);
+// console.log(backsort);
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 402, Eddie: 10 };
+
+// console.log(ages.hasOwnProperty('Spot'));
+// console.log(ages.hasOwnProperty('Herman'));
+
+// let munstersDescription = "the Munsters are CREEPY and Spooky.";
+// // => The munsters are creepy and spooky.\
+
+// let newStr = munstersDescription.charAt(0).toUpperCase() + munstersDescription.substring(1).toLowerCase();
+// console.log(newStr);
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 5843, Eddie: 10 };
+
+// let additionalAges = { Marilyn: 22, Spot: 237 };
+
+// Object.assign(ages, additionalAges);
+
+// console.log(ages);
+
+// let advice = "Few things in life are as important as house training your pet dinosaur.";
+
+// // Expected return value:
+// // => 'Few things in life are as important as '
+
+// console.log(advice.slice(0, advice.indexOf('house')));
+
+// let advice = "Few things in life are as important as house training your pet dinosaur.";
+
+// let advice2 = advice.replace('important', 'urgent');
+// console.log(advice2);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let nums = numbers.slice().reverse();
+// console.log(nums);
+// console.log(numbers);
+
+// let nums = [...numbers].sort((a, b) => {
+//   return b - a
+// });
+// console.log(nums);
+// console.log(numbers);
+
+// let nums = [];
+// numbers.forEach(el => {
+//   return nums.unshift(el); // could also use push if you wanted them to go in normal order. So unshift is like push but for reversed order
+// })
+// console.log(nums);
+
+// let numbers = [1, 2, 3, 4, 5, 15, 16, 17, 95, 96, 99];
+// 
+// let number1 = 8;  // false
+// let number2 = 95; // true
+// 
+// console.log(numbers.includes(number1));
+
+// let famousWords = "seven years ago...";
+// 
+// console.log('Four score and '.concat(famousWords));
+// console.log('Four score and ' + famousWords);
+
+// let arr = [1, 2, 3, 4, 5];
+// 
+// arr.splice(2, 1);
+// console.log(arr);
+
+// let flintstones = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
+// let jetsons = ['George', 'Judy'];
+
+// let newArr = [].concat(...flintstones).concat(...jetsons);
+// console.log(newArr);
+
+// let newArr = flintstones.reduce((accum, el) => {
+  // return accum.concat(el);
+// }, [])
+// console.log(newArr);
+
+// let newArr = [];
+// flintstones.forEach(el => {
+//   return newArr = newArr.concat(el);
+// })
+// console.log(newArr);
+
+// jetsons.forEach(el => {
+//   return newArr = newArr.concat(el);
+// })
+// console.log(newArr);
+
+// let flintstones = { Fred: 0, Wilma: 1, Barney: 2, Betty: 3, Bambam: 4, Pebbles: 5 };
+// 
+// let arr = Object.entries(flintstones).filter(pair => pair[0] === 'Barney').shift();
+// console.log(arr);
+
+// let numbers = [1, 2, 3, 4]; // true
+// let table = { field1: 1, field2: 2, field3: 3, field4: 4 }; // false
+// 
+// console.log(Array.isArray(numbers));
+
+// let statement1 = "The Flintstones Rock!";
+// let statement2 = "Easy come, easy go.";
+// 
+// console.log(statement1.split('').filter(el => el === 't').length);
+// console.log(statement2.split('').filter(el => el === 'E').length);
+
+// let flintstones = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
+
+// newArr = [].concat(...flintstones);
+// console.log(newArr);
+
+// let newArr = flintstones.reduce((accum, el) => {
+  // return accum.concat(el);
+// }, [])
+// 
+// console.log(newArr);
+
+// let newArr = [];
+// flintstones.forEach(el => {
+  // newArr = newArr.concat(el);
+// })
+// 
+// console.log(newArr);
+
+// let flintstones = { Fred: 0, Wilma: 1, Barney: 2, Betty: 3, Bambam: 4, Pebbles: 5 };
+// 
+// let arr = Object.entries(flintstones).filter(pair => pair[0] === 'Barney').shift();
+// console.log(arr);
+// 
+// let arr2 = Object.keys(flintstones).filter(key => key === 'Barney' || key === 'Wilma');
+// console.log(arr2);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let nums = numbers.slice().reverse();
+
+// let nums = [...numbers].sort((a, b) => {
+  // return b - a})
+
+// let nums = [];
+// 
+// numbers.forEach(el => {
+  // nums.unshift(el);
+// })
+// 
+// console.log(nums);
+// console.log(numbers);
+
+// let numbers = [1, 2, 3, 4];
+// let numbers2 = [1, 2, 3, 4];
+// let numbers3 = [1, 2, 3, 4];
+
+// numbers.length = 0;
+// console.log(numbers);
+
+// numbers2.splice(0, numbers2.length);
+// console.log(numbers2);
+
+// while (numbers3.length !== 0) {
+//   numbers3.pop();
+// }
+// console.log(numbers3);
+
+// let statement1 = "The Flintstones Rock!";
+// let statement2 = "Easy come, easy go.";
+
+// console.log(statement1.split('').filter(el => el === 't').length);
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 402, Eddie: 10 };
+// 
+// console.log(ages.hasOwnProperty('Spot'));
+// console.log(ages.hasOwnProperty('Herman'));
+
+// let munstersDescription = "the Munsters are CREEPY and Spooky.";
+// => The munsters are creepy and spooky.
+// 
+// munstersDescription = munstersDescription.charAt(0).toUpperCase() + munstersDescription.substring(1).toLowerCase();
+// console.log(munstersDescription);
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 5843, Eddie: 10 };
+// let additionalAges = { Marilyn: 22, Spot: 237 };
+// 
+// Object.assign(ages, additionalAges);
+// console.log(ages);
+// console.log(additionalAges);
+
+// let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Bambam", "Pebbles"];
+// flintstones.push('Dino');
+// console.log(flintstones);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// // let nums = numbers.slice().reverse();
+
+// let nums = [...numbers].sort((a, b) => b - a)
+
+// console.log(numbers);
+// console.log(nums);
+
