@@ -602,3 +602,123 @@ console.log(sports);
 // console.log(nums);
 
 // console.log(numbers);
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 402, Eddie: 10 };
+// 
+// console.log(ages.hasOwnProperty('Spot'));
+// console.log(ages.hasOwnProperty('Herman'));
+
+// let munstersDescription = "the Munsters are CREEPY and Spooky.";
+// => The munsters are creepy and spooky.
+
+// console.log(munstersDescription.charAt(0).toUpperCase() + munstersDescription.substring(1).toLowerCase());
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 5843, Eddie: 10 };
+// let additionalAges = { Marilyn: 22, Spot: 237 };
+// 
+// Object.assign(ages, additionalAges);
+// console.log(ages);
+// 
+// let str1 = "Few things in life are as important as house training your pet dinosaur.";
+// let str2 = "Fred and Wilma have a pet dinosaur named Dino.";
+// console.log(str2.includes('Dino'));
+
+// let advice = "Few things in life are as important as house training your pet dinosaur.";
+// 
+// let advice2 = advice.slice(0, advice.indexOf('house'));
+// console.log(advice2);
+
+// let advice = "Few things in life are as important as house training your pet important dinosaur.";
+// let advice2 = advice.replace(/important/g, 'urgent');
+// console.log(advice2);
+// advice2 = advice2.replace(/as/g, 'AS');
+// console.log(advice2);
+
+// let numbers = [1, 2, 3, 4, 5];
+
+// let nums = numbers.slice().reverse();
+// let nums = [...numbers].sort((a, b) => b - a);
+// let nums = [];
+// numbers.forEach(el => {
+  // return nums.unshift(el);
+// })
+
+// console.log(numbers);
+// console.log(nums);
+
+
+// let numbers = [1, 2, 3, 4, 5, 15, 16, 17, 95, 96, 99];
+// 
+// let number1 = 8;  // false
+// let number2 = 95; // true
+// 
+// console.log(numbers.includes(number2));
+
+// let famousWords = "seven years ago...";
+// 
+// console.log('Four score and '.concat(famousWords));
+// console.log('Four score and ' + famousWords);
+
+// let arr = [1, 2, 3, 4, 5];
+// arr.splice(2, 1);
+// console.log(arr);
+
+// let flintstones = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
+
+// let arr = [].concat(...flintstones);
+
+// let arr = flintstones.reduce((accum, el) => {
+  // return accum.concat(el);
+// }, [])
+
+// let arr = [];
+// flintstones.forEach(el => {
+  // return arr = arr.concat(el);
+// })
+// 
+// console.log(arr);
+
+// let flintstones = { Fred: 0, Wilma: 1, Barney: 2, Betty: 3, Bambam: 4, Pebbles: 5 };
+
+// let arr = Object.entries(flintstones).filter(pair => pair[0] === 'Barney').shift()
+
+// console.log(arr);
+
+// let statement1 = "The Flintstones Rock!";
+// let statement2 = "Easy come, easy go.";
+// 
+// console.log(statement1.split('').filter(char => char === 't').length);
+// console.log(statement2.split('').filter(char => char === 'E').length);
+
+// let numbers = [1, 2, 3, 4];
+
+// numbers.length = 0;
+
+// while (numbers.length !== 0) {
+  // numbers.pop();
+// }
+
+// numbers.splice(0, numbers.length);
+
+// console.log(numbers);
+
+// let arr = ([1, 2, 3] + [4, 5]);
+
+// console.log(arr[0]);
+
+// let str1 = "hello there";
+// let str2 = str1;
+// str2 = "goodbye!";
+// console.log(str1)
+
+// let arr1 = [{ first: "value1" }, { second: "value2" }, 3, 4, 5];
+// let arr2 = arr1.slice();
+// arr2[0].first = 42;
+// console.log(arr1);
+
+// can make a constant function (anonymous function) and use it to test for valid entries
+
+// const VALID_DELIVERY = entry => ['online', 'on campus'].includes(entry);
+
+// console.log(VALID_DELIVERY('hybrid'));
+// console.log(VALID_DELIVERY('online'));
