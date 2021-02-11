@@ -2,12 +2,6 @@
 
 // Let's look at an example with objects. In this example, we want to select the key-value pairs where the value is 'Fruit'.
 
-let produce = {
-  apple: 'Fruit',
-  carrot: 'Vegetable',
-  pear: 'Fruit',
-  broccoli: 'Vegetable'
-};
 
 // selectFruit(produce); // => { apple: 'Fruit', pear: 'Fruit' }
 
@@ -25,34 +19,66 @@ let produce = {
 
 // Algorithm
   // Input in an object
-  // Get all of the object keys
-  // Loop over that object
-  // Select all key value pairs that have 'Fruit' as a value, using object keys
-  // Those are sent to a new object
+  // Get all of the object keys in array
+  // Set empty object to be used for output
+  // Loop over the keys
+  // Use the object key to check against the original object
+  // If that key has a value of fruit send it to new object (assign)
+  // need current key and current value
   // Print/return the new object
 
 // Code with intent
-  // - function
-  // set an array of object keys
-  // - for in loop to iterate over object keys
-    // check that the object key has a value of 'Fruit'
-    // - can use Object.values in an if statement to isolate the values we want
-  // - set empty object
-  // - use object.Assign to send to empty object
 
-function selectFruit(produceList) {
-  let produceKeys = Object.keys(produceList);
-  let selectedFruits = {};
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
 
-  for (let i = 0; i < produceKeys.length; i ++) {
-    let currentKey = produceKeys[i];
-    let currentValue = produceList[currentKey];
-    
-    if (currentValue === 'Fruit') {
-      selectedFruits[currentKey] = currentValue;
-    }
-  }
-  return selectedFruits;
-}
+// function selectFruit(obj) {
+//   let keys = Object.keys(obj);
+//   let selectedFruit = {};
 
-console.log(selectFruit(produce));
+//   for (let i = 0; i < keys.length; i += 1) {
+//     let currentKey = keys[i];
+//     let currentValue = obj[currentKey];
+
+//     if (currentValue === 'Fruit') {
+//       selectedFruit[currentKey] = currentValue;
+//     }
+//   }
+//   return selectedFruit;
+// }
+
+// console.log(selectFruit(produce));
+
+
+// NOW DO IT BUT USE SELECTION CRITERIA: say what you want to select, fruit, vegetable, etc.
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// function selectFood(obj, criteria) {
+//   let keys = Object.keys(obj);
+//   let selected = {};
+
+//   for (let i = 0; i < keys.length; i += 1) {
+//     currentKey = keys[i];
+//     currentValue = obj[currentKey];
+
+//     if (currentValue === criteria) {
+//       selected[currentKey] = currentValue;
+//     }
+//   }
+//   return selected;
+// }
+
+// console.log(selectFood(produce, 'Vegetable'));
+// console.log(selectFood(produce, 'Fruit'));
+// console.log(selectFood(produce, 'Meat'));
+

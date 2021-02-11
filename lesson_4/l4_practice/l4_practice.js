@@ -285,20 +285,20 @@
 // console.log(fruits);
 // console.log(transformedElements);
 
-function selectVowels(str) {
-  let selectedChars = '';
+// function selectVowels(str) {
+//   let selectedChars = '';
 
-  for (let counter = 0; counter < str.length; counter += 1) {
-    let currentChar = str[counter];
+//   for (let counter = 0; counter < str.length; counter += 1) {
+//     let currentChar = str[counter];
 
-    if ('aeiouAEIOU'.includes(currentChar)) {
-      selectedChars += currentChar; // this just keeps adding it to the string, it's like concatenating but with +=
-      console.log(selectedChars);
-    }
-  }
+//     if ('aeiouAEIOU'.includes(currentChar)) {
+//       selectedChars += currentChar; // this just keeps adding it to the string, it's like concatenating but with +=
+//       console.log(selectedChars);
+//     }
+//   }
 
-  return selectedChars;
-}
+//   return selectedChars;
+// }
 
 // console.log(selectVowels('Back Once Again'));
 
@@ -315,5 +315,34 @@ function selectVowels(str) {
 
 // add1(str1);
 
-let numberOfVowels = selectVowels('Back Once Again').length;
-console.log(numberOfVowels);
+// let numberOfVowels = selectVowels('Back Once Again').length;
+// console.log(numberOfVowels);
+
+
+// let nums = [2, 4, 6, 8, 10];
+
+// function doubleNums(numArr) {
+//   let doubled = [];
+//   let counter = 0;
+
+//   while (true) {
+//     doubled.push(nums[counter] * 2);
+//     counter += 1;
+  
+//     if (counter >= nums.length) break;
+//   }
+//   return doubled;
+// }
+
+// console.log(doubleNums(nums));
+
+// let gnr = ['Axl', 'Slash', 'Duff', 'Steven'];
+// let newArr = [];
+
+// gnr.forEach(el => {
+//   newArr.push(el + ' used to do a little Mr. Brownstone');
+// })
+
+// console.log(gnr);
+// console.log(newArr);
+
