@@ -346,3 +346,7 @@
 // console.log(gnr);
 // console.log(newArr);
 
+
+let arr = [2, 3];
+console.log(arr.indexOf(4));
+
