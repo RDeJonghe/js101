@@ -46,3 +46,68 @@
 // console.log(arr);
 // console.log(deepCopiedArr);
 // console.log(shallowArr);
+
+// let myArr = [[18, 7], [3, 12]].forEach(arr => {
+//   return arr.map(num => {
+//     if (num > 5) {
+//       return console.log(num);
+//     }
+//   });
+// });
+
+// console.log(myArr);
+
+// console.log([{ a: 'ant', b: 'elephant' }, { c: 'cat', d: 'dog' }].filter(object => {
+//   return Object.keys(object).some(key => object[key][0] === key);
+// }));
+
+// => [ { c: 'cat', d: 'dog' } ]
+
+// console.log([[8, 13, 27], ['apple', 'banana', 'cantaloupe']].map(arr => {
+//   return arr.filter(el => {
+//     if (typeof el === 'number') {
+//       return el > 13;
+//     }
+//     if (typeof el === 'string') {
+//       return el.length < 6;
+//     }
+//   })
+// }
+//  ));
+// => [ [ 27 ], [ 'apple' ] ]
+
+// let arr = [[21, 24, 'Back', 25, 37], ['back', 44, 'once', 'again']];
+
+// let newArr = arr.map(arr => {
+//   return arr.filter(el => {
+//     if (typeof el === 'string') {
+//       return el[0] === 'B' || el[0] === 'b';
+//     }
+//     if (typeof el === 'number') {
+//       return el > 25;
+//     }
+//   })
+// })
+
+// console.log(newArr);
+
+// let newerArr = arr[0].filter(el => {
+//   return el > 25 || el.length > 0;
+// }
+// )
+// console.log(newerArr);
+
+let ex = [[[1], [2], [3], [4]], [['a'], ['b'], ['c']]].map(element1 => {
+  return element1.map(element2 => {
+    return element2.filter(element3 => {
+      return element3.length > 0;
+    });
+  });
+});
+console.log(ex);
+ex.shift();
+
+
+console.log(ex);
+
+// => [ undefined, undefined ]
