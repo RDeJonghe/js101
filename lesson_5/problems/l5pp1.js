@@ -9,5 +9,7 @@ let arr = ['10', '11', '9', '7', '8'];
 
 // Number(arr.sort((a, b) => b - a)); Also works but they use number inside
 
-arr.sort((a, b) => Number(b) - Number(a));
-console.log(arr);
+let arr2 = arr.sort((a, b) => Number(b) - Number(a));
+console.log(arr2);
+
+console.log(typeof arr2[0]);
