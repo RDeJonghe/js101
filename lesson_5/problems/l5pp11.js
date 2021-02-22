@@ -8,12 +8,12 @@ let stringified = JSON.stringify(arr);
 let deepCopy = JSON.parse(stringified);
 
 
-// 1st way
-// deepCopy.map(obj => {
-//   for (let key in obj) {
-//     obj[key] += 1;
-//   }
-// })
+1st way
+deepCopy.map(obj => {
+  for (let key in obj) {
+    obj[key] += 1;
+  }
+})
 
 
 
