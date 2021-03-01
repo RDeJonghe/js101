@@ -134,23 +134,171 @@ crunch('');                           // "" */
 // Write a function that takes a string argument and returns a new string that contains the value of the original string with all consecutive duplicate characters collapsed into a single character.
 
 
-function crunch(str) {
-  let strArr = str.split('');
-  let finalArr = [];
+// function crunch(str) {
+//   let strArr = str.split('');
+//   let finalArr = [];
 
-  for (let i = 0; i < strArr.length; i ++) {
-    if (strArr[i] !== strArr[i + 1]) {
-      // console.log(strArr[i]);
-      finalArr.push(strArr[i]);
-      // console.log(finalArr);
-    }
-  }
-  return finalArr.join('');
-}
+//   for (let i = 0; i < strArr.length; i ++) {
+//     if (strArr[i] !== strArr[i + 1]) {
+//       // console.log(strArr[i]);
+//       finalArr.push(strArr[i]);
+//       // console.log(finalArr);
+//     }
+//   }
+//   return finalArr.join('');
+// }
 
 
-console.log(crunch('ddaaiillyy ddoouubbllee'));    // "daily double"
-console.log(crunch('4444abcabccba'));              // "4abcabcba"
-console.log(crunch('ggggggggggggggg'));            // "g"
-console.log(crunch('a'));                          // "a"
-console.log(crunch(''));                           // ""
+// console.log(crunch('ddaaiillyy ddoouubbllee'));    // "daily double"
+// console.log(crunch('4444abcabccba'));              // "4abcabcba"
+// console.log(crunch('ggggggggggggggg'));            // "g"
+// console.log(crunch('a'));                          // "a"
+// console.log(crunch(''));                           // ""
+
+// Write a function that takes a string argument and returns a new string that contains the value of the original string with all consecutive duplicate characters collapsed into a single character.
+
+// function crunch(str) {
+//   let strArr = str.split('');
+//   let singleArr = [];
+
+//   for (let i = 0; i < strArr.length; i ++) {
+//     if (strArr[i] !== strArr[i + 1]) {
+//       singleArr.push(strArr[i]);
+//     }
+//   }
+//   return singleArr.join('');
+// }
+
+// with filter
+
+// function crunch(str) {
+//   let strArr = str.split('');
+  
+//   let filtered = strArr.filter((el, indx) => {
+//     return el !== strArr[indx + 1];
+//   })
+//   return filtered.join('');
+// }
+
+
+// function crunch(str) {
+//   let indx = 0;
+//   let newStr = '';
+
+//   while (indx < str.length) {
+//     if (str[indx] !== str[indx + 1]) {
+//       newStr += str[indx];
+//     }
+//     indx += 1;
+//   }
+//   return newStr;
+// }
+
+
+// console.log(crunch('ddaaiillyy ddoouubbllee'));    // "daily double"
+// console.log(crunch('4444abcabccba'));              // "4abcabcba"
+// console.log(crunch('ggggggggggggggg'));            // "g"
+// console.log(crunch('a'));                          // "a"
+// console.log(crunch(''));                           // ""
+
+// let str = 'back once again';
+
+// let indx = 0;
+
+// while (indx < str.length) {
+//   console.log(str[indx]);
+//   indx += 1;
+// }
+
+// Write a function that takes a string argument and returns a new string that contains the value of the original string with all consecutive duplicate characters collapsed into a single character.
+
+// function crunch(str) {
+//   let strArr = str.split('');
+//   let finalArr = [];
+
+//   for (let i = 0; i < strArr.length; i++) {
+//     if (strArr[i] !== strArr[i + 1]) {
+//       finalArr.push(strArr[i]);
+//     }
+//   }
+//   return finalArr.join('');
+// }
+
+// function crunch(str) {
+//   let strArr = str.split('');
+//   let finalArr = strArr.filter((char, indx) => {
+//     return char !== strArr[indx + 1];
+//   })
+//   return finalArr.join('');
+// }
+
+// function crunch(str) {
+//   let newWord = '';
+//   for (let i = 0; i < str.length; i++) {
+//     if (str[i] !== str[i + 1]) {
+//       newWord += str[i];
+//     }
+//   }
+//   return newWord;
+// }
+
+
+// console.log(crunch('ddaaiillyy ddoouubbllee'));    // "daily double"
+// console.log(crunch('4444abcabccba'));              // "4abcabcba"
+// console.log(crunch('ggggggggggggggg'));            // "g"
+// console.log(crunch('a'));                          // "a"
+// console.log(crunch(''));                           // ""
+
+// Write a function that takes one argument, a positive integer, and returns a string of alternating '1's and '0's, always starting with a '1'. The length of the string should match the given integer.
+
+// function stringy(num) {
+//   let numArr = [];
+
+//   for (let i = 1; i <= num; i++) {
+//     if (i % 2 === 1) {
+//       numArr.push('1');
+//     }
+//     if (i % 2 === 0) {
+//       numArr.push('0');
+//     }
+//   }
+//   return numArr.join('');
+// }
+
+// function stringy(size) {
+//   let result = '';
+//   let number;
+//   for (let i = 0; i < size; i++) {
+//     number = (i % 2 === 0) ? 1 : 0;
+//     result += number;
+//   }
+//   return result;
+// }
+
+// console.log(stringy(6));    // "101010"
+// console.log(stringy(9));    // "101010101"
+// console.log(stringy(4));    // "1010"
+// console.log(stringy(7));    // "1010101"
+
+// let today = new Date();
+// let currentYear = today.getFullYear();
+
+// replace & regex to replace all non alphanumeric characters:
+// let str = 'B@ck 1nce Again I\'m the renegade ma$ter';
+// str = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+// console.log(str);
+// let str = 'these @#23$ are $%^ SoME 10 ()$? spe90cial 128 characters';
+// str = str.toLowerCase().replace(/[^a-z0-9]/g, '');
+// console.log(str);
+
+// let str = 'hello 34 #$%^ w#H291*()at';
+// console.log(str);
+// str = str.toLowerCase().replace(/[^a-z0-9' ']/g, '');
+// console.log(str);
+
+// let str = 'b@ck 1nce AgaIn, I\'m the R3neG@ade Ma$ter';
+// console.log(str);
+// str = str.toLowerCase().replace(/[^a-z0-9' ']/g, '');
+// console.log(str);
+
+ 
