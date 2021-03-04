@@ -3,6 +3,22 @@
 
 
 
+function isBalanced(str) {
+  let tally = 0;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === '(') {
+      tally += 1;
+    }
+    if (str[i] === ')') {
+      tally -= 1;
+    }
+    if (tally < 0) {
+      return false;
+    }
+  }
+  return tally === 0;
+}
+
 
 
 
