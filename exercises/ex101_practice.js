@@ -211,4 +211,189 @@
 
 // console.log(scores);
 
+// let scores = [[3, 6, 4], [6, 8, 9], [1, 4, 2]];
+
+// scores.sort(function(a, b) {
+//   let aScore = a.reduce((accum, el) => accum + el);
+//   let bScore = b.reduce((accum, el) => accum + el);
+
+//   if (aScore < bScore) {
+//     return -1;
+//   } else if (aScore > bScore) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(scores);
 // [ [ 1, 4, 2 ], [ 3, 6, 4 ], [ 6, 8, 9 ] ];
+
+// let nums = [34, 2, 93, 172, 45, 12, 77, 827, 5, 938, 8, 34, 76];
+
+// nums.sort((a, b) => a - b);
+
+// nums.sort();
+
+// nums.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   } else if (a > b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(nums);
+// console.log(typeof nums[0]);
+
+// let words = ['back', 'once', 'again', 'im', 'the', 'renegade', 'master'];
+
+// let reverseSort = words.slice().sort(function(a, b) {
+//   if (a > b) {
+//     return -1;
+//   } else if (a < b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// });
+
+
+
+// console.log(words);
+// console.log(reverseSort);
+
+// let numbers = [4, 2, 5, 1, 3];
+// let ordered = numbers.slice().sort((a, b) => a - b);
+// console.log(numbers);
+// console.log(ordered);
+
+
+// let words = ['back', 'once', 'again', 'im', 'the', 'renegade', 'master'];
+
+// for (let i = 0; i < words.length; i++) {
+//   words[i] = words[i].replace(/[a]/g, 'A');
+// }
+
+// console.log(words);
+
+// let newArr = [];
+
+// for (let i = 0; i < words.length; i++) {
+//   if (words[i].includes('r')) {
+//     newArr.push(words[i]);
+//   }
+// }
+
+// console.log(newArr);
+
+// let letters = 'abcdefghijklmnopqrstuvwxyz';
+// let password = 'thegreat1gretzky';
+
+// for (let i = 0; i < password.length; i++) {
+//   let passArr = password.split('');
+//   if (!letters.includes(passArr[i])) {
+//     console.log('Does not include', passArr[i])
+//   }
+// }
+
+// let numbers = [41, 21, 5, 1, 3];
+
+// numbers.sort((a, b) => a - b);
+
+// console.log(numbers);
+
+// let letters = ['r', 'f', 's', 'q', 'l', 'b', 'd', 'e', 's'];
+
+// letters.sort((a, b) => {
+//   if (a > b) {
+//     return -1;
+//   } else if (a < b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// });
+
+// letters.sort().reverse();
+
+// console.log(letters);
+
+// for (let i = 0; i <= 10; i += 2) {
+//   console.log(i);
+// }
+
+// for (let i = 10; i >= 0; i -= 1) {
+//   console.log(i);
+// }
+// console.log('Launch!');
+
+// let greeting = 'Aloha!';
+
+// let counter = 1;
+
+// while (counter <=3) {
+//   console.log(greeting);
+//   counter ++;
+// }
+
+// for (let i = 1; i <= 100; i ++) {
+//   console.log(i * 2);
+// }
+
+// let array = [1, 2, 3, 4];
+// let index = 0;
+
+// while (index < array.length) {
+//   console.log(array[index]);
+//   index ++;
+// }
+
+// let cities = ['Istanbul', 'Los Angeles', 'Tokyo', null, 'Vienna', null, 'London', 'Beijing', null];
+
+// for (let i = 0; i < cities.length; i++) {
+//   if (cities[i] === null) {
+//     continue;
+//   } else {
+//     console.log(cities[i]);
+//   }
+// }
+
+// for (let i = 0; i < 1 ; i += 1) {
+//   console.log("and on");
+// }
+
+// let counter = 1;
+
+// while (counter < 40) {
+//   console.log(counter);
+//   counter += 2;
+// }
+
+// let fish = ['Dory', 'Marlin', 'Gill', 'Nemo', 'Bruce'];
+
+// for (let el of fish) {
+//   console.log(el);
+//   if (el === 'Nemo') {
+//     break;
+//   }
+// }
+
+// let counter = 0;
+
+// do {
+//   console.log('Woooot!');
+//   counter -= 1;
+// } while (counter > 0);
+
+// let randomNumber = Math.round(Math.random());
+
+// if (randomNumber === 1) {
+//   console.log(randomNumber, 'Yes!');
+// } else {
+//   console.log(randomNumber, 'No!');
+// }
+
+// (randomNumber === 0) ? console.log(randomNumber, 'Yes!') : console.log(randomNumber, 'No!');
