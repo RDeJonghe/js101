@@ -12,6 +12,23 @@
   // pop
   // decrease counter
   // return results
+
+
+// with push & slice
+
+function leadingSubstrings(str) {
+  let results = [];
+  let counter = 1;
+  for (let i = 0; i < str.length; i++) {
+    results.push(str.slice(0, counter));
+    counter += 1;
+  }
+  return results;
+}
+
+console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+console.log(leadingSubstrings('a'));        // ["a"]
+console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
   
 // My orignal solution
 // function leadingSubstrings(str) {

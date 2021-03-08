@@ -11,10 +11,9 @@
   // push results to new array
   // return new array
 
-// My original solution works well.
+
 function multiplyAllPairs(arr1, arr2) {
   let results = [];
-
   for (let i = 0; i < arr1.length; i++) {
     for (let j = 0; j < arr2.length; j++) {
       results.push(arr1[i] * arr2[j]);
@@ -22,6 +21,26 @@ function multiplyAllPairs(arr1, arr2) {
   }
   return results.sort((a, b) => a - b);
 }
+
+
+
+
+
+  console.log(multiplyAllPairs([2, 4], [4, 3, 1, 2]));    // [2, 4, 4, 6, 8, 8, 12, 16]
+  console.log(multiplyAllPairs([2, 3, 4], [4, 5]));
+
+  // My original solution works well.
+
+// function multiplyAllPairs(arr1, arr2) {
+//   let results = [];
+
+//   for (let i = 0; i < arr1.length; i++) {
+//     for (let j = 0; j < arr2.length; j++) {
+//       results.push(arr1[i] * arr2[j]);
+//     }
+//   }
+//   return results.sort((a, b) => a - b);
+// }
 
 // Refactor with .forEach
 

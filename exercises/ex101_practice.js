@@ -397,3 +397,168 @@
 // }
 
 // (randomNumber === 0) ? console.log(randomNumber, 'Yes!') : console.log(randomNumber, 'No!');
+
+// function sum(num1, num2) {
+//   return num1 + num2;
+// }
+
+// console.log(sum(20, 2));
+
+// function quote(str) {
+//   console.log(str);
+// }
+// quote('Always bet on javascript');
+
+// function square(num) {
+//   return Math.pow(num, 2);
+// }
+
+// console.log(square(3));
+// console.log(square(4));
+
+// Write a function that compares the length of two strings. It should return -1 if the first string is shorter, 1 if the second string is shorter, and 0 if they're of equal length, as in the following example:
+
+// function compareByLength(str1, str2) {
+//   if (str1.length > str2.length) {
+//     return 1;
+//   } else if (str1.length < str2.length) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// }
+
+// console.log(compareByLength('patience', 'perseverance')); // -1
+// console.log(compareByLength('strength', 'dignity'));      //  1
+// console.log(compareByLength('humor', 'grace'));           //  0
+
+// let str = 'Captain Ruby';
+// // str = str.replace('Ruby', 'Javascript');
+
+// // str = str.substring(0, str.indexOf('R')) + 'Javascript';
+
+// str = str.split(' ')[0] + ' Javascript';
+
+// console.log(str);
+
+// function repeat(num, str) {
+//   let counter = 1;
+//   let arr = [];
+//   while (counter <= num) {
+//     arr.push(str);
+//     counter +=1;
+//   }
+//   let repeated = arr.join('');
+//   return repeated;
+// }
+
+// function repeat(num, str) {
+//   let repeated = '';
+//   let counter = 1;
+
+//   while (counter <= num) {
+//     repeated += str;
+//     counter += 1;
+//   }
+//   return repeated;
+// }
+
+// console.log(repeat(4, 'ha')); // 'hahaha'
+
+// let str = 'A pirate I was meant to be!\nTrim the sails and roam the sea!';
+// console.log(str);
+
+// let string1 = 'Polar Bear';
+// let string2 = 'Polar bear';
+// let string3 = 'Penguin';
+
+// console.log(string1.toLowerCase() === string2.toLowerCase());
+
+// let byteSequence = 'TXkgaG92ZXJjcmFmdCBpcyBmdWxsIG9mIGVlbHMu';
+
+// console.log(byteSequence.includes('x'));
+
+// function isBlank(str) {
+//   if (str === '') {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// function isBlank(str) {
+//   return str.length === 0;
+// }
+// console.log(isBlank('mars')); // false
+// console.log(isBlank('  '));   // false
+// console.log(isBlank(''));     // true
+
+// function isBlank(str) {
+//   return str.trim().length === 0;
+// }
+
+
+// console.log(isBlank('mars')); // false
+// console.log(isBlank('  '));   // true
+// console.log(isBlank(''));     // true
+
+// Write code that capitalizes the words in the string 'launch school tech & talk', so that you get the string 'Launch School Tech & Talk'.
+
+let str = 'launch school tech & talk';
+
+// function capIt(str) {
+//   let strArr = str.split('');
+//   for (let i = 0; i < strArr.length; i++) {
+//   if (i === 0) {
+//     strArr[0] = strArr[0].toUpperCase();
+//   } else if (strArr[i] === ' ') {
+//     strArr[i + 1] = strArr[i + 1].toUpperCase();
+//   }
+//   }
+//   return strArr.join('');
+// }
+
+// function capIt(str) {
+//   let strArr = str.split(' ');
+//   let results = [];
+
+//   for (let i = 0; i < strArr.length; i++) {
+//     let word = strArr[i];
+//     results.push(word[0].toUpperCase() + word.slice(1));
+//   }
+//   return results;
+// }
+
+
+
+// console.log(capIt(str));
+
+// function first(arr) {
+//   let message = 'array is empty';
+//   if (arr.length === 0) {
+//     return message;
+//   } else {
+//     return arr[0];
+//   }
+// }
+
+// console.log(first(['Earth', 'Moon', 'Mars'])); // 'Earth'
+// console.log(first([]));
+
+// function last(arr) {
+//   return arr[arr.length - 1];
+// }
+
+// console.log(last(['Earth', 'Moon', 'Mars'])); // 'Mars'
+
+let energy = ['fossil', 'solar', 'wind', 'tidal', 'fusion'];
+
+// Remove 'fossil' from the array, then add 'geothermal' to the end of the array.
+
+// energy.shift();
+// energy.push('geothermal');
+
+// energy = energy.slice(1);
+energy.splice(0, 1, 'yo', 'what up
+console.log(energy);
+
