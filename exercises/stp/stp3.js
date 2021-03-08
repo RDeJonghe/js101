@@ -27,6 +27,29 @@
 //   return countObj;
 // }
 
+// can do with match and regex. Remember match is called on a string with regex and it creates an array with everything that matches, can check the length property of this to get the number of items
+
+// function letterCaseCount(str) {
+//   let lower = str.match(/[a-z]/g) || [];
+//   let upper = str.match(/[A-Z]/g) || [];
+//   let neither = str.match(/[^a-z]/gi) || [];
+
+//   return {lower: lower.length, upper: upper.length, neither: neither.length};
+// }
+
+// or regex like this with ? user submitted solution
+
+function letterCaseCount(str) {
+  let lower = str.match(/[a-z]/g)?.length || 0;
+  let upper = str.match(/[A-Z]/g)?.length || 0;
+  // let neither = str.match(/[^a-z]/gi)?.length || 0; can also do just by subtraction
+  let neither = str.length - upper - lower;
+
+  return {lower, upper, neither};
+}
+
+
+
 
 console.log(letterCaseCount('abCdef 123'));  // { lowercase: 5, uppercase: 1, neither: 4 }
 console.log(letterCaseCount('AbCd +Ef'));    // { lowercase: 3, uppercase: 3, neither: 2 }

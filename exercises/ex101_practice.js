@@ -559,6 +559,6 @@ let energy = ['fossil', 'solar', 'wind', 'tidal', 'fusion'];
 // energy.push('geothermal');
 
 // energy = energy.slice(1);
-energy.splice(0, 1, 'yo', 'what up
+energy.splice(0, 1, 'yo', 'what up');
 console.log(energy);
 
