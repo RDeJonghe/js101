@@ -504,7 +504,7 @@
 
 // Write code that capitalizes the words in the string 'launch school tech & talk', so that you get the string 'Launch School Tech & Talk'.
 
-let str = 'launch school tech & talk';
+// let str = 'launch school tech & talk';
 
 // function capIt(str) {
 //   let strArr = str.split('');
@@ -551,7 +551,7 @@ let str = 'launch school tech & talk';
 
 // console.log(last(['Earth', 'Moon', 'Mars'])); // 'Mars'
 
-let energy = ['fossil', 'solar', 'wind', 'tidal', 'fusion'];
+// let energy = ['fossil', 'solar', 'wind', 'tidal', 'fusion'];
 
 // Remove 'fossil' from the array, then add 'geothermal' to the end of the array.
 
@@ -559,6 +559,15 @@ let energy = ['fossil', 'solar', 'wind', 'tidal', 'fusion'];
 // energy.push('geothermal');
 
 // energy = energy.slice(1);
-energy.splice(0, 1, 'yo', 'what up');
-console.log(energy);
+// energy.splice(0, 1, 'yo', 'what up');
+// console.log(energy);
+
+// let str = 'Back 1nce Again I\'m the Renegade Master';
+
+// let upper = str.match(/[A-Z]/g)?.length || 0;
+// let lower = str.match(/[a-z]/g)?.length || 0;
+// let other = str.match(/[^a-z]/gi)?.length || 0;
+
+// let count = {upper, lower, other};
+// console.log(count);
 
