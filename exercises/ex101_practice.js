@@ -571,3 +571,116 @@
 // let count = {upper, lower, other};
 // console.log(count);
 
+// let nums = [1, 32, 4, 21, 47, 3, 4, 9, 687, 98, 1223, 45, 764, 736, 837];
+
+// const  COMPARE_REVERSE = (a, b) => b - a;
+
+
+// nums.sort(COMPARE_REVERSE);
+// console.log(nums);
+
+// let sorted = nums.slice().sort((a, b) => b - a);
+// let sorted = [...nums].sort((a, b) => b - a);
+
+// console.log(nums);
+// console.log(sorted);
+
+// nums.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   } else if (a > b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// nums.sort((a, b) => a - b);
+
+// nums.sort((a, b) => {
+//   if (a > b) {
+//     return -1;
+//   } else if (a < b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// nums.sort((a, b) => b - a);
+
+// console.log(nums);
+
+// let track = ['back', 'once', 'again', 'im', 'the', 'renegade', 'master', 'd', 'for', 'damager', 'power', 'to', 'the', 'people', 'back', 'once', 'again', 'with', 'the', 'ill', 'behavior' ];
+
+// track.sort();
+
+// track.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   } else if (b > a) {
+//     return 1;
+//   } else {
+//     return 0
+//   }
+// })
+
+// track.sort(function (a, b) {
+//   if (a > b) {
+//     return -1;
+//   } else if (a < b) {
+//     return 1;
+//   } else return 0;
+// }
+// )
+
+// track.sort().reverse();
+
+// console.log(track);
+
+
+var items = [
+  { name: 'Edward', value: 21 },
+  { name: 'Sharpe', value: 37 },
+  { name: 'And', value: 45 },
+  { name: 'The', value: -12 },
+  { name: 'Magnetic', value: 13 },
+  { name: 'Zeros', value: 37 }
+];
+
+items.sort((a, b) => {
+  if (a.value < b.value) {
+    return -1;
+  } else if (a.value > b.value) {
+    return 1;
+  } else {
+    return 0;
+  }
+})
+
+console.log(items);
+
+// let str = 'B@ck 1nce @g@!n';
+
+// str = str.replace(/[^a-z' ']/gi, '');
+
+// console.log(str);
+// let alphaNum = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+
+// let letterNums = '34ujey*62Bw{83jk';
+
+// for (let i = 0; i < letterNums.length; i++) {
+//   if (!alphaNum.includes(letterNums[i])) {
+//     console.log(letterNums[i]);
+//   }
+// }
+
+// let arr = ['D', '4', 'damager', 'power', 'to', 'the', 'people'];
+
+// console.log(arr.includes('power'));
+
+// let str = 'yomtvraps';
+
+// console.log(str.includes('m'));
+
+
