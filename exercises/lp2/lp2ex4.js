@@ -7,6 +7,37 @@
   // push to results array slice of (0, i)
   // return results array
 
+  function leadingSubstrings(str) {
+    let results = [];
+    for (let i = 1; i <= str.length; i++) {
+      results.push(str.slice(0, i));  
+    }
+    return results;
+  }
+
+  console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+  console.log(leadingSubstrings('a'));        // ["a"]
+  console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // function leadingSubstrings(str) {
 //   let results = [];
 //   for (let i = 1; i <= str.length; i++) {
@@ -40,18 +71,18 @@
 
 // map with concatenating on empty string
 
-function leadingSubstrings(str) {
-  let substr = '';
-  let combos = str
-    .split('')
-    .map(el => {
-      substr = substr + el;
-      return substr;
-    })
-    return combos;
-}
+// function leadingSubstrings(str) {
+//   let substr = '';
+//   let combos = str
+//     .split('')
+//     .map(el => {
+//       substr = substr + el;
+//       return substr;
+//     })
+//     return combos;
+// }
 
 
-console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
-console.log(leadingSubstrings('a'));        // ["a"]
-console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+// console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+// console.log(leadingSubstrings('a'));        // ["a"]
+// console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]

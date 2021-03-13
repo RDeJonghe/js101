@@ -639,26 +639,36 @@
 // console.log(track);
 
 
-var items = [
-  { name: 'Edward', value: 21 },
-  { name: 'Sharpe', value: 37 },
-  { name: 'And', value: 45 },
-  { name: 'The', value: -12 },
-  { name: 'Magnetic', value: 13 },
-  { name: 'Zeros', value: 37 }
-];
+// var items = [
+//   { name: 'Edward', value: 21 },
+//   { name: 'Sharpe', value: 37 },
+//   { name: 'And', value: 45 },
+//   { name: 'The', value: -12 },
+//   { name: 'Magnetic', value: 13 },
+//   { name: 'Zeros', value: 37 }
+// ];
 
-items.sort((a, b) => {
-  if (a.value < b.value) {
-    return -1;
-  } else if (a.value > b.value) {
-    return 1;
-  } else {
-    return 0;
-  }
-})
+// items.sort((a, b) => {
+//   if (a.value < b.value) {
+//     return -1;
+//   } else if (a.value > b.value) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
 
-console.log(items);
+// items.sort((a, b) => {
+//   if (a.name > b.name) {
+//     return -1;
+//   } else if (a.name < b.name) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(items);
 
 // let str = 'B@ck 1nce @g@!n';
 
@@ -683,4 +693,376 @@ console.log(items);
 
 // console.log(str.includes('m'));
 
+// let num = 12.9778765;
+// let floored = Math.floor(num);
 
+// console.log(floored);
+// console.log(typeof floored);
+
+// num = Number(num.toFixed(2));
+// console.log(num);
+// console.log(typeof num);
+
+// console.log(2.35.toFixed(1));
+// console.log(2.55.toFixed(1));
+
+// toFixed() converts to a string. To fixed will round, but rounding with decimals may not always be accurate because decimals cannot always be represented accurately with floating point numbers.
+
+// let num = '5.432';
+// console.log(parseFloat(num).toFixed(2));
+
+// let num = '32.45672';
+// console.log(parseFloat(num).toFixed(3));
+
+// let arr1 = [33, [23, 45]];
+// let arr2 = [47, 39];
+// let arr4 = [384, 327];
+
+// arr3 = arr2.concat(arr1, arr4);
+// console.log(arr1);
+// console.log(arr2);
+// console.log(arr3);
+
+// let arr = ['back'];
+
+// let str = 'hello';
+
+// for (let i = 1; i <= str.length; i++) {
+//   arr = arr.concat(str.slice(0, i));
+//   // arr.push(str.slice(0, i));
+//   console.log(arr);
+// }
+
+// let str = 'back once again';
+// let arr = ['Im', 'the', 'renegade', 'master'];
+
+// console.log(str.indexOf('hello'));
+// console.log(arr.indexOf('Im'));
+
+// let string = 'madam';
+// let string2 = 'mister';
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('')
+// }
+
+// console.log(isPalindrome(string));
+// console.log(isPalindrome(string2));
+
+// let str = "These aren't the droids you're looking for.";
+// console.log(str.length);
+
+// function repeat(str) {
+//   console.log(str.repeat(3));
+// }
+// repeat('ha');
+
+// let string1 = 'Polar Bear';
+// let string2 = 'Polar bear';
+// let string3 = 'Penguin';
+
+// console.log(string1.toLowerCase() === string2.toLowerCase());
+
+// function isBlank(str) {
+//   return str.length === 0;
+// }
+
+// console.log(isBlank('mars')); // false
+// console.log(isBlank('  '));   // false
+// console.log(isBlank(''));     // true
+
+
+// let str = 'back once again';
+// let arr = Array.from(str);
+// console.log(arr);
+
+// let nums = [2, 4, 6];
+
+// let doubled = Array.from(nums, el => el * 2);
+// console.log(nums);
+// console.log(doubled);
+
+// let str = 'back once again';
+// let arr = Array.from(str, el => el.toUpperCase());
+
+// console.log(arr);
+
+let scores = [96, 47, 113, 89, 100, 102];
+
+// let counter = 0;
+// for (let el of scores) {
+//   if (el >= 100) {
+//     counter ++;
+//   }
+// }
+// console.log(counter);
+
+// function highScore(arr) {
+//   return arr.filter(el => el >= 100).length;
+// }
+
+// // console.log(highScore);
+
+// let vocabulary = [
+//   ['happy', 'cheerful', 'merry', 'glad'],
+//   ['tired', 'sleepy', 'fatigued', 'drained'],
+//   ['excited', 'eager', 'enthused', 'animated']
+// ];
+
+// function print(arr) {
+//   arr.forEach(row => {
+//     row.forEach(word => console.log(word));
+//   })
+// }
+
+// const print = (arr) => {
+//   for (let row of arr) {
+//     for (let word of row) {
+//       console.log(word);
+//     }
+//   }
+// }
+
+// const print = function (arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     for (let j = 0; j < arr[i].length; j++) {
+//       console.log(arr[i][j]);
+//     }
+//   }
+// }
+// print(vocabulary);
+
+
+
+// Expected output:
+// happy
+// cheerful
+// merry
+// etc...
+
+
+// let array1 = [2, 6, 4];
+// let array2 = [2, 6, 4];
+
+// console.log(array1 === array2);
+
+// let str = 'back once again';
+// let arr = ['back', 'once', 'again'];
+
+// console.log(Array.isArray(str));
+// console.log(Array.isArray(arr));
+
+// let destinations = ['Prague', 'London', 'Sydney', 'Belfast', 'Rome',
+//   'Aruba', 'Paris', 'Bora Bora', 'Barcelona', 'Rio de Janeiro',
+//   'Marrakesh', 'New York City'];
+
+// // function contains(city, arr) {
+// //   for (let i = 0; i < arr.length; i++) {
+// //     if (city === arr[i]) {
+// //       return true;
+// //     }
+// //   }
+// //   return false;
+// // }
+
+// function contains(city, arr) {
+//   return arr.indexOf(city) >= 0;
+// }
+
+// console.log(contains('Barcelona', destinations)); // true
+// console.log(contains('Nashville', destinations)); // false
+
+
+// let passcode = ['11', 'jZ5', 'hQ3f*', '8!7g3', 'p3Fs'];
+
+// passcode = passcode.join('-');
+// console.log(passcode);
+
+// Write some code here.
+// Expected return value: '11-jZ5-hQ3f*-8!7g3-p3Fs'
+
+// let groceryList = ['paprika', 'tofu', 'garlic', 'quinoa', 'carrots', 'broccoli', 'hummus'];
+
+
+// while (groceryList.length > 0) {
+//   console.log(groceryList[0]);
+//   groceryList.shift();
+// } 
+
+// console.log(groceryList);
+
+// logs:
+// paprika
+// tofu
+// garlic
+// quinoa
+// carrots
+// broccoli
+// hummus
+
+// groceryList; // []
+
+// let student = {
+//   name: 'Carmen',
+//   age: 14,
+//   grade: 10,
+//   courses: ['biology', 'algebra', 'composition', 'ceramics'],
+//   gpa: 3.75,
+// };
+
+// console.log(student['courses']);
+// console.log(student.courses);
+
+// let jane = {
+//   firstName: 'Jane',
+//   lastName: 'Harrelson',
+//   age: 32,
+//   location: {
+//     country: 'Denmark',
+//     city: 'Aarhus'
+//   },
+//   occupation: 'engineer',
+// };
+
+// console.log(jane.location.country);
+// console.log(jane['location']['country']);
+
+// let fido = {
+//   name: 'Fido',
+//   species: 'Labrador Retriever',
+//   color: 'brown',
+//   weight: 16,
+// };
+
+// fido.age = 10;
+// fido['favorite food'] = 'treatsies';
+// // Add property 'age'.
+// // Add property 'favorite food'.
+// console.log(fido);
+// console.log(fido['favorite food']);
+
+
+// let jane = {
+//   firstName: 'Jane',
+//   lastName: 'Harrelson',
+//   age: 32,
+//   location: {
+//     country: 'Denmark',
+//     city: 'Aarhus'
+//   },
+//   occupation: 'engineer',
+//   greet: function (name) {
+//     console.log('Hej, ' + name);
+//   }
+// };
+
+
+
+// // console.log(jane);
+// (jane.greet('Bobby')); // Hej, Bobby!
+
+// let ocean = {};
+// let prefix = 'Indian';
+
+// ocean.prefix = 'Pacific';
+
+// console.log(ocean); // ?
+// console.log(prefix);
+
+// let ocean = {};
+// let prefix = 'Indian';
+
+// ocean[prefix] = 'Pacific';
+
+// console.log(ocean); // ?
+// console.log(prefix);
+
+// let obj = {
+//   num: 42,
+//   'property name': 'string value',
+//   true: false,
+//   fun: function() {
+//     console.log('Harr Harr!');
+//   },
+// };
+
+// for (let prop in obj) {
+//   if (prop === 'true') {
+//     console.log("It's true!");
+//   }
+// }
+
+// let vehicle = {
+//   manufacturer: 'Tesla',
+//   model: 'Model X',
+//   year: 2015,
+//   range: 295,
+//   seats: 7
+// };
+
+// // let keys = Object.keys(vehicle);
+// // console.log(keys);
+
+// let keys = [];
+// for (let k in vehicle) {
+//   keys.unshift(k);
+// }
+// console.log(keys);
+
+// let person = {
+//   title: 'Duke',
+//   name: 'Nukem',
+//   age: 33
+// };
+
+// let nestedPerson = Object.entries(person);
+// console.log(nestedPerson);
+// Expected output:
+// [['title', 'Duke'], ['name', 'Nukem'], ['age', 33]]
+
+// let nestedArray = [['title', 'Duke'], ['name', 'Nukem'], ['age', 33]];
+
+// let obj = {};
+
+// for (let i = 0; i < nestedArray.length; i++) {
+//   obj[nestedArray[i][0]] = nestedArray[i][1];
+// }
+// console.log(obj);
+// Expected output:
+// { title: 'Duke', name: 'Nukem', age: 33 }
+
+// let obj = Object.fromEntries(nestedArray);
+// console.log(obj);
+
+// let arr = [['back', 'once'], ['again', 'im']];
+// let obj = Object.fromEntries(arr);
+// console.log(obj);
+
+
+// Write a function clone that takes an object as argument and returns a shallow copy of that argument. Shallow copy means that it returns a new object that has the same key/value pairs, but that you don't need to worry about cloning the values as well. The code below demonstrates the expected behaviour.
+
+
+// function clone(obj) {
+//   return Object.assign({}, obj);
+// }
+
+// let person = {
+//   title: 'Duke',
+//   name: 'Nukem',
+//   age: 33
+// };
+
+// // let clonedPerson = clone(person);
+// // person.age = 34;
+// // clonedPerson.color = 'blue';
+
+// // console.log(person.age);       // 34
+// // console.log(clonedPerson.age); // 33
+// // console.log(clonedPerson.color);
+// // console.log(person.color);
+
+// let person2 = {...person};
+// // console.log(person2);
+// person2.age = 44;
+// console.log(person.age);
+// console.log(person2.age);
