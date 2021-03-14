@@ -1066,3 +1066,22 @@ let scores = [96, 47, 113, 89, 100, 102];
 // person2.age = 44;
 // console.log(person.age);
 // console.log(person2.age);
+
+// replace all duplicate spaces
+
+// let str = 'back    once    again   ';
+// str = str.replace(/\s+/g, ' ');
+// console.log(str);
+// console.log(str.endsWith(' '));
+
+let avg = 80;
+
+switch (true) {
+  case avg >= 90 :
+    return console.log('A');
+  case avg >= 80 :
+    return console.log('B');
+  case avg >= 70 :
+  return console.log('C');
+}
+
