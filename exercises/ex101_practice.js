@@ -1074,14 +1074,161 @@ let scores = [96, 47, 113, 89, 100, 102];
 // console.log(str);
 // console.log(str.endsWith(' '));
 
-let avg = 80;
+// let avg = 80;
 
-switch (true) {
-  case avg >= 90 :
-    return console.log('A');
-  case avg >= 80 :
-    return console.log('B');
-  case avg >= 70 :
-  return console.log('C');
-}
+// switch (true) {
+//   case avg >= 90 :
+//     return console.log('A');
+//   case avg >= 80 :
+//     return console.log('B');
+//   case avg >= 70 :
+//   return console.log('C');
+// }
 
+// let string = 'back once again';
+// const VOWELS = 'aeiou';
+
+// let strArr = Array.from(string, el => {
+  
+//     return el.toUpperCase();
+// })
+
+// let strArr = Array.from(string, char => {
+//   if (VOWELS.includes(char)) {
+//     return char.toUpperCase();
+//   } else {
+//     return char;
+//   }
+// })
+
+// console.log(strArr);
+
+// let nums = 123456;
+
+// let doubled = Array.from(String(nums), digit => digit * 2);
+// console.log(doubled);
+
+// let arr = [['lt', 21], ['rivers', 17], ['seau', 55], ['jackson', 83]];
+
+// console.log(arr.flat().some(playerInfo => playerInfo === 'lt'));
+
+// let chargersObj = Object.fromEntries(arr);
+// // console.log(chargersObj);
+
+// let duplicate = Object.assign({}, chargersObj);
+// duplicate['sproles'] = 32;
+
+// let billsObj = {'allen' : 17, 'diggs' : 80};
+
+// Object.assign(chargersObj, billsObj);
+
+// // console.log(duplicate);
+// // console.log(chargersObj);
+// // console.log(billsObj);
+
+// let all = Object.assign(billsObj, duplicate, chargersObj);
+// console.log(all);
+
+// create a shallow copy of an array with Object.assign
+
+// let obj = {'rent' : 525, 'electricity' : 20};
+
+// let duplicate = Object.assign({}, obj);
+// console.log(duplicate);
+// duplicate['gas'] = 60;
+// console.log(duplicate);
+// console.log(obj);
+
+// let grade = 50;
+
+// function letterGrade(num) {
+
+// switch (true) {
+//   case grade >= 90 :
+//     return 'A';
+//   case grade >= 80 :
+//     return 'B';
+//   case grade >= 70 :
+//     return 'C';
+//   case grade >= 60 :
+//     return 'D';
+//   default :
+//     return 'F';
+// }
+// }
+
+// console.log(letterGrade(grade));
+
+// let bike = 'yz';
+
+// function manufacturer(moto) {
+//   switch (moto) {
+//     case 'kx' :
+//       return 'kawasaki';
+//     case 'rm' :
+//       return 'suzuki';
+//     case 'cr' :
+//       return 'honda';
+//     case 'yz' :
+//       return 'yamaha';
+//     default :
+//       return 'unknown';
+//   }
+// }
+
+// console.log(manufacturer(bike));
+
+// let arr = [2, 4, 6, 8, 10, 12, 456];
+
+// console.log(arr.some(el => el > 20));
+
+// let arr = ['back', 'once', 'again', 'im', 'the', 'renegade', 'master'];
+
+// console.log(arr.some(word => word.length >= 8))
+
+// let currentYear = new Date().getFullYear();
+
+// let currentYear = new Date().getFullYear();
+
+// let currentDay = new Date().getDay();
+
+// console.log(currentYear);
+// console.log(currentDay);
+
+// let str = 'back once again';
+// let arr = Array.from(str);
+// console.log(arr);
+
+// let str = '1234';
+// // console.log(Array.from(str));
+
+// let arr = [['two', 2], ['three', 3]];
+// console.log(Object.fromEntries(arr));
+
+// let obj = {five : 5};
+// let duplicate = Object.assign({}, obj);
+// console.log(duplicate);
+// duplicate['six'] = 6;
+// console.log(duplicate);
+// console.log(obj);
+
+// let grade = 77;
+
+// switch (true) {
+//   case grade >= 90 :
+//     return console.log('A');
+//   case grade < 90 :
+//     return console.log('Not an A');
+// }
+
+// let arr = [2, 5, 7];
+// let newArr = Array.from(arr, el => el * 2);
+// let newerArr = arr.map( el => el * 3);
+// console.log(arr);
+// console.log(newArr);
+// console.log(newerArr);
+
+let arr = [6, 'word', undefined, 3];
+
+console.log(arr.some(el => el === undefined));
+console.log(arr.some(el => el > 6));
