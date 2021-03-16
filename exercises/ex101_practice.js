@@ -1228,7 +1228,22 @@ let scores = [96, 47, 113, 89, 100, 102];
 // console.log(newArr);
 // console.log(newerArr);
 
-let arr = [6, 'word', undefined, 3];
+// let arr = [6, 'word', undefined, 3];
 
-console.log(arr.some(el => el === undefined));
-console.log(arr.some(el => el > 6));
+// console.log(arr.some(el => el === undefined));
+// console.log(arr.some(el => el > 6));
+
+// let arr = [2, 4, 6, 8, true];
+
+// console.log(arr.some(el => typeof el === 'boolean'));
+
+// let str = 'back once again';
+
+// let strArr = Array.from((str));
+
+// let nums = [2, 4, 6];
+
+// console.log(Array.from(nums, el => el * 2));
+
+// console.log(strArr);
+
