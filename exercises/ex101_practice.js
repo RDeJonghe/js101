@@ -1247,3 +1247,9 @@ let scores = [96, 47, 113, 89, 100, 102];
 
 // console.log(strArr);
 
+let str = 'back once again?';
+let regex = /\?/;
+
+let regexData = (str.match(regex));
+
+console.log(regexData);
