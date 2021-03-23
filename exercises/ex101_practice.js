@@ -1247,9 +1247,200 @@ let scores = [96, 47, 113, 89, 100, 102];
 
 // console.log(strArr);
 
-let str = 'back once again?';
-let regex = /\?/;
+// let str = 'back once again?';
+// let regex = /\?/;
 
-let regexData = (str.match(regex));
+// let regexData = (str.match(regex));
 
-console.log(regexData);
+// console.log(regexData);
+
+// Build a program that randomly generates Teddy's age, and logs it to the console. Have the age be a random number between 20 and 120 (inclusive).
+
+// function age() {
+//   let ranNum = Math.floor(Math.random() * 100) + 20;
+
+//   console.log(ranNum);
+// }
+
+// age();
+
+// let READLINE = require('readline-sync');
+
+// let num1 = READLINE.question('number 1: ');
+// let num2 = READLINE.question('number 2: ');
+// let num3 = READLINE.question('number 3: ');
+
+// let numArr = [num1, num2];
+
+// if (numArr.includes(num3)) {
+//   console.log('it includes ' + num3);
+// } else {
+//   console.log('not included');
+// }
+
+// let arr = [2, 3, [4, 5], [3, [10, 12, [30, 40]]]];
+
+// console.log(arr.flat(3));
+
+// let arr = [1, 2, [3, 4], 5];
+
+// let flatArr = arr.reduce((accum, el) => {
+//   return accum.concat(el)
+// }, []);
+
+// console.log(arr);
+// console.log(flatArr);
+
+
+// let str = 'back once again';
+
+// console.log(str.slice(-5, -1));
+
+// console.log(str.slice(str.indexOf('o'), -5))
+
+// function revStr(str) {
+//   let arr = [];
+//   for (let i = str.length; i >= 0; i --) {
+//     arr.push(str.slice(i, -1));
+//   }
+//   return arr.join('');
+// }
+
+// console.log(revStr(str));
+
+// let str = 'Back once again';
+
+// console.log(str.slice(-7, -3));
+
+// let password = 'heHie763*jd$kD';
+// let specialChars = '!@#$%^&*()';
+// let regex = /[^a-z0-9]/gi;
+
+// for (let i = 0; i < password.length; i++) {
+//   if (specialChars.includes(password[i])) {
+//     console.log(password[i]);
+//   }
+// }
+
+// let num = '456.75';
+// console.log(parseInt(num, 10));
+
+// let num = 4532.65677;
+// console.log(Number(num.toFixed(3)));
+
+// let num1 = 10;
+// let num2 = 5;
+
+// function add(num1, num2) {
+//   return num1 + num2
+// }
+// const sub = (num1, num2) => {
+//   return num1 - num2;
+// };
+
+// const mult = function(num1, num2) {
+//   return num1 * num2;
+// }
+
+// console.log(add(2, 2), sub(5, 5), mult(6, 4),)
+
+// let neg = -10;
+// let mult = 2;
+
+// console.log(neg * mult);
+// console.log(Math.abs(neg * mult));
+
+// let num = 2;
+// if (num) {
+//   console.log("valid number");
+// } else {
+//   console.log("error!");
+// }
+// let num = '12.34.56';
+// let num2 = '12.99hello'
+// console.log(parseInt(num2));
+// console.log(Number(num2))
+
+// let num2 = 73.88
+// let num = '35.68';
+// let rounded = Number(parseFloat(num).toFixed(1));
+
+// console.log(rounded);
+
+// let arr = [1, 2, 3];
+// console.log(arr.toString());
+
+// let num = 43;
+// let num2 = num.toString();
+// console.log(num2)
+// let num3 = String(num);
+// console.log(num3);
+
+// let a = 1;           // first level variable
+
+// function foo() {     // second level
+//   let b = 2;
+
+//   function bar() {   // third level
+//     let c = 3;
+//     console.log(a);  // => 1
+//     console.log(b);  // => 2
+//     console.log(c);  // => 3
+//   }
+
+//   bar();
+
+//   console.log(a);    // => 1
+//   console.log(b);    // => 2
+//   console.log(c);    // => ReferenceError
+// }
+
+// foo();
+
+// let myName = "naveed";
+// function cap(name) {
+//   myame = name.toUpperCase();
+// }
+
+
+// cap(myName);
+// console.log(myName); // => 'naveed'
+
+// let city = 'Detroit';
+
+// function changeCity(cityName) {
+//   city = cityName;
+// }
+
+// changeCity('Cleveland');
+// console.log(city);
+
+// let myName = 'habibi';
+
+// function capName(name) {
+//   myName = name.toUpperCase();
+// }
+
+// capName(myName);
+// console.log(myName);
+
+// function cap(name) {
+//   name.toUpperCase();
+// }
+
+// let myName = "naveed";
+// cap(myName);
+// console.log(myName); // => 'naveed'
+
+// let name = 'habibi';
+
+// name.toUpperCase();
+// console.log(name);
+
+// const MESSAGES = require('./filename.json');
+// const MESSAGES = require('./filename.json');
+// const MESSAGES = require('./filename.json');
+// const READLINE = require('readline-sync');
+// const MESSAGES = require('./filename.json');
+// const READLINE = require('readline-sync');
+// const MESSAGES = require('./filename.json');

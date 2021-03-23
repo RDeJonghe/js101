@@ -1,0 +1,10 @@
+{
+  "en" : {
+    "welcome" : "Welcome to calculator!",
+    "result" : "The result is: "
+  },
+  "es" : {
+    "welcome" : "Bienvenido al calculadora",
+    "result" : "El resultado es:"
+  }
+}

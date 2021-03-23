@@ -1,0 +1,1 @@
+// write a calculator function that asks the user for operations, validates input, asks if they want to perform another calculation. Bilingual calculator with messages in a JSON file. Use a switch statement to perform the calculation.
