@@ -1,0 +1,18 @@
+{
+  "welcome" : "Welcome to a calculator",
+  "language" : "Type 'en' for English / Teclear 'es' para espaNol",
+  "en" : {
+    "number" : "Enter a number",
+    "number2" : "Enter a second number",
+    "operation" : "Type '+', '-', '*', '/' to add, subtract, multiply or divide: ",
+    "result" : "The result is: ",
+    "again" : "Would you like to perform another calcualtion? Type 'y' for yes or 'n' for no: "
+  },
+  "es" : {
+    "number" : "Entrar un numero",
+    "number2" : "Entrar otro numero",
+    "operation" : "Teclear '+', '-', '*', '/' to sumar, restar, multiplicar or dividir: ",
+    "result" : "El resultado es: ",
+    "again" : "Te gustaria hacer otro calculo? Teclear 's' para si o 'n' para 'no'"
+  }
+}

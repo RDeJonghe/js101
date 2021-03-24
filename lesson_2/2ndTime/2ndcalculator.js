@@ -56,6 +56,7 @@ prompt('welcome');
       break;
     case '4' :
       result = Number(num1) / Number(num2);
+      break
   }
 
 
