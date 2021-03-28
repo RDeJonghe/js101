@@ -1,0 +1,10 @@
+{
+  "Thailand" : {
+    "Bangkok" : "city life",
+    "Hua Hin" : "beach life"
+  },
+  "Mexico" : {
+    "Mexico City" : "urban",
+    "Oaxaca" : "rural"
+  }
+}
