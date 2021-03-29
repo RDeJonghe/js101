@@ -944,3 +944,569 @@ end of outer loop */
 //     return 0;
 //   }
 // }))
+
+// let string1 = 'halo';
+// let string2 = 'clock';
+
+// function allSubstrings(str) {
+//   let results = [];
+
+//   for (let startSlice = 0; startSlice <= str.length - 2; startSlice ++) {
+//     for (let charNum = 2; charNum <= str.length - startSlice; charNum ++) {
+//       results.push(str.slice(startSlice, startSlice + charNum));
+//     }
+//   }
+//   return results;
+// }
+
+// function allSubstrings(str) {
+//   let results = [];
+//   let startSlice = 0;
+
+//   while (startSlice <= str.length - 2) {
+//     let numChars = 2;
+    
+//     while (numChars <= str.length - startSlice) {
+//       let endSlice = numChars + startSlice;
+//       results.push(str.slice(startSlice, endSlice));
+//       numChars ++;
+//     }
+//     startSlice ++;
+//   }
+//   return results;
+// }
+
+// console.log(allSubstrings(string1));
+// console.log(allSubstrings(string2));
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// function palindromeSubstrings(str) {
+//   let results = [];
+
+//   let substrings = allSubstrings(str);
+
+//   // for (let i = 0; i < substrings.length; i ++) {
+//   //   if(isPalindrome(substrings[i])) {
+//   //     results.push(substrings[i]);
+//   //   }
+//   // }
+//   // with for each
+//   substrings.forEach(el => {
+//     if (isPalindrome(el)) {
+//       results.push(el);
+//     }
+//   })
+//   return results;
+// }
+
+// write a program that returns all the palindromes of all of the substrings of a string
+// case matters
+
+// need to find all of the substrings
+// need a function to see if something is a palindrome
+// iterate over the substrings, checking to see if it's a palindrome
+
+// function allSubstrings(str) {
+//   let results = [];
+//   let startSlice = 0;
+
+//   while (startSlice <= str.length - 2) {
+//     let numChars = 2;
+//     while (numChars <= str.length - startSlice) {
+//       let endSlice = startSlice + numChars;
+//       results.push(str.slice(startSlice, endSlice));
+//       numChars ++;
+//     }
+//     startSlice ++;
+//   }
+//   return results;
+// }
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// function palindromeSubstrings(str) {
+//   let results = [];
+//   let substringArr = allSubstrings(str);
+
+//   for (let i = 0; i < substringArr.length; i++) {
+//     if (isPalindrome(substringArr[i])) {
+//       results.push(substringArr[i]);
+//     }
+//   }
+//   return results;
+// }
+
+// console.log(palindromeSubstrings("supercalifragilisticexpialidocious")); // ["ili"]
+// console.log(palindromeSubstrings("abcddcbA"));   // ["bcddcb", "cddc", "dd"] case matters
+// console.log(palindromeSubstrings("palindrome")); // []
+// console.log(palindromeSubstrings(""));           // []
+
+// let fruits = ['apple', 'banana', 'pear'];
+// // add 's' to the end of each fruit
+
+// let index = 0;
+// while (index < fruits.length) {
+//   fruits[index] = fruits[index] + 's';
+//   index ++;
+// }
+
+// console.log(fruits);
+
+// function selectVowels(str) {
+//   let results = [];
+//   let vowels = 'aeiouAEIOU';
+
+//   for (let i = 0; i < str.length; i ++) {
+//     if (vowels.includes(str[i])) {
+//       results.push(str[i]);
+//     }
+//   }
+//   return results.join('');
+// }
+
+// console.log(selectVowels('back once again'));
+// console.log(selectVowels('The quick brown fox'));
+
+// Let's look at an example with objects. In this example, we want to select the key-value pairs where the value is 'Fruit'.
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+
+// // algorithm
+// // take the key value pairs from an object and put them in an array
+// // set an empty results object, it's returning an object
+// // iterate over the array, wherever the value is 'fruit' (index 1 on each iteration)
+// // assign that key value pair in that point in the iteration to the new object
+// // return new object
+
+// function selectFruit(obj) {
+//   keyValArr = Object.entries(obj);
+//   let results = {};
+
+//   for (let i = 0; i < keyValArr.length; i++) {
+//     if (keyValArr[i][1] === 'Fruit') {
+//       results[keyValArr[i][0]] = 'Fruit';
+//     }
+//   }
+//   return results;
+// }
+
+
+// console.log(selectFruit(produce)); // => { apple: 'Fruit', pear: 'Fruit' }
+// console.log(produce);
+
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+
+// function doubleNumbers(arr) {
+//   for (let i = 0; i < arr.length; i ++) {
+//    arr[i] = arr[i] * 2;
+//   }
+//   return arr;
+// }
+
+
+// console.log(doubleNumbers(myNumbers)); // => [2, 8, 6, 14, 4, 12]
+// console.log(myNumbers);               
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function doubleOddNumbers(arr) {
+//   let results = [];
+//   for (let i = 0; i < arr.length; i ++) {
+//     if (arr[i] % 2 === 1) {
+//       results.push(arr[i] * 2);
+//     } else {
+//       results.push(arr[i]);
+//     }
+//   }
+//   return results;
+// }
+
+// console.log(doubleOddNumbers(myNumbers));  // => [2, 4, 6, 14, 2, 6]
+
+// double ones that have odd index
+
+// function doubleOddIndex(arr) {
+//   let results = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (i % 2 === 1) {
+//       results.push(arr[i] * 2);
+//     } else {
+//       results.push(arr[i]);
+//     }
+//   }
+//   return results;
+// }
+// console.log(myNumbers);
+// console.log(doubleOddIndex(myNumbers));
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function multiply(arr, num = 1) {
+//   let results = [];
+
+//   arr.forEach(el => {
+//     return results.push(el * num);
+//   })
+//   return results;
+// }
+
+// console.log(multiply(myNumbers, 3)); // => [3, 12, 9, 21, 6, 18]
+// console.log(multiply(myNumbers));
+// console.log(multiply(myNumbers, 10));
+
+// let str = 'back once again';
+
+// str.split('').forEach(el => console.log(el));
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// Object.values(produce).forEach(el => console.log(el));
+
+// let nums = [22, 33, 100];
+
+// let [even, odd, hondo] = nums;
+
+// console.log(even);
+// console.log(odd);
+// console.log(hondo);
+
+// select vegetable and return a new object with filter & for each
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// // let vegetable = Object.entries(produce).filter(el => el[1] === 'Vegetable');
+
+// // let obj = {};
+
+// // fruit.forEach(el => {
+// //   let [key, value] = el;
+// //   obj[key] = value;
+// // })
+
+// let obj = {};
+// Object.entries(produce).forEach(el => {
+//   let [key, value] = el;
+//   if (value === 'Vegetable') {
+//     obj[key] = value;
+//   }
+// })
+
+
+
+// // console.log(obj)
+
+// console.log([1, 2, 3].map(num => {
+//   num * 2;
+// }));
+
+
+// For instance, suppose we want to select all of the vowels in a string and get a new string that contains all of those vowels
+// let str = "What's up, Doc?";
+
+// console.log(str.split('').filter(el => 'aeiou'.includes(el)).join(''));
+
+// console.log(str.split('').map(el => el + el).join(''));
+
+
+
+
+// take a string and find all the substrings that are palindromes
+
+// function to find all the substrings of the string, have these in array
+// function to test if they are palindromes
+// function to iterate over the substrings array, testing each one if it's a palindrome
+// return those that are
+
+// function allSubstrings(str) {
+//   let results = [];
+//   for (let startSlice = 0; startSlice <= str.length - 2; startSlice ++) {
+//     for (let numChars = 2; numChars <= str.length - startSlice; numChars ++) {
+//       let endSlice = startSlice + numChars;
+//       results.push(str.slice(startSlice, endSlice));
+//     }
+//   }
+//   return results;
+// }
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// function palindromeSubstrings(str) {
+//   let results = [];
+//   let substringArr = allSubstrings(str);
+
+//   for (let i = 0; i < substringArr.length; i++) {
+//     if (isPalindrome(substringArr[i])) {
+//       results.push(substringArr[i]);
+//     }
+//   }
+//   return results;
+// }
+
+
+
+// console.log(palindromeSubstrings("supercalifragilisticexpialidocious")); // ["ili"]
+// console.log(palindromeSubstrings("abcddcbA"));   // ["bcddcb", "cddc", "dd"] case matters
+// console.log(palindromeSubstrings("palindrome")); // []
+// console.log(palindromeSubstrings(""));           // []
+
+
+// take a string and find all the substrings that are palindromes
+
+// function to find all the substrings of the string, have these in array
+// function to test if they are palindromes
+// function to iterate over the substrings array, testing each one if it's a palindrome
+// return those that are
+
+// function allSubstrings(str) {
+//   let results = [];
+
+//   for (let startIndex = 0; startIndex <= str.length - 2; startIndex ++) {
+//     for (let numChars = 2; numChars <= str.length - startIndex; numChars ++) {
+//       let endIndex = startIndex + numChars;
+//       results.push(str.slice(startIndex, endIndex));
+//     }
+//   }
+//   return results;
+// }
+
+// function isPalindrome(str) {
+//   return str === str.split('').reverse().join('');
+// }
+
+// function palindromeSubstrings(str) {
+//   let results = [];
+//   let substringArr = allSubstrings(str);
+
+//   substringArr.forEach(el => {
+//     if (isPalindrome(el)) {
+//       results.push(el);
+//     }
+//   })
+//   return results;
+// }
+
+// console.log(palindromeSubstrings("supercalifragilisticexpialidocious")); // ["ili"]
+// console.log(palindromeSubstrings("abcddcbA"));   // ["bcddcb", "cddc", "dd"] case matters
+// console.log(palindromeSubstrings("palindrome")); // []
+// console.log(palindromeSubstrings(""));           // []
+
+// let arr = [1, 3, 5, 7];
+// let arr2 = [10, 12, 14];
+// let arr3 = [];
+
+// if (arr.every(el => el % 2 === 1)) {
+//   arr3 = [...arr].concat(arr2);
+// } else {
+//   arr3[0] = 'empty';
+// }
+
+// console.log(arr);
+// console.log(arr2);
+// console.log(arr3);
+
+
+// let animals = { a: 'ant', b: 'bear', c: 'cat' };
+
+// console.log(Object.values(animals).some(el => el === 'cat'));
+
+// let arr = ['cat', 'dog'];
+
+// let [petsIdontLike, petsIlike] = arr;
+
+// console.log(petsIdontLike);
+
+// let arr = ['back', 'once', 'again', 'im', 'the', 'renegade', 'master'];
+
+// console.log(arr.findIndex(el => el.length > 4));
+
+// console.log({'c' : 'foo'} === {'c' : 'foo'});
+
+// let gnr = {
+//   vocals: 'Axl',
+//   guitar: 'Slash',
+//   bass : 'Duff',
+//   drums : 'Steven'
+// }
+
+// console.log(Object.keys(gnr).includes('guitar'));
+// console.log(Object.keys(gnr).includes('keyboard'));
+// console.log(gnr.hasOwnProperty('bass'));
+
+// let arr = [2, 4, {'six' : 6}]
+// arr[-3] = 5;
+// arr['foo'] = 'a';
+// console.log(arr);              // [ 2, 4, 6, '-3': 5, foo: 'a' ]
+// console.log(arr.length);       // 3
+// console.log(Object.keys(arr))  // [ '0', '1', '2', '-3', 'foo' ]
+// arr.map(x => x + 1);           // [ 3, 5, 7 ]
+
+// let arr = [1, 2, 3, 4, 5]
+// arr.fill(1, 1, 5);
+
+// console.log(arr);
+
+// console.log(['ant', 'bear'].map(elem => {
+//   if (elem.length > 3) {
+//     return elem;
+//   }
+// }));
+
+let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "Bambam"];
+// PROBLEM: Write a program that uses this array to create an object where the names are the keys and the values are the positions in the array:
+// EXAMPLES: { Fred: 0, Barney: 1, Wilma: 2, Betty: 3, Pebbles: 4, Bambam: 5 }
+// DATA STRUCTURES: array, object
+// ALGORITM:
+  // - set an empty object
+  // iterate over the array
+  // using the index and value assign that pair to the empty object
+  // return empty object
+
+// function makeObj(arr) {
+//   let obj = {};
+
+//   for (let i = 0; i < arr.length; i ++) {
+//     obj[arr[i]] = i;
+//   }
+//   return obj;
+// }
+
+// let flintstonesObj = makeObj(flintstones);
+// console.log(flintstonesObj);
+
+// can also do with forEach
+
+// function makeObj(arr) {
+//   let obj = {};
+
+//   arr.forEach((el, indx) => {
+//     obj[el] = indx;
+//   })
+//   return obj;
+// }
+
+// let flintstonesObj = makeObj(flintstones);
+// console.log(flintstonesObj);
+
+// Add up all of the ages from the Munster family object:
+
+// let ages = {
+//   Herman: 32,
+//   Lily: 30,
+//   Grandpa: 5843,
+//   Eddie: 10,
+//   Marilyn: 22,
+//   Spot: 237
+// };
+
+// let total = 0;
+
+// Object.values(ages).forEach(el => total += el);
+
+// console.log(total);
+
+// or with reduce 
+
+// console.log(Object.values(ages).reduce((accum, el) => {
+//   return accum += el}, 0));
+
+// console.log(Object.values(ages).reduce((accum, el) => accum += el, 0))
+
+// // Pick out the minimum age from our current Munster family object:
+
+// let ages = {
+//   Herman: 32,
+//   Lily: 30,
+//   Grandpa: 5843,
+//   Eddie: 10,
+//   Marilyn: 22,
+//   Spot: 237
+// };
+
+// with .sort
+
+// let valsArr = Object.values(ages);
+// let sortedArr = valsArr.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   } else if (a > b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(sortedArr[0]);
+
+// console.log(Object.values(ages).sort((a, b) => a - b)[0])
+
+// let valsArr = Object.values(ages);
+// console.log(Math.min(...valsArr));
+
+// PROBLEM: Create an object that expresses the frequency with which each letter occurs in this string:
+// EXAMPLES: given
+// DATA STRUCTURES: string, possibly array, object
+// ALGORITM
+  // Take string and split it at the letter level
+  // create empty object
+  // iterate over array
+  // check to see if the letter exists in the object
+  // if not add it
+  // need a counter variable for letters to be incremented when they get passed in to object
+
+// let statement = "The Flintstones Rock";
+
+// let arr = statement.replace(/[' ']/g, '').split('');
+// let obj = {};
+
+// for (let i = 0; i < arr.length; i++) {
+//   if (!obj[arr[i]]) {
+//     obj[arr[i]] = 1;
+//   } else {
+//     obj[arr[i]] += 1;
+//   }
+// }
+
+
+// console.log(obj);
+// { T: 1, h: 1, e: 2, F: 1, l: 1, ... }
+
+
+// another way to maybe do it is to set up an array for each group of letters and access the length property and assign that way
+
+// let cat = 'Butterscotch';
+
+// console.log(cat.indexOf('o'));
+
+// let dog = 'fido'
+// dog[0] = 'F';
+// console.log(dog);
+
+// let arr = ['This', 'is', 'a', 'string'];
+
+// console.log(arr[3.14]);
+
