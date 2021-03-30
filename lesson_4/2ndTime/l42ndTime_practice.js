@@ -1510,3 +1510,113 @@ let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "Bambam"];
 
 // console.log(arr[3.14]);
 
+// select all substrings of a string that are palindromes (same forward as backwards)
+
+let string1 = 'halo';
+
+// function allSubstrings(str) {
+//   let results = [];
+
+//   for (let startSlice = 0; startSlice <= str.length - 2; startSlice++) {
+//     for (let numChars = 2; numChars <= str.length - startSlice; numChars ++) {
+//       let endSlice = startSlice + numChars;
+//       results.push(str.slice(startSlice, endSlice));
+//     }
+//   }
+//   return results;
+// }
+
+
+function allSubstrings(str) {
+  let results = [];
+  let startSlice = 0;
+
+  while (startSlice <= str.length - 2) {
+    let numChars = 2;
+    while (numChars <= str.length - startSlice) {
+      let endSlice = startSlice + numChars;
+      results.push(str.slice(startSlice, endSlice));
+      numChars ++;
+    }
+    startSlice ++;
+  }
+  return results;
+}
+
+function isPalindrome(str) {
+  return str === str.split('').reverse().join('');
+}
+
+// function palindromeSubstrings(str) {
+//   let results = [];
+//   let substrArr = allSubstrings(str);
+
+//   for (let i = 0; i < substrArr.length; i++) {
+//     if (isPalindrome(substrArr[i])) {
+//       results.push(substrArr[i]);
+//     }
+//   }
+//   return results;
+// }
+
+// function palindromeSubstrings(str) {
+//   let results = [];
+//   let substrArr = allSubstrings(str);
+
+//   substrArr.forEach((el => {
+//     if (isPalindrome(el)) {
+//       results.push(el);
+//     }
+//   }))
+//   return results;
+// }
+
+// function palindromeSubstrings(str) {
+//   let substrArr = allSubstrings(str);
+
+//   return substrArr.filter((el => isPalindrome(el)));
+// }
+
+
+// console.log(palindromeSubstrings("supercalifragilisticexpialidocious")); // ["ili"]
+// console.log(palindromeSubstrings("abcddcbA"));   // ["bcddcb", "cddc", "dd"] case matters
+// console.log(palindromeSubstrings("palindrome")); // []
+// console.log(palindromeSubstrings(""));
+
+// let gnr = {
+//   axl : 'vocals',
+//   slash : 'guitar',
+//   duff : 'bass',
+//   steven : 'drums'
+// }
+
+// let arr = [5, 5, gnr, {'hello' : 'world'}];
+
+// console.log(arr.indexOf(gnr));
+// console.log(arr.indexOf({'hello' : 'world'}));
+
+// console.log(gnr.hasOwnProperty('axl'));
+// console.log(gnr.axl);
+
+// Write a function that takes one argument, a positive integer, and returns an array that contains all of the positive integers less than that number. For instance, lessThan(5) should return [1, 2, 3, 4], while lessThan(1) should return [].
+
+// set a results array
+// start a loop at 1; push all numbers less than that number
+
+// function nums(num) {
+//   let results = [];
+//   let counter = 1;
+
+//   while (counter < num) {
+//     results.push(counter);
+//     counter ++;
+//   }
+//   return results;
+// }
+
+// console.log(nums(5));
+
+// let arrEx = [1, 2] + [3, 4];
+
+// console.log(arrEx);
+
