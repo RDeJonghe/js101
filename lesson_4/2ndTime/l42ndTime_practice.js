@@ -1620,3 +1620,13 @@ function isPalindrome(str) {
 
 // console.log(arrEx);
 
+
+
+// Find all substrings of a word that are palindromes (same forward as backwards)
+// example of a palindrome is the word kayak
+// example of splitting a word into substrings is slow: slow, slo, sl, low, lo
+// example of a palindrome within substrings is:
+  // ("supercalifragilisticexpialidocious")); // ["ili"] (only substring the same forward as backwards)
+  // ("abcddcbA"));   ["bcddcb", "cddc", "dd"] case matters A not the same as a
+  // ("palindrome"));  [] If it's not a palindrome return an empty array
+  
