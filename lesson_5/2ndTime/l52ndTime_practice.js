@@ -180,7 +180,7 @@
 // console.log(copyOfObj); // => { a: { b: 'foo', d: 'baz' }, c: [ 'bar' ] }
 // console.log(obj);       // => { a: { b: 'foo', d: 'baz' }, c: [ 'bar' ] }
 
-let arr = [{ b: 'foo' }, ['bar']];
+// let arr = [{ b: 'foo' }, ['bar']];
 // let arrShallow = arr.slice();
 // arrShallow[0]['c'] = 'cat';
 // arrShallow[2] = 'owl';
@@ -212,3 +212,209 @@ let arr = [{ b: 'foo' }, ['bar']];
 // console.log(obj);
 // console.log(deepCopyObj);
 // console.log(objShallow);
+
+// let arr = [2, 4, [6, 8]];
+// let shallow = [...arr];
+
+// let serialized = JSON.stringify(arr);
+// let deep = JSON.parse(serialized);
+
+// arr[2][1] = 66;
+
+// console.log(arr);
+// // console.log(shallow);
+// console.log(deep);
+
+// let obj = {a : 1, b : {c : 3, d : 4}};
+
+// let shallow = Object.assign({}, obj);
+
+// let serialized = JSON.stringify(obj);
+// let deep = JSON.parse(serialized);
+
+// obj['b']['c'] = 33;
+
+// console.log(obj);
+// // console.log(shallow);
+// console.log(deep);
+
+// let arr = [2, 4, 6, 8, [10, 12]];
+// let obj = {'a' : 'ant', 'b' : 'bug', 'c' : ['cats', 'chameleons']};
+
+// Object.freeze(arr);
+// Object.freeze(obj);
+
+// arr[0] = 3; // does not reassign this, is frozen
+// obj['a'] = 'anteater'; // is frozen can't
+
+// arr[4][0] = 1000; // this does modify becasue it is nested
+// arr[4].push(200) // yes can modify
+
+// arr[0] = 20;
+
+// console.log(arr);
+
+// obj['c'][0] = 'CATZ';
+
+// obj['c'].push('kangaroos')
+
+// console.log(obj);
+
+// console.log(Object.isFrozen(arr));
+
+// How would you order the following array of number strings by descending numeric value (largest number value to smallest)?
+// let arr = ['10', '11', '9', '7', '8'];
+// // since these are strings convert to numbers first to sort
+
+// arr.sort((a, b) => {
+//   if (Number(a) > Number(b)) {
+//     return -1;
+//   } else if (Number(a) < Number(b)) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(arr);
+
+// How would you order the following array of objects based on the year of publication of each book, from the earliest to the latest?
+
+// let books = [
+//   { title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', published: '1967' },
+//   { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', published: '1925' },
+//   { title: 'War and Peace', author: 'Leo Tolstoy', published: '1869' },
+//   { title: 'Ulysses', author: 'James Joyce', published: '1922' },
+//   { title: 'The Book of Kells', author: 'Multiple Authors', published: '800' },
+// ];
+
+// books.sort((a, b) => {
+//   return Number(a['published']) - Number(b['published']);
+// })
+
+// console.log(books);
+
+// For each of these collection objects, demonstrate how you would access the letter g.
+
+// let arr1 = ['a', 'b', ['c', ['d', 'e', 'f', 'g']]];
+// // console.log(arr1[2][1][3]);
+
+// let arr2 = [{ first: ['a', 'b', 'c'], second: ['d', 'e', 'f'] }, { third: ['g', 'h', 'i'] }];
+// // console.log(arr2[1]['third'][0]);
+
+// let arr3 = [['abc'], ['def'], { third: ['ghi'] }];
+// // console.log(arr3[2]['third'][0][0]);
+
+// let obj1 = { a: ['d', 'e'], b: ['f', 'g'], c: ['h', 'i'] };
+// // console.log(obj1['b'][1]);
+
+// let obj2 = { first: { d: 3 }, second: { e: 2, f: 1 }, third: { g: 0 }}
+// console.log((Object.keys(obj2['third'])[0]))
+
+// For each of these collection objects, demonstrate how you would change the value 3 to 4.
+
+// let arr1 = [1, [2, 3], 4];
+// arr1[1][1] = 4;
+// // console.log(arr1);
+
+// let arr2 = [{ a: 1 }, { b: 2, c: [7, 6, 5], d: 4 }, 3];
+// arr2[2] = 4;
+// // console.log(arr2);
+
+// let obj1 = { first: [1, 2, [3]] };
+// obj1['first'][2][0] = 4;
+// // console.log(obj1);
+
+// let obj2 = { a: { a: ['1', 'two', 3], b: 4 }, b: 5 };
+// obj2['a']['a'][2] = 4;
+// console.log(obj2);
+
+// Compute and display the total age of the male members of the family.
+
+// let munsters = {
+//   Herman: { age: 32, gender: 'male' },
+//   Lily: { age: 30, gender: 'female' },
+//   Grandpa: { age: 402, gender: 'male' },
+//   Eddie: { age: 10, gender: 'male' },
+//   Marilyn: { age: 23, gender: 'female'}
+// };
+
+// algorithm
+// convert to object.entries to have the key value pairs
+// this also needs to be converted to object.entries since it is nested
+// iterate over this and filter on male gender
+// iterate over the filtered array to add all of the ages
+
+
+// This works
+// let munstersEntries = Object.entries(munsters);
+// console.log(munstersEntries);
+// let maleAgesArr = [];
+
+// for (let i = 0; i < munstersEntries.length; i ++) {
+//   if (munstersEntries[i][1]['gender'] === 'male') {
+//     maleAgesArr.push(munstersEntries[i][1]['age']);
+//   }
+// }
+
+// let maleAgesSummed = maleAgesArr.reduce((accum, el) => accum += el, 0);
+// console.log(maleAgesSummed);
+
+// with for in loop
+
+// let ageSummed = 0;
+
+// for (let el in munsters) {
+//   if (el['gender' === 'male']) {
+//     ageSummed += el['age'];
+//   }
+// }
+// console.log(ageSummed);
+
+// Given the following code, what will the final values of a and b be? Try to answer without running the code.
+
+// let a = 2; // primitive value
+// let b = [5, 8]; // array
+// let arr = [a, b]; // [primitive value, pointer to an array]
+
+// arr[0] += 2; // this changes the array but not a so a = 2; arr is [4, [5, 8]]
+// arr[1][0] -= a; // a is still 2 so array is now [4, [3, 8]] b is also [3, 8] since they point to the same spot in memory
+
+
+
+// // Using the forEach method, write some code to output all vowels from the strings in the arrays. Don't use a for or while loop
+
+// let obj = {
+//   first: ['the', 'quick'],
+//   second: ['brown', 'fox'],
+//   third: ['jumped'],
+//   fourth: ['over', 'the', 'lazy', 'dog'],
+// };
+
+// // get the arrays with .values and flatten to iterate with for each
+
+// console.log(Object.values(obj).flat())
+
+// strings and letters need different versions of sort() or you could just always do it writing out the long syntax
+// let arr = ['b', 'c', 'a'];
+// let arr2 = [21, 3, 1];
+
+// // arr.sort((a, b) => a - b);
+// // arr2.sort((a, b) => a - b);
+
+// arr.sort();
+// arr2.sort();
+
+// console.log(arr);
+// console.log(arr2);
+
+// let word = 'clock';
+
+// // print all substrings
+
+// for (let startSlice = 0; startSlice <= word.length - 2; startSlice ++) {
+//   for (let numChars2Slice = 2; numChars2Slice <= word.length - startSlice; numChars2Slice ++) {
+//     let endSlice = startSlice + numChars2Slice;
+//     console.log(word.slice(startSlice, endSlice));
+//   }
+// }
