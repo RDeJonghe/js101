@@ -418,3 +418,142 @@
 //     console.log(word.slice(startSlice, endSlice));
 //   }
 // }
+
+// Write a function that takes one argument, a positive integer, and returns the sum of its digits. Do this without using for, while, or do...while loops - instead, use a series of method calls to perform the sum.
+
+// convert number to a string
+// split the number into single digits in an array
+// loop over the array with a method call
+// convert each string number to number
+// add this to the total
+
+// const sum = function (num) {
+//   let arr = String(num).split('');
+//   return arr.reduce((accum, el) => {
+//     return accum += Number(el);
+//   }, 0)
+// }
+
+// refactored to be more brief
+
+// const sum = (num) => String(num).split('').reduce((accum, el) => accum += Number(el), 0);
+
+// console.log(sum(23));           // 5
+// console.log(sum(496));          // 19
+// console.log(sum(123456789));    // 45
+
+// Write a function that takes one integer argument, which may be positive, negative, or zero. This method returns true if the number's absolute value is odd. You may assume that the argument is a valid integer value.
+
+// const isOdd = function(num) {
+//   return Math.abs(num) % 2 === 1;
+// }
+
+// console.log(isOdd(2)); // => false
+// console.log(isOdd(5)); // => true
+// console.log(isOdd(-17)); // => true
+// console.log(isOdd(-8)); // => false
+// console.log(isOdd(0)); // => false
+// console.log(isOdd(7)); // => true
+
+// Log all odd numbers from 1 to 99, inclusive, to the console, with each number on a separate line.
+
+// let num = 1;
+
+// while (num <= 99) {
+//   console.log(num);
+//   num += 2;
+// }
+
+// Create a simple tip calculator. The program should prompt for a bill amount and a tip rate. The program must compute the tip, and then log both the tip and the total amount of the bill to the console. You can ignore input validation and assume that the user will enter numbers.
+
+// const READLINE = require('readline-sync');
+
+// let bill = READLINE.question('What is the bill? ');
+// let tipPercent = READLINE.question('What is the tip percentage');
+
+// let tip = Number(bill) * (Number(tipPercent) / 100);
+
+// let total = Number(bill) + tip;
+
+// console.log(`The tip is $${tip.toFixed(2)}`);
+// console.log(`The total is $${total.toFixed(2)}`);
+/* What is the bill? 200
+What is the tip percentage? 15
+
+The tip is $30.00
+The total is $230.00 */
+
+// Write a program that asks the user to enter an integer greater than 0, then asks whether the user wants to determine the sum or the product of all numbers between 1 and the entered integer, inclusive.
+
+// const READLINE = require('readline-sync');
+
+// let num = READLINE.question('Enter in a number greater than zero =>  ');
+// let operation = READLINE.question('Enter "s" for sum or "p" for product');
+
+// let numArr = [];
+// let realNum = Number(num);
+// let totalSum = 0;
+// let totalProd = 1;
+
+// while (realNum > 0) {
+//   numArr.push(realNum);
+//   realNum --;
+// }
+
+// if (operation === 's') {
+//   for (let el of numArr) {
+//     totalSum += el;
+//   }
+//   console.log(totalSum);
+// } else {
+//   for (let el of numArr) {
+//     totalProd *= el;
+//   }
+//   console.log(totalProd);
+// }
+
+
+
+/* Please enter an integer greater than 0: 5
+Enter "s" to compute the sum, or "p" to compute the product. s
+
+The sum of the integers between 1 and 5 is 15. */
+
+/* Please enter an integer greater than 0: 6
+Enter "s" to compute the sum, or "p" to compute the product. p
+
+The product of the integers between 1 and 6 is 720. */
+
+// // Write a function that takes two strings as arguments, determines the longer of the two strings, and then returns the result of concatenating the shorter string, the longer string, and the shorter string once again. You may assume that the strings are of different lengths.
+
+// const shortLongShort = function(str1, str2) {
+//   if (str1.length > str2.length) {
+//     console.log(str2 + str1 + str2);
+//   } else {
+//     console.log(str1 + str2 + str1);
+//   }
+// }
+
+// shortLongShort('abc', 'defgh');    // "abcdefghabc"
+// shortLongShort('abcde', 'fgh');    // "fghabcdefgh"
+// shortLongShort('', 'xyz');         // "xyz"
+
+// Write a function that computes the sum of all numbers between 1 and some other number, inclusive, that are multiples of 3 or 5. For instance, if the supplied number is 20, the result should be 98 (3 + 5 + 6 + 9 + 10 + 12 + 15 + 18 + 20).
+
+// You may assume that the number passed in is an integer greater than 1
+
+const multisum = (num) => {
+  let numArr = [];
+  while (num >= 1) {
+    if (num % 3 === 0 || num % 5 === 0) {
+      numArr.push(num);
+    }
+    num --;
+  }
+  return numArr.reduce((accum, el) => accum += el, 0);
+}
+
+console.log(multisum(3));       // 3
+console.log(multisum(5));       // 8
+console.log(multisum(10));      // 33
+console.log(multisum(1000));    // 234168
