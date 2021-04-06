@@ -542,18 +542,459 @@ The product of the integers between 1 and 6 is 720. */
 
 // You may assume that the number passed in is an integer greater than 1
 
-const multisum = (num) => {
-  let numArr = [];
-  while (num >= 1) {
-    if (num % 3 === 0 || num % 5 === 0) {
-      numArr.push(num);
-    }
-    num --;
-  }
-  return numArr.reduce((accum, el) => accum += el, 0);
-}
+// const multisum = (num) => {
+//   let numArr = [];
+//   while (num >= 1) {
+//     if (num % 3 === 0 || num % 5 === 0) {
+//       numArr.push(num);
+//     }
+//     num --;
+//   }
+//   return numArr.reduce((accum, el) => accum += el, 0);
+// }
 
-console.log(multisum(3));       // 3
-console.log(multisum(5));       // 8
-console.log(multisum(10));      // 33
-console.log(multisum(1000));    // 234168
+// console.log(multisum(3));       // 3
+// console.log(multisum(5));       // 8
+// console.log(multisum(10));      // 33
+// console.log(multisum(1000));    // 234168
+
+// simple example with recursion
+
+// function double(num) {
+//   console.log(num);
+
+//   if (num < 50) {
+//     double(num * 2);
+//   }
+// }
+
+// double(5);
+
+// function cCat(str) {
+//   console.log(str);
+
+//   if (str.length < 20) {
+//     cCat(str + 'z');
+//   }
+// }
+
+// cCat('y');
+
+// let num = 5;
+
+// function add(number) {
+//   console.log(number);
+//   number += 1;
+
+//   if (number < 10) {
+//     add(number);
+//   }
+// }
+
+// add(num);
+
+// function fibonacci(num) {
+//   if (num < 2) return num;
+//   return fibonacci(num - 1) + fibonacci(num - 2);
+// }
+
+// console.log(fibonacci(6));  // => 8
+// console.log(fibonacci(8)); // => 21
+// console.log(fibonacci(20)); // => 6765
+
+
+// while (arr.length < 10) {
+//   arr[arr.length] = num;
+//   num += 1;
+// }
+// console.log(arr)
+
+
+
+
+
+// const ARR = [2, 4, 5];
+// ARR[0] = 22;
+
+// // console.log(ARR);
+// const ARR2 = ARR;
+
+// ARR2[0] = 33;
+
+// console.log(ARR)
+// console.log(ARR2)
+
+// CONSTANT ARRAYS - THE CONTENTS CAN BE MODIFIED, THEY ARE CONSTANT IN THAT THEY CANNOT BE REASSIGNED WHERE THEY POINT TO. SO BE CAREFUL AND UNDERSTAND THAT CONSTANT REALLY REFERS TO THE POINTER, NOT TO THE CONTENTS
+
+// OBJECT.FREEZE() CAN BE USED ON ARRAYS, ARRAYS ARE OBJECTS, FREEZES TOP LEVEL ELEMENTS (BUT NOT NESTED ELEMENTS) BUT YOU CAN FREEZE SUB ELEMENTS ALSO
+
+// let arr = [1, 2, [3, 4]];
+// Object.freeze(arr);
+// Object.freeze(arr[2]);
+
+// arr[2][0] = 333;
+
+// console.log(arr);
+
+// let arr = [1, 2, 3, 4];
+// let arr2 = [4, 44, 444];
+// arr = arr.concat(arr2);
+// console.log(arr);
+// arr[arr.length] = arr2;
+// console.log(arr)
+
+// let arr = [2, 4, 6];
+// // let arr2 = []
+
+// for (let i = 0; i < arr.length; i ++) {
+//   arr[i] = arr[i] + 1;
+// }
+
+// console.log(arr)
+
+// let strings = ['a', 'b', 'c', 'd'];
+
+// let capped = strings.reduce((accum, el) => accum + el.toUpperCase(), '');
+
+// console.log(strings);
+// console.log(capped);
+
+// let arr = [2, 4, 6];
+
+// let reducer = ((accum, el) => accum + el);
+
+// console.log(arr.reduce((accum, el) => accum + el, 0));
+
+// let reducer = ((accum, el) => {
+//   return accum = accum.concat(el + 1);
+// }, [])
+
+// console.log(arr.reduce((accum, el) => {
+//   return accum = accum.concat(el + 10)
+// }, []));
+
+// 1) Turn an array of numbers into a total of all the numbers
+// let arr = [1, 2, 3];
+
+// console.log(arr.reduce((accum, el) => accum + el, 0));
+
+// 2) Turn an array of numbers into a long string of all those numbers.
+
+// let arr = [1, 2, 3];
+
+// console.log(arr.reduce((accum, el) => accum + String(el)), '');
+
+// let voters = [
+//   {name:'Bob' , age: 30, voted: true},
+//   {name:'Jake' , age: 32, voted: true},
+//   {name:'Kate' , age: 25, voted: false},
+//   {name:'Sam' , age: 20, voted: false},
+//   {name:'Phil' , age: 21, voted: true},
+//   {name:'Ed' , age:55, voted:true},
+//   {name:'Tami' , age: 54, voted:true},
+//   {name: 'Mary', age: 31, voted: false},
+//   {name: 'Becky', age: 43, voted: false},
+//   {name: 'Joey', age: 41, voted: true},
+//   {name: 'Jeff', age: 30, voted: true},
+//   {name: 'Zack', age: 19, voted: false}
+// ];
+
+// // solve with reduce - can acutally reduce this array even though inner elements are objects
+
+// let totalVoters = voters.reduce((accum, el) => {
+//   if (el['voted'] === true) {
+//     return accum + 1;
+//   } else {
+//     return accum;
+//   }
+// }, 0);
+
+// console.log(totalVoters);
+
+// // let totalVoters = 0;
+
+// // for (let i = 0; i < voters.length; i ++) {
+// //   if (voters[i]['voted'] === true) {
+// //     totalVoters += 1;
+// //   }
+// // }
+
+// // FILTER BEFORE REDUCING - if using conditional if, make sure to return something even for values you don't want
+
+// let totalVoters = voters.filter(el => el['voted'] === true).reduce((accum, el) => accum + 1, 0);
+
+// console.log(totalVoters);
+
+// let totalVoters = voters.reduce(function(sum, record){
+//   if(record.voted === true) {
+//      return sum + 1;
+//    } else{
+//       return sum
+//   }; 
+// }, 0);
+// console.log(totalVoters)
+
+// let totalVoters = voters.reduce((accum, el) => {
+//   if (el['voted'] === true) {
+//     return accum + 1;
+//   } else {
+//     return accum;
+//   }
+// }, 0)
+
+// console.log(totalVoters);
+
+// valuable - understand why return accum above
+
+// let arr = [[2, 6, 5], [300, 100, 400], [21, 33, 20]];
+
+// arr.sort((a, b) => {
+//   let totalA = a.reduce((accum, el) => accum + el, 0);
+//   let totalB = b.reduce((accum, el) => accum + el, 0)
+
+//   // if (totalA < totalB) {
+//   //   return -1;
+//   // } else if (totalA > totalB) {
+//   //   return 1;
+//   // } else {
+//   //   return 0;
+//   // }
+//   return totalA - totalB;
+// })
+
+// arr.forEach(el => {
+//   el.sort((a, b) => a - b);
+// })
+
+// let arr = ['back', 'once', 'again'];
+// // arr.sort();
+// arr.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   } else if
+//     (a > b) {
+//       return 1;
+//     } else {
+//       return 0
+//     }
+// });
+
+// let arr = [['back'], ['once'], ['again']];
+
+// for (let i = 0; i < arr.length; i++) {
+//  let a = arr[i];
+//  let b = arr[i + 1]
+// }
+
+// console.log(arr);
+
+// let wishlist = [
+//   { title: "Tesla Model S", price: 90000 },
+//   { title: "4 carat diamond ring", price: 45000 },
+//   { title: "Fancy hacky Sack", price: 5 },
+//   { title: "Gold fidgit spinner", price: 2000 },
+//   { title: "A second Tesla Model S", price: 90000 }
+// ];
+
+// console.log(wishlist.reduce((accum, el) => {
+//   return accum + el['price']
+// }, 0));
+
+// let arrays = [
+//   ["1", "2", "3"],
+//   [true],
+//   [4, 5, 6]
+// ];
+
+// console.log(arrays.reduce((accum, el) => {
+//   return accum = accum.concat(el)
+// }, []))
+
+// let doubler = function(num) {
+//   console.log(num);
+//   num *= 2;
+//   if (num < 65) {
+//     doubler(num);
+//   }
+// }
+
+// doubler(3);
+
+// let add2String = (str) => {
+//   console.log(str);
+//   str = str + 'z';
+//   if (str.length < 12) {
+//     add2String(str);
+//   }
+// }
+
+// add2String('xy');
+
+// let add2Arr = function(arr) {
+//   console.log(arr);
+//   arr.push('2');
+//   if (arr.length < 5) {
+//     add2Arr(arr);
+//   }
+// }
+
+// add2Arr([2, 3])
+
+// let fibonacci = function(num) {
+//   if (num < 2) {
+//     return num;
+//   }
+//   return fibonacci(num - 1) + fibonacci(num - 2);
+// }
+
+// console.log(fibonacci(20))
+// console.log(fibonacci(6))
+// console.log(fibonacci(7))
+
+// function factorial(num) {
+//   let total = 1;
+//   while (num > 1) {
+//     total *= num;
+//     num -= 1;
+//   }
+//   return total;
+// }
+
+// let counter = 0;
+
+// while (counter  1) {
+//   console.log(counter);
+//   counter += 1;
+
+//   if (counter > 2) {
+//     break;
+//   }
+// }
+
+// for (let i = 0; i < 5;) {
+//   console.log(i += 1);
+// }
+
+// The following code uses a randomNumberBetween function to generate a number between its first and second arguments. It uses a while loop to try to generate a number greater than 2. Refactor the code so that you don't need to call randomNumberBetween from two different locations, lines 6 and 10. Do not change the arguments you pass to randomNumberBetween.
+
+// function randomNumberBetween(min, max) {
+//   return Math.floor(Math.random() * (max - min + 1) + min);
+// }
+
+// let tries = 0;
+// let result;
+
+
+// do {
+//   result = randomNumberBetween(1, 6);
+//   tries += 1;
+// } while (result <= 2)
+
+// console.log('It took ' + String(tries) + ' tries to get a number greater than 2');
+
+// function factorial(num) {
+//   console.log(num);
+//   if (num === 1) {
+//     return 1;
+//   }
+
+//   return num * factorial(num - 1);
+// }
+
+// console.log(factorial(1));     // => 1
+// console.log(factorial(2));     // => 2
+// console.log(factorial(3));     // => 6
+// console.log(factorial(4));     // => 24
+// console.log(factorial(5));     // => 120
+// console.log(factorial(6));     // => 720
+// console.log(factorial(7));     // => 5040
+// console.log(factorial(8));     // => 40320
+
+// function adder(num) {
+//   console.log(num);
+//   if (num === 10) {
+//     return 10;
+//   }
+
+//   return num + adder(num + 1);
+// }
+
+// console.log(adder(6));
+
+// false || (true && false); FALSE
+// true || (1 + 2); TRUE
+// (1 + 2) || true; TRUE
+// true && (1 + 2); TRUE
+// false && (1 + 2); FALSE
+// (1 + 2) && true; TRUE
+// (32 * 4) >= 129; FALSE
+// false !== !true; FALSE
+// true === 4; FALSE
+// false === (847 === '847'); TRUE
+// false === (847 == '847');FALSE
+// (!true || (!(100 / 5) === 20) || ((328 / 4) === 82)) || false;  
+
+// console.log(!(100/5));
+
+// function factorial(num) {
+//   if (num === 1) {
+//     return 1
+//   }
+//   return num * factorial(num -1);
+// }
+
+// console.log(factorial(6));
+// console.log(factorial(7));
+
+// function adder(num) {
+//   if (num === 6) {
+//     return num;
+//   }
+//   return num + adder(num + 1);
+// }
+
+// console.log(adder(3))
+
+// let nums = [[4, 2, 3], [33, 22, 44], [111, 101, 100]];
+
+// nums.forEach(subArr => {
+//   return subArr.sort((a, b) => a - b);
+// })
+
+// console.log(nums);
+
+// BUILIDING .filter, .map, .forEach with reduce.
+
+let arr = [2, 3, 4, 5, 6, 7, 8, 9];
+
+// let newArr = arr.reduce((accum, el) => {
+//   if (el % 2 === 0) {
+//     return accum.concat(el);
+//   } else{
+//     return accum;
+//   }
+// }, []);
+
+// let newerArr = arr.reduce((accum, el) => {
+//   return accum.concat((el * 2));
+// }, [])
+
+// console.log(arr);
+// console.log(newArr);
+// console.log(newerArr);
+
+// arr.reduce((_, el) => {
+//   console.log(el);
+// })
+
+let arr2 = [[2, 3, 4], [5, 6, 7]];
+
+// arr2.forEach(subArr => {
+//   subArr.sort((a, b) => b - a);
+// })
+
+
+// arr2.reduce((_, subArr) => {
+//   subArr.sort((a, b) => b - a);
+// })
+// console.log(arr2);
