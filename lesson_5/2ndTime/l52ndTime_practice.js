@@ -965,7 +965,7 @@ The product of the integers between 1 and 6 is 720. */
 
 // BUILIDING .filter, .map, .forEach with reduce.
 
-let arr = [2, 3, 4, 5, 6, 7, 8, 9];
+// let arr = [2, 3, 4, 5, 6, 7, 8, 9];
 
 // let newArr = arr.reduce((accum, el) => {
 //   if (el % 2 === 0) {
@@ -987,7 +987,7 @@ let arr = [2, 3, 4, 5, 6, 7, 8, 9];
 //   console.log(el);
 // })
 
-let arr2 = [[2, 3, 4], [5, 6, 7]];
+// let arr2 = [[2, 3, 4], [5, 6, 7]];
 
 // arr2.forEach(subArr => {
 //   subArr.sort((a, b) => b - a);
@@ -998,3 +998,261 @@ let arr2 = [[2, 3, 4], [5, 6, 7]];
 //   subArr.sort((a, b) => b - a);
 // })
 // console.log(arr2);
+
+// function adder(num) {
+//   console.log(num);
+//   num += 1;
+//   if (num < 10) {
+//     return adder(num);
+//   }
+// }
+
+// adder(4);
+
+// function cCat(arr) {
+//   arr = arr.concat('xyz');
+//   console.log(arr);
+//   if (arr.length < 10) {
+//     return cCat(arr);
+//   }
+// }
+
+// cCat([2, 3, 4]);
+
+// function factorial(num) {
+//   if (num === 1) {
+//     return 1;
+//   }
+//   return num * factorial(num - 1);
+// }
+
+// console.log(factorial(6))
+
+// CHECK TO SEE IF 2 DIFFERENT ARRAYS HAVE THE SAME VALUES - not nested arrays
+
+// iterate over first array
+// on each iteration check that value against value of other array
+// if they are not equal return false
+// otherwise return true
+
+// let array1 = [1, 2, 3, 'hello', 6];
+// let array2 = [1, 2, 3, 'hello', 6];
+
+// function areEqual(arr1, arr2) {
+//   for (let i = 0; i < arr1.length; i++) {
+//     if (arr1[i] !== arr2[i]) {
+//       return false;
+//     }
+//   }
+//   return true;
+// }
+
+// console.log(areEqual(array1, array2))
+
+// let nums = [2, 4, 6];
+// let arr = ['back', 'once', 'again', nums];
+
+// console.log(arr.includes(nums));
+
+// let myArray = [
+//   [1, 3, 6, 11],
+//   [4, 2, 4],
+//   [9, 17, 16, 0],
+// ];
+
+// myArray.forEach(subArr => subArr.forEach(num => {
+//   if (num % 2 === 0) {
+//     console.log(num);
+//   }
+// }))
+
+// let myArray = [
+//   1, 3, 6, 11,
+//   4, 2, 4, 9,
+//   17, 16, 0,
+// ];
+
+// let evenOdd = myArray.map(num => {
+//   if (num % 2 === 0) {
+//     return 'even';
+//   } else {
+//     return 'odd';
+//   }
+// })
+
+// let evenOdd = myArray.reduce((accum, num) => {
+//   if (num % 2 === 0) {
+//     return accum.concat('even');
+//   } else {
+//     return accum.concat('odd');
+//   }
+// }, [])
+
+// console.log(evenOdd);
+
+// let things = [1, 'a', '1', 3, NaN, 3.1415, -4, null, false];
+
+// const findIntegers = (arr) => {
+//   return arr.filter(el => {
+//     return Number.isInteger(el);
+//   }
+//   )}
+
+// const findIntegers = function(arr) {
+//   return arr.reduce((accum, el) => {
+//     if (Number.isInteger(el)) {
+//       return accum.concat(el);
+//     }
+//     return accum;
+//   }, [])
+// }
+
+  // let nums = findIntegers(things);
+  // console.log(nums);
+
+  // Use map and filter to first determine the lengths of all the elements in an array of string values, then discard the even values (keep the odd values).
+
+//   let arr = ['a', 'abcd', 'abcde', 'abc', 'ab'];
+
+//   // function oddLengths(array) {
+//   //   return array.map(el => el.length).filter(el => el % 2 === 1);
+//   // }
+
+// let oddLengths = function(array) {
+//   return array.reduce((accum, el) => {
+//     return accum.concat(el.length);
+//   }, []).reduce((accum, el) => {
+//     if (el % 2 === 1) {
+//       return accum.concat(el);
+//     }
+//     return accum;
+//   }, [])
+// }
+
+// console.log(oddLengths(arr)); // => [1, 5, 3]
+
+// Use reduce to compute the sum of the squares of all of the numbers in an array:
+
+// let array = [3, 5, 7];
+
+// function sumOfSquares(arr) {
+//   return arr.reduce((accum, num) => {
+//     return accum += (num * num);
+//   }, 0)
+// }
+// // console.log(sumOfSquares(array)); // => 83
+
+// let arr = [
+//   ["hello", "world"],
+//   ["example", "mem", null, 6, 88],
+//   [4, 8, 12]
+// ];
+
+// arr[1][3] = 606;
+// console.log(arr);
+
+// let funStuff = ['riding dirt bikes', 'camping'];
+
+// let person = {
+//   name:    'Jane',
+//   age:     37,
+//   hobbies: funStuff
+// };
+
+// console.log(person);
+// delete person.age;
+
+// console.log(person)
+
+// let objA = {fu : 'bu'};
+// let objB = {man : 'chu'};
+
+// Object.assign(objA, objB);
+
+// console.log(objA.man === objB.man)
+// console.log(objA)
+// console.log(objB)
+
+// let myArray = {
+//   0 : 'back',
+//   1 : 'once',
+//   2 : 'again',
+//   length : 3
+// };
+
+// for (let i = 0; i < myArray.length; i += 1) {
+//   console.log(myArray[i]);
+// }
+
+// Create an array from the keys of the object obj below, with all of the keys converted to uppercase. Your implementation must not mutate obj.
+
+// let obj = {
+//   b: 2,
+//   a: 1,
+//   c: 3,
+// };
+
+// let arr = Object.keys(obj).map(el => el.toUpperCase());
+
+// console.log(arr)
+// console.log(obj)
+
+// let myProtoObj = {
+//   foo: 1,
+//   bar: 2,
+// };
+
+// // let newObj = Object.create(myProtoObj);
+// let myObj = Object.create(myProtoObj);
+// // let newerObj = Object.assign({}, myProtoObj);
+// console.log(myObj)
+// console.log(newerObj)
+
+// let myProtoObj = {
+//   foo: 1,
+//   bar: 2,
+// };
+// let myObj = Object.create(myProtoObj);
+
+// console.log(myObj.bar);
+
+/* Create a function that creates and returns a copy of an object. The function should take two arguments: the object to copy and an array of the keys that you want to copy. Do not mutate the original object.
+
+The function should let you omit the array of keys argument when calling the function. If you do omit the argument, the function should copy all of the existing keys from the object.
+
+Here are some examples for your reference: */
+
+// set an empty object
+// if no second argument set it equal to that array
+// iterate over the original object
+// assign to the new object the key values specified
+
+
+let objToCopy = {
+  foo: 1,
+  bar: 2,
+  qux: 3,
+};
+
+
+function copyObj(obj, arr) {
+  let resultObj = {};
+  if (!arr) {
+    return resultObj = obj;
+  }
+  
+// finish
+
+
+}
+
+
+
+let newObj = copyObj(objToCopy);
+console.log(newObj);        // => { foo: 1, bar: 2, qux: 3 }
+
+let newObj2 = copyObj(objToCopy, [ 'foo', 'qux' ]);
+console.log(newObj2);       // => { foo: 1, qux: 3 }
+
+let newObj3 = copyObj(objToCopy, [ 'bar' ]);
+console.log(newObj3);       // => { bar: 2 }
