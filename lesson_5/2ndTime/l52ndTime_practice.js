@@ -1228,31 +1228,214 @@ Here are some examples for your reference: */
 // assign to the new object the key values specified
 
 
-let objToCopy = {
-  foo: 1,
-  bar: 2,
-  qux: 3,
-};
+// let objToCopy = {
+//   foo: 1,
+//   bar: 2,
+//   qux: 3,
+// };
+
+// let gnr = {
+//   vocals: 'axl',
+//   guitar: 'slash',
+//   drums: 'steven',
+//   bass: 'duff'
+// }
+
+// function copyObj(obj, arr) {
+//   let resultObj = {};
+//   if (!arr) {
+//     return resultObj = obj;
+//   }
+// for (let i = 0; i < arr.length; i++) {
+//   resultObj[arr[i]] = obj[arr[i]];
+// }
+// return resultObj;
+// }
+
+// let copied = copyObj(gnr, ['vocals', 'guitar']);
+// console.log(copied);
 
 
-function copyObj(obj, arr) {
-  let resultObj = {};
-  if (!arr) {
-    return resultObj = obj;
-  }
-  
-// finish
+// let newObj = copyObj(objToCopy);
+// console.log(newObj);        // => { foo: 1, bar: 2, qux: 3 }
+
+// let newObj2 = copyObj(objToCopy, [ 'foo', 'qux' ]);
+// console.log(newObj2);       // => { foo: 1, qux: 3 }
+
+// let newObj3 = copyObj(objToCopy, [ 'bar' ]);
+// console.log(newObj3);       // => { bar: 2 }
+
+// let str = 'hello';
+
+// function assign(string) {
+//   string = 'hi'
+// }
+
+// assign(str);
+
+// console.log(str);
+
+// let obj = {
+//   foo: { a: "hello", b: "world" },
+//   bar: ["example", "mem", null, { xyz: 6 }, 88],
+//   qux: [4, 8, 12]
+// };
+
+// obj['bar'][3]['xyz'] = 606;
+
+// console.log(obj);
+
+// let c = [1, 2];
+// let d = c;
+// // c = [33, 44]
+// // c[2] = 17;
+
+// console.log(c);
+// console.log(d);
+
+// let names = ['joe', 'sally', undefined, 'bob'];
+
+// names.forEach(el => {
+//   try {
+//     console.log(`The name length is: ${el.length}`)
+//   } catch (exception) {
+//     console.log('check this')
+//   } 
+// })
 
 
-}
+// console.log(Math.sqrt(37));
 
 
+// let words = [
+//   'laboratory',
+//   'experiment',
+//   'flab',
+//   'Pans Labyrinth',
+//   'elaborate',
+//   'polar bear',
+// ];
 
-let newObj = copyObj(objToCopy);
-console.log(newObj);        // => { foo: 1, bar: 2, qux: 3 }
+// function allMatches(arr, regex) {
+//   let results = [];
+//   for (let i = 0; i < arr.length; i++) {
+//     if (regex.test(arr[i])) {
+//       results.push(arr[i]);
+//     }
+//   }
+//   return results;
+// }
 
-let newObj2 = copyObj(objToCopy, [ 'foo', 'qux' ]);
-console.log(newObj2);       // => { foo: 1, qux: 3 }
+// console.log(words.filter(el => /lab/.test(el)));
 
-let newObj3 = copyObj(objToCopy, [ 'bar' ]);
-console.log(newObj3);       // => { bar: 2 }
+// console.log(allMatches(words, /lab/)); // => ['laboratory', 'flab', 'elaborate']
+
+// function notANumber(val) {
+//   if (val !== val) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(notANumber(NaN));
+// console.log(notANumber(5));
+// console.log(notANumber('string'));
+
+// console.log(3 / -0);
+// console.log(3 / 0);
+
+// function repeat(num, str) {
+//   let newStr = '';
+//   while (num > 0) {
+//     newStr = newStr + str
+//     num -= 1;
+//   }
+//   console.log(newStr)
+// }
+
+// repeat(3, 'ha'); // 'hahaha'
+
+// let str = 'A pirate I was meant to be!\nTrim the sails and roam the sea!'
+// console.log(str)
+
+// let string1 = 'Polar Bear';
+// let string2 = 'Polar bear';
+
+// console.log(string1.toLowerCase() === string2.toLowerCase())
+
+// let byteSequence = 'TXkgaG92ZXJjcmFmdCBpcyBmdWxsIG9mIGVlbHMu';
+
+// console.log(byteSequence.includes('x'))
+
+// function isBlank(str) {
+//   return str.trim().length === 0;
+// }
+
+// console.log(isBlank('mars')); // false
+// console.log(isBlank('  '));   // false
+// console.log(isBlank(''));     // true
+
+// Write code that capitalizes the words in the string 'launch school tech & talk', so that you get the string 'Launch School Tech & Talk'.
+
+// take string
+// split it at the word level
+// upper the zero index of each word
+// join
+
+// let string = 'launch school tech & talk';
+
+// function capIt(str) {
+//   let arr = str.split(' ');
+
+//   for (let i = 0; i < arr.length; i++) {
+//     arr[i] = arr[i][0].toUpperCase() + arr[i].slice(1)
+//   }
+//   return arr.join(' ');
+// }
+
+// console.log(capIt(string));
+
+// let scores = [96, 47, 113, 89, 100, 102];
+
+// console.log(scores.filter(num => num >= 100).length)
+
+// let vocabulary = [
+//   ['happy', 'cheerful', 'merry', 'glad'],
+//   ['tired', 'sleepy', 'fatigued', 'drained'],
+//   ['excited', 'eager', 'enthused', 'animated']
+// ];
+
+// vocabulary.forEach(subArr => subArr.forEach(word => console.log(word)));
+
+
+// function filter(input) {
+//   return Array.isArray(input);
+// }
+
+// console.log(filter([2, 4]))
+
+// let destinations = ['Prague', 'London', 'Sydney', 'Belfast', 'Rome',
+//   'Aruba', 'Paris', 'Bora Bora', 'Barcelona', 'Rio de Janeiro',
+//   'Marrakesh', 'New York City'];
+
+// function contains(city, arr) {
+//   for (let i = 0; i < arr.length; i++) {
+//     if (arr[i] === city) {
+//       return true;
+//     } 
+//   }
+//   return false;
+// }
+// console.log(contains('Barcelona', destinations)); // true
+// console.log(contains('Nashville', destinations)); // false
+
+
+// let passcode = ['11', 'jZ5', 'hQ3f*', '8!7g3', 'p3Fs'];
+
+// passcode = passcode.join('-');
+
+// console.log(passcode)
+// Write some code here.
+// Expected return value: '11-jZ5-hQ3f*-8!7g3-p3Fs'
+

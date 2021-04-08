@@ -440,6 +440,45 @@ Given this previously seen family object, print the name, age, and gender of eac
 // console.log(results)
 
 
+// 16
+// Write code that capitalizes the words in the string 'launch school tech & talk', so that you get the string 'Launch School Tech & Talk'.
+
+
+
+// 17
+/* Create a function that creates and returns a copy of an object. The function should take two arguments: the object to copy and an array of the keys that you want to copy. Do not mutate the original object.
+
+The function should let you omit the array of keys argument when calling the function. If you do omit the argument, the function should copy all of the existing keys from the object.
+
+Here are some examples for your reference: */
+
+/* let objToCopy = {
+  foo: 1,
+  bar: 2,
+  qux: 3,
+};
+
+let newObj = copyObj(objToCopy);
+console.log(newObj);        // => { foo: 1, bar: 2, qux: 3 }
+
+let newObj2 = copyObj(objToCopy, [ 'foo', 'qux' ]);
+console.log(newObj2);       // => { foo: 1, qux: 3 }
+
+let newObj3 = copyObj(objToCopy, [ 'bar' ]);
+console.log(newObj3);       // => { bar: 2 } */
+
+// 18
+// solve with index of
+// let destinations = ['Prague', 'London', 'Sydney', 'Belfast', 'Rome',
+//   'Aruba', 'Paris', 'Bora Bora', 'Barcelona', 'Rio de Janeiro',
+//   'Marrakesh', 'New York City'];
+
+/* Write a function that checks whether or not a particular destination is included within destinations, without using the built-in method Array.prototype.includes().
+
+For example: When checking whether 'Barcelona' is contained in destinations, the expected output is true, whereas the expected output for 'Nashville' is false. */
+
+/* contains('Barcelona', destinations); // true
+contains('Nashville', destinations); // false */
 
 
 
