@@ -480,6 +480,144 @@ For example: When checking whether 'Barcelona' is contained in destinations, the
 /* contains('Barcelona', destinations); // true
 contains('Nashville', destinations); // false */
 
+// 19
+// solve with recursion
 
+/* Implement a function catAge that takes a number of human years as input and converts them into cat years. Cat years are calculated as follows:
+
+The first human year corresponds to 15 cat years.
+The second human year corresponds to 9 cat years.
+Every subsequent human year corresponds to 4 cat years */
+
+
+// catAge(0); // 0
+// catAge(1); // 15
+// catAge(2); // 24
+// catAge(3); // 28
+// catAge(4); // 32
+
+
+// ANSWER
+// function catAge(years) {
+//   if (years === 0) {
+//     return 0;
+//   } else if (years === 1) {
+//     return 15;
+//   } else if (years === 2) {
+//     return 24;
+//   } else {
+//     return 4 + catAge(years - 1);
+//   }
+// }
+
+// 20
+// Add a property to the below object, jane, so that the code on line 13 logs 'Hej, Bobby!' to the console.
+
+// let jane = {
+//   firstName: 'Jane',
+//   lastName: 'Harrelson',
+//   age: 32,
+//   location: {
+//     country: 'Denmark',
+//     city: 'Aarhus'
+//   },
+//   occupation: 'engineer',
+//   // add code here
+// };
+
+// jane.greet('Bobby'); // Hej, Bobby!
+
+// 21
+// JS100 problem in objects section
+// Write code that does the reverse, starting from a nested array of pairs and building an object. can also solve with forEach
+
+// let nestedArray = [['title', 'Duke'], ['name', 'Nukem'], ['age', 33]];
+
+// Expected output:
+// { title: 'Duke', name: 'Nukem', age: 33 }
+
+
+
+// answer
+// function makeObj(arr) {
+//   let obj = {};
+
+//   for (let i = 0; i < arr.length; i++) {
+//     obj[arr[i][0]] = arr[i][1];
+//   }
+//   return obj;
+// }
+
+// console.log(makeObj(nestedArray));
+
+
+// 22
+// From objects exercises of JS100
+// Write a function clone that takes an object as argument and returns a shallow copy of that argument. A shallow copy returns a new object that is a copy of the original object. However, only the object itself and any properties with primitive values are duplicated. Properties that are themselves objects are copied "by reference" -- that is, only a pointer to the object is copied.
+
+// function clone(obj) {
+//   // TODO
+// }
+
+// let person = {
+//   title: 'Duke',
+//   name: {
+//     value: 'Nukem',
+//     isStageName: true
+//   },
+//   age: 33
+// };
+
+// let clonedPerson = clone(person);
+// person.age = 34;
+
+// console.log(person.age);       // 34
+// console.log(clonedPerson.age); // 33
+
+// person.name.isStageName = false;
+// console.log(person.name.isStageName);       // false
+// console.log(clonedPerson.name.isStageName); // false
+
+
+// 23
+// solve using recursion
+// find the sum of all numbers given between the number and 1, also the product (mult) of all numbers between number and one
+// usually this can be done with a loop easily, do with recursion
+
+
+
+
+// ANSWER
+// function sum(num) {
+  // if (num === 1) {  // THIS KINDA ACTS LIKE STOPPING CONDITION OF LOOP
+//     return 1;
+//   } else {
+//     return num + sum(num - 1); // THIS IS WHAT CHANGES ON EACH ITERATION`
+//   }
+// }
+
+// function mult(num) {
+//   if (num === 1) {
+//     return 1;
+//   } else {
+//     return num * mult(num - 1);
+//   }
+// }
+
+// console.log(sum(5))
+
+
+// 24
+// exclusive or easy 2 exercise
+/* The || operator returns a truthy value if either or both of its operands are truthy, a falsey value if both operands are falsey. The && operator returns a truthy value if both of its operands are truthy, and a falsey value if either operand is falsey. This works great until you need only one of two conditions to be truthy, the so-called exclusive or.
+
+In this exercise, you will write a function named xor that takes two arguments, and returns true if exactly one of its arguments is truthy, false otherwise. Note that we are looking for a boolean result instead of a truthy/falsy value as returned by || and &&. */
+
+// all examples answers evaluate to true
+
+// console.log(xor(5, 0) === true);
+// console.log(xor(false, true) === true);
+// console.log(xor(1, 1) === false);
+// console.log(xor(true, true) === false);
 
 

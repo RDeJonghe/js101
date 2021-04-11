@@ -1439,3 +1439,322 @@ Here are some examples for your reference: */
 // Write some code here.
 // Expected return value: '11-jZ5-hQ3f*-8!7g3-p3Fs'
 
+// Write code that capitalizes the words in the string 'launch school tech & talk', so that you get the string 'Launch School Tech & Talk'.
+
+// have to uppercase first character of each word.
+// so problem is at the word level
+// split at word level
+// iterate over array of words
+// isolate the first character
+  // this is a splice and concat problem
+  // uppercase first character and splice on the rest of word
+  // this needs to be done with reassignment
+// join
+
+// let string = 'launch school tech & talk'
+
+// function capIt(str) {
+//   let words = string.split(' ');
+  
+//   for (let i = 0; i < words.length; i++) {
+//     words[i] = words[i][0].toUpperCase() + words[i].slice(1);
+//   }
+//   return words.join(' ');
+// }
+
+// console.log(capIt(string))
+
+// let groceryList = ['paprika', 'tofu', 'garlic', 'quinoa', 'carrots', 'broccoli', 'hummus'];
+
+// // Your code.
+
+// // logs:
+// // paprika
+// // tofu
+// // garlic
+// // quinoa
+// // carrots
+// // broccoli
+// // hummus
+
+// let remove = (arr) => {
+//   while (arr.length > 0) {
+//     console.log(arr[0]);
+//     arr.shift();
+//   }
+// }
+
+// remove(groceryList);
+
+// let destinations = ['Prague', 'London', 'Sydney', 'Belfast', 'Rome',
+//   'Aruba', 'Paris', 'Bora Bora', 'Barcelona', 'Rio de Janeiro',
+//   'Marrakesh', 'New York City'];
+
+//   let contains = function(city, arr) {
+//     return arr.indexOf(city) > 0;
+//   }
+
+
+//   console.log(contains('Barcelona', destinations)); // true
+// console.log(contains('Nashville', destinations)); // false
+
+/* Implement a function catAge that takes a number of human years as input and converts them into cat years. Cat years are calculated as follows:
+
+The first human year corresponds to 15 cat years.
+The second human year corresponds to 9 cat years.
+Every subsequent human year corresponds to 4 cat years. */
+
+// Take input
+// return cases for 0 and 1
+// return case for 2, this will be used in next step
+// have total age variable
+// if num >= 3
+// set total age variable to catAge 2
+// while num is greater than or equal to 3
+// increment total age by 4 on each iteration
+// return total age
+
+
+// let catAge = (num) => {
+//   if (num === 0) {
+//     return 0;
+//   } else if (num === 1) {
+//     return 15;
+//   } else if (num === 2) {
+//     return 24;
+//   }
+//   let totalAge = 24;
+
+//   while (num >= 3) {
+//     totalAge += 4;
+//     num -= 1;
+//   }
+//   return totalAge;
+// }
+
+// WITH RECURSION
+
+// function catAge(num) {
+//   if (num === 0) {
+//     return 0;
+//   } else if (num === 1) {
+//     return 15;
+//   } else if (num === 2) {
+//     return 24
+//   } else {
+//     return 4 + catAge(num - 1);
+//   }
+// }
+
+
+// console.log(catAge(0)); // 0
+// console.log(catAge(1)); // 15
+// console.log(catAge(2)); // 24
+// console.log(catAge(3)); // 28
+// console.log(catAge(4)); // 32
+// console.log(catAge(5))
+
+// Create a function removeLastChar that takes a string as an argument, and returns the string without the last character.
+
+// set string.length to string.length - 1 - couldn't do this, but can do with a slice
+
+// let removeLastChar = (str) => {
+//   return str.slice(0, str.length - 1);
+// }
+
+// can also split at character level, pop last element, join
+
+// let removeLastChar = function (str) {
+//   let arr = str.split('');
+//   arr.pop();
+//   return arr.join('');
+// }
+
+// console.log(removeLastChar('ciao!')); // 'ciao'
+// console.log(removeLastChar('hello')); // 'hell'
+
+// let jane = {
+//   firstName: 'Jane',
+//   lastName: 'Harrelson',
+//   age: 32,
+//   location: {
+//     country: 'Denmark',
+//     city: 'Aarhus'
+//   },
+//   occupation: 'engineer',
+// };
+
+// console.log(jane.location.country);
+
+// let fido = {
+//   name: 'Fido',
+//   species: 'Labrador Retriever',
+//   color: 'brown',
+//   weight: 16,
+// };
+
+// fido.age = 10;
+// fido['favorite food'] = 'treats'
+// // Add property 'age'.
+// // Add property 'favorite food'.
+// console.log(fido);
+
+// let jane = {
+//   firstName: 'Jane',
+//   lastName: 'Harrelson',
+//   age: 32,
+//   location: {
+//     country: 'Denmark',
+//     city: 'Aarhus'
+//   },
+//   occupation: 'engineer',
+//   greet: (name) => {
+//     console.log('Hej, ' + name);
+//   }
+// };
+
+// jane.greet('Bobby'); // Hej, Bobby!
+
+// let ocean = {};
+// let prefix = 'Indian';
+
+// ocean['prefix'] = 'Atlantic';
+
+// console.log(ocean); // { Indian: 'Pacific' }
+
+// let obj = {
+//   num: 42,
+//   'property name': 'string value',
+//   true: false,
+//   fun: function() {
+//     console.log('Harr Harr!');
+//   },
+// };
+
+// for (let prop in obj) {
+//   if (prop === 'true') {
+//     console.log("It's true!");
+//   }
+//   else (console.log('back once again'))
+// }
+
+// Write code that stores all of the vehicle property names in an array called keys.
+
+// let vehicle = {
+//   manufacturer: 'Tesla',
+//   model: 'Model X',
+//   year: 2015,
+//   range: 295,
+//   seats: 7
+// };
+
+// let keys = Object.keys(vehicle);
+// console.log(keys)
+
+// let person = {
+//   title: 'Duke',
+//   name: 'Nukem',
+//   age: 33
+// };
+
+// // instead of object.entries can also do this
+// let keyVal = [];
+
+// for (let key in person) {
+//   keyVal.push([key, person[key]]);
+// }
+
+// console.log(keyVal);
+
+// Expected output:
+// [['title', 'Duke'], ['name', 'Nukem'], ['age', 33]]
+
+// / Write code that does the reverse, starting from a nested array of pairs and building an object.
+
+let nestedArray = [['title', 'Duke'], ['name', 'Nukem'], ['age', 33]];
+
+// create empty object
+// iterate over nested array
+// on each iteration assign to object
+// use [] notation of 0, 1 to get to each element and make it key/value
+// return object
+
+
+// function makeObj(arr) {
+//   let obj = {};
+
+//   arr.forEach(subArr => {
+//     obj[subArr[0]] = subArr[1];
+//   })
+//   return obj;
+// }
+
+// console.log(makeObj(nestedArray));
+
+// let obj = Object.fromEntries(nestedArray);
+// console.log(obj)
+
+// function makeObj(arr) {
+//   let obj = {};
+
+//   for (let i = 0; i < arr.length; i++) {
+//     obj[arr[i][0]] = arr[i][1];
+//   }
+//   return obj;
+// }
+
+// console.log(makeObj(nestedArray));
+
+// Expected output:
+// { title: 'Duke', name: 'Nukem', age: 33 }
+
+// function clone(obj) {
+//   let newObj = {};
+//   let entries = Object.entries(obj);
+
+//   entries.forEach(subArr => {
+//     newObj[subArr[0]] = subArr[1];
+//   })
+//   return newObj;
+// }
+
+// let person = {
+//   title: 'Duke',
+//   name: {
+//     value: 'Nukem',
+//     isStageName: true
+//   },
+//   age: 33
+// };
+
+// let clonedPerson = clone(person);
+// person.age = 34;
+
+// console.log(person.age);       // 34
+// console.log(clonedPerson.age); // 33
+
+// person.name.isStageName = false;
+// console.log(person.name.isStageName);       // false
+// console.log(clonedPerson.name.isStageName); // false
+
+// Write a function that takes two strings as arguments, determines the length of the two strings, and then returns the result of concatenating the shorter string, the longer string, and the shorter string once again. You may assume that the strings are of different lengths.
+
+// set up a results variable let results;
+// set up a conditional to determine the length of the strings
+// if first string is shorter return first, second first
+// if second string is sorter return second first second
+
+// function shortLongShort(str1, str2) {
+//   let results;
+
+//   if (str1.length < str2.length) {
+//     return results = str1 + str2 + str1;
+//   } else {
+//     return results = str2 + str1 + str2;
+//   }
+// }
+
+
+// console.log(shortLongShort('abc', 'defgh'));    // "abcdefghabc"
+// console.log(shortLongShort('abcde', 'fgh'));    // "fghabcdefgh"
+// console.log(shortLongShort('', 'xyz'));         // "xyz"

@@ -528,3 +528,68 @@ let words = ['go', 'ahead', 'and', 'jump'];
 
 // console.log(ARR[2]);
 
+// console.log(String.fromCharCode(66));
+// console.log('a'.charCodeAt()
+// console.log(String.fromCharCode('199'));
+// console.log('$'.charCodeAt())
+
+// console.log('hello'.charAt(0))
+
+// console.log(String.fromCharCode('200'))
+// console.log('*'.charCodeAt());
+// console.log('back once again'.charAt(3))
+// console.log(String.fromCharCode(99))
+
+// let nums = [2, 3];
+// let [even, odd] = nums;
+
+// console.log(even);
+// console.log(odd);
+
+// let arr = ['back', 'once', 'again'];
+// let [str1, str2, str3] = arr;
+
+// console.log(str1)
+// console.log(str2)
+// console.log(str3)
+
+// let arr = [6, 'hello'];
+// let [num, str] = arr;
+// console.log(num);
+// console.log(str);
+// console.log(boo);
+
+// .some - used to tell if some of the elements of an array pass the function and are true
+// .every - used to tell if every/all pass the function - return true/false
+
+// let arr = [20, 21, 22, 23, 24, 25];
+
+// // console.log(arr.some(el => {
+// //   return el > 10}));
+
+// console.log(arr.every(num => num >= 20))
+
+// let arr = [2, 4, 6, 8, 10];
+
+// console.log(arr.find(el => el > 6));
+
+// console.log(arr.findIndex(el => el > 10));
+
+// let arr = [2, 3];
+// let [even, odd] = arr;
+// console.log(even);
+// console.log(odd);
+
+// console.log(String.fromCharCode(66))
+// console.log('a'.charCodeAt())
+// // console.log('hello'.charAt(1))
+// let str = 'back once again';
+// // for (let i = 0; i < str.length; i++) {
+// //   console.log(str[i].charCodeAt());
+// // }
+
+// let counter = 0;
+// while (counter < str.length) {
+//   console.log(str[counter].charAt())
+//   counter += 1;
+// }
