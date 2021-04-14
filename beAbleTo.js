@@ -621,3 +621,28 @@ In this exercise, you will write a function named xor that takes two arguments, 
 // console.log(xor(true, true) === false);
 
 
+// 25
+// Write a function that takes an array of numbers and returns an array with the same number of elements, but with each element's value being the running total from the original array.
+
+/* runningTotal([2, 5, 13]);             // [2, 7, 20]
+runningTotal([14, 11, 7, 15, 20]);    // [14, 25, 32, 47, 67]
+runningTotal([3]);                    // [3]
+runningTotal([]);                     // [] */
+
+// 26
+// Write a function that returns true if its integer argument is palindromic, or false otherwise. A palindromic number reads the same forwards and backwards.
+
+/* isPalindromicNumber(34543);        // true
+isPalindromicNumber(123210);       // false
+isPalindromicNumber(22);           // true
+isPalindromicNumber(5);            // true */
+
+// 27
+// Write another function that returns true if the string passed as an argument is a palindrome, or false otherwise. This time, however, your function should be case-insensitive, and should ignore all non-alphanumeric characters. If you wish, you may simplify things by calling the isPalindrome function you wrote in the previous exercise.
+
+/* isRealPalindrome('madam');               // true
+isRealPalindrome('Madam');               // true (case does not matter)
+isRealPalindrome("Madam, I'm Adam");     // true (only alphanumerics matter)
+isRealPalindrome('356653');              // true
+isRealPalindrome('356a653');             // true
+isRealPalindrome('123ab321');            // false */
