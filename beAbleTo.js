@@ -646,3 +646,37 @@ isRealPalindrome("Madam, I'm Adam");     // true (only alphanumerics matter)
 isRealPalindrome('356653');              // true
 isRealPalindrome('356a653');             // true
 isRealPalindrome('123ab321');            // false */
+
+// 28
+/* Write a function that takes a string consisting of zero or more space separated words and returns an object that shows the number of words of different sizes.
+
+Words consist of any sequence of non-space characters. */
+
+/* wordSizes('Four score and seven.');                       // { "3": 1, "4": 1, "5": 1, "6": 1 }
+wordSizes('Hey diddle diddle, the cat and the fiddle!');  // { "3": 5, "6": 1, "7": 2 }
+wordSizes("What's up doc?");                              // { "2": 1, "4": 1, "6": 1 }
+wordSizes('');                                            // {} */
+
+// 29
+/* Given a string of words separated by spaces, write a function that swaps the first and last letters of every word.
+
+You may assume that every word contains at least one letter, and that the string will always contain at least one word. You may also assume that each string contains nothing but words and spaces, and that there are no leading, trailing, or repeated spaces.
+
+Examples: */
+
+/* swap('Oh what a wonderful day it is');  // "hO thaw a londerfuw yad ti si"
+swap('Abcde');                          // "ebcdA"
+swap('a');                              // "a" */
+
+// 30
+/* // Write a function that takes two arrays as arguments and returns an array containing the union of the values from the two. There should be no duplication of values in the returned array, even if there are duplicates in the original arrays. You may assume that both arguments will always be arrays. */
+
+// union([1, 3, 5], [3, 6, 9]);    // [1, 3, 5, 6, 9]
+
+// 31
+// // Write a function that takes an array as an argument and returns an array that contains two elements, each of which is an array. Put the first half of the original array elements in the first element of the return value, and put the second half in the second element. If the original array contains an odd number of elements, place the middle element in the first half array.
+
+/* console.log(halvsies([1, 2, 3, 4]));       // [[1, 2], [3, 4]]
+console.log(halvsies([1, 5, 2, 4, 3]));    // [[1, 5, 2], [4, 3]]
+console.log(halvsies([5]));                // [[5], []]
+console.log(halvsies([]));                 // [[], []] */
