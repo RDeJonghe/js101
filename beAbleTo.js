@@ -680,3 +680,64 @@ swap('a');                              // "a" */
 console.log(halvsies([1, 5, 2, 4, 3]));    // [[1, 5, 2], [4, 3]]
 console.log(halvsies([5]));                // [[5], []]
 console.log(halvsies([]));                 // [[], []] */
+
+// 32
+// Write a function that combines two arrays passed as arguments, and returns a new array that contains all elements from both array arguments, with each element taken in alternation.
+
+// You may assume that both input arrays are non-empty, and that they have the same number of elements.
+
+// interleave([1, 2, 3], ['a', 'b', 'c']);    // [1, "a", 2, "b", 3, "c"]
+
+// 33
+// Write a function that counts the number of occurrences of each element in a given array. Once counted, log each element alongside the number of occurrences. Consider the words case sensitive e.g. ("suv" !== "SUV").
+
+/*
+let vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+                'motorcycle', 'motorcycle', 'car', 'truck'];
+
+countOccurrences(vehicles);
+
+// console output -- your output sequence may be different
+car => 4
+truck => 3
+SUV => 1
+motorcycle => 2
+*/
+
+// 34
+// Write a function that takes a string, doubles every consonant character in the string, and returns the result as a new string. The function should not double vowels ('a','e','i','o','u'), digits, punctuation, or whitespace.
+
+/* doubleConsonants('String');          // "SSttrrinngg"
+doubleConsonants('Hello-World!');    // "HHellllo-WWorrlldd!"
+doubleConsonants('July 4th');        // "JJullyy 4tthh"
+doubleConsonants('');                // "" */
+
+// 35
+// Write a function that takes a positive integer as an argument and returns that number with its digits reversed.
+/* reverseNumber(12345);    // 54321
+reverseNumber(12213);    // 31221
+reverseNumber(456);      // 654
+reverseNumber(12000);    // 21 -- Note that leading zeros in the result get dropped!
+reverseNumber(1);        // 1 */
+
+// 36
+// Write a function that takes a non-empty string argument and returns the middle character(s) of the string. If the string has an odd length, you should return exactly one character. If the string has an even length, you should return exactly two characters.
+
+// centerOf('I Love JavaScript'); // "a"
+// centerOf('Launch School');     // " "
+// centerOf('Launch');            // "un"
+// centerOf('Launchschool');      // "hs"
+// centerOf('x');                 // "x"
+
+// 37
+// Create a function that takes two integers as arguments. The first argument is a count, and the second is the starting number of a sequence that your function will create. The function should return an array containing the same number of elements as the count argument. The value of each element should be a multiple of the starting number.
+
+// You may assume that the count argument will always be an integer greater than or equal to 0. The starting number can be any integer. If the count is 0, the function should return an empty array.
+
+// sequence(5, 1);          // [1, 2, 3, 4, 5]
+// sequence(4, -7);         // [-7, -14, -21, -28]
+// sequence(3, 0);          // [0, 0, 0]
+// sequence(0, 1000000);    // []
+
+
+// 38
