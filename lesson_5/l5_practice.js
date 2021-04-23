@@ -593,3 +593,51 @@ let words = ['go', 'ahead', 'and', 'jump'];
 //   console.log(str[counter].charAt())
 //   counter += 1;
 // }
+
+
+// let arr = ['2', '3', '4'];
+
+// let numArr = arr.map(Number);
+
+// console.log(numArr);
+// console.log(typeof numArr[0]);
+
+// let strArr = numArr.map(String);
+
+// console.log(strArr);
+// console.log(typeof strArr[0]);
+
+// let removed = arr.splice(1, 2);
+// console.log(arr);
+// console.log(removed);
+
+// console.log(Boolean(1));
+// console.log(Boolean(0));
+// console.log(Boolean(''));
+// console.log(Boolean('string'))
+
+// let obj = {a:1, b:2, c:3};
+
+// let obj2 = {4:'d', 5:'e'}
+
+// let newObj = Object.assign(obj, obj2);
+
+// console.log(newObj)
+
+// Object.freeze(newObj);
+
+// console.log(Object.isFrozen(newObj))
+
+// let arr = {
+//   0 : 'back',
+//   1 : 'once',
+//   2 : 'again'
+// };
+
+
+let arr = [1, 2, 3]
+// let arr2 = [3, 4, 5]
+// let arr3 = [arr[2], arr2];
+// console.log(arr3)
+[arr[0], arr[3]] = [arr[3], arr[0]];
+console.log(arr)
