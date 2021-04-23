@@ -19,3 +19,6 @@
     let arr = [6, 'hello'];
     let [num, str] = arr;
 
+
+// indexOf 
+
