@@ -51,9 +51,6 @@
   // 2. Sort the numbers in the nested arrays in order but leave the subarrays in the same order
     // answer [[3, 4, 6], [6, 8, 9], [1, 2, 4]]
 
-// let scores = [[3, 6, 4], [6, 8, 9], [1, 4, 2]];
-
-
 // scores.sort((a, b) => {
 //   let totalA = a.reduce((accum, el) => accum += el);
 //   let totalB = b.reduce((accum, el) => accum += el);
@@ -73,8 +70,6 @@
 // combine 2 arrays without repeating values
 
 // one way
-// let arr1 = [2, 4, 6, 8];
-// let arr2 = [6, 8, 10, 12, 14];
 
 // let arr3 = Array(...arr1);
 
@@ -112,6 +107,7 @@
 // let nums = [2, 4, [6, 8], 10, [12], [14, 16]];
 // console.log(nums);
 
+
 // can do with reduce
 // nums = nums.reduce((accum, el) => accum.concat(el), []);
 
@@ -127,9 +123,6 @@
 
 // 5.
 // Be able to make deep copies of arrays and objects
-
-// let arr = [2, 4, [6, 8]];
-// let shallow = [...arr];
 
 // let serializedArr = JSON.stringify(arr);
 // let deepCopy = JSON.parse(serializedArr);

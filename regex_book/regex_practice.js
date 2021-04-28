@@ -342,3 +342,27 @@
 // console.log(str5.match(regex));
 
 
+// let record = "xyzzy  3456  \t  334\t\t\tabc\nbdjehfsk";
+// let fields = record.split(/\s+/);
+// // -> ['xyzzy', '3456', '334', 'abc']
+
+// console.log(fields);
+
+// let arr = 'abc:xyz:123'.split(/:+/)
+// //# -> ['a', 'b', 'c', 'x', 'y', 'z']
+// console.log(arr)
+
+// let str = 'Four score and seven';
+// let regex = /[aeiou]/g
+
+// str = str.replace(regex, '$');
+
+// console.log(str);
+
+// let text = "Back once again 'I\'m the renegade master'";
+
+// let regex = /(['"]).+\1/
+
+// text = text.replace(regex, '$1D for damager$1' );
+
+// console.log(text)
