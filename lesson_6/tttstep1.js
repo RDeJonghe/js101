@@ -34,6 +34,8 @@ Goodbye! */
 // ASK THE USER TO MARK A SQUARE -(save user choice to variable, set object to value of variable)
   // greeting message, let user know they are 'X' and computer is 'O' (or can build it to give choice)
   // show all of the options, top left, top center, top right, etc -
+    // validate user input
+      // if the choice does not exist / already taken, display error message and have them choose again
     // make this an object with key value pairs, 1 is top left, 2 is top center etc.
     // if the user chooses one - set that based off of the choice in display board
     // delete the key value that was just chosen.
@@ -72,11 +74,9 @@ Goodbye! */
   // y/n set the play again variable off of this
   // have to validate input
 
+// IF THEY SAY YES TO PLAY AGAIN, HAVE TO SET GAMEBOARD TO BLANK
+
 // DISPLAY GOODBYE MESSAGE
-
-
-
-
 
 // display board
 // let board = { // THIS JUST USED FOR PRACTICE TO SHOW
@@ -97,6 +97,8 @@ Goodbye! */
 // also have to find a way to stop the game if there is a winner - it seems if I win the computer still makes a choice, yes have to stop this. (if computer wins it stops)
 
 
+const READLINE = require('readline-sync');
+const MESSAGES = require('./ttt.json');
 
 function displayBoard(board) {
   console.log('');
@@ -113,7 +115,6 @@ function displayBoard(board) {
   console.log('     |     |')
   console.log('');
 }
-
 function initializeBoard() {
   let board = {};
 
@@ -122,17 +123,15 @@ function initializeBoard() {
   }
  return board;
 }
-
-function x_o_message() {
-  console.log("User choices will be displayed with an 'X', computer choices with an 'O'");
+function displayMessages(messageName) {
+  console.log(MESSAGES[messageName]);
 }
 
-const READLINE = require('readline-sync');
-
 let board = initializeBoard();
-displayBoard(board);
-
 let playAgain = true;
+let playAgainAnswer;
+displayMessages('welcome');
+displayBoard(board);
 
 while (playAgain === true) {
   let isAWinner = false;
@@ -148,115 +147,110 @@ while (playAgain === true) {
     8 : ' 8: Bottom Center',
     9 : ' 9: Bottom Right'
   }
-
   
   while (isAWinner === false && isATie === false) {
-    x_o_message();
+    displayMessages('xoMessage');
     
     function dispalyAvailableOptions() {
       console.log(`These are the available spaces. Type the number to make a selection. ${Object.values(boardOptions)}`);
     }
-    function computerChoiceMessage() {
-      console.log('The computer choice is displayed below');
-    }
-    function userWinsMessage() {
-      console.log('You win!');
-    }
-    function computerWinsMessage() {
-      console.log('Computer wins.');
-    }
     function determineUserWinner() {
       if (board['1'] === 'X' && board['2'] === 'X' && board['3'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['4'] === 'X' && board['5'] === 'X' && board['6'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['7'] === 'X' && board['8'] === 'X' && board['9'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['1'] === 'X' && board['5'] === 'X' && board['9'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['3'] === 'X' && board['5'] === 'X' && board['7'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['1'] === 'X' && board['4'] === 'X' && board['7'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['2'] === 'X' && board['5'] === 'X' && board['8'] === 'X') {
-        userWinsMessage();
         return isAWinner = true;
       } else if (board['3'] === 'X' && board['6'] === 'X' && board['9'] === 'X') {
-        userWinsMessage
         return isAWinner = true;
       }
     }
     function determineComputerWinner() {
       if (board['1'] === 'O' && board['2'] === 'O' && board['3'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['4'] === 'O' && board['5'] === 'O' && board['6'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['7'] === 'O' && board['8'] === 'O' && board['9'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['1'] === 'O' && board['5'] === 'O' && board['9'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['3'] === 'O' && board['5'] === 'O' && board['7'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['1'] === 'O' && board['4'] === 'O' && board['7'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['2'] === 'O' && board['5'] === 'O' && board['8'] === 'O') {
-        computerWinsMessage();
         return isAWinner = true;
       } else if (board['3'] === 'O' && board['6'] === 'O' && board['9'] === 'O') {
-        computerWinsMessage
         return isAWinner = true;
       }
     }
     function determineTie() {
       if (Object.keys(boardOptions).length === 0) {
-        console.log('It\'s a tie.');
         return isATie = true;
       }
     }
     
-
     let userChoice = READLINE.question(dispalyAvailableOptions());
 
+    while (!boardOptions[userChoice]) {
+      displayMessages('choiceTaken');
+      userChoice = READLINE.question(dispalyAvailableOptions());
+    }
+
     board[userChoice] = 'X'
-    displayBoard(board);
-    determineUserWinner();
-
-    // STILL HAVE TO VALIDATE AND NOT LET USER OVERWRITE COMPUTER CHOICE
-
     delete boardOptions[userChoice];
-    console.log(Object.entries(boardOptions));
+    displayBoard(board);
 
-    // let computerChoice = Math.floor(Math.random() * Object.values(boardOptions).length); // problem with this, it selects squares that have already been taken
+    determineUserWinner();
+    if (isAWinner === true) { // this breaks the game so it doesn't show a computer choice if the user won
+      displayMessages('userWin');
+      break;
+    }
+
+    determineTie();
+    if (isATie === true) {
+      displayMessages('tie')
+      break;
+    }
 
     let boardOptionsArray = Object.entries(boardOptions);
     let randomOption = boardOptionsArray[Math.floor(Math.random() * boardOptionsArray.length)];
     let computerChoice = randomOption[0]; // this will get the actual number we want, options already chosen have been deleted
-    console.log(randomOption);
-    console.log(computerChoice);
 
-    computerChoiceMessage();
-
+    displayMessages('computerChoice');
     board[computerChoice] = 'O';
+    delete boardOptions[computerChoice];
     displayBoard(board);
 
-    delete boardOptions[computerChoice];
-    console.log(Object.entries(boardOptions));
-
-    // determineUserWinner(); // this was moved above
     determineComputerWinner();
-    determineTie();
+    if (isAWinner === true) {
+      displayMessages('computerWin');
+      break;
+    } 
   } 
-  playAgain = false;
+
+  playAgainAnswer = READLINE.question(displayMessages('playAgain'))
+    .toLowerCase()
+    .slice(0, 1);
+
+  while (playAgainAnswer !== 'y' && playAgainAnswer !== 'n') {
+    displayMessages('invalidInput');
+    playAgainAnswer = READLINE.question(displayMessages('playAgain'));
+  }
+  
+  playAgainAnswer === 'y' ? playAgain = true : playAgain = false;
+  if (playAgainAnswer === 'n') {
+    displayMessages('goodbye');
+  }
+
+  board = initializeBoard();
+  displayBoard(board);
 }
