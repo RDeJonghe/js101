@@ -1,6 +1,6 @@
 // ALL BONUS FEATURES HERE
 
-// now on defense branch here
+
 
 const readline = require("readline-sync");
 
