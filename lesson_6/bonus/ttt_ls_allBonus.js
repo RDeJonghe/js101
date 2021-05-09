@@ -1,10 +1,8 @@
 // ALL BONUS FEATURES HERE
 
-// Need to add defensive strategy
-// check to see if two consecutive spaces are taken
-  // if so, computer will take that space
-
-  // added
+// defensive strategy,
+  // can do this like how they check for a winner
+  // instead of checking for a winner I can check for two taken spaces and an empty space
 
 const readline = require("readline-sync");
 
