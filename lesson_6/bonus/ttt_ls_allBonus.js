@@ -4,6 +4,7 @@
 // check to see if two consecutive spaces are taken
   // if so, computer will take that space
 
+  // added
 
 const readline = require("readline-sync");
 
