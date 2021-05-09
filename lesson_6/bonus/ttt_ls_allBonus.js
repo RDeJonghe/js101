@@ -1,5 +1,6 @@
 // ALL BONUS FEATURES HERE
 
+// make changes here
 
 
 const readline = require("readline-sync");
@@ -169,10 +170,10 @@ while (true) {
         computerWins += 1; // added
         break;
       }
-      // if (boardFull(board)) { // THIS ISN'T NEEDED, THE COMPUTER CAN NEVER CHOOSE AND TIE.
-      //   ties += 1;
-      //   break
-      // }
+      if (boardFull(board)) { // THIS ISN'T NEEDED, THE COMPUTER CAN NEVER CHOOSE AND TIE.
+        ties += 1;
+        break
+      }
       
   }
   displayBoard(board);
