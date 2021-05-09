@@ -1,7 +1,8 @@
 // ALL BONUS FEATURES HERE
 
-// make changes here
-// more changes here as well
+// Need to add defensive strategy
+// check to see if two consecutive spaces are taken
+  // if so, computer will take that space
 
 
 const readline = require("readline-sync");
