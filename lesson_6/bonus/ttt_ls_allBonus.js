@@ -1,8 +1,6 @@
 // ALL BONUS FEATURES HERE
 
-// defensive strategy,
-  // can do this like how they check for a winner
-  // instead of checking for a winner I can check for two taken spaces and an empty space
+// firstMove branch
 
 
 
