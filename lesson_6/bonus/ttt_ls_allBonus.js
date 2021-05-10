@@ -16,6 +16,9 @@ const WINNING_LINES = [
   [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
   [1, 5, 9], [3, 5, 7]             // diagonals
 ];
+let userWins = 0;
+let computerWins = 0;
+let ties = 0;
 
 function prompt(msg) {
   console.log(`=> ${msg}`);
@@ -159,6 +162,9 @@ function computerChoosesSquare(board) {
 }
 
 function boardFull(board) {
+  if (emptySquares(board).length === 0) {
+    ties += 1;
+  }
   return emptySquares(board).length === 0;
 }
 
@@ -181,12 +187,14 @@ function detectWinner(board) {
         board[sq2] === HUMAN_MARKER &&
         board[sq3] === HUMAN_MARKER
     ) {
+      userWins += 1;
       return 'Player';
     } else if (
         board[sq1] === COMPUTER_MARKER &&
         board[sq2] === COMPUTER_MARKER &&
         board[sq3] === COMPUTER_MARKER
     ) {
+      computerWins += 1;
       return 'Computer';
     }
   }
@@ -196,21 +204,22 @@ function detectWinner(board) {
  
 
 // ALGORITHM
-  // set a global constant for overall win at 5 for 5 games
-  // welcome user with best of 5 message
-  // need a match loop
-    // will stay in this loop until user or computer wins 5 games
-    // need a win counter for the computer
-    // need a win counter for the user
-    // need to display the score
-    // need to break the loop when someone has 5 wins
+  // Need to ask who goes first, the user or the computer?
+  // Based off of answer need to alternate between who picks
+  // This can stay the same for the best of 5 - each new best of 5 can choose who picks first
+
+  // prompt => who goes first 1 player, 2, computer?
+  // set a firstMove variable to readline.question to get the answer
+    // validate this input
+  // create an alternate player function
+  // this will take the initial answer for who goes first as an input
 
 
 
 while (true) {
-  let userWins = 0;
-  let computerWins = 0;
-  let ties = 0;
+  // let userWins = 0;
+  // let computerWins = 0;
+  // let ties = 0;
   let lastGameWinner = '';
   
   while (computerWins < GAMES_NEEDED_TO_WIN_MATCH && userWins < GAMES_NEEDED_TO_WIN_MATCH) {
@@ -227,23 +236,23 @@ while (true) {
 
       playerChoosesSquare(board);
       if (someoneWon(board) /*|| boardFull(board)*/) {
-        userWins += 1;
+        // userWins += 1;
         lastGameWinner = 'You' // added
         break;
       }
       if (boardFull(board)) {
         lastGameWinner = 'No one';
-        ties += 1;
+        // ties += 1;
         break;
       }
       computerChoosesSquare(board);
       if (someoneWon(board) /*|| boardFull(board)*/) {
         lastGameWinner = 'The computer'
-        computerWins += 1; // added
+        // computerWins += 1; // added
         break;
       }
       if (boardFull(board)) { // THIS ISN'T NEEDED, THE COMPUTER CAN NEVER CHOOSE AND TIE.
-        ties += 1;
+        // ties += 1;
         break
       }
       
