@@ -239,6 +239,7 @@ while (true) {
       currentPlayer = alternatePlayer(currentPlayer);
       if (someoneWon(board) || boardFull(board)) break;
     }
+
     displayBoard(board);
 
     if (someoneWon(board)) {
