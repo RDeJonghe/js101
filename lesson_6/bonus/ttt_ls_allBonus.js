@@ -5,12 +5,13 @@ const readline = require("readline-sync");
 const INITIAL_MARKER = ' ';
 const HUMAN_MARKER = 'X';
 const COMPUTER_MARKER = 'O';
-const GAMES_NEEDED_TO_WIN_MATCH = 5;
+const GAMES_NEEDED_TO_WIN_MATCH = 1;
 const WINNING_LINES = [
   [1, 2, 3], [4, 5, 6], [7, 8, 9], // rows
   [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
   [1, 5, 9], [3, 5, 7]             // diagonals
 ];
+const PLAY_AGAIN_RESPONSES = ['yes', 'y', 'no', 'no'];
 
 let userWins = 0;
 let computerWins = 0;
@@ -241,9 +242,14 @@ while (true) {
   if (computerWins === GAMES_NEEDED_TO_WIN_MATCH) {
     prompt('The computer won the overall match\n');
   }
-  prompt('Play again?');
-  let answer = readline.question().toLowerCase()[0];
-  if (answer !== 'y') break;
+  prompt("Play again? Enter 'y' for yes or 'n' for no:");
+  let answer = readline.question().toLowerCase().replace(/['"]/g, '');//[0];
+
+  while (!PLAY_AGAIN_RESPONSES.includes(answer)) {
+    prompt("Invalid response. Enter 'y' to play again, 'n' to exit");
+    answer = readline.question().toLowerCase().replace(/['"]/g, '');
+  }
+  break;
 }
 
 prompt('Thanks for playing Tic Tac Toe!');
