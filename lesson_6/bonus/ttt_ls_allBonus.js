@@ -217,9 +217,9 @@ function detectWinner(board) {
 
 
 while (true) {
-  // let userWins = 0;
-  // let computerWins = 0;
-  // let ties = 0;
+  userWins = 0; // these have to be set at zero each time so they can reset for the loop.
+  computerWins = 0;
+  ties = 0;
   let lastGameWinner = '';
   
   while (computerWins < GAMES_NEEDED_TO_WIN_MATCH && userWins < GAMES_NEEDED_TO_WIN_MATCH) {
