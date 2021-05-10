@@ -11,7 +11,7 @@ const WINNING_LINES = [
   [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
   [1, 5, 9], [3, 5, 7]             // diagonals
 ];
-const PLAY_AGAIN_RESPONSES = ['yes', 'y', 'no', 'no'];
+const PLAY_AGAIN_RESPONSES = ['yes', 'y', 'no', 'n'];
 
 let userWins = 0;
 let computerWins = 0;
@@ -244,12 +244,14 @@ while (true) {
   }
   prompt("Play again? Enter 'y' for yes or 'n' for no:");
   let answer = readline.question().toLowerCase().replace(/['"]/g, '');//[0];
+  console.log(answer);
 
   while (!PLAY_AGAIN_RESPONSES.includes(answer)) {
     prompt("Invalid response. Enter 'y' to play again, 'n' to exit");
     answer = readline.question().toLowerCase().replace(/['"]/g, '');
+    console.log(answer);
   }
-  break;
+  if (answer === 'n' || answer === 'no') break;
 }
 
 prompt('Thanks for playing Tic Tac Toe!');
