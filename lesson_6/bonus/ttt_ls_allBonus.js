@@ -1,7 +1,5 @@
 // ALL BONUS FEATURES HERE
 
-// scope changes
-
 const readline = require("readline-sync");
 
 const INITIAL_MARKER = ' ';
@@ -9,9 +7,9 @@ const HUMAN_MARKER = 'X';
 const COMPUTER_MARKER = 'O';
 const GAMES_NEEDED_TO_WIN_MATCH = 5;
 const WINNING_LINES = [
-  [1, 2, 3], [4, 5, 6], [7, 8, 9], // rows
-  [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
-  [1, 5, 9], [3, 5, 7]             // diagonals
+  [1, 2, 3], [4, 5, 6], [7, 8, 9],
+  [1, 4, 7], [2, 5, 8], [3, 6, 9],
+  [1, 5, 9], [3, 5, 7]
 ];
 const PLAY_AGAIN_RESPONSES = ['yes', 'y', 'no', 'n'];
 
@@ -78,11 +76,11 @@ while (true) {
 
   function playerChoosesSquare(board) {
     let square;
-    let empty = emptySquares(board); // added for joinOr
-    let choices = joinOr(empty, ', ', 'or'); // added for joinOr
+    let empty = emptySquares(board);
+    let choices = joinOr(empty, ', ', 'or');
 
     while (true) {
-      prompt(`Choose a square (${choices}):`); // added for joinOr
+      prompt(`Choose a square (${choices}):`);
       square = readline.question().trim();
       if (emptySquares(board).includes(square)) break;
 
@@ -132,7 +130,6 @@ while (true) {
     return null;
   }
 
-
   function computerChoosesSquare(board) {
     let randomIndex = Math.floor(Math.random() * emptySquares(board).length);
     let square = emptySquares(board)[randomIndex];
@@ -159,7 +156,7 @@ while (true) {
   }
 
   function someoneWon(board) {
-    return detectWinner(board);
+    return !!detectWinner(board);
   }
 
   function detectWinner(board) {
@@ -205,19 +202,10 @@ while (true) {
     }
   }
 
-// while true used to be here
-  // userWins = 0; // these have to be set at reset each time so they can reset for the loop.
-  // computerWins = 0;
-  // ties = 0;
-  // lastGameWinner = '';
-  // currentPlayer = '';
-
-
-
   prompt('Who goes first? Turns will be alternated here on out. Press 1 for yourself, 2 for the computer:')
   currentPlayer = readline.question();
 
-  while (currentPlayer !== '1' && currentPlayer !== '2') { // this validates the input for who goes first
+  while (currentPlayer !== '1' && currentPlayer !== '2') {
     prompt('Invalid input. Please enter 1 to go first, 2 for the computer to go first:');
     currentPlayer = readline.question();
   }
@@ -247,16 +235,15 @@ while (true) {
   if (computerWins === GAMES_NEEDED_TO_WIN_MATCH) {
     prompt('The computer won the overall match\n');
   }
-  
+
   prompt("Play again? Enter 'y' for yes or 'n' for no:");
   let answer = readline.question().toLowerCase().replace(/['"]/g, '');//[0];
-  console.log(answer);
 
   while (!PLAY_AGAIN_RESPONSES.includes(answer)) {
     prompt("Invalid response. Enter 'y' to play again, 'n' to exit");
     answer = readline.question().toLowerCase().replace(/['"]/g, '');
-    console.log(answer);
   }
+
   if (answer === 'n' || answer === 'no') break;
 }
 
