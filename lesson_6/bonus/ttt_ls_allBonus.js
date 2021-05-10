@@ -1,5 +1,7 @@
 // ALL BONUS FEATURES HERE
 
+// First move / alternate additions
+
 const readline = require("readline-sync");
 
 const INITIAL_MARKER = ' ';
@@ -15,7 +17,8 @@ const WINNING_LINES = [
 let userWins = 0;
 let computerWins = 0;
 let ties = 0;
-let lastGameWinner = ''
+let lastGameWinner = '';
+let currentPlayer = '';
 
 function prompt(msg) {
   console.log(`=> ${msg}`);
@@ -25,6 +28,7 @@ function displayBoard(board) {
   console.clear();
 
   console.log(`You are ${HUMAN_MARKER}. Computer is ${COMPUTER_MARKER}`);
+  console.log(`The current player is: ${currentPlayer}`);
 
   console.log('');
   console.log('     |     |');
@@ -185,14 +189,54 @@ function detectWinner(board) {
 
 // ALGORITHM
   // Need to ask who goes first, the user or the computer?
+    // this sets the initial value of current player variable
   // Based off of answer need to alternate between who picks
-  // This can stay the same for the best of 5 - each new best of 5 can choose who picks first
+    // This can stay the same for the best of 5 - each new best of 5 can choose who picks first
+  // need an alternate player function
+    // this will allow for the game play to change between players
+  // refactor to just have a 'chooseSquare' function
+    // one function instead of two
+    // this will be called on whoever the current player is, then the current player will change
 
   // prompt => who goes first 1 player, 2, computer?
   // set a firstMove variable to readline.question to get the answer
     // validate this input
-  // create an alternate player function
-  // this will take the initial answer for who goes first as an input
+
+function alternatePlayer(currentPlayer) {
+  if (currentPlayer === '1') {
+    return currentPlayer = '2';
+  } 
+  if (currentPlayer === '2') {
+    return currentPlayer = '1';
+  } 
+}
+
+
+/* while (true) {
+  displayBoard(board);
+
+  playerChoosesSquare(board);
+  if (someoneWon(board) || boardFull(board)) break;
+
+  computerChoosesSquare(board);
+  if (someoneWon(board) || boardFull(board)) break;
+} */
+
+/* while (true) {
+  displayBoard(board);
+  chooseSquare(board, currentPlayer);
+  currentPlayer = alternatePlayer(currentPlayer);
+  if (someoneWon(board) || boardFull(board)) break;
+} */
+
+function chooseSquare(board, currentPlayer) {
+  if (currentPlayer === '1') {
+    playerChoosesSquare(board);
+  }
+  if (currentPlayer === '2') {
+    computerChoosesSquare(board);
+  }
+}
 
 
 
@@ -201,6 +245,10 @@ while (true) {
   computerWins = 0;
   ties = 0;
   lastGameWinner = '';
+  currentPlayer = '';
+
+  prompt('Who goes first? Turns will be alternated here on out. Press 1 for yourself, 2 for the computer:')
+  currentPlayer = readline.question();
   
   while (computerWins < GAMES_NEEDED_TO_WIN_MATCH && userWins < GAMES_NEEDED_TO_WIN_MATCH) {
     let board = initializeBoard();
@@ -214,20 +262,26 @@ while (true) {
       
       prompt(`First to 5. Overall Score ==> Player wins: ${userWins} <<>> Computer wins: ${computerWins} <<>> Ties: ${ties}\n`);
 
-      playerChoosesSquare(board);
-      if (someoneWon(board)) {
-        break;
-      }
-      if (boardFull(board)) {
-        break;
-      }
-      computerChoosesSquare(board);
-      if (someoneWon(board)) {
-        break;
-      }
-      if (boardFull(board)) {
-        break;
-      }
+      chooseSquare(board, currentPlayer);
+      currentPlayer = alternatePlayer(currentPlayer);
+      if (someoneWon(board) || boardFull(board)) break;
+      // playerChoosesSquare(board);
+      // currentPlayer = alternatePlayer(currentPlayer);
+      // if (someoneWon(board)) {
+      //   break;
+      // }
+      // if (boardFull(board)) {
+      //   break;
+      // }
+      // computerChoosesSquare(board);
+      // currentPlayer = alternatePlayer(currentPlayer);
+      // if (someoneWon(board)) {
+      //   break;
+      // }
+      // if (boardFull(board)) {
+      //   break;
+      // }
+    
       
   }
     displayBoard(board);
