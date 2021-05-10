@@ -13,13 +13,6 @@ const WINNING_LINES = [
 ];
 const PLAY_AGAIN_RESPONSES = ['yes', 'y', 'no', 'n'];
 
-while (true) {
-  let userWins = 0;
-  let computerWins = 0;
-  let ties = 0;
-  let lastGameWinner = '';
-  let currentPlayer = '';
-
   function prompt(msg) {
     console.log(`=> ${msg}`);
   }
@@ -149,8 +142,6 @@ while (true) {
 
   function boardFull(board) {
     if (emptySquares(board).length === 0) {
-      lastGameWinner = 'No one';
-      ties += 1;
     }
     return emptySquares(board).length === 0;
   }
@@ -168,16 +159,12 @@ while (true) {
           board[sq2] === HUMAN_MARKER &&
           board[sq3] === HUMAN_MARKER
       ) {
-        userWins += 1;
-        lastGameWinner = 'You'
         return 'Player';
       } else if (
           board[sq1] === COMPUTER_MARKER &&
           board[sq2] === COMPUTER_MARKER &&
           board[sq3] === COMPUTER_MARKER
       ) {
-        computerWins += 1;
-        lastGameWinner = 'The computer'
         return 'Computer';
       }
     }
@@ -202,37 +189,71 @@ while (true) {
     }
   }
 
-  prompt('Who goes first? Turns will be alternated here on out. Press 1 for yourself, 2 for the computer:')
-  currentPlayer = readline.question();
+  function firstMove() {
+    let goesFirst;
+    prompt('Who goes first? Turns will be alternated here on out. Press 1 for yourself, 2 for the computer:')
+    goesFirst = readline.question();
+    return goesFirst;
+  }
+
+  function keepScore() {
+    let score = {
+      userWins : 0,
+      computerWins : 0,
+      ties : 0,
+      lastGameWinner : 0
+    }
+    return score;
+  }
+
+
+while (true) {
+  
+  let currentPlayer = firstMove();
+  let scoreCount = keepScore();
 
   while (currentPlayer !== '1' && currentPlayer !== '2') {
     prompt('Invalid input. Please enter 1 to go first, 2 for the computer to go first:');
     currentPlayer = readline.question();
   }
   
-  while (computerWins < GAMES_NEEDED_TO_WIN_MATCH && userWins < GAMES_NEEDED_TO_WIN_MATCH) {
+  while (scoreCount.computerWins < GAMES_NEEDED_TO_WIN_MATCH && scoreCount.userWins < GAMES_NEEDED_TO_WIN_MATCH) {
     let board = initializeBoard();
     
     while (true) {
       displayBoard(board);
 
-      if (userWins >= 1 || computerWins >= 1 || ties >= 1) {
-      prompt(`${lastGameWinner} won the last individual game.\n`)
+      if (scoreCount.userWins >= 1 || scoreCount.computerWins >= 1 || scoreCount.ties >= 1) {
+      prompt(`${scoreCount.lastGameWinner} won the last individual game.\n`)
       }
       
-      prompt(`First to 5. Overall Score ==> Player wins: ${userWins} <<>> Computer wins: ${computerWins} <<>> Ties: ${ties}\n`);
+      prompt(`First to 5. Overall Score ==> Player wins: ${scoreCount.userWins} <<>> Computer wins: ${scoreCount.computerWins} <<>> Ties: ${scoreCount.ties}\n`);
 
       chooseSquare(board, currentPlayer);
       currentPlayer = alternatePlayer(currentPlayer);
       if (someoneWon(board) || boardFull(board)) break;
   }
     displayBoard(board);
+
+    if (someoneWon(board)) {
+      if (detectWinner(board) === 'Player') {
+        scoreCount.userWins += 1;
+        scoreCount.lastGameWinner = 'You';
+      } else if (detectWinner(board) === 'Computer') {
+        scoreCount.computerWins += 1;
+        scoreCount.lastGameWinner = 'The computer';
+      } 
+    }
+    if (boardFull(board)) {
+      scoreCount.ties += 1;
+      scoreCount.lastGameWinner = 'No one';
+    }
   } 
 
-  if (userWins === GAMES_NEEDED_TO_WIN_MATCH) {
+  if (scoreCount.userWins === GAMES_NEEDED_TO_WIN_MATCH) {
     prompt('You won the overall match!\n');
   }
-  if (computerWins === GAMES_NEEDED_TO_WIN_MATCH) {
+  if (scoreCount.computerWins === GAMES_NEEDED_TO_WIN_MATCH) {
     prompt('The computer won the overall match\n');
   }
 
