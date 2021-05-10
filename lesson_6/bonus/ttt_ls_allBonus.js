@@ -28,7 +28,6 @@ function displayBoard(board) {
   console.clear();
 
   console.log(`You are ${HUMAN_MARKER}. Computer is ${COMPUTER_MARKER}`);
-  console.log(`The current player is: ${currentPlayer}`);
 
   console.log('');
   console.log('     |     |');
@@ -249,6 +248,11 @@ while (true) {
 
   prompt('Who goes first? Turns will be alternated here on out. Press 1 for yourself, 2 for the computer:')
   currentPlayer = readline.question();
+
+  while (currentPlayer !== '1' && currentPlayer !== '2') { // this validates the input for who goes first
+    prompt('Invalid input. Please enter 1 to go first, 2 for the computer to go first:');
+    currentPlayer = readline.question();
+  }
   
   while (computerWins < GAMES_NEEDED_TO_WIN_MATCH && userWins < GAMES_NEEDED_TO_WIN_MATCH) {
     let board = initializeBoard();
