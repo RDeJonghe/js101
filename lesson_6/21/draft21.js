@@ -35,6 +35,7 @@
   // for the value 10, push it 16 times
   // do these with three functions and then join
 
+const READLINE = require('readline-sync');
 
 function initializeDeckNumbers() {
   let cards = [];
@@ -192,4 +193,115 @@ showDealerAndPlayerCards(dealerCards, playerCards);
 // 3. Player turn: hit or stay
   //    - repeat until bust or stay
 
-// 
+// require readline sync
+// create a prompt function that will display questions, what you pass in to it is displayed
+// Going to need a loop, while the value of all cards is > 21 or user response is 'stay'
+  // Need to figure out when the value is greater than 21
+  // Have 2 arrays: aces and numbers
+    // need a total variable and a length of aces variable
+    // if arr1 has one card and arr2 has 1 card never a bust
+    // if arr 1 has zero cards and arr2 has 2 cards never a bust
+    // if arr 1 has one card and arr2 has 2 cards never a bust
+    // if value of arr2 > 21 bust
+    // if value of arr2 = 20 && arr1.length = 2 bust
+    // if value of arr2 = 19 && arr2.length = 3 bust
+    // if value of arr2 = 18 && arr2.length = 4 bust
+
+  // When hit
+    // generate a random card
+    // pass that card to the appropriate nested array
+      // if ace to aces, if num then to nums
+
+
+function hit(deck) {
+  let randomIndex = Math.floor(Math.random() * deck.length);
+  let anotherCard = deck[randomIndex];
+  let removedCard = deck.splice(randomIndex, 1);
+
+  // console.log(`this card has been removed: ${removedCard}`);
+
+  return anotherCard;
+}
+
+function addNewCardToHand(newCard) {
+  console.log(playerCards);
+  if (newCard === 'Ace') {
+    playerCards[0].push(newCard);
+  } else {
+    playerCards[1].push(newCard);
+  }
+}
+
+function prompt(message) {
+  console.log(`==> ${message}\n`);
+}
+
+function validateHitOrStayInput() {
+
+  let response = READLINE.question().toLowerCase();
+
+  while (response !== 'hit' && response !== 'stay') {
+    prompt("Invalid response. Type 'hit' or 'stay'.");
+    response = READLINE.question().toLowerCase();
+  }
+
+  return response;
+}
+
+while (true) {
+
+  prompt('Would you like to hit or stay?');
+
+  let userDecisionHitOrStay = validateHitOrStayInput()
+
+  if (userDecisionHitOrStay === 'stay') break;
+
+  let newPlayerCard = hit(deck);
+
+  console.log(newPlayerCard);
+
+  addNewCardToHand(newPlayerCard);
+
+  console.log(playerCards);
+  console.log(deck.length);
+
+  if (playerBust(playerCards)) break;
+
+}
+function playerBust(playerCards) {
+  let numbersAddedValue = playerCards[1].reduce((accum, num) => accum + num);
+  let numberOfAces = playerCards[0].length;
+  console.log(numbersAddedValue);
+
+  if (numbersAddedValue > 21) {
+    console.log("busted!")
+    return true;
+  } else if (numbersAddedValue === 20 && numberOfAces === 2) {
+    console.log("busted!")
+    return true;
+  } else if (numbersAddedValue === 19 && numberOfAces === 3) {
+    console.log("busted!")
+    return true;
+  } else if (numbersAddedValue === 18 && numberOfAces === 4) {
+    console.log("busted!")
+    return true;
+  }
+}
+// require readline sync
+// create a prompt function that will display questions, what you pass in to it is displayed
+// Going to need a loop, while the value of all cards is > 21 or user response is 'stay'
+  // Need to figure out when the value is greater than 21
+  // Have 2 arrays: aces and numbers
+    // need a total variable and a length of aces variable
+    // if arr1 has one card and arr2 has 1 card never a bust
+    // if arr 1 has zero cards and arr2 has 2 cards never a bust
+    // if arr 1 has one card and arr2 has 2 cards never a bust
+    // if value of arr2 > 21 bust
+    // if value of arr2 = 20 && arr1.length = 2 bust
+    // if value of arr2 = 19 && arr2.length = 3 bust
+    // if value of arr2 = 18 && arr2.length = 4 bust
+
+  // When hit
+    // generate a random card
+    // pass that card to the appropriate nested array
+      // if ace to aces, if num then to nums
