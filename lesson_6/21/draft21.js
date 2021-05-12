@@ -265,7 +265,10 @@ while (true) {
   console.log(playerCards);
   console.log(deck.length);
 
-  if (playerBust(playerCards)) break;
+  if (playerBust(playerCards)) {
+    prompt('Busted!');
+    break;
+  }
 
 }
 function playerBust(playerCards) {
@@ -274,16 +277,12 @@ function playerBust(playerCards) {
   console.log(numbersAddedValue);
 
   if (numbersAddedValue > 21) {
-    console.log("busted!")
     return true;
-  } else if (numbersAddedValue === 20 && numberOfAces === 2) {
-    console.log("busted!")
+  } else if (numbersAddedValue >= 20 && numberOfAces >= 2) { // could always add logic above this to handle 21 and aces - prob not necessary since the game will break automatically if the user has 21...
     return true;
-  } else if (numbersAddedValue === 19 && numberOfAces === 3) {
-    console.log("busted!")
+  } else if (numbersAddedValue >= 19 && numberOfAces >= 3) {
     return true;
-  } else if (numbersAddedValue === 18 && numberOfAces === 4) {
-    console.log("busted!")
+  } else if (numbersAddedValue >= 18 && numberOfAces >= 4) {
     return true;
   }
 }
