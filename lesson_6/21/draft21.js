@@ -79,16 +79,16 @@ function initializeDeck() {
   return deck;
 }
 
-function initializeSuits() {
-  let suits = [];
-  let counter13 = 1;
+// function initializeSuits() { // not going to work as planned with pairing with cards
+//   let suits = [];
+//   let counter13 = 1;
 
-  while (counter13 <= 13) {
-    suits.push('Hearts', 'Diamonds', 'Clubs', 'Spades');
-    counter13 += 1;
-  }
-  return suits;
-}
+//   while (counter13 <= 13) {
+//     suits.push('Hearts', 'Diamonds', 'Clubs', 'Spades');
+//     counter13 += 1;
+//   }
+//   return suits;
+// }
 
 // let suits = initializeSuits();
 // let deck = initializeDeck();
@@ -98,8 +98,8 @@ function initializeSuits() {
 // console.log(suits.length);
 
 // 2. Deal cards to player and dealer
-  // This has to be done randomly - give the player a card, dealer a card, player a card, dealer a card
-  // create an dealer array for numbers, and a dealer array for aces, same for player, 2 player arrays,
+  // This has to be done randomly - give each person 2 cards - this could be refactored to alternate, right now player 2 dealer 2
+  // create an dealer array for numbers, and a dealer array for aces, same for player, 2 player arrays, - these are nested
     // Keep aces separate since their value can vary - use a nested array to keep separately
       // we can use the length property of the aces array to tell how many they have, and what to do if there are multiple aces
     // choose a random index each time, this picks card randomly
@@ -110,23 +110,86 @@ function initializeSuits() {
 function playerDeal(deck) {
   let playerAces = [];
   let playerNumbers = [];
+  let counter = 1;
+  
+  while (counter <= 2) {
+    let randomIndex = Math.floor(Math.random() * deck.length);
+    let playerCard = deck[randomIndex];
 
-  let randomIndex = Math.floor(Math.random() * deck.length);
-  let playerCard = deck[randomIndex];
+    if (playerCard === 'Ace') {
+      playerAces.push(playerCard);
+    } else {
+      playerNumbers.push(playerCard);
+    }
 
-  if (playerCard === 'Ace') {
-    playerAces.push(playerCard);
-  } else {
-    playerNumbers.push(playerCard);
+    deck.splice(randomIndex, 1);
+    counter +=1;
   }
-
-  deck.splice(randomIndex, 1);
 
   return [playerAces, playerNumbers];
 }
 
-let deck = initializeDeck();
-// console.log(deck);
+function dealerDeal(deck) {
+  let dealerAces = [];
+  let dealerNumbers = [];
+  let counter = 1;
+  
+  while (counter <= 2) {
+    let randomIndex = Math.floor(Math.random() * deck.length);
+    let dealerCard = deck[randomIndex];
 
-let playerCard = playerDeal(deck);
-console.log(playerCard);
+    if (dealerCard === 'Ace') {
+      dealerAces.push(dealerCard);
+    } else {
+      dealerNumbers.push(dealerCard);
+    }
+
+    deck.splice(randomIndex, 1);
+    counter +=1;
+  }
+
+  return [dealerAces, dealerNumbers];
+}
+
+let deck = initializeDeck();
+
+let playerCards = playerDeal(deck);
+let dealerCards = dealerDeal(deck); 
+
+
+// console.log(playerCards);
+// console.log(dealerCards);
+// console.log(deck.length);
+
+
+// 2.5 SHOW CARDS
+// Can use template literals to show cards
+// for dealer, create a function to show a random card from the nested array
+// take the nested array and join it
+// then just use math .random to generate a random index number based on length of array,
+// show using the random index
+
+
+function pickDealerCardToShow(dealerCards) {
+  flattenedDealerCardArray = dealerCards.flat();
+
+  let randomIndex = Math.floor(Math.random() * flattenedDealerCardArray.length);
+
+  return flattenedDealerCardArray[randomIndex];
+}
+
+function showDealerAndPlayerCards(dealerCards, playerCards) {
+
+  let flattenedPlayerCardArray = playerCards.flat();
+
+  console.log(`Dealer has: ${pickDealerCardToShow(dealerCards)} and an unknown card`);
+  console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}`);
+}
+
+
+showDealerAndPlayerCards(dealerCards, playerCards);
+
+// 3. Player turn: hit or stay
+  //    - repeat until bust or stay
+
+// 
