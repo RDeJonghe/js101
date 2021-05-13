@@ -36,6 +36,7 @@
   // do these with three functions and then join
 
 const READLINE = require('readline-sync');
+const DEALER_STAY_NUMBER = 17;
 
 function initializeDeckNumbers() {
   let cards = [];
@@ -155,7 +156,9 @@ function dealerDeal(deck) {
 let deck = initializeDeck();
 
 let playerCards = playerDeal(deck);
-let dealerCards = dealerDeal(deck); 
+let dealerCards = dealerDeal(deck);
+
+console.log(dealerCards);
 
 
 // console.log(playerCards);
@@ -216,7 +219,9 @@ showDealerAndPlayerCards(dealerCards, playerCards);
 function hit(deck) {
   let randomIndex = Math.floor(Math.random() * deck.length);
   let anotherCard = deck[randomIndex];
-  let removedCard = deck.splice(randomIndex, 1);
+  deck.splice(randomIndex, 1);
+
+  // let removedCard = deck.splice(randomIndex, 1);
 
   // console.log(`this card has been removed: ${removedCard}`);
 
@@ -224,7 +229,7 @@ function hit(deck) {
 }
 
 function addNewCardToHand(newCard) {
-  console.log(playerCards);
+  // console.log(playerCards);
   if (newCard === 'Ace') {
     playerCards[0].push(newCard);
   } else {
@@ -258,23 +263,23 @@ while (true) {
 
   let newPlayerCard = hit(deck);
 
-  console.log(newPlayerCard);
+  // console.log(newPlayerCard);
 
   addNewCardToHand(newPlayerCard);
 
-  console.log(playerCards);
-  console.log(deck.length);
+  // console.log(playerCards);
+  // console.log(deck.length);
 
   if (playerBust(playerCards)) {
-    prompt('Busted!');
+    prompt('Busted! Dealer wins.');
     break;
   }
 
 }
 function playerBust(playerCards) {
-  let numbersAddedValue = playerCards[1].reduce((accum, num) => accum + num);
+  let numbersAddedValue = playerCards[1].reduce((accum, num) => accum + num, 0);
   let numberOfAces = playerCards[0].length;
-  console.log(numbersAddedValue);
+  // console.log(numbersAddedValue);
 
   if (numbersAddedValue > 21) {
     return true;
@@ -286,21 +291,68 @@ function playerBust(playerCards) {
     return true;
   }
 }
-// require readline sync
-// create a prompt function that will display questions, what you pass in to it is displayed
-// Going to need a loop, while the value of all cards is > 21 or user response is 'stay'
-  // Need to figure out when the value is greater than 21
-  // Have 2 arrays: aces and numbers
-    // need a total variable and a length of aces variable
-    // if arr1 has one card and arr2 has 1 card never a bust
-    // if arr 1 has zero cards and arr2 has 2 cards never a bust
-    // if arr 1 has one card and arr2 has 2 cards never a bust
-    // if value of arr2 > 21 bust
-    // if value of arr2 = 20 && arr1.length = 2 bust
-    // if value of arr2 = 19 && arr2.length = 3 bust
-    // if value of arr2 = 18 && arr2.length = 4 bust
 
-  // When hit
-    // generate a random card
-    // pass that card to the appropriate nested array
-      // if ace to aces, if num then to nums
+// 4. If player bust, dealer wins.
+  // already have code that determines bust, just print result when that happens
+
+// 5. Dealer turn: hit or stay
+  //    - repeat until total >= 17
+  // HAVE TO DETERMINE TOTAL BETWEEN NUMBERS AND ACES, figure out if ace is worth 1 or 11
+  // set a constant at 17 for dealer stay/magic number
+  // set a variable for ace value
+    // this will be determined based off of the numbers and also the length of ace value array (how many aces there are)
+  // set a variable for number value
+    // reduce the array to the sum of the numbers
+  // determine ace value
+    // if number value is <= 10 && length of ace array is 1, ace value = 11
+    // if number value is > 10 && length of ace array is 1 then ace value = 1
+    // if number value is <= 9 && length of ace array is 2 then ace value = 12
+    // if number value is > 9 && length of ace array is 2 then ace value = 2
+    // if number value is <= 8 && length of ace array is 3 then ace value = 13
+    // if number value is > 8 && length of ace array is 3 then ace value = 3
+    // if number value is <= 7 && length of ace array is 4 then ace value = 14
+    // if number value is > 7 && length of ace array is 4 then ace value = 4
+  // set a variable for dealer total
+  // determine dealer total
+    // add the reduced number value to the ace value variable
+  // determine hit or stay
+    // if dealer total is already >= 17 stay
+    // open a while loop, while dealer total <= 17
+    // use a hit function to generate a random card
+    // use a function to add new card to dealer hand
+    // use same reduce and total value to see total value
+    // when the total is 17 or over break
+  // save the total, it will be used in comparison for winner
+
+  function dealerNumbersValue(dealerCards) {
+    return dealerCards[1].reduce((accum, num) => accum + num, 0);
+  }
+
+  function dealerAcesValue(dealerCards, dealerNumbersValue) {
+    let dealerAcesValue = 0;
+    let acesArray = dealerCards[0];
+
+    if (dealerNumbersValue <= 10 && acesArray.length === 1) {
+      dealerAcesValue = 11;
+    } else if (dealerNumbersValue > 10 && acesArray.length === 1) {
+      dealerAcesValue = 1;
+    } else if (dealerNumbersValue <= 9 && acesArray.length === 2) {
+      dealerAcesValue = 12;
+    } else if (dealerNumbersValue > 9 && acesArray.length === 2) {
+      dealerAcesValue = 2;
+    } else if (dealerNumbersValue <= 8 && acesArray.length === 3) {
+      dealerAcesValue = 13;
+    } else if (dealerNumbersValue > 8 && acesArray.length === 3) {
+      dealerAcesValue = 3;
+    } else if (dealerNumbersValue <= 7 && acesArray.length === 4) {
+      dealerAcesValue = 14;
+    } else if (dealerNumbersValue > 7 && acesArray.length === 4) {
+      dealerAcesValue = 4;
+    }
+    
+    return dealerAcesValue;
+  }
+
+  console.log(dealerNumbersValue(dealerCards));
+
+  console.log(dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards)));
