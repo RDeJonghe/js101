@@ -159,7 +159,7 @@ let deck = initializeDeck();
 let playerCards = playerDeal(deck);
 let dealerCards = dealerDeal(deck);
 
-console.log(dealerCards);
+// console.log(dealerCards);
 
 
 // console.log(playerCards);
@@ -268,11 +268,11 @@ while (true) {
 
   addNewCardToHand(newPlayerCard);
 
-  // console.log(playerCards);
+  console.log(playerCards); // CREATE A FUNCTION TO SHOW NEW CARDS TO THE PLAYER AS THE GAME GOES ON, each new card is shown
   // console.log(deck.length);
 
   if (playerBust(playerCards)) {
-    prompt('Busted! Dealer wins.');
+    prompt('Busted! Dealer wins.'); // ALSO NEED TO BREAK OUT OF THE GAME, MAKE A PLAY AGAIN LOOP, SO THE REST OF THE PROGRAM DOESN'T RUN, NO NEED FOR THE DEALER TO HIT IF THE PLAYER BUSTS
     break;
   }
 
@@ -354,13 +354,13 @@ function playerBust(playerCards) {
     return dealerAcesValue;
   }
 
-  console.log(dealerNumbersValue(dealerCards));
+  //console.log(dealerNumbersValue(dealerCards));
 
-  console.log(dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards)));
+  //console.log(dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards)));
 
 let dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
 
-console.log(dealerTotal);
+// console.log(dealerTotal);
 
 
  // determine hit or stay
@@ -388,17 +388,19 @@ console.log(dealerTotal);
 
     let newDealerCard = hit(deck);
 
+    // CREATE A FUNCTION / PROMPT TO SHOW EACH CARD AS THE DEALER HITS, SO PLAYER SEES WHAT THE ADDED CARDS ARE
+
     addNewCardToDealerHand(newDealerCard);
 
     dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
 
-    console.log(dealerCards);
-    console.log(dealerTotal);
+    // console.log(dealerCards);
+    // console.log(dealerTotal);
 
   }
 
   if (dealerTotal >= BUST_NUMBER) {
-    prompt('Dealer Busted! Player Wins!')
+    prompt('Dealer Busted! Player Wins!') // USE THIS TO ALSO BREAK OUT OF THE ENTIRE GAME LOOP, NO NEED TO COMPARE
   }
 
   // 6. If dealer busts, player wins.
@@ -407,3 +409,68 @@ console.log(dealerTotal);
     // display player win info
 
 // 7. Compare cards and declare winner.
+  // Need to determine the value of the player (already have total value for dealer)
+    // use a player Numbers Value function to get numbers value
+    // use a player Aces value function to get aces value 
+      // these steps are similar to process to determine total for dealer, can always refactor to make more concise and share functions
+    // with the total, show both player cards, user cards and declare winner
+
+
+
+  function playerNumbersValue(playerCards) {
+    return playerCards[1].reduce((accum, num) => accum + num, 0);
+  }
+
+
+  function playerAcesValue(playerCards, playerNumbersValue) {
+    let playerAcesValue = 0;
+    let acesArray = playerCards[0];
+
+    if (playerNumbersValue <= 10 && acesArray.length === 1) {
+      playerAcesValue = 11;
+    } else if (playerNumbersValue > 10 && acesArray.length === 1) {
+      playerAcesValue = 1;
+    } else if (playerNumbersValue <= 9 && acesArray.length === 2) {
+      playerAcesValue = 12;
+    } else if (playerNumbersValue > 9 && acesArray.length === 2) {
+      playerAcesValue = 2;
+    } else if (playerNumbersValue <= 8 && acesArray.length === 3) {
+      playerAcesValue = 13;
+    } else if (playerNumbersValue > 8 && acesArray.length === 3) {
+      playerAcesValue = 3;
+    } else if (playerNumbersValue <= 7 && acesArray.length === 4) {
+      playerAcesValue = 14;
+    } else if (playerNumbersValue > 7 && acesArray.length === 4) {
+      playerAcesValue = 4;
+    }
+    
+    return playerAcesValue;
+  }
+
+  let playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
+
+
+
+
+  prompt(`The player has ${playerTotal} and the dealer has ${dealerTotal}`);
+
+  function declareWinner(playerTotal, dealerTotal) { // only need > since busts will break the game loop, have to add game loop
+    if (playerTotal > dealerTotal) {
+      return 'the player wins!';
+    } else if (dealerTotal > playerTotal) {
+      return 'the dealer wins.';
+    } else {
+      return 'a tie'
+    }
+  }
+
+  prompt(`The result is ${declareWinner(playerTotal, dealerTotal)}`);
+  
+
+  // REFACTORING
+    // NEED TO ADD PLAY AGAIN LOOP.
+      // this is needed so that the game will break on a bust and not continue to run, right now it continues to run
+      // need to display cards as the game progresses, show what cards the dealer hits
+      // can refactor to share functions, some repetitive code, fix other issues with gameplay then can look to combine functions
+
+      
