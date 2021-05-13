@@ -37,6 +37,7 @@
 
 const READLINE = require('readline-sync');
 const DEALER_STAY_NUMBER = 17;
+const BUST_NUMBER = 22;
 
 function initializeDeckNumbers() {
   let cards = [];
@@ -356,3 +357,53 @@ function playerBust(playerCards) {
   console.log(dealerNumbersValue(dealerCards));
 
   console.log(dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards)));
+
+let dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
+
+console.log(dealerTotal);
+
+
+ // determine hit or stay
+    // if dealer total is already >= 17 stay
+    // open a while loop, while dealer total <= 17
+    // use a hit function to generate a random card
+    // use a function to add new card to dealer hand
+    // use same reduce and total value to see total value
+    // when the total is 17 or over break
+  // save the total, it will be used in comparison for winner
+
+
+  function addNewCardToDealerHand(newCard) {
+    // console.log(playerCards);
+    if (newCard === 'Ace') {
+      dealerCards[0].push(newCard);
+    } else {
+      dealerCards[1].push(newCard);
+    }
+  }
+
+  
+
+  while (dealerTotal < DEALER_STAY_NUMBER) {
+
+    let newDealerCard = hit(deck);
+
+    addNewCardToDealerHand(newDealerCard);
+
+    dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
+
+    console.log(dealerCards);
+    console.log(dealerTotal);
+
+  }
+
+  if (dealerTotal >= BUST_NUMBER) {
+    prompt('Dealer Busted! Player Wins!')
+  }
+
+  // 6. If dealer busts, player wins.
+    // already have the dealer total,
+    // if total > 21 bust and player wins
+    // display player win info
+
+// 7. Compare cards and declare winner.
