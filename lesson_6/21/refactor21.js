@@ -410,6 +410,8 @@ while (true) {
   deck = initializeDeck();
   playerCards = playerDeal(deck);
   dealerCards = dealerDeal(deck);
+  let playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
+  let dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
 
   showDealerAndPlayerCards(dealerCards, playerCards);
 
@@ -426,6 +428,10 @@ while (true) {
     addNewCardToHand(newPlayerCard);
 
     showPlayerHand(playerCards);
+
+    playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
+
+    prompt(`Your total is: ${playerTotal}.`);
   
     if (playerBust(playerCards)) {
       prompt('Busted! Dealer wins.');
@@ -433,25 +439,34 @@ while (true) {
     }
 
   }
-    
-  let dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
+
+
+if (!(playerBust(playerCards))) {
+
       
   while (dealerTotal < DEALER_STAY_NUMBER) {
     let newDealerCard = hit(deck);
 
     addNewCardToDealerHand(newDealerCard);
 
+    prompt(`The dealer hit: ${newDealerCard}.`)
+
     dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
   }
 
-  showDealerHand(dealerCards);
-
+  
   if (dealerBust(dealerTotal)) {
+    showDealerHand(dealerCards);
+    prompt(`The dealer's toal is ${dealerTotal}.`);
     prompt('Dealer Busted! Player Wins!');
   }
+}
 
-  let playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
+if (!(dealerBust(dealerTotal))) {
+  showDealerHand(dealerCards);
+}
     
+
   if (!(playerBust(playerCards)) && !(dealerBust(dealerTotal))) {
 
   prompt(`The player has ${playerTotal} and the dealer has ${dealerTotal}`);
@@ -468,11 +483,14 @@ while (true) {
     playAgain = READLINE.question().toLowerCase().replace(/['"]/g, '');
   }
 
-  if (playAgain === 'n' || playAgain === 'no') break;   
+  if (playAgain === 'n' || playAgain === 'no') break;
+  console.clear();   
 }
   
     // REFACTORING
         // can refactor to share functions, some repetitive code, fix other issues with gameplay then can look to combine functions
+        // can refactor to show each hit card, the dealer hit... card, the dealer hit... card. show this on a new line and then show all of the dealers
+        // refactor functions that display info so they have a new line for consistent formatting
 
 
         
