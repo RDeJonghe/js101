@@ -108,26 +108,26 @@ function showDealerHand(dealerCards) {
   console.log(`The dealer's cards are: ${flattenedDealerCardArray.join(', ')}.`)
 }
 
-function hit(deck) { // this may be repetitive, can probably replace with the dealCard to Hand function
-  let randomIndex = Math.floor(Math.random() * deck.length);
-  let anotherCard = deck[randomIndex];
-  deck.splice(randomIndex, 1);
+// function hit(deck) { // this may be repetitive, can probably replace with the dealCard to Hand function
+//   let randomIndex = Math.floor(Math.random() * deck.length);
+//   let anotherCard = deck[randomIndex];
+//   deck.splice(randomIndex, 1);
 
-  // let removedCard = deck.splice(randomIndex, 1);
+//   // let removedCard = deck.splice(randomIndex, 1);
 
-  // console.log(`this card has been removed: ${removedCard}`);
+//   // console.log(`this card has been removed: ${removedCard}`);
 
-  return anotherCard;
-}
+//   return anotherCard;
+// }
 
-function addNewCardToHand(newCard) { // this may also possibly be replaced
-  // console.log(playerCards);
-  if (newCard === 'Ace') {
-    playerCards[0].push(newCard);
-  } else {
-    playerCards[1].push(newCard);
-  }
-}
+// function addNewCardToHand(newCard) { // this may also possibly be replaced
+//   // console.log(playerCards);
+//   if (newCard === 'Ace') {
+//     playerCards[0].push(newCard);
+//   } else {
+//     playerCards[1].push(newCard);
+//   }
+// }
 
 function prompt(message) {
   console.log(`==> ${message}\n`);
@@ -150,7 +150,7 @@ function playerBust(playerCards) {
   let numberOfAces = playerCards[0].length;
   // console.log(numbersAddedValue);
 
-  if (numbersAddedValue > 21) {
+  if (numbersAddedValue > 21) { // maybe all of this can be refactored to be simple like dealer bust
     return true;
   } else if (numbersAddedValue >= 20 && numberOfAces >= 2) { // could always add logic above this to handle 21 and aces - prob not necessary since the game will break automatically if the user has 21...
     return true;
@@ -190,14 +190,14 @@ function dealerAcesValue(dealerCards, dealerNumbersValue) {
   return dealerAcesValue;
 }
 
-function addNewCardToDealerHand(newCard) {
-  // console.log(playerCards);
-  if (newCard === 'Ace') {
-    dealerCards[0].push(newCard);
-  } else {
-    dealerCards[1].push(newCard);
-  }
-}
+// function addNewCardToDealerHand(newCard) {
+//   // console.log(playerCards);
+//   if (newCard === 'Ace') {
+//     dealerCards[0].push(newCard);
+//   } else {
+//     dealerCards[1].push(newCard);
+//   }
+// }
 
 function playerNumbersValue(playerCards) {
   return playerCards[1].reduce((accum, num) => accum + num, 0);
@@ -247,7 +247,7 @@ function dealACard(hand, deck) { // this feature added to alternate a card betwe
 
   deck.splice(randomIndex, 1);
 
-  return null; // point is to modify array, not use return value
+  return cardToDeal;
 }
 
 
@@ -267,25 +267,28 @@ while (true) {
 
   dealACard(playerCards, deck);
   dealACard(dealerCards, deck);
-  
-  showDealerAndPlayerCards(dealerCardToShow, playerCards);
-
 
   let playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
   let dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
+  
+  showDealerAndPlayerCards(dealerCardToShow, playerCards);
+  prompt(`Your total is: ${playerTotal}.`);
+
+
 
 
   while (true) {
 
     prompt('Would you like to hit or stay?');
 
-    let userDecisionHitOrStay = validateHitOrStayInput()
+    let userDecisionHitOrStay = validateHitOrStayInput();
 
     if (userDecisionHitOrStay === 'stay') break;
 
-    let newPlayerCard = hit(deck);
+    let newPlayerCard = dealACard(playerCards, deck);
 
-    addNewCardToHand(newPlayerCard);
+    // addNewCardToHand(newPlayerCard);
+    prompt(`You hit: ${newPlayerCard}`);
 
     showPlayerHand(playerCards);
 
@@ -309,9 +312,9 @@ if (!(playerBust(playerCards))) {
 
       
   while (dealerTotal < DEALER_STAY_NUMBER) {
-    let newDealerCard = hit(deck); // could possibly be replaced with addCardTo hand function
+    let newDealerCard = dealACard(dealerCards, deck); // could possibly be replaced with addCardTo hand function
 
-    addNewCardToDealerHand(newDealerCard);
+    //addNewCardToDealerHand(newDealerCard);
 
     prompt(`The dealer hit: ${newDealerCard}.`)
 
@@ -357,3 +360,4 @@ if (!(dealerBust(dealerTotal))) {
         // can refactor to show each hit card, the dealer hit... card, the dealer hit... card. show this on a new line and then show all of the dealers
         // refactor functions that display info so they have a new line for consistent formatting
         // when user has 21 program asks to hit or stay - can just automatically break here
+    // refactor player bust, can it be simple like dealer bust just looking at total?
