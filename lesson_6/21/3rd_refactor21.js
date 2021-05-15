@@ -60,19 +60,39 @@ function initializeDeck() {
 
 
 
-function pickDealerCardToShow(dealerCards) { // this may not be needed, dealer always shows first card, create function for that
-  flattenedDealerCardArray = dealerCards.flat();
+// function pickDealerCardToShow(dealerCards) { // this may not be needed, dealer always shows first card, create function for that
+//   flattenedDealerCardArray = dealerCards.flat();
 
-  let randomIndex = Math.floor(Math.random() * flattenedDealerCardArray.length);
+//   let randomIndex = Math.floor(Math.random() * flattenedDealerCardArray.length);
 
-  return flattenedDealerCardArray[randomIndex];
+//   return flattenedDealerCardArray[randomIndex];
+// }
+
+// create a function and pass in dealer cards,
+// function will be called when dealer has one card,
+// check if element 0 exists if so return that card, if not return other card
+
+function dealerCardFaceUp(dealerCards) {
+  if (dealerCards[0].length === 1) {
+    return dealerCards[0];
+  } else {
+    return dealerCards[1][0]; // the second card is pushed into the array, so if no aces, [1][0] is first card dealt, [1][1] is second card dealt
+  }
 }
 
-function showDealerAndPlayerCards(dealerCards, playerCards) {
+// function showDealerAndPlayerCards(dealerCards, playerCards) {
+  
+//   let flattenedPlayerCardArray = playerCards.flat();
+
+//   console.log(`Dealer has: ${pickDealerCardToShow(dealerCards)} and an unknown card`);
+//   console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}`);
+// }
+
+function showDealerAndPlayerCards(dealerCardToShow, playerCards) {
   
   let flattenedPlayerCardArray = playerCards.flat();
 
-  console.log(`Dealer has: ${pickDealerCardToShow(dealerCards)} and an unknown card`);
+  console.log(`Dealer has: ${dealerCardToShow} and an unknown card`);
   console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}`);
 }
 
@@ -166,7 +186,7 @@ function dealerAcesValue(dealerCards, dealerNumbersValue) {
   } else {
     dealerAcesValue = acesArray.length;
   }
-  console.log(`dealer aces value: ${dealerAcesValue}`);
+
   return dealerAcesValue;
 }
 
@@ -199,7 +219,7 @@ function playerAcesValue(playerCards, playerNumbersValue) {
   } else {
     playerAcesValue = acesArray.length;
   }
-  console.log(`PLAYER ACES VALUE: ${playerAcesValue}`);
+
   return playerAcesValue;
 }
 
@@ -241,18 +261,19 @@ while (true) {
   dealerCards = [[],[]];
   deck = initializeDeck();
 
-  // playerCards = playerDeal(deck);
-  // dealerCards = dealerDeal(deck);
   dealACard(playerCards, deck);
   dealACard(dealerCards, deck);
+  let dealerCardToShow = dealerCardFaceUp(dealerCards);
+
   dealACard(playerCards, deck);
   dealACard(dealerCards, deck);
+  
+  showDealerAndPlayerCards(dealerCardToShow, playerCards);
 
 
   let playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
   let dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
 
-  showDealerAndPlayerCards(dealerCards, playerCards);
 
   while (true) {
 
@@ -271,6 +292,10 @@ while (true) {
     playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
 
     prompt(`Your total is: ${playerTotal}.`);
+
+    // if (playerTotal === 21) { // added - no need to ask hit or stay if player has 21
+    //   break;
+    // }
   
     if (playerBust(playerCards)) {
       prompt('Busted! Dealer wins.');
@@ -331,3 +356,4 @@ if (!(dealerBust(dealerTotal))) {
         // can refactor to share functions, some repetitive code, fix other issues with gameplay then can look to combine functions
         // can refactor to show each hit card, the dealer hit... card, the dealer hit... card. show this on a new line and then show all of the dealers
         // refactor functions that display info so they have a new line for consistent formatting
+        // when user has 21 program asks to hit or stay - can just automatically break here
