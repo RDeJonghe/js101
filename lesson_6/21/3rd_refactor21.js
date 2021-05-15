@@ -184,7 +184,6 @@ while (true) {
   playerCards = [[],[]];
   dealerCards = [[],[]];
   deck = initializeDeck();
-  
 
   dealACard(playerCards, deck);
   dealACard(dealerCards, deck);
@@ -199,49 +198,35 @@ while (true) {
   showDealerAndPlayerCards(dealerCardToShow, playerCards);
   prompt(`Your total is: ${playerTotal}.`);
 
-
-
-
   while (true) {
 
     prompt('Would you like to hit or stay?');
-
     let userDecisionHitOrStay = validateHitOrStayResponse();
 
     if (userDecisionHitOrStay === 'stay') break;
-
     let newPlayerCard = dealACard(playerCards, deck);
 
-    
     prompt(`You hit: ${newPlayerCard}`);
-
     showPlayerHand(playerCards);
 
     playerTotal = playerNumbersValue(playerCards) + playerAcesValue(playerCards, playerNumbersValue(playerCards));
-
     prompt(`Your total is: ${playerTotal}.`);
-
   
     if (playerBust(playerTotal)) {
       prompt('Busted! Dealer wins.');
       break;
     }
-
   }
 
-
 if (!(playerBust(playerTotal))) {
-
-      
+   
   while (dealerTotal < DEALER_STAY_NUMBER) {
+
     let newDealerCard = dealACard(dealerCards, deck);
-
     prompt(`The dealer hit: ${newDealerCard}.`)
-
     dealerTotal = dealerNumbersValue(dealerCards) + dealerAcesValue(dealerCards, dealerNumbersValue(dealerCards));
   }
 
-  
   if (dealerBust(dealerTotal)) {
     showDealerHand(dealerCards);
     prompt(`The dealer's total is ${dealerTotal}.`);
@@ -253,11 +238,8 @@ if (!(dealerBust(dealerTotal))) {
   showDealerHand(dealerCards);
 }
     
-
   if (!(playerBust(playerTotal)) && !(dealerBust(dealerTotal))) {
-
   prompt(`The player has ${playerTotal} and the dealer has ${dealerTotal}`);
-  
   prompt(`The result is ${declareWinner(playerTotal, dealerTotal)}`);
   }
 
@@ -270,7 +252,12 @@ if (!(dealerBust(dealerTotal))) {
     playAgain = READLINE.question().toLowerCase().replace(/['"]/g, '');
   }
 
-  if (playAgain === 'n' || playAgain === 'no') break;
+  if (playAgain === 'n' || playAgain === 'no') {
+    console.clear();
+    prompt('Thank you for playing 21');
+    break;
+  }
+
   console.clear();   
 }
   
