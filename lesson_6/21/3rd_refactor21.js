@@ -261,7 +261,25 @@ if (!(dealerBust(dealerTotal))) {
   console.clear();   
 }
   
-    // REFACTORING
+// BETTING FEATURE
+// ask how much they will start with for chips, need $ amount in number save to variable
+  // keep this as a starting amount to compare with
+// set a running balance total variable
+  // this will be altered each game based on how much a person bets
+// set a minimum bet constant = 5
+// set a max starting amount = 500
+// set max bet = 100
+// constant bet increments = [5, 10, 25, 50, 100]
+
+// need an outer loop while player money > 0
+// breaks if money is 0 or if player wants to cash out
+  // when this breaks show how much player won or lost in comparison with initial amount
+// need an inner loop where person bets each time
+  // ask for individual bet and save it to a variable
+  // depending on outcome of hand add or subtract that amount to running total
+
+
+// REFACTORING
     // show the first card the dealer has dealt to himself
         // can refactor to share functions, some repetitive code, fix other issues with gameplay then can look to combine functions
         // can refactor to show each hit card, the dealer hit... card, the dealer hit... card. show this on a new line and then show all of the dealers
