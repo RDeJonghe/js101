@@ -2,18 +2,20 @@ const READLINE = require('readline-sync');
 const DEALER_STAY_NUMBER = 17;
 const BUST_NUMBER = 22;
 const PLAY_AGAIN_RESPONSES = ['y', 'n', 'yes', 'no'];
+const NUMBER_OF_ACES = 4;
+const NUMBER_OF_SUITS = 4;
   
 function initializeDeckNumbers() {
   let cards = [];
-  let counter4 = 1;
+  let counter = 1;
 
-  while (counter4 <= 4) {
-    let counterCard = 2;
-    while (counterCard <= 10) {
-      cards.push(counterCard);
-      counterCard += 1;
+  while (counter <= NUMBER_OF_SUITS) {
+    let cardIncrementer = 2;
+    while (cardIncrementer <= 10) {
+      cards.push(cardIncrementer);
+      cardIncrementer += 1;
     }
-    counter4 += 1;
+    counter += 1;
   }
   return cards;
 }
@@ -31,11 +33,11 @@ function initializeDeckPeople() {
 
 function initializeDeckAces() {
   let cards = [];
-  let counter4 = 1;
+  let counter = 1;
 
-  while (counter4 <= 4) {
+  while (counter <= NUMBER_OF_ACES) {
     cards.push('Ace');
-    counter4 += 1;
+    counter += 1;
   }
   return cards;
 }
@@ -46,32 +48,6 @@ function initializeDeck() {
   return deck;
 } 
 
-// result is a nested array for the dealer and a nested array for the player
-// have to deal every other, player, dealer, player, dealer
-
-// create a player hand variable and a dealer hand variable - nested arrays
-
-// create a deal function where you pass in the hand and the deck
-// function generates a random card
-// based on value of the card it is pushed to the first element or the second element
-// push is destructive and modifies it
-// have to remove that card from the deck
-// this just returns the new array with the cards
-
-
-
-// function pickDealerCardToShow(dealerCards) { // this may not be needed, dealer always shows first card, create function for that
-//   flattenedDealerCardArray = dealerCards.flat();
-
-//   let randomIndex = Math.floor(Math.random() * flattenedDealerCardArray.length);
-
-//   return flattenedDealerCardArray[randomIndex];
-// }
-
-// create a function and pass in dealer cards,
-// function will be called when dealer has one card,
-// check if element 0 exists if so return that card, if not return other card
-
 function dealerCardFaceUp(dealerCards) {
   if (dealerCards[0].length === 1) {
     return dealerCards[0];
@@ -80,13 +56,9 @@ function dealerCardFaceUp(dealerCards) {
   }
 }
 
-// function showDealerAndPlayerCards(dealerCards, playerCards) {
-  
-//   let flattenedPlayerCardArray = playerCards.flat();
-
-//   console.log(`Dealer has: ${pickDealerCardToShow(dealerCards)} and an unknown card`);
-//   console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}`);
-// }
+function prompt(message) {
+  console.log(`==> ${message}\n`);
+}
 
 function showDealerAndPlayerCards(dealerCardToShow, playerCards) {
   
@@ -106,65 +78,6 @@ function showDealerHand(dealerCards) {
   let flattenedDealerCardArray = dealerCards.flat();
 
   console.log(`The dealer's cards are: ${flattenedDealerCardArray.join(', ')}.`)
-}
-
-// function hit(deck) { // this may be repetitive, can probably replace with the dealCard to Hand function
-//   let randomIndex = Math.floor(Math.random() * deck.length);
-//   let anotherCard = deck[randomIndex];
-//   deck.splice(randomIndex, 1);
-
-//   // let removedCard = deck.splice(randomIndex, 1);
-
-//   // console.log(`this card has been removed: ${removedCard}`);
-
-//   return anotherCard;
-// }
-
-// function addNewCardToHand(newCard) { // this may also possibly be replaced
-//   // console.log(playerCards);
-//   if (newCard === 'Ace') {
-//     playerCards[0].push(newCard);
-//   } else {
-//     playerCards[1].push(newCard);
-//   }
-// }
-
-function prompt(message) {
-  console.log(`==> ${message}\n`);
-}
-
-function validateHitOrStayInput() {
-
-  let response = READLINE.question().toLowerCase();
-
-  while (response !== 'hit' && response !== 'stay') {
-    prompt("Invalid response. Type 'hit' or 'stay'.");
-    response = READLINE.question().toLowerCase();
-  }
-
-  return response;
-}
-
-function playerBust(playerCards) {
-  let numbersAddedValue = playerCards[1].reduce((accum, num) => accum + num, 0);
-  let numberOfAces = playerCards[0].length;
-  // console.log(numbersAddedValue);
-
-  if (numbersAddedValue > 21) { // maybe all of this can be refactored to be simple like dealer bust
-    return true;
-  } else if (numbersAddedValue >= 20 && numberOfAces >= 2) { // could always add logic above this to handle 21 and aces - prob not necessary since the game will break automatically if the user has 21...
-    return true;
-  } else if (numbersAddedValue >= 19 && numberOfAces >= 3) {
-    return true;
-  } else if (numbersAddedValue >= 18 && numberOfAces >= 4) {
-    return true;
-  }
-}
-
-function dealerBust(dealerTotal) {
-  if (dealerTotal >= BUST_NUMBER) {
-    return true;
-  }
 }
 
 function dealerNumbersValue(dealerCards) {
@@ -190,19 +103,9 @@ function dealerAcesValue(dealerCards, dealerNumbersValue) {
   return dealerAcesValue;
 }
 
-// function addNewCardToDealerHand(newCard) {
-//   // console.log(playerCards);
-//   if (newCard === 'Ace') {
-//     dealerCards[0].push(newCard);
-//   } else {
-//     dealerCards[1].push(newCard);
-//   }
-// }
-
 function playerNumbersValue(playerCards) {
   return playerCards[1].reduce((accum, num) => accum + num, 0);
 }
-
 
 function playerAcesValue(playerCards, playerNumbersValue) {
   let playerAcesValue = 0;
@@ -223,19 +126,19 @@ function playerAcesValue(playerCards, playerNumbersValue) {
   return playerAcesValue;
 }
 
+function validateHitOrStayResponse() {
 
-function declareWinner(playerTotal, dealerTotal) { // only need > since busts will break the game loop, have to add game loop
-  if (playerTotal > dealerTotal) {
-    return 'the player wins!';
-  } else if (dealerTotal > playerTotal) {
-    return 'the dealer wins.';
-  } else {
-    return 'a tie'
+  let response = READLINE.question().toLowerCase().replace(/['"]/g, '');
+
+  while (response !== 'hit' && response !== 'stay') {
+    prompt("Invalid response. Type 'hit' or 'stay'.");
+    response = READLINE.question().toLowerCase();
   }
+
+  return response;
 }
 
-
-function dealACard(hand, deck) { // this feature added to alternate a card between player,dealer,player,dealer
+function dealACard(hand, deck) {
   let randomIndex = Math.floor(Math.random() * deck.length);
   let cardToDeal = deck[randomIndex];
 
@@ -250,6 +153,27 @@ function dealACard(hand, deck) { // this feature added to alternate a card betwe
   return cardToDeal;
 }
 
+function playerBust(playerTotal) {
+  if (playerTotal >= BUST_NUMBER) {
+    return true;
+  }
+}
+
+function dealerBust(dealerTotal) {
+  if (dealerTotal >= BUST_NUMBER) {
+    return true;
+  }
+}
+
+function declareWinner(playerTotal, dealerTotal) {
+  if (playerTotal > dealerTotal) {
+    return 'the player wins!';
+  } else if (dealerTotal > playerTotal) {
+    return 'the dealer wins.';
+  } else {
+    return 'a tie'
+  }
+}
 
 let deck;
 let playerCards;
@@ -260,6 +184,7 @@ while (true) {
   playerCards = [[],[]];
   dealerCards = [[],[]];
   deck = initializeDeck();
+  
 
   dealACard(playerCards, deck);
   dealACard(dealerCards, deck);
@@ -281,13 +206,13 @@ while (true) {
 
     prompt('Would you like to hit or stay?');
 
-    let userDecisionHitOrStay = validateHitOrStayInput();
+    let userDecisionHitOrStay = validateHitOrStayResponse();
 
     if (userDecisionHitOrStay === 'stay') break;
 
     let newPlayerCard = dealACard(playerCards, deck);
 
-    // addNewCardToHand(newPlayerCard);
+    
     prompt(`You hit: ${newPlayerCard}`);
 
     showPlayerHand(playerCards);
@@ -296,11 +221,8 @@ while (true) {
 
     prompt(`Your total is: ${playerTotal}.`);
 
-    // if (playerTotal === 21) { // added - no need to ask hit or stay if player has 21
-    //   break;
-    // }
   
-    if (playerBust(playerCards)) {
+    if (playerBust(playerTotal)) {
       prompt('Busted! Dealer wins.');
       break;
     }
@@ -308,13 +230,11 @@ while (true) {
   }
 
 
-if (!(playerBust(playerCards))) {
+if (!(playerBust(playerTotal))) {
 
       
   while (dealerTotal < DEALER_STAY_NUMBER) {
-    let newDealerCard = dealACard(dealerCards, deck); // could possibly be replaced with addCardTo hand function
-
-    //addNewCardToDealerHand(newDealerCard);
+    let newDealerCard = dealACard(dealerCards, deck);
 
     prompt(`The dealer hit: ${newDealerCard}.`)
 
@@ -324,7 +244,7 @@ if (!(playerBust(playerCards))) {
   
   if (dealerBust(dealerTotal)) {
     showDealerHand(dealerCards);
-    prompt(`The dealer's toal is ${dealerTotal}.`);
+    prompt(`The dealer's total is ${dealerTotal}.`);
     prompt('Dealer Busted! Player Wins!');
   }
 }
@@ -334,7 +254,7 @@ if (!(dealerBust(dealerTotal))) {
 }
     
 
-  if (!(playerBust(playerCards)) && !(dealerBust(dealerTotal))) {
+  if (!(playerBust(playerTotal)) && !(dealerBust(dealerTotal))) {
 
   prompt(`The player has ${playerTotal} and the dealer has ${dealerTotal}`);
   
