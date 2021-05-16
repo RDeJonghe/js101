@@ -4,6 +4,10 @@ const BUST_NUMBER = 22;
 const PLAY_AGAIN_RESPONSES = ['y', 'n', 'yes', 'no'];
 const NUMBER_OF_ACES = 4;
 const NUMBER_OF_SUITS = 4;
+const LOWEST_NUMBER_CARD = 2
+const HIGHEST_NUMBER_CARD = 10
+const NUMBER_OF_JACKS_QUEENS_KINGS = 12;
+const JACK_QUEEN_KING_VALUE = 10;
 const MINIMUM_BET = 5;
 const MAXIMUM_BET = 100;
 const MAX_BUY_IN = 500;
@@ -13,23 +17,23 @@ function initializeDeckNumbers() {
   let counter = 1;
 
   while (counter <= NUMBER_OF_SUITS) {
-    let cardIncrementer = 2;
-    while (cardIncrementer <= 10) {
-      cards.push(cardIncrementer);
-      cardIncrementer += 1;
+    let currentCard = LOWEST_NUMBER_CARD;
+    while (currentCard <= HIGHEST_NUMBER_CARD) {
+      cards.push(currentCard);
+      currentCard += 1;
     }
     counter += 1;
   }
   return cards;
 }
 
-function initializeDeckPeople() {
+function initializeDeckJacksQueensKings() {
   let cards = [];
-  let counter12 = 1;
+  let counter = 1;
 
-  while (counter12 <= 12) {
-    cards.push(10);
-    counter12 += 1;
+  while (counter <= NUMBER_OF_JACKS_QUEENS_KINGS) {
+    cards.push(JACK_QUEEN_KING_VALUE);
+    counter += 1;
   }
   return cards;
 }
@@ -47,7 +51,7 @@ function initializeDeckAces() {
 
 function initializeDeck() {
   let deck = [];
-  deck = deck.concat(initializeDeckAces()).concat(initializeDeckPeople()).concat(initializeDeckNumbers());
+  deck = deck.concat(initializeDeckAces()).concat(initializeDeckJacksQueensKings()).concat(initializeDeckNumbers());
   return deck;
 } 
 
@@ -63,13 +67,11 @@ function prompt(message) {
   console.log(`==> ${message}\n`);
 }
 
-
 function blankLine() {
   console.log('');
 }
 
 function showDealerAndPlayerCards(dealerCardToShow, playerCards) {
-  
   let flattenedPlayerCardArray = playerCards.flat();
 
   console.log(`\n==> Dealer has: ${dealerCardToShow} and an unknown card\n`);
@@ -135,7 +137,6 @@ function playerAcesValue(playerCards, playerNumbersValue) {
 }
 
 function validateHitOrStayResponse() {
-
   let response = READLINE.question().toLowerCase().replace(/['"]/g, '');
 
   while (response !== 'hit' && response !== 'stay') {
@@ -184,22 +185,27 @@ function declareWinner(playerTotal, dealerTotal) {
   }
 }
 
-function startingAmountResponse() {
-
+function validateStartingAmountResponse() {
   let response = Number(READLINE.question().replace(/['$']/g, ''));
 
   while (response % 5 !== 0 || response > MAX_BUY_IN) {
     blankLine();
-    prompt(`Invalid response. Enter in a buy in of ${MAX_BUY_IN} or less. A buy in must also be in $${MINIMUM_BET} chip increments`);
+    prompt(`Invalid response. Enter in a buy in of $${MAX_BUY_IN} or less. A buy in must also be in $${MINIMUM_BET} chip increments`);
     response = Number(READLINE.question().replace(/['$']/g, ''));
   }
 
   return response;
 }
 
-function betAmountResponse() {
+function validateBetAmountResponse() {
 
   let response = Number(READLINE.question().replace(/['$']/g, ''));
+
+  while (response > runningDollarTotal) {
+    blankLine();
+    prompt(`Invalid response. Your bet cannot exceed the dollar amount of gambling chips you have. Place a bet in an amount less than or equal to your current amount of $${runningDollarTotal}`);
+    response = Number(READLINE.question().replace(/['$']/g, ''));
+  }
 
   while (response % 5 !== 0 || response > MAXIMUM_BET) {
     blankLine();
@@ -207,28 +213,42 @@ function betAmountResponse() {
     response = Number(READLINE.question().replace(/['$']/g, ''));
   }
 
+
   return response;
+}
+
+function cashOut(runningDollarTotal, startingDollarAmount) {
+  prompt(`You've been cashed out $${runningDollarTotal}`);
+  prompt(`Your initial buy in was $${startingDollarAmount}`);
+
+  if (runningDollarTotal > startingDollarAmount) {
+    prompt(`You've won $${runningDollarTotal - startingDollarAmount}`);
+  } else if (runningDollarTotal === startingDollarAmount) {
+    prompt(`You broke even.`)
+  } else {
+    prompt(`You've lost $${startingDollarAmount - runningDollarTotal}`);
+  }
+
+  prompt('Thank you for playing 21');
 }
 
 let deck;
 let playerCards;
 let dealerCards;
 
-// blankLine();
 console.clear();
 prompt('Welcome to 21!');
-prompt(`How much money would you like to exchange for chips? The maximum buy in is $${MAX_BUY_IN}. The minimum gambling chip is $5 and chips cannot be bought in smaller increments.`);
+prompt(`How much money would you like to exchange for chips? The maximum buy in is $${MAX_BUY_IN}. The minimum gambling chip is $${MINIMUM_BET} and chips cannot be bought in smaller increments.`);
 
-const STARTING_DOLLAR_AMOUNT = startingAmountResponse();
+const STARTING_DOLLAR_AMOUNT = validateStartingAmountResponse();
 let runningDollarTotal = STARTING_DOLLAR_AMOUNT;
-
 
 while (runningDollarTotal > 0) {
 
   blankLine();
   prompt(`Your current dollar total in chips is: $${runningDollarTotal}`);
   prompt('How much would you like to bet on this hand?');
-  let bet = betAmountResponse();
+  let bet = validateBetAmountResponse();
 
   playerCards = [[],[]];
   dealerCards = [[],[]];
@@ -307,6 +327,12 @@ if (!(dealerBust(dealerTotal))) {
   prompt(`Your dollar amount in chips is: $${runningDollarTotal}`);
   }
 
+  if (runningDollarTotal === 0) {
+    prompt("You've run out of money to gamble with.");
+    cashOut(runningDollarTotal, STARTING_DOLLAR_AMOUNT);
+    break;
+  }
+  
   prompt("Would you like to bet again and play another hand? Type 'y' for yes. Type 'n' for no and you will be cashed out:")
 
   let playAgain = READLINE.question().toLowerCase().replace(/['"]/g, '');
@@ -324,27 +350,34 @@ if (!(dealerBust(dealerTotal))) {
 
     break;
   }
+  
+
 
   console.clear();   
 }
   
-function cashOut(runningDollarTotal, startingDollarAmount) {
-  prompt(`You've been cashed out $${runningDollarTotal}`);
-  prompt(`Your initial buy in was $${startingDollarAmount}`);
 
-  if (runningDollarTotal > startingDollarAmount) {
-    prompt(`You've won $${runningDollarTotal - startingDollarAmount}`);
-  } else if (runningDollarTotal === startingDollarAmount) {
-    prompt(`You broke even.`)
-  } else {
-    prompt(`You've lost $${startingDollarAmount - runningDollarTotal}`);
-  }
+// HAVE TO REFACTOR TO NOT BE ABLE TO BET MORE THAN THEY HAVE!!!
 
-  prompt('Thank you for playing 21');
-}
+
+// function cashOut(runningDollarTotal, startingDollarAmount) {
+//   prompt(`You've been cashed out $${runningDollarTotal}`);
+//   prompt(`Your initial buy in was $${startingDollarAmount}`);
+
+//   if (runningDollarTotal > startingDollarAmount) {
+//     prompt(`You've won $${runningDollarTotal - startingDollarAmount}`);
+//   } else if (runningDollarTotal === startingDollarAmount) {
+//     prompt(`You broke even.`)
+//   } else {
+//     prompt(`You've lost $${startingDollarAmount - runningDollarTotal}`);
+//   }
+
+//   prompt('Thank you for playing 21');
+// }
 
 
 // Refactoring
+// have to handle when they run out of money.
 // create a newlinePrompt and a promptNewline function - will be used depending on where the newline is needed
   // handle when a $ is entered for bet, use regex to replace
 
