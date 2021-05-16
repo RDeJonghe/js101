@@ -11,12 +11,11 @@ const MINIMUM_BET = 5;
 const MAXIMUM_BET = 100;
 const MAX_BUY_IN = 500;
 const PLAY_AGAIN_RESPONSES = ['y', 'n', 'yes', 'no'];
-const STARTING_DOLLAR_AMOUNT = validateStartingAmountResponse();
 
-let runningDollarTotal = STARTING_DOLLAR_AMOUNT;
 let deck;
 let playerCards;
 let dealerCards;
+let runningDollarTotal;
 
 function initializeDeckNumbers() {
   let cards = [];
@@ -243,16 +242,12 @@ function cashOut(runningDollarTotal, startingDollarAmount) {
   prompt('Thank you for playing 21');
 }
 
-// let deck;
-// let playerCards;
-// let dealerCards;
-
 console.clear();
 prompt('Welcome to 21!');
 prompt(`How much money would you like to exchange for chips? The maximum buy in is $${MAX_BUY_IN}. The minimum gambling chip is $${MINIMUM_BET} and chips cannot be bought in smaller increments.`);
 
-// const STARTING_DOLLAR_AMOUNT = validateStartingAmountResponse();
-// let runningDollarTotal = STARTING_DOLLAR_AMOUNT;
+const STARTING_DOLLAR_AMOUNT = validateStartingAmountResponse();
+runningDollarTotal = STARTING_DOLLAR_AMOUNT;
 
 while (runningDollarTotal > 0) {
 
