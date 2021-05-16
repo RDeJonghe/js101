@@ -4,10 +4,8 @@ const BUST_NUMBER = 22;
 const PLAY_AGAIN_RESPONSES = ['y', 'n', 'yes', 'no'];
 const NUMBER_OF_ACES = 4;
 const NUMBER_OF_SUITS = 4;
-
 const MINIMUM_BET = 5;
 const MAXIMUM_BET = 100;
-// const BET_INCREMENTS = [5, 10, 25, 50, 100]; don't need this just do % 5
 const MAX_BUY_IN = 500;
   
 function initializeDeckNumbers() {
@@ -65,24 +63,28 @@ function prompt(message) {
   console.log(`==> ${message}\n`);
 }
 
+function blankLine() {
+  console.log('');
+}
+
 function showDealerAndPlayerCards(dealerCardToShow, playerCards) {
   
   let flattenedPlayerCardArray = playerCards.flat();
 
-  console.log(`Dealer has: ${dealerCardToShow} and an unknown card`);
-  console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}`);
+  console.log(`\nDealer has: ${dealerCardToShow} and an unknown card\n`);
+  console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}\n`);
 }
 
 function showPlayerHand(playerCards) {
   let flattenedPlayerCardArray = playerCards.flat();
 
-  console.log(`Your cards are: ${flattenedPlayerCardArray.join(', ')}.`)
+  console.log(`Your cards are: ${flattenedPlayerCardArray.join(', ')}.\n`)
 }
 
 function showDealerHand(dealerCards) {
   let flattenedDealerCardArray = dealerCards.flat();
 
-  console.log(`The dealer's cards were: ${flattenedDealerCardArray.join(', ')}.`)
+  console.log(`The dealer's cards were: ${flattenedDealerCardArray.join(', ')}.\n`)
 }
 
 function dealerNumbersValue(dealerCards) {
@@ -136,6 +138,7 @@ function validateHitOrStayResponse() {
   let response = READLINE.question().toLowerCase().replace(/['"]/g, '');
 
   while (response !== 'hit' && response !== 'stay') {
+    blankLine();
     prompt("Invalid response. Type 'hit' or 'stay'.");
     response = READLINE.question().toLowerCase().replace(/['"]/g, '');
   }
@@ -182,11 +185,12 @@ function declareWinner(playerTotal, dealerTotal) {
 
 function startingAmountResponse() {
 
-  let response = Number(READLINE.question());
+  let response = Number(READLINE.question().replace(/['$']/g, ''));
 
   while (response % 5 !== 0 || response > MAX_BUY_IN) {
-    prompt(`Invalid response. Enter in a buy in of less than ${MAX_BUY_IN}. A buy in must also be in $5 chip increments`);
-    response = READLINE.question();
+    blankLine();
+    prompt(`Invalid response. Enter in a buy in of ${MAX_BUY_IN} or less. A buy in must also be in $${MINIMUM_BET} chip increments`);
+    response = Number(READLINE.question().replace(/['$']/g, ''));
   }
 
   return response;
@@ -194,11 +198,12 @@ function startingAmountResponse() {
 
 function betAmountResponse() {
 
-  let response = Number(READLINE.question());
+  let response = Number(READLINE.question().replace(/['$']/g, ''));
 
   while (response % 5 !== 0 || response > MAXIMUM_BET) {
-    prompt(`Invalid response. Bets must be in $5 chip increments and cannot exceed ${MAXIMUM_BET}.`);
-    response = READLINE.question();
+    blankLine();
+    prompt(`Invalid response. Bets must be in $${MINIMUM_BET} chip increments and cannot exceed ${MAXIMUM_BET}.`);
+    response = Number(READLINE.question().replace(/['$']/g, ''));
   }
 
   return response;
@@ -208,6 +213,8 @@ let deck;
 let playerCards;
 let dealerCards;
 
+// blankLine();
+console.clear();
 prompt('Welcome to 21!');
 prompt(`How much money would you like to exchange for chips? The maximum buy in is $${MAX_BUY_IN}. The minimum gambling chip is $5 and chips cannot be bought in smaller increments.`);
 
@@ -217,6 +224,8 @@ let runningDollarTotal = STARTING_DOLLAR_AMOUNT;
 
 while (runningDollarTotal > 0) {
 
+  blankLine();
+  prompt(`Your current dollar total in chips is: $${runningDollarTotal}`);
   prompt('How much would you like to bet on this hand?');
   let bet = betAmountResponse();
 
@@ -245,6 +254,7 @@ while (runningDollarTotal > 0) {
     if (userDecisionHitOrStay === 'stay') break;
     let newPlayerCard = dealACard(playerCards, deck);
 
+    blankLine();
     prompt(`You hit: ${newPlayerCard}`);
     showPlayerHand(playerCards);
 
@@ -260,6 +270,8 @@ while (runningDollarTotal > 0) {
   }
 
 if (!(playerBust(playerTotal))) {
+
+  blankLine();
    
   while (dealerTotal < DEALER_STAY_NUMBER) {
 
@@ -299,6 +311,7 @@ if (!(dealerBust(dealerTotal))) {
   let playAgain = READLINE.question().toLowerCase().replace(/['"]/g, '');
 
   while (!PLAY_AGAIN_RESPONSES.includes(playAgain)) {
+    blankLine();
     prompt("Invalid response. Enter 'y' for yes, 'n' for no.");
     playAgain = READLINE.question().toLowerCase().replace(/['"]/g, '');
   }
@@ -331,6 +344,7 @@ function cashOut(runningDollarTotal, startingDollarAmount) {
 
 
 // Refactoring
+// create a newlinePrompt and a promptNewline function - will be used depending on where the newline is needed
   // handle when a $ is entered for bet, use regex to replace
 
 // BETTING FEATURE
@@ -368,6 +382,7 @@ function cashOut(runningDollarTotal, startingDollarAmount) {
 
 
 // REFACTORING
+// when asking how much do you want to bet, show how much they have
     // show the first card the dealer has dealt to himself
         // can refactor to share functions, some repetitive code, fix other issues with gameplay then can look to combine functions
         // can refactor to show each hit card, the dealer hit... card, the dealer hit... card. show this on a new line and then show all of the dealers
