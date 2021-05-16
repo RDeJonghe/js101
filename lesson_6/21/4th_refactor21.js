@@ -63,6 +63,7 @@ function prompt(message) {
   console.log(`==> ${message}\n`);
 }
 
+
 function blankLine() {
   console.log('');
 }
@@ -71,20 +72,20 @@ function showDealerAndPlayerCards(dealerCardToShow, playerCards) {
   
   let flattenedPlayerCardArray = playerCards.flat();
 
-  console.log(`\nDealer has: ${dealerCardToShow} and an unknown card\n`);
-  console.log(`You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}\n`);
+  console.log(`\n==> Dealer has: ${dealerCardToShow} and an unknown card\n`);
+  console.log(`==> You have: ${flattenedPlayerCardArray[0]} and ${flattenedPlayerCardArray[1]}\n`);
 }
 
 function showPlayerHand(playerCards) {
   let flattenedPlayerCardArray = playerCards.flat();
 
-  console.log(`Your cards are: ${flattenedPlayerCardArray.join(', ')}.\n`)
+  console.log(`==> Your cards are: ${flattenedPlayerCardArray.join(', ')}.\n`)
 }
 
 function showDealerHand(dealerCards) {
   let flattenedDealerCardArray = dealerCards.flat();
 
-  console.log(`The dealer's cards were: ${flattenedDealerCardArray.join(', ')}.\n`)
+  console.log(`==> The dealer's cards were: ${flattenedDealerCardArray.join(', ')}.\n`)
 }
 
 function dealerNumbersValue(dealerCards) {
@@ -334,7 +335,7 @@ function cashOut(runningDollarTotal, startingDollarAmount) {
   if (runningDollarTotal > startingDollarAmount) {
     prompt(`You've won $${runningDollarTotal - startingDollarAmount}`);
   } else if (runningDollarTotal === startingDollarAmount) {
-    prompt(`You've broke even.`)
+    prompt(`You broke even.`)
   } else {
     prompt(`You've lost $${startingDollarAmount - runningDollarTotal}`);
   }
