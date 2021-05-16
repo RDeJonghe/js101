@@ -3,7 +3,6 @@
 const READLINE = require('readline-sync');
 const DEALER_STAY_NUMBER = 17;
 const BUST_NUMBER = 22;
-const PLAY_AGAIN_RESPONSES = ['y', 'n', 'yes', 'no'];
 const NUMBER_OF_ACES = 4;
 const NUMBER_OF_SUITS = 4;
 const LOWEST_NUMBER_CARD = 2
@@ -13,6 +12,7 @@ const JACK_QUEEN_KING_VALUE = 10;
 const MINIMUM_BET = 5;
 const MAXIMUM_BET = 100;
 const MAX_BUY_IN = 500;
+const PLAY_AGAIN_RESPONSES = ['y', 'n', 'yes', 'no'];
   
 function initializeDeckNumbers() {
   let cards = [];
@@ -58,8 +58,8 @@ function initializeDeck() {
 } 
 
 function dealerCardFaceUp(dealerCards) {
-  if (dealerCards[0].length === 1) {
-    return dealerCards[0];
+  if (dealerCards[0].length > 0) { // edits made here
+    return dealerCards[0][0];
   } else {
     return dealerCards[1][0]; // the second card is pushed into the array, so if no aces, [1][0] is first card dealt, [1][1] is second card dealt
   }
@@ -211,10 +211,9 @@ function validateBetAmountResponse() {
 
   while (response % 5 !== 0 || response > MAXIMUM_BET) {
     blankLine();
-    prompt(`Invalid response. Bets must be in $${MINIMUM_BET} chip increments and cannot exceed ${MAXIMUM_BET}.`);
+    prompt(`Invalid response. Bets must be in $${MINIMUM_BET} chip increments and cannot exceed $${MAXIMUM_BET}.`);
     response = Number(READLINE.question().replace(/['$']/g, ''));
   }
-
 
   return response;
 }
@@ -348,13 +347,8 @@ if (!(dealerBust(dealerTotal))) {
   if (playAgain === 'n' || playAgain === 'no') {
     console.clear();
     cashOut(runningDollarTotal, STARTING_DOLLAR_AMOUNT);
-
-
     break;
   }
-  
-
-
   console.clear();   
 }
   
