@@ -1,3 +1,5 @@
+// refactor to handle bets over what the player has, if they run out of money, constants
+
 const READLINE = require('readline-sync');
 const DEALER_STAY_NUMBER = 17;
 const BUST_NUMBER = 22;
