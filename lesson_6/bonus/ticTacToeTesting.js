@@ -210,12 +210,12 @@ function askToPlayAgain() {
   return answer;
 }
 
-let scoreBoard = {
-  userWins : 0,
-  computerWins : 0,
-  ties : 0,
-  lastGameWinner : 0
-}
+// let scoreBoard = {
+//   userWins : 0,
+//   computerWins : 0,
+//   ties : 0,
+//   lastGameWinner : 0
+// }
 
 function displayTournamentWinner() {
   if (scoreBoard.userWins === GAMES_NEEDED_TO_WIN_MATCH) {
@@ -230,12 +230,12 @@ prompt('Welcome to tic tac toe!')
 
 while (true) {
 
-  // let scoreBoard = {
-  //   userWins : 0,
-  //   computerWins : 0,
-  //   ties : 0,
-  //   lastGameWinner : 0
-  // }
+  let scoreBoard = {
+    userWins : 0,
+    computerWins : 0,
+    ties : 0,
+    lastGameWinner : 0
+  }
   
   let currentPlayer = firstMove();
   
