@@ -1444,3 +1444,125 @@ let scores = [96, 47, 113, 89, 100, 102];
 // const MESSAGES = require('./filename.json');
 // const READLINE = require('readline-sync');
 // const MESSAGES = require('./filename.json');
+
+
+// console.log(typeof true);
+
+// let num = 6;
+// let str = 'six';
+// let str2 = '6'
+
+// console.log(num == str);
+// console.log(num == str2);
+
+// let total = num + str;
+// console.log(total);
+// console.log(typeof total);
+
+// const READLINE = require('readline-sync');
+
+// let num = READLINE.question('enter a num');
+
+// console.log(typeof num);
+
+// let str = 'abc';
+// str.padEnd(10);
+// console.log(str);
+// console.log(str.length)
+// str = str.padEnd('10');
+// console.log(str.length);
+// console.log(undefined.length);
+
+// console.log(parseInt('+12.7'));
+// console.log(parseInt('-12.7'));
+// console.log(Number('-12'))
+
+// let num1 = '+12';
+// let num2 = '-12';
+
+// console.log(Number(num1));
+// console.log(Number(num2));
+// console.log(parseInt(num1));
+// console.log(parseInt(num2))
+
+// console.log(Number(null));\
+
+// function logElements(array) {
+//   array.forEach(function(element) {
+//     console.log(element);
+//   });
+// }
+
+// logElements([1, 2, 3]);
+
+// let name = 'joe';
+
+// function changeName(word) {
+//   return word = 'jim';
+// }
+
+// console.log(changeName(name));
+// console.log(name);
+
+// let name = 'joe';
+
+// function changeName(newName) {
+//   return name = newName;
+// }
+
+// changeName('jim');
+// console.log(name);
+
+// let str = 'hello';
+
+// function upper(word) {
+//   return str = word.toUpperCase();
+// }
+
+// console.log(upper(str));
+// console.log(str);
+
+let nums = [2, 4, 6];
+let newNums = [8, 10];
+
+function combine(arr1, arr2) {
+  arr1.push(arr2);
+  console.log('arr here', arr1)
+  return arr1;
+}
+
+function takeOffLast(arr) {
+  debugger;
+  arr.pop();
+  return arr;
+}
+
+// console.log(combine(nums, newNums));
+// console.log(nums);
+console.log(takeOffLast(combine(nums, newNums)));
+console.log(nums);
+
+console.log(takeOffLast(nums))
+console.log(nums)
+
+// let nums = [2, 4, 6];
+
+// function popIt(arr) {
+//   arr.pop();
+// }
+
+// popIt(nums);
+// console.log(nums)
+;
+// let newerNums = (combine(nums, newNums));
+
+// console.log(newerNums);
+
+
+// combine(nums, newNums)
+
+
+// console.log(nums);
+
+// nums = nums.concat(newNums);
+// console.log(nums);
