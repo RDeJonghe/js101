@@ -787,7 +787,7 @@
 
 // console.log(arr);
 
-let scores = [96, 47, 113, 89, 100, 102];
+// let scores = [96, 47, 113, 89, 100, 102];
 
 // let counter = 0;
 // for (let el of scores) {
@@ -1522,28 +1522,28 @@ let scores = [96, 47, 113, 89, 100, 102];
 // console.log(upper(str));
 // console.log(str);
 
-let nums = [2, 4, 6];
-let newNums = [8, 10];
+// let nums = [2, 4, 6];
+// let newNums = [8, 10];
 
-function combine(arr1, arr2) {
-  arr1.push(arr2);
-  console.log('arr here', arr1)
-  return arr1;
-}
+// function combine(arr1, arr2) {
+//   arr1.push(arr2);
+//   console.log('arr here', arr1)
+//   return arr1;
+// }
 
-function takeOffLast(arr) {
-  debugger;
-  arr.pop();
-  return arr;
-}
+// function takeOffLast(arr) {
+//   debugger;
+//   arr.pop();
+//   return arr;
+// }
 
-// console.log(combine(nums, newNums));
+// // console.log(combine(nums, newNums));
+// // console.log(nums);
+// console.log(takeOffLast(combine(nums, newNums)));
 // console.log(nums);
-console.log(takeOffLast(combine(nums, newNums)));
-console.log(nums);
 
-console.log(takeOffLast(nums))
-console.log(nums)
+// console.log(takeOffLast(nums))
+// console.log(nums)
 
 // let nums = [2, 4, 6];
 
@@ -1566,3 +1566,1312 @@ console.log(nums)
 
 // nums = nums.concat(newNums);
 // console.log(nums);
+
+
+
+
+/* Create a function that creates and returns a copy of an object. The function should take two arguments: the object to copy and an array of the keys that you want to copy. Do not mutate the original object.
+
+The function should let you omit the array of keys argument when calling the function. If you do omit the argument, the function should copy all of the existing keys from the object.
+
+Here are some examples for your reference: */
+
+/* let objToCopy = {
+  foo: 1,
+  bar: 2,
+  qux: 3,
+};
+
+let newObj = copyObj(objToCopy);
+console.log(newObj);        // => { foo: 1, bar: 2, qux: 3 }
+
+let newObj2 = copyObj(objToCopy, [ 'foo', 'qux' ]);
+console.log(newObj2);       // => { foo: 1, qux: 3 }
+
+let newObj3 = copyObj(objToCopy, [ 'bar' ]);
+console.log(newObj3);       // => { bar: 2 } */
+
+// PROBLEM: given
+  // input - object and optional array of key words)
+  // output a new array that is not mutated
+// EXAMPLES: given
+// DATA STRUCTURES: object, array
+// ALGORITHM:
+  // create a function that takes two arguments, an object and an optional array of keys
+  // create a newObj that is an empty object
+  // create an array of the object entries
+  // 
+  // check to see if an array is passed as argument
+    // if not, iterate over object.entries and assign to the new variable each subarray [0] is key [1] is value
+  // if the array is passed
+    // assign to the object the keywords passed
+      // iterate over the passed array
+      // use this as a keyword to get to the value of the passed object
+      // use assignemnt to send this to newObj
+  // return new obj
+
+
+// let objToCopy = {
+//   foo: 1,
+//   bar: 2,
+//   qux: 3,
+// };
+
+
+// function copyObj(obj, arr) {
+//   let copied = {};
+//   let keyValuePairs = Object.entries(obj);
+  
+//   if (!arr) {
+//     keyValuePairs.forEach((pair) => {
+//       copied[pair[0]] = pair[1];
+//     })
+//   } else {
+//     arr.forEach(key => {
+//       copied[key] = obj[key];
+//     })
+//   }
+//   return copied;
+// }
+
+
+// let newObj = copyObj(objToCopy);
+// console.log(newObj);        // => { foo: 1, bar: 2, qux: 3 }
+
+// let newObj2 = copyObj(objToCopy, [ 'foo', 'qux' ]);
+// console.log(newObj2);       // => { foo: 1, qux: 3 }
+
+// let newObj3 = copyObj(objToCopy, [ 'bar' ]);
+// console.log(newObj3);       // => { bar: 2 } */
+
+// // console.log(objToCopy);
+
+
+// 25
+// Write a function that takes an array of numbers and returns an array with the same number of elements, but with each element's value being the running total from the original array.
+
+// algorithm
+//create a function that takes an array as an argument
+// set a results array that is empty
+// set a total variable equal to zero
+// iterate over passed array, on each iteration push to the results the total that is += to current value
+
+// const runningTotal = (arr) => {
+//   let result = [];
+//   let total = 0;
+
+//   arr.forEach(num => {
+//     total += num;
+//     result.push(total);
+//   })
+//   return result;
+// }
+
+// console.log(runningTotal([2, 5, 13]));             // [2, 7, 20]
+// console.log(runningTotal([14, 11, 7, 15, 20]));    // [14, 25, 32, 47, 67]
+// console.log(runningTotal([3]));                    // [3]
+// console.log(runningTotal([]));                     // [] 
+
+/* Write a function that takes a string consisting of zero or more space separated words and returns an object that shows the number of words of different sizes.
+
+Words consist of any sequence of non-space characters. */
+
+// PROBLEM
+  // punctuation is counted in the length of the word
+  // empty string return empty array, can handle
+// EXAMPLES : given
+// DATA STRUCTURES: string, object, array (to split)
+// ALGORITHM:
+  // create an object that takes a string as an argument
+  // creaate an empty results object
+  // handle empty string edge case, return empty object
+  // create a words array, split at the space
+  // iterate over the array
+  // on each iteration
+    // check to see if the length prop of word exists as a key in the object
+      // if not create it and set it equal to one (value)
+    // if it does exist += 1 the value
+  // return the object
+
+// function wordSizes(str) {
+//   let result = {};
+//   let wordArray = str.split(' ');
+
+//   if (str === '') return result;
+
+//   wordArray.forEach(word => {
+//     if (!result[word.length]) {
+//       result[word.length] = 1;
+//     } else {
+//       result[word.length] += 1;
+//     }
+//   })
+//   return result;
+// }
+
+// console.log(wordSizes('Four score and seven.'));                       // { "3": 1, "4": 1, "5": 1, "6": 1 }
+// console.log(wordSizes('Hey diddle diddle, the cat and the fiddle!'));  // { "3": 5, "6": 1, "7": 2 }
+// console.log(wordSizes("What's up doc?"));                              // { "2": 1, "4": 1, "6": 1 }
+// console.log(wordSizes(''));                                            // {} 
+
+// 30
+/* // Write a function that takes two arrays as arguments and returns an array containing the union of the values from the two. There should be no duplication of values in the returned array, even if there are duplicates in the original arrays. You may assume that both arguments will always be arrays. */
+
+// mutate original arrays, should it be sorted?
+// algorithm
+// create a function that takes two arrays as arguments
+// create an empty results array,
+// set this equal to the concatenation of the two passed arrays, put all values in one
+// map this to a new array
+  // check if the value does not exist in the results (on each iteration) if it doesn't exist send it
+// return
+
+
+// const union = function(arr1, arr2) {
+//   let joined = arr1.concat(arr2).sort((a, b) => a - b);
+//   let result = [];
+
+//   joined.map(num => {
+//     if (!result.includes(num)) {
+//       result.push(num);
+//     }
+//   })
+//   return result;
+// }
+
+//  console.log(union([1, 3, 5], [3, 6, 9]));    // [1, 3, 5, 6, 9]
+
+// let a = 2;
+// let b = Math.floor(Math.random() * 2);
+// a *= b;
+// debugger;
+
+// if (a = 2) {
+//   console.log('The value of `a` is two.');
+// } else {
+//   console.log('The value of `a` is NOT two.');
+// }
+
+// 123 <= 'a';
+// debugger;
+
+
+// function foo1(a) {
+//   return 2 * a;
+// }
+
+// let foo2 = function(a) {
+//   return 2 * a;
+// };
+
+// const foo3 = a => 2 * a;
+
+// // create a random integer between 0 and 9
+// let randomNumber = Math.floor(10 * Math.random());
+
+// console.log(foo1(randomNumber));
+// console.log(foo2(randomNumber));
+// console.log(foo3(randomNumber));
+
+// let numbers = [1, 2, 3];
+// numbers[6] = 5;
+// console.log(numbers)  // what will this line return?
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 402, Eddie: 10 };
+
+// console.log(ages.hasOwnProperty('Herman'));
+
+
+// let munstersDescription = "the Munsters are CREEPY and Spooky.";
+
+// function changeCase(str) {
+//   return str[0].toUpperCase() + str.slice(1).toLowerCase();
+// }
+
+// let changed = changeCase(munstersDescription);
+// console.log(changed);
+// console.log(munstersDescription);
+// => The munsters are creepy and spooky.
+
+// let ages = { Herman: 32, Lily: 30, Grandpa: 5843, Eddie: 10 };
+
+// let additionalAges = { Marilyn: 22, Spot: 237 };
+
+// Object.assign(ages, additionalAges);
+
+// console.log(ages);
+
+// let str1 = "Few things in life are as important as house training your pet dinosaur.";
+// let str2 = "Fred and Wilma have a pet dinosaur named Dino.";
+
+// console.log(str1.match('Dino') !== null)
+// console.log(str2.match('Dino') !== null)
+
+
+// flintstones.unshift('Dino');
+// let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Bambam", "Pebbles"];
+// flintstones = flintstones.concat(["Dino"]);
+// console.log(flintstones);
+
+// let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Bambam", "Pebbles"];
+// flintstones.push("Dino", "Hoppy");
+// console.log(flintstones);
+
+
+// Return a new version of this sentence that ends just before the word house. Don't worry about spaces or punctuation: remove everything starting from the beginning of house to the end of the sentence.
+
+// let advice = "Few things in life are as important as house training your pet dinosaur.";
+
+// let advice2 = advice.slice(0, advice.indexOf('house'));
+
+// console.log(advice);
+// console.log(advice2);
+
+// Expected return value:
+// => 'Few things in life are as important as '
+
+// let advice = "Few things in life are as important as house training your important pet dinosaur.";
+
+// advice = advice.replace('important', 'urgent');
+
+// console.log(advice);
+
+
+// The Array.prototype.reverse method reverses the order of elements in an array, and Array.prototype.sort can rearrange the elements in a variety of ways, including descending. Both of these methods mutate the original array as shown below. Write two distinct ways of reversing the array without mutating the original array. Use reverse for the first solution, and sort for the second.
+
+
+
+// let numbers = [1, 2, 3, 4, 5];
+// // numbers.reverse();
+
+// // let reversed = numbers.slice().reverse();
+
+// let reversed = [numbers[4], numbers[3], numbers[2], numbers[1], numbers[0]];
+// console.log(reversed);
+// console.log(numbers);
+
+
+
+// numbers = [1, 2, 3, 4, 5];
+
+// // let reversed = [].concat(numbers).sort((a, b) => b - a);
+// // console.log(numbers); 
+// // console.log(reversed);
+
+// let reversed = [...numbers].sort((a, b) => b - a)
+
+// console.log(numbers);
+// console.log(reversed);
+
+// let reversed = [];
+
+// numbers.forEach(num => reversed.unshift(num));
+
+// console.log(numbers);
+// console.log(reversed);
+
+// Given a number and an array, determine whether the number is included in the array.
+
+// let numbers = [1, 2, 3, 4, 5, 15, 16, 17, 95, 96, 99];
+
+// let number1 = 8;  // false
+// let number2 = 95; // true
+
+// // console.log(numbers.includes(number2))
+// // console.log(numbers.includes(number1))
+// console.log(numbers.indexOf(number1) > -1)
+// console.log(numbers.indexOf(number2) > -1)
+
+// let famousWords = "seven years ago...";
+
+// console.log('Four score and '.concat(famousWords));
+// console.log('Four score and ' + famousWords);
+
+// Given an array of numbers [1, 2, 3, 4, 5], mutate the array by removing the number at index 2, so that the array becomes [1, 2, 4, 5]
+
+// let nums = [1, 2, 3, 4, 5];
+
+// nums.splice(1, 1);
+
+// console.log(nums);
+
+// let arr = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
+
+// arr2 = [].concat(arr);
+
+// arr[2][0] = 'BOB';
+
+// console.log(arr)
+// console.log(arr2)
+
+// arr2 = arr.flat();
+
+// console.log(arr2)
+
+// let arr3 = [];
+
+// arr.forEach(el => {
+//   arr3 = arr3.concat(el);
+// })
+
+// console.log(arr3)
+
+// let arr4 = arr.reduce((accum, el) => {
+//   return accum = accum.concat(el);
+// }, [])
+
+// console.log(arr);
+// console.log(arr4);
+// arr[2][[1][0]] = 'BOB'
+
+// console.log(arr);
+// console.log(arr4)
+
+
+// arr[2][1] = ['SALLY']
+
+// console.log(arr);
+// console.log(arr4)
+
+// let arr1 = [];
+
+// arr1 = arr1.concat(['Fred', 'Wilma');
+
+// console.log(arr1)
+
+// let arr = [];
+// // let names = ['joe', 'sue']
+
+// // arr = arr.concat('mike', names);
+
+// // console.log(arr)
+
+// arr = arr.concat('Joe');
+// console.log(arr)
+
+// let arr = ['joe', 'john', [['bob', 'bill'], ['mike', 'matt']]];
+// let arr2 = [].concat(arr);
+
+// // arr[2][0][0] = 'Bob'
+
+// // console.log(arr);
+// // console.log(arr2)
+// // console.log(arr2)
+
+// let arr3 = arr.reduce((accum, el) => {
+//   return accum = accum.concat(el);
+// }, [])
+
+// // console.log(arr3);
+// // arr3[2][0] = 'BOB';
+
+// arr[2][0][1] = 'JOHN'
+
+// console.log(arr3);
+// console.log(arr);
+
+// let names = ["Fred", "Wilma", ["Barney", "Betty"], ["Bambam", "Pebbles"]];
+
+// let names2 = names.reduce((accum, el) => {
+//   return accum = accum.concat(el);
+// }, []);
+
+// names[2][0] = 'BARNEY';
+
+// console.log(names);
+// console.log(names2);
+// // [ 'Fred', 'Wilma', [ 'BARNEY', 'Betty' ], [ 'Bambam', 'Pebbles' ] ]
+// // [ 'Fred', 'Wilma', 'Barney', 'Betty', 'Bambam', 'Pebbles' ]
+
+
+
+
+// // note how names3 is nested deeper by one level than the previous example
+// let names3 = ["Fred", "Wilma", [["Barney", "Betty"], ["Bambam", "Pebbles"]]];
+
+// let names4 = names3.reduce((accum, el) => {
+//   return accum = accum.concat(el);
+// }, []);
+
+// names4[2][0] = 'BARNEY';
+
+// console.log(names3); // [ 'Fred', 'Wilma', [ [ 'BARNEY', 'Betty' ], [ 'Bambam', 'Pebbles' ] ] ]
+// console.log(names4); // [ 'Fred', 'Wilma', [ 'BARNEY', 'Betty' ], [ 'Bambam', 'Pebbles' ] ]
+
+// [ 'Fred', 'Wilma', [ 'BARNEY', 'Betty' ], [ 'Bambam', 'Pebbles' ] ]
+
+// let advice = "Few things in life are as important as house training your important pet dinosaur.";
+
+// let newAdvice = advice.split('important').join('urgent');
+
+// console.log(newAdvice)
+
+// let flintstones = { Fred: 0, Wilma: 1, Barney: 2, Betty: 3, Bambam: 4, Pebbles: 5 };
+
+// // [ 'Barney', 2 ]
+
+// let keyVal = Object.entries(flintstones).filter(pair => pair[0] === 'Barney').flat();
+
+// console.log(keyVal);
+
+// let numbers = [1, 2, 3, 4]; // true
+// let table = { field1: 1, field2: 2, field3: 3, field4: 4 }; // false
+
+// console.log(Array.isArray(numbers));
+// console.log(Array.isArray(table));
+
+// let title = "Flintstone Family Members";
+
+// // total lenght has to be 40 characters, middle spot is at 20 
+// // figure out the length of the string, divide by 2 to see what each half of the string is
+// // can pad start 20 plus the second half of the string
+
+// const MIDDLE = 20;
+// const HALF_TITLE_LENGTH = title.length / 2;
+
+// console.log(title.padStart((MIDDLE + HALF_TITLE_LENGTH), ' '))
+
+// let padding = Math.floor((40 - title.length) / 2);
+
+// console.log(title.padStart(padding + title.length));
+
+// Write two one-line expressions to count the number of lower-case t characters in each of the following strings:
+
+// let statement1 = "The Flintstones Rock!";
+// let statement2 = "Easy come, easy go.";
+
+// console.log(statement1.split('').filter(char => char === 't').length);
+// console.log(statement2.split('').filter(char => char === 't').length);
+
+// let numbers = [1, 2, 3, 4];
+
+// // numbers.length = 0;
+
+// // while (numbers.length > 0) {
+// //   numbers.pop();
+// // }
+
+// // numbers = [];
+
+// numbers.splice(0, numbers.length)
+
+// console.log(numbers);
+
+// console.log([1, 2, 3] + [4, 5]); // '1,2,34,5'
+
+// let str1 = "hello there";
+// let str2 = str1;
+// str2 = "goodbye!";
+// console.log(str1); // 'hello there'
+
+// let arr1 = [{ first: "value1" }, { second: "value2" }, 3, 4, 5];
+// let arr2 = arr1.slice();
+// arr2[0].first = 42;
+// console.log(arr1); // [{first : 42}, ...]
+
+// function isColorValid(color) {
+//   if (color === "blue" || color === "green") {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// function isColorValid(color) {
+//   return color === 'blue' || color === 'green';
+// }
+
+// const isColorValid = (color) => color === 'blue' || color === 'green';
+
+
+// function isColorValid(color) {
+//   return ['blue', 'green'].includes(color);
+// }
+
+// let phrase = 'The Flintstones Rock!';
+
+// const printAndIndent = (str) => {
+//   let padding = 0;
+
+//   while (padding <= 9) {
+//     console.log(phrase.padStart((str.length + padding), ' '));
+//     padding += 1;
+//   }
+// }
+
+// printAndIndent(phrase);
+
+// let munstersDescription = "The Munsters are creepy and spooky.";
+
+// // `tHE mUNSTERS ARE CREEPY AND SPOOKY.`
+
+// function replace(str) {
+//   return str.split('').map(char => {
+//     if (char.charCodeAt() >= 65 && char.charCodeAt() <= 90) {
+//       return char.toLowerCase();
+//     }
+//     else {
+//       return char.toUpperCase();
+//     }
+//   }).join('')
+// }
+
+// console.log(replace(munstersDescription));
+
+// console.log('a'.charCodeAt())
+// console.log('z'.charCodeAt())
+// console.log('A'.charCodeAt())
+// console.log('Z'.charCodeAt())
+
+
+// function factors(number) {
+//   let divisor = number;
+//   let factors = [];
+//   do {
+//     if (number % divisor === 0) {
+//       factors.push(number / divisor);
+//     }
+//     divisor -= 1;
+//   } while (divisor !== 0);
+//   return factors;
+// }
+
+//Alyssa noticed that this code would fail when the input is 0 or a negative number, and asked Alan to change the loop. How can he make this work without using a do/while loop? Note that we're not looking to find the factors for 0 or negative numbers, but we want to handle it gracefully instead of raising an exception or going into an infinite loop.
+
+// Bonus: What is the purpose of number % divisor === 0 in that code?
+
+// let num1 = 0.3;
+// let num2 = 0.6;
+
+// let add = num1 + num2;
+
+// console.log(add);
+
+// let nanArray = [NaN];
+
+// console.log(nanArray[0] === NaN);
+
+// console.log(Number.isNaN(nanArray[0]));
+
+// let answer = 42;
+
+// function messWithIt(someNumber) {
+//   return (someNumber += 8);
+// }
+
+// let newAnswer = messWithIt(answer);
+
+// console.log(answer - 8);
+
+// let munsters = {
+//   Herman: { age: 32, gender: "male" },
+//   Lily: { age: 30, gender: "female" },
+//   Grandpa: { age: 402, gender: "male" },
+//   Eddie: { age: 10, gender: "male" },
+//   Marilyn: { age: 23, gender: "female" }
+// };
+
+// function messWithDemographics(demoObject) {
+//   Object.values(demoObject).forEach(familyMember => {
+//     familyMember["age"] += 42;
+//     familyMember["gender"] = "other";
+//   });
+// }
+
+// console.log(messWithDemographics(munsters));
+
+// console.log(munsters)
+
+
+// let munsters = {
+//   Herman: { age: 32, gender: "male" },
+//   Lily: { age: 30, gender: "female" },
+//   Grandpa: { age: 402, gender: "male" },
+//   Eddie: { age: 10, gender: "male" },
+//   Marilyn: { age: 23, gender: "female" }
+// };
+
+// function messWithDemographics(demoObject) {
+//   Object.values(demoObject).forEach(familyMember => {
+//     familyMember["age"] += 42;
+//     familyMember["gender"] = "other";
+//   });
+// }
+
+// messWithDemographics(munsters);
+
+// console.log(munsters);
+
+// let munsters = {
+//   Herman : 'dad',
+//   Lily : 'wife',
+//   Eddie : 'son'
+// }
+
+// let same = munsters;
+
+// function messWithIt(obj) {
+//   let vals = Object.values(obj);
+//   for (let i = 0; i < vals.length; i ++) {
+//     vals[i] = 'Who?'
+//   }
+//   return vals;
+// }
+
+
+
+// // console.log(messAgain(same));
+// console.log(munsters);
+// console.log(same);
+
+
+
+
+
+
+
+
+
+// CHANGES SEEN IN ALL PLACES, PASS BY REFERENCE
+// let simpsons = {
+//   Homer : 40,
+//   Marge : 38
+// };
+
+// let same = simpsons;
+
+// function change(obj) {
+//   return obj.Homer = 444;
+// }
+
+// console.log(change(same));
+
+// console.log(simpsons);
+// console.log(same);
+
+
+// NOT SEEN IN EITHER PLACE, WHY???? DOES OBJECT VALUES STORE PRIMITIVE VALUES? I'D SAY IT'S ARRAY OF THE VALUES, IN THIS CASE THE VALUES ARE PRIMITIVES
+// let simpsons = {
+//   Homer : 40,
+//   Marge : 38
+// };
+
+// let same = simpsons;
+
+// function change(obj) {
+//   let vals = Object.values(obj);
+//   vals[0] = 444;
+//   return vals;
+// }
+
+// console.log(change(same));
+
+// console.log(simpsons);
+// console.log(same);
+
+
+// WHAT ABOUT WHEN THE VALUES ARE OBJECTS THEMSELVES: - the reference is copied this is pass by value.
+// let simpsons = {
+//   Homer : {age : 40},
+//   Marge : {age : 38}
+// };
+
+// let same = simpsons;
+
+// function change(obj) {
+//   let vals = Object.values(obj);
+//   vals[0].age = 444;
+//   return vals;
+// }
+
+// console.log(change(same));
+
+// console.log(simpsons);
+// console.log(same);
+
+
+// function rps(fist1, fist2) {
+//   if (fist1 === "rock") {
+//     return fist2 === "paper" ? "paper" : "rock";
+//   } else if (fist1 === "paper") {
+//     return fist2 === "scissors" ? "scissors" : "paper";
+//   } else {
+//     return fist2 === "rock" ? "rock" : "scissors";
+//   }
+// }
+
+
+// console.log((rps(rps(rps("rock", "paper"), rps("rock", "scissors")), "rock")));
+
+// // rock, paper, paper, paper
+
+
+// function foo(param = "no") {
+//   return "yes";
+// }
+
+// function bar(param = "no") {
+//   return param === "no" ? "yes" : "no";
+// }
+
+// console.log(bar(foo()));
+
+// //no
+
+
+// function first() {
+//   return {
+//     prop1: "hi there"
+//   };
+// }
+
+// function second() {
+//   return
+//   {
+//     prop1: "hi there"
+//   };
+// }
+
+// console.log(first());
+// console.log(second());
+
+// let object = { first: [1] };
+
+// let numArray = object["first"]; // [1]
+// let object = { first: [1], second : [2] };
+// // let numArray = object["first"].concat();
+
+// let numArray = Object.values(object);
+
+// numArray.push(2);
+
+// // numArray.push(2);
+
+// console.log(numArray); //  => "[1, 2]"
+
+// console.log(object); // { first : [1, 2]}
+
+// function messWithVars(one, two, three) { // REASSIGNMENT ALONE IS NOT DESTRUCTIVE!!!!
+//   one = two;
+//   two = three;
+//   three = one; 
+//   debugger;
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+// let three = ["three"];
+
+// messWithVars(one, two, three);
+
+// console.log(`one is: ${one}`);
+// console.log(`two is: ${two}`);
+// console.log(`three is: ${three}`);
+
+//2
+//re-assigning a parameter variable within a function doesn't affect the variable outside the function.??? IS THAT WHAT IS HAPPENING HERE?
+// function messWithVars(one, two, three) {  
+//   one = one.push(["two"]);
+//   two = two.push(["three"]);
+//   three = three.push(["one"]);
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+// let three = ["three"];
+
+// messWithVars(one, two, three);
+
+// console.log(`one is: ${one}`);
+// console.log(`two is: ${two}`); 
+// console.log(`three is: ${three}`);
+
+// 3
+
+// function messWithVars(one, two, three) {
+//   one.splice(0, 1, "two");
+//   two.splice(0, 1, "three");
+//   three.splice(0, 1, "one");
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+// let three = ["three"];
+
+// messWithVars(one, two, three);
+
+// console.log(`one is: ${one}`); // two
+// console.log(`two is: ${two}`); // three
+// console.log(`three is: ${three}`); // one
+
+// function messWithVars(one, two) {
+//   one = two;
+//   one.splice(0, 1, "five"); // within function I'm saying both are 5
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+
+// messWithVars(one, two);
+
+// console.log(`one is: ${one}`); 
+// console.log(`two is: ${two}`);
+
+// function messWithVars(one, two) {
+//   one = ["two"];
+//   one.splice(0, 1, "five");
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+
+// messWithVars(one, two);
+
+// console.log(`one is: ${one}`); 
+// console.log(`two is: ${two}`);
+
+// function isDotSeparatedIpAddress(inputString) {
+//   let dotSeparatedWords = inputString.split(".");
+//   while (dotSeparatedWords.length > 0) {
+//     let word = dotSeparatedWords.pop();
+//     if (!isAnIpNumber(word)) {
+//       break;
+//     }
+//   }
+
+//   return true;
+// }
+
+// console.log([1, 2, 3].filter(num => 'hi'));
+
+// console.log([1, 2, 3].map(num => {
+//   num * num;
+// }));
+
+// console.log([1, 2, 3].map(num => num * num));
+
+// console.log(['ant', 'bear', 'caterpillar'].pop().length);
+
+// console.log([1, 2, 3].every(num => {
+//   return num = num * 2;
+// }));
+
+// let a = 5;
+// let b = 10;
+// let c = 15;
+
+// function change() {
+//   a = 55;
+//   debugger;
+//   // exec a ==> 55
+// }
+
+// change();
+// console.log(a) // ==> 55
+
+// let b = 6
+
+// function change2(num) {
+//   num = 66;
+// }
+
+// change2(b);
+// console.log(b); // ==> 6
+
+// let arr = [2, 3];
+
+// function changeArr() {
+//   arr = [22, 33];
+// }
+
+// changeArr();
+// console.log(arr);
+
+// let arr2 = [4, 5];
+
+// function changeArr2(numArr) {
+//   numArr = [44, 55];
+// }
+
+// changeArr2(arr2);
+// console.log(arr2); // ==> [4, 5]
+
+
+
+
+
+// 'This code demonstrates two things. The first is that inner scope can access outer scope variables. The second, and less intuitive, concept is that you can change variables from an inner scope and have that change affect the outer scope. '(lesson 2, 21) So function can change outer scoped variables with regular assignment... BUT only when they are not passed as arguments. If the variable were passed as an argument it would not be reassigned outside of the function becasue it would act as pass by value. When variables are passed as arguments the behavior of pass by value/pass by reference is determined by whether or not mutation occurs. Simple assignment doesn't mutate so the effect (when and variable argument is provided) is that it does not affect the variable outside of the function like it does here.
+
+// function change2(varHere) {
+//   varHere = 100;
+//   debugger;
+//   // exec varHere ==> 100
+// }
+// This code displays this, here again we have assignment but it does NOT take affect outside of the variable. The reason is that the variable is passed as an argument, so the change is only local. Even though be is passed to the function, it is not reassigned.
+// THIS IS A SUBTLE BUT IMPORTANT DISTINCTION... GLOBAL VARIABLES BOTH CAN AND CANNOT BE REASSIGNED WITHIN A FUNCTION... it depends whether or not they are passed as arguments. In the first example since the variable is global it can be accessed anywhere, it is then accessed and reassigned and the effect is global. In the second variable, what happens is that the global variable is passed by value, so whatever happens to it is limited to the scope of the function. It's like the function creates a local scope for the function and when the function is done it goes away.
+
+// function change3(c) {
+//   c = 155;
+//   debugger;
+//   // exec c ==> 155
+// }
+// Variable shadowing can make this a little more confusing as well. This example shows that. At first glance it looks very similar to the first function, c is getting reassigned just as a did. However you can see that the parameter passed to it 'c' shadows the global variable 'c'. In reality this operates like the second function. Since 'c' shadows the outer scoped global variable the function only uses the local 'c' not the global 'c'. The global 'c' is blocked by shadowing. Therefore 'c' is not reassigned outside of the function. It does equal 155 within the function, so the local c = 155
+
+// change();
+// change2(b);
+// change3(c);
+
+// console.log(a); // 55
+// console.log(b); // 10
+// console.log(c); // 15
+
+
+// function messWithVars(one, two) {
+//   // here local and global variables point to same object
+//   one = two; // here local variable one points to local variable two (which shares the same memory as global two)
+//   one.splice(0, 1, "five"); // here local variable on is spliced, this points to same spot in memory as global variable two
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+
+// messWithVars(one, two);
+
+// console.log(`one is: ${one}`); //one
+// console.log(`two is: ${two}`); // five
+
+// function messWithVars(one, two) {
+//   // here both local variables point to the same as their respective global variables
+//   one = ["two"]; // here local variable one is reassigned to this array, reassignment is not mutative so no affect on global variables
+//   one.splice(0, 1, "five"); // here local variable one is spliced, only change within function,  one was reassigned and didn't point to global variable
+// }
+
+// let one = ["one"];
+// let two = ["two"];
+
+// messWithVars(one, two);
+
+// console.log(`one is: ${one}`);  //1
+// console.log(`two is: ${two}`); //2
+
+
+// console.log('abcdefghi'.slice(-4, -2)); // => 'abcdefghi'
+
+// let arr = [2, 3, 4];
+// let arr2 = arr.slice();
+// console.log(arr === arr2);
+
+// let arr = [2, 4, ['six', 'eight'], {foo : 'bar'}];
+// let shallow = [...arr];
+
+// shallow.push(111111111);
+
+// console.log(arr);
+// console.log(shallow);
+
+
+// let obj = {Axl : 'vocals', Slash : 'guitar', Duff : 'bass'};
+
+// console.log(Object.values(obj).includes('bass'));
+
+// let arr = ['back', 'once', 'again'];
+// arr['title'] = 'renegade master';
+
+// console.log(arr);
+// console.log(Object.entries(arr));
+// console.log(arr.length);
+
+// let arr = ['back', 'Once', 'Again'];
+// console.log(arr.join())
+
+// let numbers = [1, 2, 3, 4];
+// numbers[0] = numbers[0] + 1;  // => 2
+// // numbers;                      // => [ 2, 2, 3, 4 ]
+// numbers[1] += 10;
+// numbers[2] += 100;
+
+// console.log(numbers)
+
+// for (let i = 0; i < numbers.length; i ++) {
+//   numbers[i] = numbers[i] + 10;
+// }
+
+// numbers.forEach((el, indx) => {
+//   el[indx] = el[indx] + 10;
+// })
+
+// console.log(numbers);
+// function increase(arr) {
+//   arr.forEach(el => {
+//     el += 10;
+//   })
+// }
+
+// increase(numbers);
+// console.log(numbers);
+
+// let gnr = {axl : 'vocals', slash : 'guitar'};
+
+// function changeIt(gnr) {
+//   gnr = {axl : 'singer', duff : 'bass'}; // local variable is reassigned, global variable stays the same
+//   gnr.axl = 'lead singer';
+//   return gnr;
+// }
+
+// console.log(changeIt(gnr));
+
+// console.log(gnr);
+
+// let ledZep = ['Jimmy Page', 'Robert Plant'];
+
+// function changeIt(ledZep) {
+//  ledZep = ['robert plant', 'jimmy page'];
+//  ledZep.push('other band members');
+//  console.log(ledZep)
+// }
+
+// changeIt(ledZep);
+
+// console.log(ledZep);
+
+// let str = 'bubba';
+// str = 'B' + str.slice(1)
+// console.log(str)
+
+// let answer = 42; // primitive value
+
+// function messWithIt(someNumber) {
+//   return (someNumber += 8);
+// }
+
+// let newAnswer = messWithIt(answer); // primitive value is passed, but cannot be changed, pass by value
+
+// console.log(answer - 8);
+
+// let munsters = {
+//   Herman: { age: 32, gender: "male" },
+//   Lily: { age: 30, gender: "female" },
+//   Grandpa: { age: 402, gender: "male" },
+//   Eddie: { age: 10, gender: "male" },
+//   Marilyn: { age: 23, gender: "female" }
+// };
+
+// function messWithDemographics(demoObject) { // passing an Object here
+//   Object.values(demoObject).forEach(familyMember => { // the values are actually another object, so a pointer
+//     familyMember["age"] += 42; // this is a destructive reassignment becasue of the reference so both are changed
+//     familyMember["gender"] = "other";
+//   });
+// }
+
+// messWithDemographics(munsters);
+
+// console.log(munsters);
+
+
+// let munsters = {
+//   Herman: { age: 32, gender: "male" },
+//   Lily: { age: 30, gender: "female" },
+//   Grandpa: { age: 402, gender: "male" },
+//   Eddie: { age: 10, gender: "male" },
+//   Marilyn: { age: 23, gender: "female" }
+// };
+
+// function messWithDemographics(demoObject) { // passing an Object here
+//   Object.values(demoObject).forEach(familyMember => { // the values are actually another object, so a pointer
+//     familyMember['gender'] = 42; // this is a destructive reassignment becasue of the reference so both are changed
+//     // familyMember["gender"] = "other";
+//   });
+// }
+
+// messWithDemographics(munsters);
+
+// console.log(munsters);
+
+
+// let munsters = {
+//   Herman: [32],
+//   Lily: [30],
+//   Grandpa: [402],
+//   Eddie: [10],
+//   Marilyn: [23]
+// };
+
+// function messWithDemographics(demoObject) {
+//   // Object.values(demoObject).forEach(familyMember => {
+//   //   familyMember["age"] += 42;
+//   //   familyMember["gender"] = "other";
+//   // });
+//   // let vals = Object.values(demoObject);
+//   // vals[0]['age'] = 300;
+//   let vals = Object.values(demoObject);
+//   vals.forEach(age => age[0] += 42);
+//   return vals;
+// }
+
+
+// console.log(messWithDemographics(munsters));
+
+// console.log(munsters);
+// let str = 'One potato, two potato, three potato, four'.split(',');
+
+// console.log(str);
+
+// let str = 'back once again';
+// console.log(str.charCodeAt(2));
+// console.log('c'.charCodeAt())
+// console.log(str[2].charCodeAt());
+
+// let sentence = 'back o\\nce again'
+
+// console.log(sentence)
+
+// console.log(String.fromCharCode(97, 98, 99))
+
+// let num = 6;
+
+// function changeNum() {
+//   num = 100;
+// }
+
+// changeNum(num)
+
+// console.log(num)
+
+// let arr = [2, 4, 6];
+// // let arr2 = [8, 10, 12];
+
+// // function combineArr(array1, array2) {
+// //   return array1 = array1.concat(array2);
+// // }
+
+// function combineArr(arr, arr2) {
+//   return arr.splice(0, arr2);
+// }
+
+// console.log(combineArr(arr, arr2));
+
+// console.log(arr);
+
+// let arr = [2, 4, 6];
+// let arr2 = [8, 10, 12]
+
+// function spliceIt(array1, array2) {
+//   array1 = array2;
+//   array1.splice(1, 1, 100);
+// }
+
+// spliceIt(arr, arr2);
+
+// console.log(arr);
+// console.log(arr2);
+
+// function spliceIt() {
+//   arr = arr2;
+//   arr.splice(3, 0, 100);
+// }
+
+// spliceIt();
+
+// console.log(arr);
+// console.log(arr2);
+
+// let arr = [2, 4, 6];
+// let arr2 = [8, 10, 12]
+
+// function spliceIt(array1, array2) {
+//   array1 = array2;
+//   array1.splice(1, 1, 100);
+// }
+
+// spliceIt(arr, arr2);
+
+// console.log(arr);
+// console.log(arr2);
+
+// let arr = [2, 4, 6];
+// let arr2 = [8, 10, 12]
+
+// function spliceIt(array, array2) {
+//   array = array2;
+//   array.splice(1, 1, 100);
+// }
+
+// spliceIt(arr, arr2);
+
+// console.log(arr);
+// console.log(arr2);
+
+// let arr = [2, 4, 6];
+// let arr2 = [8, 10, 12];
+
+// function allSpliced() {
+//   arr = arr2;
+//   arr.splice(1, 1, 100);
+// }
+
+// allSpliced();
+
+// console.log(arr);
+// console.log(arr2);
+
+
+// let arr = [2, 4, 6];
+// let arr2 = [8, 10, 12];
+
+// function moreSplice(array, array2) {
+//   array[0] = array2;
+//   array[0].splice(1, 1, 100);
+// }
+
+// moreSplice(arr, arr2);
+
+// console.log(arr);
+// console.log(arr2)
+
+// let arr = [2, 4, 6];
+// let arr2 = [8, 10, 12];
+
+// function moreSplice(array, array2) {
+//   array[0] = array2;
+//   array[0].splice(1, 1, 100);
+// }
+
+// moreSplice(arr, arr2);
+
+// console.log(arr);
+// console.log(arr2)
+
+// let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+// let counter = 0;
+
+// while (counter < alphabet.length) {
+//   alphabet[counter] = alphabet[counter].toUpperCase();
+//   counter += 1;
+// }
+
+// console.log(alphabet);
+
+let numberOfPets = {
+  dogs: 2,
+  cats: 4,
+  fish: 1
+};
+
+// let keys = Object.keys(numberOfPets);
+// let counter = 0;
+
+// while (counter < keys.length) {
+//   let pet = keys[counter];
+//   let number = numberOfPets[pet];
+
+//   console.log(`I have ${number} ${pet}`);
+
+//   counter += 1;
+// }
+
+for (let key in numberOfPets) {
+  let number = numberOfPets[key];
+
+  console.log(`I have ${number} ${key}`);
+}

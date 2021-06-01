@@ -203,17 +203,23 @@ Examples: */
 // console.log(a);
 
 
-let add = function(a, b) {
-  return a + b;
-}
+// let add = function(a, b) {
+//   return a + b;
+// }
 
-let mult = function(a, b) {
-  return a * b;
-}
+// let mult = function(a, b) {
+//   return a * b;
+// }
 
-let num1 = 2;
-let num2 = 4;
+// let num1 = 2;
+// let num2 = 4;
 
-let bigNum = mult(add(num1, num2), 10);
+// let bigNum = mult(add(num1, num2), 10);
 
-console.log(bigNum);
+// console.log(bigNum);
+
+// let advice = "Few things in life are as important as house training your important pet dinosaur.";
+
+// let newAdvice = advice.split('important');
+
+// console.log(newAdvice)
