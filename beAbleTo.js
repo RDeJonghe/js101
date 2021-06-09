@@ -780,5 +780,26 @@ numbers.sort((num1, num2) => num2 - num1);
 console.log(numbers); // [ 5, 4, 3, 2, 1 ] */
 
 // 41
+// filter an object (return new object) ==> best to use .forEach() only 
+// can do with just for each or with forEach and filter
+// From an existing object, select certain key value pairs (that share some characteristic) and make a new object with them
+// Take an object, use filter to select certain key value pairs, then use for each to create a new object
+// The question now is whether we can effectively use filter to select certain key-value pairs from an object. Let's say we want to select the key-value pairs from our produce object where the value is Vegetable. Let's give it a shot with Array.prototype.filter.
+
+// That sort of works, but the return value isn't ideal: it returns an array, not an object as we want. Maybe we can convert the array to an object using forEach:
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// {carrot: 'Vegetable', broccoli: 'Vegetable'} results we want
+
+// Okay, that works, but it's complicated logic. Can we simplify it? Let's try using forEach by itself without using filter at all:
+
+
+// 42
 
 

@@ -2852,11 +2852,11 @@ Words consist of any sequence of non-space characters. */
 
 // console.log(alphabet);
 
-let numberOfPets = {
-  dogs: 2,
-  cats: 4,
-  fish: 1
-};
+// let numberOfPets = {
+//   dogs: 2,
+//   cats: 4,
+//   fish: 1
+// };
 
 // let keys = Object.keys(numberOfPets);
 // let counter = 0;
@@ -2870,8 +2870,1569 @@ let numberOfPets = {
 //   counter += 1;
 // }
 
-for (let key in numberOfPets) {
-  let number = numberOfPets[key];
+// for (let key in numberOfPets) {
+//   let number = numberOfPets[key];
 
-  console.log(`I have ${number} ${key}`);
-}
+//   console.log(`I have ${number} ${key}`);
+// }
+
+// for (let key in numberOfPets) {
+//   numberOfPets[key] += 1;
+// }
+
+// console.log(numberOfPets);
+
+// while (true) {
+//   let number = Math.floor(10 * Math.random());
+//   if (number === 5) {
+//     console.log('Exiting...');
+//     break;
+//   }
+
+//   console.log(number);
+// }
+
+// // find all substrings of a word
+// // example 'halo' ==> [halo, hal, ha, alo, al, lo]
+
+// // HIGH LEVEL
+// // iterate over the string // while the string length >= 2
+// // push the substrings over
+//   // set a slice index = str.length (this will be the second argument in slice)
+//   // while this is >= 2 // this is a nested iteration
+//   // push the substring over
+//   // decrease the slice index
+// // at this point remove the first letter from the string by reassigning the value
+//   // begin the iteration again
+// // return the results
+
+// // MORE DETAIL
+// // create a function that takes a string as an argument
+// // create an empty array to store the results
+// // no need to create a copy of the string - pass by value, can't be altered within function and change be seen outside
+// // set an outer level iteration, while the length of the string >= 2
+// // create a sliceIndex variable set it to the length of the string
+//   // on each iteration this will be used to determine what section to push over
+// // create a nested iteration, while the slice index >= 2
+//   // push the subsrting over using .slice(0, subStringIndex)
+//   // decrease the slice index
+//   // reassign the string variable to itself with the first value removed - this happens outside of the nested iteration, within the first iteration
+//     // can do this using str = str.split('').shift().join('') NOPE - THIS DOESN'T WORK
+//     // cannot use this .shift() returns the removed element
+//     // INSTEAD DO THIS:
+//     // create a stringArray variable instead - split to create it and then call shift
+//     // set string = to joining this string Array variable
+// // after iterations are complete return value
+
+// let word = 'halo';
+
+// function substrings(str) {
+//   let results = [];
+
+//   while (str.length >= 2) {
+//     let sliceIndex = str.length;
+
+//     while (sliceIndex >= 2) {
+//       results.push(str.slice(0, sliceIndex));
+//       sliceIndex -= 1;
+//     }
+//     strArr = str.split('');
+//     strArr.shift();
+//     str = strArr.join('');
+//   }
+//   return results;
+// }
+
+// console.log(substrings(word));
+// console.log(word);
+
+// console.log(word.split('').shift())
+
+// function isPalindrome(word) {
+//   return word === word.split('').reverse().join('');
+// }
+
+
+// To check if all substrings are palindromes
+// create a function that takes a word as an argument
+// set a results array
+// set an all substrings variable to the results of the substrings function - this will be an array of substrings
+// iterate over the array of substrings
+// on each element, call the isPalindrome function
+  // if it's true push the element over to results
+// after iteration return results
+
+// function allPalindromes(wordToCheck) {
+//   let results = [];
+//   let allSubstrings = substrings(wordToCheck);
+
+//   allSubstrings.forEach(substr => {
+//     if (isPalindrome(substr)) {
+//       results.push(substr);
+//     }
+//   })
+//   return results;
+// }
+
+// console.log(allPalindromes("supercalifragilisticexpialidocious"))
+// console.log(allPalindromes("abcddcbA"))
+// console.log(allPalindromes("palindrome"))
+// console.log(allPalindromes(""))
+
+
+// find all substrings of a word
+// example 'halo' ==> [halo, hal, ha, alo, al, lo]
+
+// HIGH LEVEL
+// iterate over the string // while the string length >= 2
+// push the substrings over
+  // set a slice index = str.length (this will be the second argument in slice)
+  // while this is >= 2 // this is a nested iteration
+  // push the substring over
+  // decrease the slice index
+// at this point remove the first letter from the string by reassigning the value
+  // begin the iteration again
+// return the results
+
+// MORE DETAIL
+// create a function that takes a string as an argument
+// create an empty array to store the results
+// no need to create a copy of the string - pass by value, can't be altered within function and change be seen outside
+// set an outer level iteration, while the length of the string >= 2
+// create a sliceIndex variable set it to the length of the string
+  // on each iteration this will be used to determine what section to push over
+// create a nested iteration, while the slice index >= 2
+  // push the subsrting over using .slice(0, subStringIndex)
+  // decrease the slice index
+  // reassign the string variable to itself with the first value removed - this happens outside of the nested iteration, within the first iteration
+    // can do this using str = str.split('').shift().join('') NOPE - THIS DOESN'T WORK
+    // cannot use this .shift() returns the removed element
+    // INSTEAD DO THIS:
+    // create a stringArray variable instead - split to create it and then call shift
+    // set string = to joining this string Array variable
+// after iterations are complete return value
+
+// let word = 'halo';
+
+// function substrings(str) {
+//   let results = [];
+
+//   while (str.length >= 2) {
+//     let sliceIndex = str.length;
+
+//     while (sliceIndex >= 2) {
+//       results.push(str.slice(0, sliceIndex));
+//       sliceIndex -= 1;
+//     }
+//     strArr = str.split('');
+//     strArr.shift();
+//     str = strArr.join('');
+//   }
+//   return results;
+// }
+
+// console.log(substrings(word));
+
+// let fruits = ['apple', 'banana', 'pear'];
+
+// let counter = 0;
+// // let results = [];
+
+// while (counter < fruits.length) {
+  
+//   fruits[counter] = fruits[counter] + 's'
+
+//   counter += 1;
+// }
+
+// console.log(fruits);
+// console.log(results);
+
+// const VOWELS = 'aeiouAEIOU';
+
+// function selectVowels(str) {
+//   let results = [];
+
+//   for (let i = 0; i < str.length; i ++) {
+//     if (VOWELS.includes(str[i])) {
+//       results.push(str[i]);
+//     }
+//   }
+//   return results;
+// }
+
+// console.log(selectVowels('back once again'));
+
+// select key value pairs where value is fruit, this is returned as an object
+// create a select fruits function where an object is passed
+// create an empty results object
+// create an array of key value pairs with Object.entries
+  // no need to create a copy of the object, the entries is a copy of values, not of references
+// iterate over the array of pairs
+// create an if conditional, if the 1st element on each iteration equals 'fruit'
+  // assign the pair to the results using bracket notation
+// return the results
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// // let changeThis = produce;
+
+// // changeThis['apple'] = 'computer';
+
+// // console.log(produce);
+// // console.log(changeThis);
+
+// // let keys = Object.keys(produce);
+
+// // keys[0] = 'whaaaat???';
+
+// // console.log(keys);
+// // console.log(produce);
+
+// let values = Object.values(produce);
+
+// values[0] = 'saaaay whaaaat???';
+
+// console.log(values);
+// console.log(produce);
+
+
+
+// let pairs = Object.entries(produce);
+
+// pairs[0][1] = 'CHANGED!!!!';
+
+// console.log(pairs);
+// console.log(produce);
+
+//  first way
+// function selectFruit(obj) {
+//   let results = {};
+//   let keyValuePairs = Object.entries(obj);
+
+//   for (let i = 0; i < keyValuePairs.length; i ++) {
+//     if (keyValuePairs[i][1] === 'Fruit') {
+//       results[keyValuePairs[i][0]] = keyValuePairs[i][1];
+//     }
+//   }
+//   return results;
+// }
+
+// refactor
+
+// function selectFruit(obj) {
+//   let results = {};
+//   let keyValuePairs = Object.entries(obj);
+
+//   keyValuePairs.forEach(pair => {
+//     if (pair[1] === 'Fruit') {
+//       results[pair[0]] = pair[1];
+//     }
+//   })
+//   return results;
+// }
+
+// console.log(selectFruit(produce)); // => { apple: 'Fruit', pear: 'Fruit' }
+
+
+// let nums = [2, 4, 6, 8];
+
+// function doubleNums(arr) {
+//   for (let i = 0; i < arr.length; i ++) {
+//     arr[i] = arr[i] * 2;
+//   }
+//   return arr;
+// }
+
+// console.log(doubleNums(nums));
+
+// console.log(nums);
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// Try coding a solution that doubles the numbers that have odd indices:
+
+// create a function that takes an array as an argument
+// create a results array
+// iterate over the passed array with a for loop, need to access index value
+// check the value of the index, if odd
+  // push the number * 2 to the array
+  // else just push the number
+// return results
+
+// function doubleOddNumbers(arr) {
+//   let results = [];
+//   let indx = 0;
+
+//   while (indx < arr.length) {
+//     if (indx % 2 === 1) {
+//       results.push(arr[indx] * 2);
+//     } else {
+//       results.push(arr[indx]);
+//     }
+//     indx += 1;
+//   }
+//   return results;
+// }
+
+// function doubleOddNumbers(arr) {
+//   let results = [];
+
+//   for (let i = 0; i < arr.length; i ++) {
+//     if (i % 2 === 1) {
+//       results.push(arr[i] * 2);
+//     } else {
+//       results.push(arr[i]);
+//     }
+//   }
+//   return results;
+// }
+
+// let doubleTrouble = (doubleOddNumbers(myNumbers));
+// console.log(doubleTrouble);
+// console.log(myNumbers);
+// myNumbers[0] = 11111;
+// console.log(doubleTrouble);
+// console.log(myNumbers);
+
+
+// function doubleNumsWithOddIndices(numbers) {
+//   let doubledNums = [];
+
+//   for (let counter = 0; counter < numbers.length; counter += 1) {
+//     let currentNumber = numbers[counter];
+
+//     if (counter % 2 === 1) {
+//       doubledNums.push(currentNumber * 2);
+//     } else {
+//       doubledNums.push(currentNumber);
+//     }
+//   }
+
+//   return doubledNums;
+// }
+
+// let doubled = (doubleNumsWithOddIndices(myNumbers));
+// doubled[2] = 344334433443;
+// console.log(myNumbers);
+// console.log(doubled);
+
+
+// let myNumbers = [1, 4, 3, 4, 2, 3];
+
+
+// function double(arr) {
+//   let results = [];
+
+//   for (let i = 0; i < arr.length; i ++) {
+//     results.push(arr[i] * 2);
+//   }
+
+//   results[0] = 9999;
+
+//   return results;
+// }
+
+// let doubled = double(myNumbers);
+// console.log(doubled);
+// console.log(myNumbers);
+
+// // doubled[0] = 999;
+
+// console.log(doubled);
+// console.log(myNumbers);
+
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function multiply(arr, num) {
+//   let results = [];
+
+//   arr.forEach(el => results.push(el * num));
+
+//   return results;
+// }
+
+
+// let multiplied = multiply(myNumbers, 3); // => [3, 12, 9, 21, 6, 18]
+
+// console.log(multiplied);
+// console.log(myNumbers)
+
+// let nums = [[2], 4, 6];
+
+// function changeIt(arr) {
+//   let results = [];
+//   results.push(arr[0]);
+//   results.push(arr[1]);
+//   results[0] = 555;
+//   results[1] = 888;
+//   return results;
+// }
+
+// let changed = changeIt(nums);
+// console.log(changed)
+// console.log(nums);
+
+// let numbers = [[2], [4], [6]];
+
+// function double(arr) {
+//   let results = [];
+
+//   for (let i = 0; i < arr.length; i ++) {
+//     results.push(arr[i][0] * 2) 
+//   }
+//   return results;
+// }
+
+// let doubled = double(numbers);
+// console.log(doubled);
+// console.log(numbers);
+
+// let nums = [2, 4, 6, 8];
+
+// let filtered = nums.filter((num, indx) => {
+//   if (indx % 2 === 0) {
+//     return num;
+//   }
+// })
+
+// console.log(filtered);
+
+// let mapped = nums.map((num, indx) => {
+//   if (indx % 2 === 0) {
+//     return num * 100;
+//   } else {
+//     return num;
+//   }
+// })
+
+// console.log(mapped)
+
+// nums.forEach((num, indx) => {
+//   console.log(num * indx);
+// })
+
+// let str = 'back once again';
+
+// let results = [];
+
+// str.split('').forEach((char, indx) => {
+//   if (indx % 2 === 0) {
+//     results.push(char.toUpperCase());
+//   } else {
+//     results.push(char);
+//   }
+// })
+
+// console.log(results.join(''))
+// console.log(str)
+
+// let gnr = {vocals : 'axl', guitar : 'slash', bass : 'duff', drums : 'steven'};
+
+// // Object.keys(gnr).forEach(key => gnr[key] = gnr[key].toUpperCase());
+
+
+// console.log(gnr)
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+
+// let keyVals = Object.entries(produce);
+
+// keyVals.forEach(pair => {
+//   let [type, category] = pair;
+//   // console.log(`this is the type : ${type}`);
+//   // console.log(category)
+
+//   let first = pair[0];
+//   let sec = pair[1];
+
+//   console.log(`first: ${first}, second: ${sec}`)
+// })
+
+// let produceKeyValues = Object.entries(produce);
+// // produceKeyValues contains:
+// //   [['apple', 'Fruit'],
+// //    ['carrot', 'Vegetable'],
+// //    ['pear', 'Fruit'],
+// //    ['broccoli', 'Vegetable']]
+
+// produceKeyValues.forEach(keyValue => {
+//   let [ key, value ] = keyValue;
+
+//   console.log(`${key} is a ${value}`);
+// });
+// logs:
+// apple is a Fruit
+// carrot is a Vegetable
+// pear is a Fruit
+// broccoli is a Vegetable
+
+// let arr = [['back'], ['once'], ['again']];
+
+// let arr2 = ['back', 'once', 'again'];
+
+// let arr3 = [1, 2, 3];
+
+// // arr2.forEach((num, indx) => arr2[indx] = num * 2);
+
+// // arr.forEach(el => el[0] = el[0].toUpperCase());
+
+// arr2.forEach((_, indx) => arr2[indx] = arr2[indx].toUpperCase())
+
+// // arr3.forEach((num, indx))
+
+// console.log(arr2);
+
+// console.log([1, 2, 3].filter(num => num - 1))
+
+// The question now is whether we can effectively use filter to select certain key-value pairs from an object. Let's say we want to select the key-value pairs from our produce object where the value is Vegetable. Let's give it a shot with Array.prototype.filter.
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// let vegPairs = Object.entries(produce).filter(pair => pair[1] === 'Vegetable');
+
+// console.log(vegPairs);
+
+// That sort of works, but the return value isn't ideal: it returns an array, not an object as we want. Maybe we can convert the array to an object using forEach:
+
+// let vegObj = {};
+
+// vegPairs.forEach(arr => {
+//   vegObj[arr[0]] = arr[1] 
+// });
+
+// console.log(vegObj);
+
+// let vegObj = {};
+
+// Object.entries(produce).forEach(pair => {
+//   let [type, category] = pair;
+//   if (category === 'Vegetable') {
+//     vegObj[type] = category;
+//   }
+//   }
+// )
+
+// console.log(vegObj);
+
+// new strng with just vowels
+
+// let str = "What's up, Doc?";
+
+// // let vowelStr = str.split('').filter(char => 'aeiou'.includes(char.toLowerCase())).join('');
+
+// // console.log(vowelStr);
+
+// // We can also use this technique with map. Let's duplicate every character in a string and return the result:
+
+// let dupe = str.split('').map(char => char + char).join('');
+
+// console.log(dupe)
+
+// let arr = ['back', 'once', 'again'];
+
+// console.log(arr.some(word => word[0] === 'B'));
+
+// let animals = { a: 'ant', b: 'bear', c: 'cat' };
+
+// console.log(Object.values(animals).some(word => word.length > 3))
+
+// console.log(Object.values(animals).every(word => word.charCodeAt(0) >= 98));
+
+// console.log(Object.values(animals).every(word => word.length >= 3))
+
+// let obj = { vocals: 'Axl'};
+
+// console.log(obj.hasOwnProperty('vocals'));
+// console.log(obj.hasOwnProperty('hasOwnProperty'))
+
+// let arr = [2, 4, 6];
+
+// arr['foo'] = 'bar';
+// arr[-6] = 'negSix';
+
+// console.log(arr);
+
+// console.log(Object.keys(arr))
+
+// let arr = [];
+
+// let arr2 = [];
+// arr2.length = 5;
+
+// let arr3 = [];
+// arr3['foo'] = 'bar';
+
+// console.log(Object.keys(arr2).length);
+// console.log(Object.keys(arr3).length);
+
+// // What is the return value of the filter method call below? Why?
+// [1, 2, 3].filter(num => 'hi');
+// // [1, 2, 3]
+
+// What is the return value of map in the following code? Why?
+
+// [1, 2, 3].map(num => {
+//   num * num;
+// }); 
+// [undefined, undefined, undefined]
+
+// [1, 2, 3].map(num => num * num);
+// [1, 4, 9] because of implicit return
+
+// ['ant', 'bear', 'caterpillar'].pop().length;
+// 11 becasue .pop returns the removed element, .length is called on the removed element which is a string
+
+// What is the callback's return value in the following code? Also, what is the return value of every in this code?
+
+// [1, 2, 3].every(num => {
+//   return num = num * 2;
+// });
+// [2, 4, 6]
+// // true
+
+// let arr = [1, 2, 3, 4, 5]
+// arr.fill(1, 1, 5);
+
+// console.log(arr)
+
+// What is the return value of map in the following code? Why?
+
+// ['ant', 'bear'].map(elem => {
+//   if (elem.length > 3) {
+//     return elem;
+//   }
+// });
+
+// [undefined, 'bear'];
+
+let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "Bambam"];
+
+// PROBLEM: // Write a program that uses this array to create an object where the names are the keys and the values are the positions in the array:
+  // input: an array
+  // output: an object
+  // questions/clarification
+    // can the original array be modified? - I'll say no
+    // the order of the keys in the array is the same as the order of the elements in the array
+    // can I assume only an array will be passed as the argument to the function - yes
+
+// EXAMPLES/TEST CASES:
+  // { Fred: 0, Barney: 1, Wilma: 2, Betty: 3, Pebbles: 4, Bambam: 5 }
+
+// DATA STRUCTURES
+  // an initial array
+  // a result object
+  // strings within the array, strings as the keys
+  // numbers as the values of the keys
+
+// HIGH LEVEL ALGORITHM
+  // have to take the string - each element and set it as a key
+  // have to be able to access the index of each element of the array
+  // take the element name and assign it in an object as the key
+  // take the corresponding index and assign it as a value
+  // can do this action with iteration
+
+// ALGORITHM
+  // create a function that takes an array as an argument
+  // create an empty results object
+  // call Object.entries on the passed array, this will give an array of subarrays containing key value pairs (the length of the index is the key in this case)
+    // Object.entries returns a new array, these values are not linked to original values since they are not nested
+  // call forEach() on this array,
+    // on each iteration use array destructuring assignment to set variables for key and value (index / name)
+    // within same iteration use bracket notation to assign this pair to the object
+      // use Number() to turn the indx number from a string to a number
+  // return the object
+
+// function makeObj(arr) {
+//   let results = {};
+
+//   Object.entries(arr).forEach(pair => {
+//     let [indx, name] = pair;
+//     results[name] = Number(indx);
+//   })
+
+//   return results;
+// }
+
+// let flintstonesObj = makeObj(flintstones);
+
+// console.log(flintstonesObj);
+
+// let ages = {
+//   Herman: 32,
+//   Lily: 30,
+//   Grandpa: 5843,
+//   Eddie: 10,
+//   Marilyn: 22,
+//   Spot: 237
+// };
+
+// PROBLEM: Add up all of the ages from the Munster family object:
+  // input an object with values as a number
+  // output a single number
+  // assumptions - do not modify the original object
+  // assumptions - only an object will be passed to the function
+  // assumptions - if two numbers are equally small just return one
+
+// EXAMPLES: given
+
+// DATA STRUCTURES:
+  // object and numbers
+  // an array of numbers used to isolate the values we need
+
+// ALGORITHM:
+  // create a function that takes an object as an argument
+  // call Object.values to create an array of the numbers we need
+  // call .reduce() on this array, set the accumulator to zero and on each iteration add the value to the accumulator
+  // return the value from .reduce
+
+// CODE
+
+// function addItUp(obj) {
+//   return Object.values(obj).reduce((accum, el) => accum += el, 0);
+// }
+
+// let totalAge = addItUp(ages);
+
+// console.log(totalAge);
+
+// let ages = {
+//   Herman: 32,
+//   Lily: 30,
+//   Grandpa: 5843,
+//   Eddie: 10,
+//   Marilyn: 22,
+//   Spot: 237
+// };
+
+// PROBLEM Pick out the minimum age from our current Munster family object:
+  // input - an object
+  // output a number
+  // assumptions - assume only an object is passed to function
+
+// EXAMPLES: given
+
+// DATA STRUCTURES:
+  // an object, an array to isolate the numbers, numbers
+
+// ALGORITHM:
+  // use Object.values to make an array of the numbers
+  // sort this array in ascending order
+  // return the first (zero indexed) element in the array, this will be the smallest number
+
+// function smallest(obj) {
+  
+//   let sorted = Object.values(obj).sort((a, b) => {
+//     if (a < b) {
+//       return - 1;
+//     } else if (a > b) {
+//       return 1;
+//     } else {
+//       return 0;
+//     }
+//   })
+
+//   return sorted[0];
+// }
+
+// let lowestAge = smallest(ages);
+// console.log(lowestAge)
+
+
+// let ages = {
+//   Herman: 32,
+//   Lily: 30,
+//   Grandpa: 5843,
+//   Eddie: 10,
+//   Marilyn: 22,
+//   Spot: 237
+// };
+
+// ALTERNATIVE WAY
+
+// use Object.values to create an array of the numbers
+// set a lowest age variable equal to the first element of the array
+// iterate over the array
+  // on each iteration check to see if the current value is less than the lowest age variable
+  // if so reassign the lowest age variable
+// return the lowest age after all iterations
+
+// function lowest(obj) {
+//   let ages = Object.values(obj);
+//   let lowestAge = ages[0];
+
+//   ages.forEach(age => {
+//     if (age < lowestAge) {
+//       lowestAge = age;
+//     }
+//   })
+//   return lowestAge;
+// }
+
+// console.log(lowest(ages));
+
+
+// ALTERNATIVE WITH SPREAD SYNTAX
+
+// let ages = {
+//   Herman: 32,
+//   Lily: 30,
+//   Grandpa: 5843,
+//   Eddie: 10,
+//   Marilyn: 22,
+//   Spot: 237
+// };
+
+// let agesOnly = Object.values(ages);
+// let lowest = Math.min(...agesOnly)
+// console.log(lowest);
+
+// PROBLEM: Create an object that expresses the frequency with which each letter occurs in this string:
+  // input: string
+  // output and object with numbers as the values, letters as the keys
+  // note: capitalization is separate from lower case, different values
+  // a string is passed to function - immutable
+  // spaces don't count, have to discard these
+
+// EXAMPLES: { T: 1, h: 1, e: 2, F: 1, l: 1, ... }
+
+// DATA STRUCTURES
+  // string, object, numbers, arrays to use array methods
+
+// ALGORITHM
+
+// create a function that takes a string as an argument
+// create an empty results object
+// split the string at the character level to get an array of characters
+// use forEach to iterate over the array
+  // on each iteration
+  // char === ' ' continue
+  // check to see if the char already is a value in the object
+    // if not use variable assignment to set it = 1
+    // if it does exist += 1
+// return result object
+
+// let statement = "The Flintstones Rock";
+
+
+// function countChars(str) {
+//   let results = {};
+
+//   str.split('').forEach(char => {
+//     if (char === ' ') {
+//       return;
+//     } else if (!Object.keys(results).includes(char)) {
+//       results[char] = 1;
+//     } else {
+//       results[char] += 1;
+//     }
+//   })
+//   return results;
+// }
+
+// let counted = countChars(statement);
+
+// console.log(counted);
+
+
+// let statement = "The Flintstones Rock";
+
+// function countChars(str) {
+//   let results = {};
+//   charArr = str.split('').filter(char => char !== ' ');
+
+
+//   charArr.forEach(char => {
+//     results[char] = results[char] || 0;
+//     results[char] += 1;
+//   })
+//   return results;
+// }
+
+// console.log(countChars(statement))
+
+// let statement = "The Flintstones Rock";
+
+// function countingChars(str) {
+//   let result = {};
+//   let charArr = str.split('').filter(el => el !== ' ');
+
+//   charArr.forEach(char => {
+//     result[char] = result[char] || 0;
+//     result[char] += 1;
+//   })
+//   return result;
+// }
+
+// console.log(countingChars(statement))
+
+// let statement = "The Flintstones Rock";
+
+// const countChars = function (str) {
+//   let result = {};
+
+//   for (let i = 0; i < str.length; i ++) {
+//     if (str[i] === ' ') {
+//       continue;
+//     }
+//     result[str[i]] = result[str[i]] || 0;
+//     result[str[i]] += 1;
+//   }
+//   return result;
+// }
+
+// console.log(countChars(statement))
+
+// let obj = {vocal : 'Axl', bass : undefined};
+
+// console.log(obj['guitar']);
+// console.log(obj.bass)
+
+// let obj = {first : 1, second : [2]};
+
+// let vals = Object.values(obj);
+
+// vals[1].push(555);
+
+// console.log(obj);
+// console.log(vals);
+
+// Add a property to the below object, jane, so that the code on line 13 logs 'Hej, Bobby!' to the console.
+
+// let jane = {
+//   firstName: 'Jane',
+//   lastName: 'Harrelson',
+//   age: 32,
+//   location: {
+//     country: 'Denmark',
+//     city: 'Aarhus'
+//   },
+//   occupation: 'engineer',
+//   // greet : (name) => {
+//   //   console.log(`Hej, ${name}!`)
+//   // }
+//   greet : function (name) {
+//     console.log(`Hej, ${name}!`)
+//   }
+// };
+
+// // // jane.greet('Bobby'); // Hej, Bobby!
+
+// jane.greet('Billy')
+
+
+
+
+// PROBLEM: Given the following data structure write some code to return an array containing the colors of the fruits and the sizes of the vegetables. The sizes should be uppercase, and the colors should be capitalized.
+  // input: an object with keys that have a value as an object
+  // output: an array that contains other nested values
+  // should the two structures be linked by references - no
+  // note capitalization scheme - something happens to every value
+  // can assume that the argument passed will always be an object
+
+// EXAMPLES / TEST CASES The return value should look like this:
+  // [["Red", "Green"], "MEDIUM", ["Red", "Green"], ["Orange"], "LARGE"]
+
+// DATA STRUCTURES
+  // objects, arrays, strings
+
+// ALGORITHM
+  // create a function that takes an object as an argument
+    // create helper function to test and show an error message if argument passed is not an object
+  // create an empty results array
+  // use object.values to isolate the nested objects, these are the references
+  // iterate over the array of objects
+    // conditional logic to check for type
+    // if fruit
+      // create an empty array (this will be sent to results eventually)
+      // create a nested iteration to iterate over colors
+        // on each iteration send to the created empty array a slice and concatenation of the primitive color with correct capitalziation
+        // push this to the results array
+    // if vegetable
+      // push tot he results array the all caps of the size, is a primitive value
+  // return results array
+
+// CODE WITH INTENT
+
+// let val = null;
+// let arr = [2, 3, 9];
+// let str = 'back once again'
+
+// let produce = {
+//   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+//   carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+//   apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+//   apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+//   marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+// };
+
+// function isAnObject(item) {
+//   return typeof item === 'object' && !Array.isArray(item) && item !== null;
+// }
+
+// function makeColorAndSizeArray(obj) {
+//   if (!isAnObject(obj)) {
+//     console.log('That\'s not an object! Please pass an object as an argument!');
+    
+//   }
+
+//   let results = [];
+//   let nestedObjectsArray = Object.values(obj);
+
+//   nestedObjectsArray.forEach(nestedObj => {
+//     if (nestedObj.type === 'fruit') {
+//       let colorArray = [];
+//       nestedObj.colors.forEach(color => {
+//         colorArray.push(color[0].toUpperCase() + color.slice(1));
+//       })
+//       results.push(colorArray);
+//     } else {
+//       results.push(nestedObj.size.toUpperCase());
+//     }
+//   })
+//   return results;
+// }
+
+
+// console.log(makeColorAndSizeArray(produce))
+// console.log(makeColorAndSizeArray(val))
+// console.log(makeColorAndSizeArray(arr))
+// console.log(makeColorAndSizeArray(str))
+
+// let arr = [2, 11, 9, 4, 107, 21, 1];
+
+// arr.sort((a, b) => a - b)
+// console.log(arr)
+// [1, 2, 4, 9, 11, 21, 107]
+
+// console.log(['arc', 'bat', 'cape', 'ants', 'cap'].sort());
+
+// let arr = [2, 11, 9, 4, 107, 21, 1] // sorted result: [ 1, 2, 4, 9, 11, 21, 107 ]
+
+// arr.sort(function (a, b) {
+//   if (a < b) {
+//     debugger
+//     return -1
+//   } else if (a > b) {
+//     debugger
+//     return 1;
+//   } else {
+//     debugger;
+//     return 0;
+//   }
+// })
+
+// console.log(arr);
+
+// arr.sort(function (a, b) {
+//   return b - a;
+// })
+
+// console.log(arr)
+
+// let words = ['go', 'ahead', 'and', 'jump'];
+
+// words.sort((a, b) => {
+//   if (a.length < b.length) {
+//     return -1;
+//   } else if (a.length > b.length) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(words);
+
+// let nums = [342, 128, 9, 87, 6, 8326];
+
+// nums.sort((a, b) => {
+//   if (a < b) {
+//     return -1;
+//   } else if (a > b) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(nums)
+
+
+// let scores = [[3, 6, 4], [6, 8, 9], [1, 4, 2]];
+// [ [ 1, 4, 2 ], [ 3, 6, 4 ], [ 6, 8, 9 ] ];
+
+// each subarray is an element that can be compared with .sort
+// we want to compare the total of each subarray, so need to calcualte this, a total, b total
+
+// scores.sort((a, b) => {
+//   let aTotal = a.reduce((accum, el) => accum += el, 0);
+//   let bTotal = b.reduce((accum, el) => accum += el, 0);
+
+//   return aTotal - bTotal;
+// })
+
+// console.log(scores);
+
+// scores.forEach(subArr => subArr.sort((a, b) => a - b));
+
+// console.log(scores)
+
+// sort this in descending order:
+
+// let wordArr = ['back', 'once', 'again'];
+
+// // this doesn't work like it would for numbers, have to deliberately do this
+
+// wordArr.sort((a, b) => b - a);
+// console.log(wordArr); // [ 'back', 'once', 'again' ]
+
+// // like this:
+
+// wordArr.sort((a, b) => {
+//   if (a < b) {
+//     return 1;
+//   } else if (a > b) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(wordArr); // [ 'once', 'back', 'again' ]
+
+
+// let nestedWordArr = [['back'], ['once'], ['again']];
+// // sort to produce [['again'], ['back'], ['once']]
+
+// nestedWordArr.sort((a, b) => {
+//   let aWord = a[0];
+//   let bWord = b[0];
+
+//   if (aWord < bWord) {
+//     return -1;
+//   } else if (aWord > bWord) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(nestedWordArr); //[ [ 'again' ], [ 'back' ], [ 'once' ] ]
+
+// let arr = [{ a: 'ant' }, { b: 'bear' }];
+
+// console.log(arr[0].a);
+
+// let arr = [{ a: 'ant' }, { b: 'bear' }];
+
+// arr[0]['c'] = 'cat';
+
+// console.log(arr);
+
+// let a = [1, 3];
+// let b = [2];
+// let arr = [a, b];
+// arr // => [ [ 1, 3 ], [ 2 ] ]
+
+// arr[0][0] = 100;
+// console.log(arr);
+// console.log(a)
+
+// let arr = [['a'], ['b'], ['c']];
+// let copyOfArr = arr.slice();
+
+// copyOfArr[1].push('d');
+// copyOfArr.push('only in the copy')
+
+// console.log(arr);
+// console.log(copyOfArr);
+
+// let arr = [{ a: 'foo' }, { b: 'bar' }, { c: 'baz' }];
+// let copyOfArr = [...arr];
+
+// copyOfArr[1].d = 'qux';
+// arr.push({e : 'edu'})
+
+// console.log(arr);
+// console.log(copyOfArr);
+
+// let obj1 = { a: 'foo' };
+// let obj2 = { b: ['bar'] };
+// let obj3 = { c: 'crux'};
+
+// Object.assign(obj1, obj2, obj3);
+
+// console.log(obj1);
+
+// obj2.b[0] = 'whaaaat???';
+
+// console.log(obj2);
+// console.log(obj1)
+
+// let gnr = {vocals : 'axl', guitar: 'slash'}
+// let ledZep = {drums : 'bonham', bass : 'some guy'}
+
+// Object.assign(gnr, ledZep);
+
+// console.log(gnr);
+// console.log(ledZep)
+
+// let chargers = {
+//   qb : 'Rivers',
+//   rbs : ['LT', 'Sproles'],
+//   wrs: ['Vincent Jackson', 'Malcom Floyd']
+// }
+
+
+// let shallowCopy = Object.assign({}, chargers);
+// let stringifiedObj = JSON.stringify(chargers);
+// let deepCopy = JSON.parse(stringifiedObj);
+
+// chargers['rbs'][0] = 'LaDanian Tomlinson';
+
+
+// console.log(chargers);
+// console.log(shallowCopy);
+// console.log(deepCopy);
+
+// let arr = [2, 4, 6, [8, 10, 12]];
+
+// Object.freeze(arr[3]);
+
+// arr.push(22222);
+
+// // arr[3].push(100)
+
+// console.log(Object.isFrozen(arr[3]))
+// console.log(arr);
+
+// "use strict";
+
+// let wordArr = ['back', 'once', 'again'];
+
+// console.log(wordArr.slice().sort());
+// // [ 'again', 'back', 'once' ]
+
+// let nestedWordArr = [['back'], ['once'], ['again']];
+
+// console.log(nestedWordArr.flat().sort().map(toUpper));
+// // [ [ 'again' ], [ 'back' ], [ 'once' ] ]
+
+// function toNested(ele) {
+//   return [ele];
+// }
+
+// function toUpper(ele) {
+//   return ele.toUpperCase();
+// }
+
+
+
+// console.log(nestedWordArr.flat().sort().map(toUpper));
+// // [ 'AGAIN', 'BACK', 'ONCE' ]
+
+// function toUpper(ele) {
+//   return ele.toUpperCase();
+// }
+
+// [[1, 2], [3, 4]].forEach(arr => console.log(arr[0]));
+// 1
+// 3
+// => undefined
+
+// what is happening
+// for each is used for just iteration will iterate over all the elements
+// on each element the call back is performed
+// in this case on each iteration the value is logged - this is actually itself a method
+// for each returns undefined
+
+
+// console.log([[1, 2], [3, 4]].map(arr => (arr[0])));
+// 1
+// 3
+// => [undefined, undefined]
+
+// what is happening
+// map iterates over the outer array,
+// call back executes on each subarray
+// element 0 is referenced,
+// method call console.logs that element
+// console.log returns undefined, that is used by map
+
+// console.log([[1, 2], [3, 4]].map(arr => {
+//   console.log(arr[0]);
+//   return arr[0];
+// }));
+
+// let myArr = [[18, 7], [3, 12]].forEach(arr => {
+//   return arr.map(num => {
+//     if (num > 5) {
+//       return console.log(num);
+//     }
+//   });
+// });
+
+// console.log(myArr);
+
+// [[1, 2], [3, 4]].map(arr => {
+//   return arr.map(num => num * 2);
+// });
+// console.log(2 === 2)
+
+
+// PROBLEM: How would you order the following array of number strings by descending numeric value (largest number value to smallest)?
+  // input: an array
+  // output: a sorted array
+  // question sort in place or return new array? - return new array
+  // note they are strings
+// EXAMPLES/TEST CASES: GIVEN
+// DATA STRUCTURES: an array of strings (also numbers when converting to sort)
+// ALGORITHM
+  // create a shallow copy of the array to sort so not to mutate the original
+    // set a variable equal to this array using spread syntax
+  // call .sort()
+    // provide a callback function
+    // declare aVariable = to Number(a)
+    // do the same with a b variable
+    // use the expanded syntax to sort in descending order according to variables
+      // careful with order of 1, -1 we want descending order
+
+// let arr = ['10', '11', '9', '7', '8'];
+
+// let sortedArr = [...arr].sort((a, b) => {
+//   let aNum = Number(a);
+//   let bNum = Number(b);
+
+//   if (aNum < bNum) {
+//     return 1;
+//   } else if (aNum > bNum) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(arr);
+// console.log(sortedArr);
+
+
+// PROBLEM: How would you order the following array of objects based on the year of publication of each book, from the earliest to the latest?
+// EXAMPLES: given
+// DATA STRUCTURES: an array with nested objects
+// ALGORTIHM
+  // create a deep copy to not modify original
+  // call .sort()
+    // declare an aVariable equal to Number( a.[published])
+    // do same with b variable
+    // sort using expanded syntax
+
+// let books = [
+//   { title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', published: '1967' },
+//   { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', published: '1925' },
+//   { title: 'War and Peace', author: 'Leo Tolstoy', published: '1869' },
+//   { title: 'Ulysses', author: 'James Joyce', published: '1922' },
+//   { title: 'The Book of Kells', author: 'Multiple Authors', published: '800' },
+// ];
+
+// let stringified = JSON.stringify(books);
+// let deepCopyBooks = JSON.parse(stringified);
+
+// deepCopyBooks.sort((a, b) => {
+//   let aYear = Number(a.published);
+//   let bYear = Number(b.published);
+
+//   if (aYear < bYear) {
+//     return -1;
+//   } else if (aYear > bYear) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+// })
+
+// console.log(books);
+// console.log(deepCopyBooks);
+
+
+// let arr1 = ['a', 'b', ['c', ['d', 'e', 'f', 'g']]];
+// let arr2 = [{ first: ['a', 'b', 'c'], second: ['d', 'e', 'f'] }, { third: ['g', 'h', 'i'] }];
+
+
+// console.log(arr2[1]['third'][0])
+
+// let arr3 = [['abc'], ['def'], { third: ['ghi'] }];
+
+// console.log(arr3[2]['third'][0][0]);
+
+// let obj1 = { a: ['d', 'e'], b: ['f', 'g'], c: ['h', 'i'] };
+
+// console.log(obj1.b['1'])
+
+// let obj2 = { first: { d: 3 }, second: { e: 2, f: 1 }, third: { g: 0 }};
+
+// console.log(Object.keys(obj2.third)[0])
+
+// let arr1 = [1, [2, 3], 4];
+
+// arr1[1][1] = 4444
+// console.log(arr1)
+
+// let arr2 = [{ a: 1 }, { b: 2, c: [7, 6, 5], d: 4 }, 3];
+
+// arr2[2] = 4444;
+// console.log(arr2)
+
+// let obj1 = { first: [1, 2, [3]] };
+
+// obj1['first'][2][0] = 4444;
+// // console.log(obj1)
+// let obj2 = { a: { a: ['1', 'two', 3], b: 4 }, b: 5 };
+
+// obj2['a']['a'][2] = 4444;
+
+// console.log(obj2)
+
+// PROBLEM: Compute and display the total age of the male members of the family.
+  // INPUT: an object
+  // OUTPUT: a number
+
+// EXAMPLES/TEST CASES: given
+
+// DATA STRUCTURES: object, number, possibly arrays to use array methods
+
+// ALGORITHM:
+
+// create a helper function that takes an object as an argument
+  // purpose is to get the nested object for each family member
+  // call object.entries on the passed object
+  // create an empty results array
+  // iteratate over the object.entries with for each
+  // push the index1 element to the results array
+  // return results
+
+// create a function that takes an array as an argument
+  // the results from the helper function will be passed
+  // this will be an array with a nested array of age / gender
+  // iterate over this with .reduce()
+    // set a conditional to check for gender
+    // if male += reduce the age
+
+
+// let munsters = {
+//   Herman: { age: 32, gender: 'male' },
+//   Lily: { age: 30, gender: 'female' },
+//   Grandpa: { age: 402, gender: 'male' },
+//   Eddie: { age: 10, gender: 'male' },
+//   Marilyn: { age: 23, gender: 'female'}
+// };
+
+// function makeArray(obj) {
+//   let results = [];
+//   let firstLevelArr = Object.entries(obj);
+
+//   firstLevelArr.forEach(familyMember => {
+//     results.push(Object.values(familyMember[1]));
+//   })
+//   return results;
+// }
+
+
+// let totalAge = makeArray(munsters).reduce((accum, el) => {
+//   if (el[1] === 'male') {
+//     return accum += el[0];
+//   }
+//   return accum;
+// }, 0)
+
+// console.log(totalAge);
+
+// let totalAge = Object.entries(munsters).reduce((accum, el) => {
+//   el.forEach(familyMember => {
+//     if (familyMember.gender === 'male') {
+//       return accum += familyMember.age;
+//     }
+//   })
+//   return accum;
+// }, 0)
+
+// console.log(totalAge);
+
+
+// One of the most frequently used real-world string operations is that of "string substitution," where we take a hard-coded string and modify it with various parameters from our program.
+
+// PROBLEM: Given this previously seen family object, print the name, age, and gender of each family member:
+  // OUTPUT: print to the console a string
+  // INPUT: an object
+// EXAMPLES: (Name) is a (age)-year-old (male or female).
+// DATA STRUCTURES: an object, strings, possibly arrays if needed for iteration methods
+// ALGORITHM
+  // create an object.entries variable to store the data in a nested array
+  // use .forEach to iterate over each entry
+  // on each iteration print the name [0] index
+  // on each iteration print the data [1]['age], [1]['gender']
+
+// let munsters = {
+//   herman: { age: 32, gender: 'male' },
+//   lily: { age: 30, gender: 'female' },
+//   grandpa: { age: 402, gender: 'male' },
+//   eddie: { age: 10, gender: 'male' },
+//   marilyn: { age: 23, gender: 'female'}
+// };
+
+// Object.entries(munsters).forEach(nestedArr => {
+//   console.log(`${nestedArr[0][0].toUpperCase()}${nestedArr[0].slice(1)} is a ${nestedArr[1]['age']}-year-old ${nestedArr[1]['gender']}`)
+// })
+
+// let a = 2;
+// let b = [5, 8];
+// let arr = [a, b]; // [2, [5, 8]] note 2 is not linked to a, the primitive was put in here
+
+// arr[0] += 2; // [4, [5, 8]] a is still 2, b remains unchanged [5, 8]
+// arr[1][0] -= a; // [4, [3, 8]] a is still 2, b is changed is now [3, 8]
+
+// // a 2
+// // b [3, 8]
+// // arr [4, [3, 8]]
+
+// console.log(a);
+// console.log(b);
+// console.log(arr);
+
+
+
+// Using the forEach method, write some code to output all vowels from the strings in the arrays. Don't use a for or while loop.
+
+// let obj = {
+//   first: ['the', 'quick'],
+//   second: ['brown', 'fox'],
+//   third: ['jumped'],
+//   fourth: ['over', 'the', 'lazy', 'dog'],
+// };
+
+// Object.values(obj).forEach(nestedArr => {
+//   nestedArr.forEach(word => {
+//     word.split('').forEach(char => {
+//       if ('aeiou'.includes(char)) {
+//         console.log(char)
+//       }
+//     })
+//   })
+// })
