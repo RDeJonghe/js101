@@ -4436,3 +4436,836 @@ let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "Bambam"];
 //     })
 //   })
 // })
+
+
+// Given the following data structure, return a new array with the same structure, but with the values in each subarray ordered -- alphabetically or numerically as appropriate -- in ascending order.
+
+// let arr = [['b', 'c', 'a'], [2, 1, 3], ['blue', 'black', 'green']];
+
+// let newArr = arr.map(subArr => {
+//   if (typeof subArr[0] === 'string') {
+//     return subArr.slice().sort();
+//   } else {
+//     return subArr.slice().sort((a, b) => a - b);
+//   }
+// })
+
+// console.log(arr)
+// console.log(newArr)
+
+// let arr = [[[1], [2], [3], [4]], [['a'], ['b'], ['c']]].map(element1 => {
+//   return element1.forEach(element2 => {
+//     return element2.filter(element3 => {
+//       return element3.length > 0;
+//     });
+//   });
+// });
+
+// console.log(arr)
+// => [ undefined, undefined ]
+
+// let arr = [[1], [2], [3]];
+
+// for (let i = 0; i < arr.length; i ++) {
+//   console.log(arr.filter(el => el.length > 0));
+// }
+
+
+// [[[1], [2], [3], [4]], [['a'], ['b'], ['c']]].map(element1 => {
+//   console.log(element1)
+//   return element1.forEach(element2 => {
+//     console.log(element2)
+//     return element2.filter(element3 => {
+//       console.log(element3)
+//       return element3.length > 0;
+//     });
+//   });
+// });
+
+// let num = 6;
+
+// console.log(num.length)
+
+// // console.log('a'.length)
+
+// // => [ undefined, undefined ]
+
+// // console.log(undefined > 1
+
+// // console.log(Number(undefined))
+// // console.log(undefined > 0)
+
+// console.log('a'.length)
+
+
+
+// Given the following data structure, return a new array with the same structure, but with the values in each subarray ordered -- alphabetically or numerically as appropriate -- in ascending order.
+
+// make a deep copy of the array since it contains nested subarrays
+// call .map on the copy
+// create an a var and a b var
+// check the type of and sort syntax based off of that
+
+// let arr = [['b', 'c', 'a'], [2, 1, 3], ['blue', 'black', 'green']];
+
+
+// let newArr = arr.map(subArr => {
+//   let copy = subArr.slice();
+
+//   if (typeof copy[0] === 'string') {
+//     return copy.sort();
+//   } else {
+//     return copy.sort((a, b) => a - b)
+//   }
+// })
+
+// console.log(arr);
+// console.log(newArr)
+
+// let arr = [['b', 'c', 'a'], [2, 1, 3], ['blue', 'black', 'green']];
+
+// let newArr = arr.map(subArr => {
+//   let copy = subArr.slice();
+
+//     copy.sort((a, b) => {
+//       if (a < b) {
+//         return 1;
+//       } else if (a > b) {
+//         return -1;
+//       } else {
+//         return 0;
+//       }
+//     })
+//   return copy;
+// })
+
+// console.log(arr);
+// console.log(newArr)
+
+// PROBLEM Given the following data structure, use the map method to return a new array identical in structure to the original but, with each number incremented by 1. Do not modify the original data structure.
+  // INPUT: array with elements that are object - careful reference pointers
+  // OUTPUT: a new array identical, but with each number + 1
+  // do not modify original array - deep copy needed (or can slice on each iteration)
+// EXAMPLES: given
+// DATA STRUCTURES; array, object, numbers
+// ALGORITHM:
+  // call .map on array
+    // will iterate over each element
+    // call object.entries to get key value pairs - this returns a new array not a reference
+      // do a nested iteration on this new array, increment the value by one
+    // return object.fromEntries on the incremented array
+    // this all happens on each iteration to change each object
+
+
+// let arr = [{ a: 1 }, { b: 2, c: 3 }, { d: 4, e: 5, f: 6 }];
+
+// let newArr = arr.map(obj => {
+//   let objArr = Object.entries(obj);
+//   objArr.forEach(pairs => {
+//     pairs[1] += 1;
+//   })
+//   return Object.fromEntries(objArr);  
+// })
+
+// console.log(arr);
+// console.log(newArr);
+
+
+// Given the following data structure, use the map method to return a new array identical in structure to the original but, with each number incremented by 1. Do not modify the original data structure.
+
+// can do this by setting an empty array for the subarrays
+// use .map to iterate over every element
+  // this will arrive to each nested object
+  // for each nested object have to recreate it and increment value by 1
+  // can create a copy of each nested object using Object.assign
+  // now can iterate over the copied object and +1 the value - this is a nested iteration
+  // return this
+
+// let arr = [{ a: 1 }, { b: 2, c: 3 }, { d: 4, e: 5, f: 6 }];
+
+// let newArr = arr.map(el => {
+//   let objCopy = Object.assign({}, el);
+
+//   for (let key in objCopy) {
+//     objCopy[key] += 1;
+//   }
+
+//   return objCopy;
+// })
+
+// console.log(arr);
+// console.log(newArr);
+
+
+// let arr = [{ a: 1 }, { b: 2, c: 3 }, { d: 4, e: 5, f: 6 }];
+
+// let newArr = arr.map(obj => {
+//   let newObj = {};
+
+//   for (let key in obj) {
+//     newObj[key] = obj[key] + 1;
+//   }
+
+//   return newObj;
+// })
+
+// console.log(arr);
+// console.log(newArr);
+
+// PROBLEM:  Given the following data structure, use a combination of methods, including filter, to return a new array identical in structure to the original, but containing only the numbers that are multiples of 3.
+  // input, array with nested arrays
+  // output, a filtered array
+  // assumptions - do not modify original array - return a separate copy
+  // if there are no numbers that are a multiple of three return an empty subarray? - yes
+
+// EXAMPLES/TEST CASES: given
+
+// DATA STRUCTURES: array of nested arrays that have numbers as elements
+
+// ALGORITHM
+  // call .map on the array - we want to map each subarray
+  // on each iteration of map we can filter, call .filter on each element of outer array
+  // note that .filter will return new array for each subarray, they won't be linked by a reference pointer
+    // for filter do remainder 3 === 0
+    // return this for the nested iteration
+  // return each element in map
+
+// let arr = [[2], [3, 5, 7], [9], [11, 15, 18]];
+
+// let newArr = arr.map(subArr => {
+//   return subArr.filter(num => num % 3 === 0);
+// })
+
+// console.log(arr);
+// console.log(newArr);
+
+// PROBLEM: Given the following data structure, sort the array so that the sub-arrays are ordered based on the sum of the odd numbers that they contain.
+  // input: array of nested arrays of numbers
+  // output: a sorted array based off of sum of odd numbers of nested arrays
+  // note: the numbers are not sorted, just the subarrays based off of the sum
+  // question: modify existing array? - no
+// EXAMPLES/TEST CASES: given
+// DATA STRUCTURES: arrays and numbers
+// ALGORITHM
+  // create a variable = to arr and call sort on this variable
+  // use expanded syntax with a, b
+  // within the code block create
+    // oddSum variables = to .slice of a, b parameters of .sort
+    // on each oddSum variable call .reduce
+    // set the accum = to the total of each odd element
+  // do the actual sort ON the oddSum variables - these are actually the reduced value of sum of odd nums
+
+// let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
+
+// let oddlySorted = arr.slice().sort((a, b) => {
+//   let oddSumA = a.reduce((accum, el) => {
+//     if (el % 2 === 1) {
+//       accum += el;
+//     }
+//     return accum;
+//   }, 0)
+//   let oddSumB = b.reduce((accum, el) => {
+//     if (el % 2 === 1) {
+//       accum += el;
+//     }
+//     return accum;
+//   }, 0)
+//   return oddSumA - oddSumB;
+// })
+
+// console.log(arr);
+// console.log(oddlySorted);
+
+// [ [ 1, 8, 3 ], [ 1, 6, 7 ], [ 1, 5, 3 ] ]
+
+// PROBLEM: Given the following data structure write some code to return an array containing the colors of the fruits and the sizes of the vegetables. The sizes should be uppercase, and the colors should be capitalized.
+  // input object
+  // output array
+  // modify original object - no
+// EXAMPLES/TEST CASES: GIVEN
+// DATA STRUCTURES: an object with nested objects, array that includes some nested arrays
+// ALGORITHM:
+  // set an empty results array
+  // only need the values (which are objects) of the outer object
+    // set a nestedObjects variable = Object.values, this will be an array of objects
+    // iterate over this
+    //set a nesteditems variable = object.values on that nested Objects
+      // this will be easier to work with since all arrays
+    // use conditional logic to check fruit/vegetable
+    // can check the 0 index from these, the zero index is the value of type
+    // if fruit 
+      // create a var that is a .slice of the colors since it's an array
+      // iterate over this and reassign each element uppercasing first letter
+      // push this to results
+    //else push the size .toUpperCase() - primitive immutable - just push to results
+  //
+
+// let obj = {
+//   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+//   carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+//   apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+//   apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+//   marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+// };
+
+// let results = [];
+
+// let values = Object.values(obj);
+
+// values.forEach(nestedObj => {
+//   let nestedVals = Object.values(nestedObj);
+//   if (nestedVals[0] === 'fruit') {
+//     let upperArr = [];
+//     nestedVals[1].forEach(color => {
+//       upperArr.push(color[0].toUpperCase() + color.slice(1));
+//     })
+//     results.push(upperArr);
+//   } else {
+//   results.push(nestedVals[2].toUpperCase());
+//   }
+// })
+
+// console.log(results);
+
+// [["Red", "Green"], "MEDIUM", ["Red", "Green"], ["Orange"], "LARGE"]
+
+// PROBLEM Given the following data structure, write some code to return an array which contains only 
+// the objects where all the numbers are even.
+  // input: an array with nested objects that have values of arrays
+  // output: similar array, but it will have only even number objects
+  // probably a problem for filter
+// EXAMPLES given
+// DATA STRUCTURES: arrays, objects
+// ALGORITHM
+  
+  // high level
+  // need to iterate over each object
+  // need to iterate over each value
+  // need to know if there are any odd numbers in any of the values
+    // if so we don't want that object
+  // if all the numbers are even then we want that object to go to results
+  //
+
+  // iterate over the array with .reduce()
+  // set accumulator as empty array []
+  // set parameter of reduce as obj
+  // call object .values on each obj to get an array of the subarrays with numbers
+  // call for Each to get to subarray
+  // call for each to get to each number
+  // if num % 2 === 1
+  // else accum = accum.concat the obj
+      
+
+// let arr = [
+//   { a: [1, 2, 3] },
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
+
+// function getAllNums(arr) {
+//   let results = [];
+//   arr.forEach(nestedArr => {
+//     nestedArr.forEach(num => {
+//       results.push(num);
+//     })
+//   })
+//   return results;
+// }
+
+// let results = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//   let obj = arr[i];
+//   let allNums = getAllNums(Object.values(obj));
+  
+//   if (allNums.every(num => num % 2 === 0)) {
+//     results.push(obj);
+//   }
+// }
+
+// console.log(results)
+
+// Given the following data structure, write some code that returns an object
+//  where the key is the first item in each subarray, and the value is the second.
+
+// set an empty results variable
+// iterate over the array with forEach
+// on each iteration
+  // set the key in the new results object equal to the 0 element, the value equal to element 1
+
+// let arrEx = [['a', 1], ['b', 'two'], ['sea', {'c': 3}], ['D', ['a', 'b', 'c']]];
+
+// function makeObj(arr) {
+//   let results = {};
+
+//   arr.forEach(subArr => {
+//     results[subArr[0]] = subArr[1];
+//   })
+//   return results;
+// }
+
+// let newObj = makeObj(arrEx);
+
+// console.log(newObj);
+// arrEx[3][1] = 33333;
+// console.log(newObj)
+// console.log(arrEx)
+
+// expected return value of function call
+// { a: 1, b: 'two', sea: { c: 3 }, D: [ 'a', 'b', 'c' ] }
+
+
+
+// Given the following data structure, write some code to return an array which contains only the objects where all the numbers are even.
+  // use .filter to iterate over the array - this will allow for a new returned array
+  // set up object .values to get to just the values
+  // use .every because we want to iterate over all of the subarrays, every one has to meet a condition
+  // use .every because we want to check if every element meets a condition - this is on the element level
+  // if all those meet the conditions, then return that element (the object in the initial array)
+// let arr = [
+//   { a: [1, 2, 3] },
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
+
+// let newArr = arr.filter(obj => {
+//   let vals = Object.values(obj);
+//   return vals.every(subArr => {
+//     return subArr.every(num => num % 2 === 0);
+//   })
+// })
+
+// console.log(newArr)
+
+// Given the following data structure, write some code that returns an object where the key is the first item in each subarray, and the value is the second.
+
+// let arrEx = [['a', 1], ['b', 'two'], ['sea', {'c': 3}], ['D', ['a', 'b', 'c']]];
+
+// function makeObj(arr) {
+//   let obj = {};
+
+//   arr.forEach(subArr => {
+//     obj[subArr[0]] = subArr[1];
+//   })
+
+//   return obj;
+// }
+
+// let newObj = makeObj(arrEx);
+
+// console.log(newObj);
+
+
+// expected return value of function call
+// { a: 1, b: 'two', sea: { c: 3 }, D: [ 'a', 'b', 'c' ] }
+
+// Given the following data structure, sort the array so that the sub-arrays are ordered based on the sum of the odd numbers that they contain.
+
+// iterate over the outer array with .map => this will return a new array
+// set a variable and b variable equal to the reduce of the sum
+// sort according to this
+
+// let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
+
+// let newArr = arr.slice().sort((a, b) => {
+//   let aTotal = a.reduce((accum, el) => {
+//     if (el % 2 === 1) {
+//       accum += el;
+//     }
+//     return accum;
+//   })
+//   let bTotal = b.reduce((accum, el) => {
+//     if (el % 2 === 1) {
+//       accum += el;
+//     }
+//     return accum;
+//   })
+//   return aTotal - bTotal;
+// })
+
+// console.log(arr);
+// console.log(newArr);
+
+
+// [ [ 1, 8, 3 ], [ 1, 6, 7 ], [ 1, 5, 3 ] ]
+
+// PROBLEM: Write a function that rotates the last count digits of a number. To perform the rotation, move the first of the digits that you want to rotate to the end and shift the remaining digits to the left.
+  // INPUT: numbers
+  // OUTPUT: rotated numbers - a new number
+  // UNDERSTAND WHAT HAPPENS: if the num 1 is passed as second argument - no change.
+    // rotation occurs on the right side of the number
+    // the rotation is moving a single digit from it's spot to the right - all the way to the end of the number
+    // the digit moved corresponds to the number passed
+      // so if the number is 3, the 3rd digit from the end is moved
+      // example is 735291, 3 this is changed to 735912
+      // 2 is the 3rd digit from the end, that is moved to the end. Other numbers just shift over
+  // QUESTIONS:
+    // what if a number is passed that is larger than total digits? - assume that won't happen
+    // 
+// EXAMPLES: given
+// DATA STRUCTURES: numbers, likely strings to convert number to strings, and likely arrays to store numbers.
+  // these structures are likely needed to manipulate the number and then convert it back to a number
+// ALGORITHM
+
+// HIGH LEVEL
+  // take a number and a digit locator number
+  // find the corresponding digit within the number
+    // use the digit locator to find that digit from the end of the number, so counting backwards from the end identify it
+    // take that digit and remove it from the larger number and save it
+    // put the larger number back together... the two sides next to the removed number are just put together
+    // take the removed number and put it on the end
+    // return the manipulated number
+
+// DETAILED
+  // create a function that takes 2 numbers as arguments, a number to maipulate and a digit locator number
+  // handle the case of when 1 is passed as the second argument - just return the number
+  // convert the larger number to a string and split it at the character level
+    // this will produce an array of string numbers - this will be manipulated
+  // using bracket notation and the digit locator, identify the digit to be removed
+    // create a varible that locates it
+    // can do this by searching backwards from the end of the array
+    // this will work by doing length + the negative of the digit locator number
+    // convert the digit locator to a negative number
+    // so arr[length + negative of digit locator
+  // find this and save it to a variable
+  // remove this string number using .splice
+  // push this number on the end of the number array
+  // join the characters together
+  // convert back to a number and return this modified number
+
+
+// function rotateRightmostDigits(num, digitLocator) {
+//   if (digitLocator === 1) return num;
+
+//   let stringNumberArray = String(num).split('');
+//   let digitToMoveIndex = stringNumberArray.length + (-digitLocator);
+//   let digitToMove = stringNumberArray[stringNumberArray.length + (-digitLocator)];
+  
+//   stringNumberArray.splice(digitToMoveIndex, 1);
+//   stringNumberArray.push(digitToMove);
+  
+//   return Number(stringNumberArray.join(''));
+// }
+
+
+
+// console.log(rotateRightmostDigits(735291, 1));      // 735291
+// console.log(rotateRightmostDigits(735291, 2));      // 735219
+// console.log(rotateRightmostDigits(735291, 3));      // 735912
+// console.log(rotateRightmostDigits(735291, 4));      // 732915
+// console.log(rotateRightmostDigits(735291, 5));      // 752913
+// console.log(rotateRightmostDigits(735291, 6));      // 352917
+
+// PROBLEM Take the number 735291 and rotate it by one digit to the left, getting 352917. Next, keep the first digit fixed in place and rotate the remaining digits to get 329175. Keep the first two digits fixed in place and rotate again to get 321759. Keep the first three digits fixed in place and rotate again to get 321597. Finally, keep the first four digits fixed in place and rotate the final two digits to get 321579. The resulting number is called the maximum rotation of the original number.
+
+// Write a function that takes an integer as an argument and returns the maximum rotation of that integer. You can (and probably should) use the rotateRightmostDigits function from the previous exercise.
+
+  // INPUT - a number
+  // OUTPUT - number
+    // don't have to worry about altering value passed - primitive value, nothing can happen to it.
+  // UNDERSTAND THE PROBLEM / HIGH LEVEL
+    // first step is take first digit and to put it on the end of the number
+    // next take the second digit and move to the end
+    // next take thrid digit and move to the end
+    // next take fourth digit and move to end
+    // keep doing this until the last two digits are reached - stop before doing anything to them
+    // last two digits just get swapped in order
+  // QUESTIONS
+    // always a positive number - assume yes
+
+// EXAMPLES/EDGE CASES
+  // single digit - nothing happens just return it
+  // two digits - just switch order
+  // leading zero gets dropped - data manipulation should handle this, when converting a string back to a number this should take care of it.
+
+// DATA STRUCTURES
+  // numbers, strings to be able to manipulate, likely arrays to store string numbers and perform manipulation
+
+// ALGORITHM - DETAILED
+  // create a function that takes a number as an argument
+  // if the length of this is 1 - just return the number passed
+  // create a helper function to rotate just two digits
+    // this will be used both for edge case of just a two digit number
+    // also can be called upon to do the final switch of last two in a larger number
+    // SEE HELPER FUNCTION ALGORITHM
+  // use the helper function to handle a two digit number
+  // create a helper function to move first to last - save this as a new number variable
+    // SEE HELPER FUNCTION ALGORITHM
+  // now we have some edge cases handled, and the first digit is already moved - we'll be further altering this new number
+  // create a helper function that now starts swapping out the order
+    // this is likely handled with a loop
+    // SEE HELPER FUNCTION ALGORITHM
+    // can save this as a number
+  // Final step is to rotate the last two digits
+    // call this on the modified number to this point
+    // return this
+
+
+
+  // HELPER FUNCTION ALGORITHM - rotate last two
+    // create a function that takes a number as an argument
+    // convert the number to a string and split
+    // use bracket notation to create a new array with the elements(string numbers) from first array in reverse order (just last two)
+    // join and return
+    // note for a num with more digits than 2, this will be called and concatenated on the end of the number, so last two digits spliced off, passed to this, and then the return is concatenated on larger number
+
+  // PROB NOT NEEDED: HELPER FUNCTION ALGORITHM - first to last - NOT NEEDED, LOOP CAN START AND HANDLE THIS
+    // convert a number to an array of sting numbers
+    // take the first number pop it, save it
+    // push it on the end
+    // return this new number
+
+  // HELPER FUNCTION ALGORITHM - move incrementing index digit
+    // create a function that takes a number as a argument
+    // take this number and convert to array of string numbers
+    // create a loop to perform the switching until last two digits are reached
+      // stopping condition is important - this runs but does not affect the last two digits
+      // set stopping condition to less than < length - 2. (not <=)
+        // this will leave last two intact
+    // let the index in question be 0, this is the first digit
+      // create a digit to move variable - this is the arr[indx] and will change on each iteration
+      // splice the array - removing the index value
+      // push the digit to move variable
+      // this changes the order correctly
+      // increment the loop
+
+// CODE WITH INTENT
+
+// function rotateLastTwo(num) {
+//   let strArr = String(num).split('');
+//   return Number([strArr[1], strArr[0]].join(''));
+// }
+
+// function moveIncrementingIndexDigit(num) {
+//   let strArr = String(num).split('');
+//   let stopIndex = strArr.length - 2;
+//   let index = 0;
+
+//   while (index < stopIndex) {
+//     let digitToMove = strArr[index];
+
+//     strArr.splice(index, 1);
+//     strArr.push(digitToMove);
+
+//     index += 1;
+//   }
+//   return Number(strArr.join(''));
+// }
+
+// function isOneDigitNumber(num) {
+//   if (String(num).split('').length === 1) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// function isTwoDigitNumber(num) {
+//   if (String(num).split('').length === 2) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+
+// function anotherLastTwoRotation(num) {
+//   let numArr = String(num).split('');
+//   let firstPart = numArr.slice(0, numArr.length - 2);
+//   let lastTwo = numArr.slice(numArr.length - 2);
+//   let reordedLastTwo = [lastTwo[1], lastTwo[0]];
+//   let finalArr = firstPart.concat(reordedLastTwo);
+
+//   return Number(finalArr.join(''));
+// }
+
+// function maxRotation(num) {
+//   if (isOneDigitNumber(num)) return num;
+//   if (isTwoDigitNumber(num)) return rotateLastTwo(num);
+
+//   let rotatedNumber = moveIncrementingIndexDigit(num);
+  
+//   return anotherLastTwoRotation(rotatedNumber);
+
+// }
+
+
+
+// console.log(maxRotation(735291));          // 321579
+// console.log(maxRotation(3));               // 3
+// console.log(maxRotation(35));              // 53
+// console.log(maxRotation(105));             // 15 -- the leading zero gets dropped
+// console.log(maxRotation(8703529146));      // 7321609845
+
+
+// function swapName(str) {
+//   return reversed = str.split(' ').reverse().join(', ');
+// }
+
+// console.log(swapName('Joe Roberts'));    // "Roberts, Joe"
+
+// Create a function that takes two integers as arguments. The first argument is a count, and the second is the starting number of a sequence that your function will create. The function should return an array containing the same number of elements as the count argument. The value of each element should be a multiple of the starting number.
+
+// You may assume that the count argument will always be an integer greater than or equal to 0. The starting number can be any integer. If the count is 0, the function should return an empty array.
+
+// create a function that takes two numbers as arguments
+// first argument is length of the result array
+// second argument is the number to be multiplied
+// handle edge case of a zero length array, just return empty array
+// set a multiplier equal to 1
+// set a loop that is <= to first argument
+// push to result array the number that is multiplied - second numebr * multiplier
+// increase the multiplier
+// // return result array
+
+// function sequence(arrLength, number) {
+//   let results = [];
+//   let multiplier = 1;
+  
+//   if (arrLength === 0) return results;
+
+//   while (multiplier <= arrLength) {
+//     results.push(multiplier * number);
+//     multiplier += 1;
+//   }
+//   return results;
+// }
+
+
+// console.log(sequence(5, 1));          // [1, 2, 3, 4, 5]
+// console.log(sequence(4, -7));         // [-7, -14, -21, -28]
+// console.log(sequence(3, 0));          // [0, 0, 0]
+// console.log(sequence(0, 1000000));    // []
+
+
+// function reverseSentence(str) {
+//   return str.split(' ').reverse().join(' ');
+// }
+
+// console.log(reverseSentence(''));                       // ""
+// console.log(reverseSentence('Hello World'));            // "World Hello"
+// console.log(reverseSentence('Reverse these words'));    // "words these Reverse"
+
+
+// Write a function that takes a string argument containing one or more words and returns a new string containing the words from the string argument. All five-or-more letter words should have their letters in reverse order. The string argument will consist of only letters and spaces. Words will be separated by a single space.
+
+// create a function that takes a string as an argument
+// split the string at the space level to have an array of words.
+// call .map on the array
+// provide a function to .map if .length of word >= 5 return the split reverse join of the word at the character level
+// else just return the word
+// join the result array from .map at the character level
+
+// function reverseWordsWithFiveOrMoreChars(word) {
+//   if (word.length >= 5) {
+//     return word.split('').reverse().join('');
+//   } else {
+//     return word;
+//   }
+// }
+
+// // function reverseWords(str) {
+// //   return str.split(' ')
+// //     .map(word => {
+// //       if (word.length >= 5) {
+// //         return word.split('').reverse().join('');
+// //       } else {
+// //         return word;
+// //       }
+// //     })
+// //     .join(' ');
+// // }
+
+// function reverseWords(str) {
+//   return str.split(' ')
+//     .map(reverseWordsWithFiveOrMoreChars)
+//     .join(' ');
+// }
+
+// console.log(reverseWords('Professional'));             // "lanoisseforP"
+// console.log(reverseWords('Walk around the block'));    // "Walk dnuora the kcolb"
+// console.log(reverseWords('Launch School'));            // "hcnuaL loohcS"
+
+// How would you order the following array of number strings by descending numeric value (largest number value to smallest)?
+
+// let arr = ['10', '11', '9', '7', '8'];
+
+// let newArr = [...arr].sort((a, b) => Number(b) - Number(a));
+
+// console.log(arr);
+// console.log(newArr);
+
+// let books = [
+//   { title: 'One Hundred Years of Solitude', author: 'Gabriel Garcia Marquez', published: '1967' },
+//   { title: 'The Great Gatsby', author: 'F. Scott Fitzgerald', published: '1925' },
+//   { title: 'War and Peace', author: 'Leo Tolstoy', published: '1869' },
+//   { title: 'Ulysses', author: 'James Joyce', published: '1922' },
+//   { title: 'The Book of Kells', author: 'Multiple Authors', published: '800' },
+// ];
+
+// let orderedBooks = [...books].sort((a, b) => a.published - b.published);
+
+// console.log(books);
+// console.log(orderedBooks);
+
+// Compute and display the total age of the male members of the family.
+// let munsters = {
+//   Herman: { age: 32, gender: 'male' },
+//   Lily: { age: 30, gender: 'female' },
+//   Grandpa: { age: 402, gender: 'male' },
+//   Eddie: { age: 10, gender: 'male' },
+//   Marilyn: { age: 23, gender: 'female'}
+// };
+
+// console.log(Object.values(munsters).reduce((accum, el) => el.gender === 'male' ? accum += el.age : accum, 0));
+
+// let munsters = {
+//   herman: { age: 32, gender: 'male' },
+//   lily: { age: 30, gender: 'female' },
+//   grandpa: { age: 402, gender: 'male' },
+//   eddie: { age: 10, gender: 'male' },
+//   marilyn: { age: 23, gender: 'female'}
+// };
+
+// // (Name) is a (age)-year-old (male or female).
+
+// Object.entries(munsters).forEach((familyMember, indx) => {
+//   console.log(`${familyMember[0][0].toUpperCase()}${familyMember[0].slice(1)} is a ${familyMember[1]['age']}-year-old ${familyMember[1]['gender']}`)
+// })
+
+// let a = 2;
+// let b = [5, 8];
+// let arr = [a, b]; // [2, [5, 8]]
+
+// arr[0] += 2; // a = 2, arr = [4, [5, 8]]
+// arr[1][0] -= a; // a = 2, b = 3, arr = [4, [3, 8]]
+
+// console.log(a);
+// console.log(b);
+// console.log(arr);
+
+// Using the forEach method, write some code to output all vowels from the strings in the arrays. Don't use a for or while loop.
+
+// let obj = {
+//   first: ['the', 'quick'],
+//   second: ['brown', 'fox'],
+//   third: ['jumped'],
+//   fourth: ['over', 'the', 'lazy', 'dog'],
+// };
+
+// Object.values(obj).forEach(subArr => {
+//   subArr.forEach(word => {
+//     word.split('').forEach(char => {
+//       let vowels = 'aeiou';
+//       if (vowels.includes(char)) {
+//         console.log(char);
+//       }
+//     })
+//   })
+// })
+
+
+// Given the following data structure, return a new array with the same structure, but with the values in each subarray ordered -- alphabetically or numerically as appropriate -- in ascending order.
+
+
+

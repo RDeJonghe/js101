@@ -801,5 +801,140 @@ console.log(numbers); // [ 5, 4, 3, 2, 1 ] */
 
 
 // 42
+// GREAT PROBLEM, REALLY UNDERSTAND THIS - important practice with objects and arrays, understand solutions
+
+// Given the following data structure, use the map method to return a new array identical in structure to the original but, with each number incremented by 1. Do not modify the original data structure.
+
+// let arr = [{ a: 1 }, { b: 2, c: 3 }, { d: 4, e: 5, f: 6 }];
+
+// solution 1
+// let newArr = arr.map(obj => {
+//   let objArr = Object.entries(obj);
+//   objArr.forEach(pairs => {
+//     pairs[1] += 1;
+//   })
+//   return Object.fromEntries(objArr);  
+// })
+
+// solution 2
+
+// let newArr = arr.map(el => {
+//   let objCopy = Object.assign({}, el);
+
+//   for (let key in objCopy) {
+//     objCopy[key] += 1;
+//   }
+
+//   return objCopy;
+// })
+
+// solution 3 from book
+
+// arr.map(obj => {
+//   let incrementedObj = {};
+
+//   for (let key in obj) {
+//     incrementedObj[key] = obj[key] + 1;
+//   }
+
+//   return incrementedObj;
+// });
+
+// 43
+// GREAT PROBLEM, REALLY COMPLEX, UNDERSTAND THIS
+
+// Given the following data structure write some code to return an array containing the colors of the fruits and the sizes of the vegetables. The sizes should be uppercase, and the colors should be capitalized.
+
+// let obj = {
+//   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+//   carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+//   apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+//   apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+//   marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+// };
+
+// answer [["Red", "Green"], "MEDIUM", ["Red", "Green"], ["Orange"], "LARGE"]
+
+// my first solution
+// let results = [];
+
+// let values = Object.values(obj);
+
+// values.forEach(nestedObj => {
+//   let nestedVals = Object.values(nestedObj);
+//   if (nestedVals[0] === 'fruit') {
+//     let upperArr = [];
+//     nestedVals[1].forEach(color => {
+//       upperArr.push(color[0].toUpperCase() + color.slice(1));
+//     })
+//     results.push(upperArr);
+//   } else {
+//   results.push(nestedVals[2].toUpperCase());
+//   }
+// })
+
+// book solution
+// let capitalize = word => word[0].toUpperCase() + word.slice(1);
+
+// Object.values(obj).map(attributes => {
+//   if (attributes['type'] === 'fruit') {
+//     return attributes['colors'].map(char => capitalize(char));
+//   } else {
+//     return attributes['size'].toUpperCase();
+//   }
+// });
 
 
+// 44
+// LESSON 5 PRACTICE PROBLEMS ARE VALUABLE, LAST EXAMPLES COME FROM HERE
+// another difficult one
+
+// Given the following data structure, write some code to return an array which contains only the objects where all the numbers are even.
+
+// let arr = [
+//   { a: [1, 2, 3] },
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
+
+
+// book solution (more concise then mine) 
+// arr.filter(obj => {
+//   return Object.values(obj).every(subArr => {
+//     return subArr.every(num => num % 2 === 0);
+//   });
+// });
+
+// // => [ { e: [ 8 ], f: [ 6, 10 ] } ]
+
+// my solution not so concise
+// let arr = [
+//   { a: [1, 2, 3] },
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
+
+// function getAllNums(arr) {
+//   let results = [];
+//   arr.forEach(nestedArr => {
+//     nestedArr.forEach(num => {
+//       results.push(num);
+//     })
+//   })
+//   return results;
+// }
+
+// let results = [];
+
+// for (let i = 0; i < arr.length; i++) {
+//   let obj = arr[i];
+//   let allNums = getAllNums(Object.values(obj));
+  
+//   if (allNums.every(num => num % 2 === 0)) {
+//     results.push(obj);
+//   }
+// }
+
+// console.log(results)
+
+// 45
