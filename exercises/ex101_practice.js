@@ -5267,5 +5267,212 @@ let flintstones = ["Fred", "Barney", "Wilma", "Betty", "Pebbles", "Bambam"];
 
 // Given the following data structure, return a new array with the same structure, but with the values in each subarray ordered -- alphabetically or numerically as appropriate -- in ascending order.
 
+// PROBLEM: Write a function that computes the difference between the square of the sum of the first count positive integers and the sum of the squares of the first count positive integers.
+  // take the number given and first add all of the numbers from 1 up to and includeing that number
+  // then square this, this is first half
+  // second half
+  // take the number and for every number from one up until and including that number find the square for each of them
+  // then add these squares
+  // this is the second half
+  // subtract first half from second half
+// QUESTIONS
+  // only positive numbers - yes
+// EXAMPLES: GIVEN
+// DATA STRUCTURES: NUMBERS, LIKELY ARRAYS TO STORE AND REDUCE VALUES
+// ALGORITHM
 
+// function sumSquareDifference(num) {
+//   let numArr = [];
+//   let counter = 1;
+
+//   while (counter <= num) {
+//     numArr.push(counter);
+//     counter += 1;
+//   }
+
+//   let firstHalf = Math.pow(numArr.reduce((accum, el) => accum += el, 0), 2);
+//   let secondHalf = numArr.reduce((accum, el) => accum += Math.pow(el, 2));
+
+//   return firstHalf - secondHalf;
+// }
+
+
+// console.log(sumSquareDifference(3));      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+// console.log(sumSquareDifference(10));     // 2640
+// console.log(sumSquareDifference(1));      // 0
+// console.log(sumSquareDifference(100));    // 25164150
+
+// The solution uses a pair of loops, with one nested inside the other. The outer while loop handles the task of repeating the iterations until the array is completely sorted. The loop terminates the first time it iterates through all the comparisons without making any swaps, which it keeps track of by using the swapped variable.
+
+
+// let array1 = [5, 3];
+// bubbleSort(array1);
+// console.log(array1);    // [3, 5]
+
+// let array2 = [6, 2, 7, 1, 4];
+// bubbleSort(array2);
+// console.log(array2);    // [1, 2, 4, 6, 7]
+
+// function bubbleSort(arr) {
+//   while (true) {
+//     let swapped = false;
+//     for (let i = 1; i < arr.length; i++) {
+//       if (arr[i - 1] <= arr[i]) continue;
+//       [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+//       swapped = true;
+//     }
+//     if (!swapped) break;
+//   }
+// }
+
+
+
+// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// bubbleSort(array3);
+// console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+
+
+// PROBLEM: Given a string, return a new string that has transformed based on the input:
+  // Change case of every character, ie. lower case to upper case, upper case to lower case.
+  // Reverse the order of words from the input.
+  // Note: You will have to handle multiple spaces, and leading/trailing spaces.
+  // INPUT: STRING
+  // OUTPUT STRING - can't be mutated so it will be new string
+// EXAMPLE: "Example Input" ==> "iNPUT eXAMPLE"
+// DATA STRUCTURES: strings, arrays to manipulate
+// ALGORITHM:
+  // create a function that takes a string as an argument (string passed can't be mutated, return new string)
+  // split the string at the space level ' ' this will give an array of words
+  // reverse the order of the array, this will change the order of the words, then join to have this be a string again
+  // create a caseSwitched variable to empty string
+  // split new array at char level
+  // iterate over the new array
+  // check if it is upper or lower by using charCodeAt
+    // conditional logic if upper then lower, if lower then upper, else just concat to new string
+  
+
+// function stringTransformer(str) {
+//   let reverse = str.split(' ').reverse().join(' ');
+//   let arrOfChars = reverse.split('');
+//   let results = '';
+
+//   arrOfChars.forEach(char => {
+//     if (char.charCodeAt() >= 65 && char.charCodeAt() <= 90) {
+//       results = results.concat(char.toLowerCase());
+//     } else if (char.charCodeAt() >= 97 && char.charCodeAt() <= 122) {
+//       results = results.concat(char.toUpperCase());
+//     } else {
+//       results = results.concat(char);
+//     }
+//   })
+//   return results;
+// }
+
+
+// console.log(stringTransformer('Example Input'))
+//
+// PROBLEM
+// A string is considered to be in title case if each word in the string is either (a) capitalised (that is, only the first letter of the word is in upper case) or (b) considered to be an exception and put entirely into lower case unless it is the first word, which is always capitalised.
+
+// Write a function that will convert a string into title case, given an optional list of exceptions (minor words). The list of minor words will be given as a string with each word separated by a space. Your function should ignore the case of the minor words string -- it should behave in the same way even if the case of the minor word string is changed.
+
+// EXAMPLES:
+// First argument (required): the original string to be converted.
+// Second argument (optional): space-delimited list of minor words that must always be lowercase except for the first word in the string. The JavaScript/CoffeeScript tests will pass undefined when this argument is unused.
+// ###Example
+
+// DATA STRUCTURES: STRINGS, ARRAYS
+
+// first letter always capitalized
+
+// create a function that takes two arguments, the title and a list of words not to use (string)- lower case this
+  // make the default for the second argument explict = undefined
+// conditional if skipWords !== undefined
+  // create an array of these words to skip - this will be used to check with .includes
+//create a titleArray splitting at the space level for an array of words
+// iterate over this with map
+  // if it includes a word from skip list continue to next iteration
+  // else uppercase the first letter on each iteration
+// join this
+// upper the first character
+
+
+// function titleCase(title, skipWords = undefined) {
+//   if (title === '') return '';
+//   if (skipWords === undefined) {
+//     return title.toLowerCase().split(' ').map(word => word[0].toUpperCase() + word.slice(1)).join(' ');
+//   }
+  
+//   let skipArray = skipWords.toLowerCase().split(' ');
+//   let titleArray = title.toLowerCase().split(' ');
+
+//   let results = titleArray.map(word => {
+//     if (skipArray.includes(word)) {
+//       return word;
+//     } else {
+//       return word[0].toUpperCase() + word.slice(1);
+//     }
+//   }).join(' ');
+
+//   return results[0].toUpperCase() + results.slice(1);
+// }
+
+
+// console.log(titleCase('a clash of KINGS', 'a an the of')) // should return: 'A Clash of Kings'
+// console.log(titleCase('THE WIND IN THE WILLOWS', 'The In')) // should return: 'The Wind in the Willows'
+// console.log(titleCase('the quick brown fox')) // should return: 'The Quick Brown Fox'
+
+// let array1 = [5, 3];
+// bubbleSort(array1);
+// console.log(array1);    // [3, 5]
+
+// let array2 = [6, 2, 7, 1, 4];
+// bubbleSort(array2);
+// console.log(array2);    // [1, 2, 4, 6, 7]
+
+// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// bubbleSort(array3);
+// console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+
+// function bubbleSort(arr) {
+//   while (true) {
+//     let swapped = false;
+//     for (let i = 1; i < arr.length; i++) {
+//       if (arr[i - 1] <= arr[i]) continue;
+//       [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+//       swapped = true;
+//     }
+//     if (!swapped) break
+//   }
+// }
+/* The time of day can be represented as the number of minutes before or after midnight. If the number of minutes is positive, the time is after midnight. If the number of minutes is negative, the time is before midnight.
+
+Write a function that takes a time using this minute-based format and returns the time of day in 24 hour format (hh:mm). Your function should work with any integer input.
+
+You may not use javascript's Date class methods. */
+
+// const MINUTES_PER_HOUR = 60;
+// const HOURS_PER_DAY = 24;
+// const MINUTES_PER_DAY = 24 * 60;
+
+// function timeOfDay(totalMinutes) {
+//   while (totalMinutes < 0) {
+//     totalMinutes += MINUTES_PER_DAY;
+//   }
+
+//   let hours = Math.floor(totalMinutes / MINUTES_PER_HOUR) % HOURS_PER_DAY;
+//   let minutes = totalMinutes % MINUTES_PER_HOUR;
+
+//   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
+// }
+
+
+
+// console.log(timeOfDay(0) === "00:00");
+// console.log(timeOfDay(-3) === "23:57");
+// console.log(timeOfDay(35) === "00:35");
+// console.log(timeOfDay(-1437) === "00:03");
+// console.log(timeOfDay(3000) === "02:00");
+// console.log(timeOfDay(800) === "13:20");
+// console.log(timeOfDay(-4231) === "01:29");
 

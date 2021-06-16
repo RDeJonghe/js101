@@ -185,3 +185,100 @@
 // console.log(timeOfDay(800) === "13:20");
 // console.log(timeOfDay(-4231) === "01:29");
 
+
+// The time of day can be represented as the number of minutes before or after midnight. If the number of minutes is positive, the time is after midnight. If the number of minutes is negative, the time is before midnight.
+
+// Write a function that takes a time using this minute-based format and returns the time of day in 24 hour format (hh:mm). Your function should work with any integer input.
+
+// You may not use javascript's Date class methods.
+
+
+// ALGORITHM
+// create a function that takes a number as an argument
+// the number represents the total minutes before or after midnight - so think distance from midnight
+// create a const variable for minutes in an hour, hours in a day, and minutes in a day
+// handle negative minutes scenario
+  // have to account for full days and remove those to get just the distance from midnight in a single day
+  // to do this can add the numbers of minutes in a day until positive
+  // this positive number represents the distance from midnight and can be used to calc time
+  // add num of minutes in a day using a while loop
+// now have to calculate the hours and minutes
+  // for hours have to handle the full days as well
+  // hours = total minutes / 
+
+
+
+// function timeOfDay(totalMinutes) {
+//   const MINUTES_PER_HOUR = 60;
+//   const HOURS_PER_DAY = 24;
+//   const MINUTES_PER_DAY = MINUTES_PER_HOUR * HOURS_PER_DAY;
+
+//   while (totalMinutes < 0) {
+//     totalMinutes = totalMinutes + MINUTES_PER_DAY;
+//   }
+
+//  let hours = Math.floor(totalMinutes / MINUTES_PER_HOUR) % HOURS_PER_DAY;
+//   // what this does is give you first the number of hours (total minutes / minutes_per_hour) with a decimal if not evenly divisible
+//   // you math.floor that to just get total hours - this is what we want, decimal represents the minutes we don't want that
+//   // last we want to get rid off full days
+//   // so remainder hours per day, what this does is just remove the full days and leave the hours for a single day, distance from midnight
+//   let minutes = totalMinutes % MINUTES_PER_HOUR;
+ 
+
+//   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`;
+
+// }
+
+
+
+
+
+
+
+
+
+// The time of day can be represented as the number of minutes before or after midnight. If the number of minutes is positive, the time is after midnight. If the number of minutes is negative, the time is before midnight.
+
+// Write a function that takes a time using this minute-based format and returns the time of day in 24 hour format (hh:mm). Your function should work with any integer input.
+
+// You may not use javascript's Date class methods.
+
+
+
+// ALGORITHM
+// create constant variables for minutes in an hour, hours, in a day, minutes in a day
+// create a function that takes a number as an argument
+// have to take care of negative numbers
+
+
+// function timeOfDay(totalMinutes) {
+//   const MINUTES_PER_HOUR = 60;
+//   const HOURS_PER_DAY = 24
+//   const MINUTES_PER_DAY = 60 * 24;
+
+//   while (totalMinutes < 0) {
+//     totalMinutes = totalMinutes + MINUTES_PER_DAY;
+//   }
+
+//   let hours = Math.floor(totalMinutes / MINUTES_PER_HOUR) % HOURS_PER_DAY;
+//   let minutes = totalMinutes % MINUTES_PER_HOUR;
+
+//   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
+// }
+
+
+
+
+
+console.log(timeOfDay(0) === "00:00");
+console.log(timeOfDay(-3) === "23:57");
+console.log(timeOfDay(35) === "00:35");
+console.log(timeOfDay(-1437) === "00:03");
+console.log(timeOfDay(3000) === "02:00");
+console.log(timeOfDay(800) === "13:20");
+console.log(timeOfDay(-4231) === "01:29");
+
+
+
+  
+
