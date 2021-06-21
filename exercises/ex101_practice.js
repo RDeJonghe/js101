@@ -5476,3 +5476,372 @@ You may not use javascript's Date class methods. */
 // console.log(timeOfDay(800) === "13:20");
 // console.log(timeOfDay(-4231) === "01:29");
 
+
+// function bubbleSort(arr) {
+//   while (true) {
+//   let swapped = false;
+//   for (let i = 1; i < arr.length; i++) {
+//     if (arr[i - 1] < arr[i]) continue;
+//     [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+//     swapped = true;
+//   }
+//   if (!swapped) break;
+// }
+// }
+
+// let array1 = [5, 3];
+// bubbleSort(array1);
+// console.log(array1);    // [3, 5]
+
+// let array2 = [6, 2, 7, 1, 4];
+// bubbleSort(array2);
+// console.log(array2);    // [1, 2, 4, 6, 7]
+
+// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// bubbleSort(array3);
+// console.log(array3);
+
+// The time of day can be represented as the number of minutes before or after midnight. If the number of minutes is positive, the time is after midnight. If the number of minutes is negative, the time is before midnight.
+
+// Write a function that takes a time using this minute-based format and returns the time of day in 24 hour format (hh:mm). Your function should work with any integer input.
+
+// You may not use javascript's Date class methods.
+
+
+// function timeOfDay(totalMinutes) {
+//   const MINUTES_PER_HOUR = 60;
+//   const HOURS_PER_DAY = 24
+//   const MINUTES_PER_DAY = 24 * 60;
+
+//   while (totalMinutes < 0) {
+//     totalMinutes += MINUTES_PER_DAY;
+//   }
+
+//   let hours = Math.floor(totalMinutes / MINUTES_PER_HOUR) % HOURS_PER_DAY;
+//   let minutes = totalMinutes % MINUTES_PER_HOUR;
+
+//   return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}`
+// }
+
+// console.log(timeOfDay(0) === "00:00");
+// console.log(timeOfDay(-3) === "23:57");
+// console.log(timeOfDay(35) === "00:35");
+// console.log(timeOfDay(-1437) === "00:03");
+// console.log(timeOfDay(3000) === "02:00");
+// console.log(timeOfDay(800) === "13:20");
+// console.log(timeOfDay(-4231) === "01:29");
+
+// PROBLEM: In this kata you are required to, given a string, replace every letter with its position in the alphabet.
+  // If anything in the text isn't a letter, ignore it and don't return it.
+  // "a" = 1, "b" = 2, etc.
+  // INPUT: STRING
+  // OUTPUT: STRING - function cannot mutate, will be different string
+  // NOTE: the returned string has spaces between the numbers
+// EXAMPLES: GIVEN
+// DATA STRUCTURES: strings, possibly arrays to split the string (may not be necessary), object to hold values of alpha position
+// ALGORITHM
+  // create an object that holds the key value pairs to indicate position in the alphabet
+    // make the numbers strings
+  // create a function that takes a string as an argument
+  // create an empty results string
+  // iterate over passed string - TO LOWERCASE FIRST
+    // for each char, reference the object and assign to the results the value (string number)
+    // if it doesn't exist in the object, continue
+    // also assign a space after, this will give proper formatting
+  // trimEnd the result string
+  // return
+
+// const NUMBER_POSITION = {
+//   a : '1',
+//   b : '2',
+//   c : '3',
+//   d : '4',
+//   e : '5',
+//   f : '6',
+//   g : '7',
+//   h : '8',
+//   i : '9',
+//   j : '10',
+//   k : '11',
+//   l : '12',
+//   m : '13',
+//   n : '14',
+//   o : '15',
+//   p : '16',
+//   q : '17',
+//   r : '18',
+//   s : '19',
+//   t : '20',
+//   u : '21',
+//   v : '22',
+//   w : '23',
+//   x : '24',
+//   y : '25',
+//   z : '26'
+// }
+
+// function alphabetPosition(str) {
+//   let results = '';
+//   str = str.toLowerCase();
+
+//   for (let i = 0; i < str.length; i++) {
+//     if (!Object.keys(NUMBER_POSITION).includes(str[i])) continue;
+//     results = results.concat(NUMBER_POSITION[str[i]] + ' ');
+//   }
+//   return results.trimEnd();
+// }
+
+// console.log(alphabetPosition("The sunset sets at twelve o' clock."));
+
+// // "20 8 5 19 21 14 19 5 20 19 5 20 19 1 20 20 23 5 12 22 5 15 3 12 15 3 11" (as a string)
+
+// console.log(alphabetPosition("The sunset sets at twelve o' clock."));
+
+// PROBLEM: In this simple Kata your task is to create a function that turns a string into a Mexican Wave. You will be passed a string and you must return that string in an array where an uppercase letter is a person standing up. 
+  // INPUT: ALWAYS LOWERCASE STRING
+  // OUTPUT: AN ARRAY OF MODIFIED STRINGS
+  // NOTE: EDGE CASE OF EMPTY STRING, HANDLE THIS
+// examples: given
+// DATA STRUCTURES: array, strings
+// ALGORITHM
+  // create a function that takes a string as an argument
+  // create an empty results array
+  // create a const variable for number of characters in word
+  // create an indx variable = 0 (this is the char to upper)
+  // start a while loop, while indx < # of chars, this will give correct number of iterations (number of times to push to results)
+  // slice the word correctly, concatenate and push on each iteration
+    // the slice is based off of the index
+  // return results array
+
+// function wave(str) {
+//   let results = [];
+
+//   for (let i = 0; i < str.length; i++) {
+//     let charToUpper = i;
+//     let backSlice = charToUpper + 1;
+
+//     if (str[charToUpper] === ' ') {
+//       continue;
+//     } else if (charToUpper === 0) {
+//       results.push(str[charToUpper].toUpperCase() + str.slice(1));
+//     } else if (charToUpper === str.length - 1) {
+//       results.push(str.slice(0, charToUpper) + str[charToUpper].toUpperCase()); 
+//     } else {
+//       results.push(str.slice(0, charToUpper) + str[charToUpper].toUpperCase() + str.slice(backSlice));
+//     }
+//     charToUpper += 1;
+//   }
+//   return results;
+// }
+
+
+
+
+// console.log(wave("two words")) // => ["Hello", "hEllo", "heLlo", "helLo", "hellO"]
+
+// ["Two words", "tWo words", "twO words", "two Words", "two wOrds", "two woRds", "two worDs", "two wordS"];
+
+
+// PROBLEM
+// Given an integer n, find the maximal number you can obtain by deleting exactly one digit of the given number.
+  // input / output - integer
+  // handle edge cases of numbers - just return min and max numbers
+
+// EXAMPLES: GIVEN
+  // For n = 152, the output should be 52;
+  // For n = 1001, the output should be 101.
+
+// DATA STRUCTURES: numbers, strings to convert and remove number
+
+// ALOGRITHM
+  // Have to take a number
+  // have to determine what number result is largest when removing a number
+    // convert number to a string and split to an array of string numbers - these will all be single digit
+    // create a number index to remove variable - 
+    // iterate over this array start at position one
+    // set it to the first number index position zero
+    // if the next number is smaller reassign, on each iteration this will check and reassign
+  // splice the array removing the one number
+  // join the array to string
+  // convert to number and return
+
+  // function deleteDigit(num) {
+  //   let strArr = String(num).split('');
+  //   let indxToRemove = 0;
+  //   console.log(strArr);
+
+  //   for (let i = 0; i < strArr.length; i++) {
+  //     if (strArr[i] === '1') continue;
+  //     if (strArr[i] <= strArr[indxToRemove]) {
+  //       indxToRemove = i;
+  //       break;
+  //     }
+  //   }
+  //   strArr.splice(indxToRemove, 1);
+
+  //   return Number(strArr.join(''));
+  // }
+
+
+  // console.log(deleteDigit(528516)); // should be 58422, i have 3584
+
+// console.log(num);
+// let number = 6;
+// double(number);
+
+
+
+
+// let double = function (num){
+//   console.log(num + num);
+// }
+
+
+// let x = 3;
+
+// if (x === 3) {
+//   console.log(x);
+//   x += 1;
+// }
+
+// console.log(x)
+
+// let names = ['bob', 'joe', 'steve', undefined, 'frank'];
+
+// names.forEach(name => {
+//   try {
+//     console.log(`${name}'s name has ${name.length} letters in it.`);
+//   } catch (exception) {
+//     console.log('Something went wrong');
+//   }
+// }); // => bob's name has 3 letters in it.
+//     //    joe's name has 3 letters in it.
+//     //    steve's name has 5 letters in it.
+//     //    Something went wrong
+//     //    frank's name has 5 letters in it.
+
+// let num = 6;
+
+// switch (true) {
+//   case (num === 5) :
+//     console.log('number is 5');
+//     break;
+//   case (num === 6) :
+//     console.log('number is 6');
+//     break;
+//   case (num === 7) :
+//     console.log('number is 7');
+//     break;
+// }
+
+// switch (num) {
+//   case 5 :
+//     console.log('its 5');
+//     break;
+//   case 6 :
+//     console.log('its 6');
+//     break;
+//   case 7 :
+//     console.log('its 7');
+//     break;
+// }
+
+// let secretWord = 'lion';
+
+// switch (secretWord) {
+//   case 'bear' :
+//     console.log('the secret word begins with b');
+//     break;
+//   case 'lion' :
+//     console.log('the secret word begins with l');
+//     break;
+//   case 'tiger' :
+//     console.log('the secret word begins with t');
+//     break;
+// }
+
+// let secretNum = 6;
+
+// switch (secretNum) {
+//   case 5 :
+//     console.log('its 5');
+//     break;
+//   case 6 :
+//     console.log('its 6');
+//     break;
+//   case 7 :
+//     console.log('its 7');
+//     break;
+// }
+
+// let secretNum = 77;
+
+// switch (true) {
+//   case (secretNum === 66) :
+//     console.log('its 66');
+//     break;
+//   case (secretNum === 77) :
+//     console.log('its 77');
+//     break;
+// }
+
+// let favColor = 'blue';
+
+// switch (favColor) {
+//   case 'black' :
+//     console.log('its black');
+//     break;
+//   case 'blue' :
+//     console.log('its blue')
+// }
+
+// let secretVar = 67;
+
+// switch (secretVar) {
+//   case 7 :
+//     console.log('its 7')
+//     break;
+//   case 6 : 
+//     console.log('its 6');
+//     break;
+//   default :
+//     console.log('the number is still secret')
+// }
+
+// let phrase = 'whaaaatsssup?'
+
+// phrase[0] === 'w' ? console.log('its w') : console.log('its not w')
+
+// let firstLetter = phrase[0] === 'w' ? 'w' : 'its not w';
+
+// console.log(firstLetter);
+
+// let obj = {};
+
+// phrase.split('')
+//   .forEach(char => {
+//     obj[char] = obj[char] || 0;
+//     obj[char] += 1;
+//   })
+
+// console.log(phrase);
+// console.log(obj)
+
+// let a = 1;
+// let b = 2;
+
+// let numArr = [a, b];
+
+// console.log(numArr)
+
+// let foo = 0;
+// let bar = 'hello';
+
+// let val = (foo || bar) ? true : false;
+
+// let val2 = !!(foo || bar);
+
+// console.log(val);
+// console.log(val2);
+
+console.log(+'6' + 6);
