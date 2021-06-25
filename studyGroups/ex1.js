@@ -51,32 +51,6 @@
       // concat (reassign since concat is not destructive) k + the next index
   // return this concatenated value
 
-
-// THIS WORKS!!!!
-
-// function findStartIndexForLongestCombinedWords(arr, num) {
-//   let findStartIndexForLongestCombinedWords = 0;
-//   let lengthOfLongestCombinedWord = 0;
-
-//   for (let i = 0; i < (arr.length - (num - 1)); i++) {
-//     let counter = 0;
-//     let currentWordComboLength = 0;
-
-//     while (counter < num) {
-//       currentWordComboLength += arr[i + counter].length
-//       counter += 1;
-//     }
-
-//     if (currentWordComboLength >= lengthOfLongestCombinedWord) {
-//       findStartIndexForLongestCombinedWords = i;
-//       lengthOfLongestCombinedWord = currentWordComboLength;
-//     }
-//   }
-//   console.log(findStartIndexForLongestCombinedWords);
-//   console.log(lengthOfLongestCombinedWord);
-// }
-
-
 function findStartIndexForLongestCombinedWords(arr, num) {
   let findStartIndexForLongestCombinedWords = 0;
   let lengthOfLongestCombinedWord = 0;
