@@ -52,7 +52,7 @@
   // return this concatenated value
 
 function findStartIndexForLongestCombinedWords(arr, num) {
-  let findStartIndexForLongestCombinedWords = 0;
+  let startIndexForLongestCombinedWords = 0;
   let lengthOfLongestCombinedWord = 0;
 
   for (let i = 0; i < (arr.length - (num - 1)); i++) {
@@ -65,11 +65,11 @@ function findStartIndexForLongestCombinedWords(arr, num) {
     }
 
     if (currentWordComboLength >= lengthOfLongestCombinedWord) {
-      findStartIndexForLongestCombinedWords = i;
+      startIndexForLongestCombinedWords = i;
       lengthOfLongestCombinedWord = currentWordComboLength;
     }
   }
-  return findStartIndexForLongestCombinedWords;
+  return startIndexForLongestCombinedWords;
 }
 
 
