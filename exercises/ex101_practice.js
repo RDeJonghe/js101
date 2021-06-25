@@ -5844,4 +5844,67 @@ You may not use javascript's Date class methods. */
 // console.log(val);
 // console.log(val2);
 
-console.log(+'6' + 6);
+// console.log(+'6' + 6);
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// let produceKeyValues = Object.entries(produce);
+// // produceKeyValues contains:
+// //   [['apple', 'Fruit'],
+// //    ['carrot', 'Vegetable'],
+// //    ['pear', 'Fruit'],
+// //    ['broccoli', 'Vegetable']]
+
+// produceKeyValues.forEach(keyValue => {
+//   // let [ key, value ] = keyValue;
+//   let pair = [key, value]
+
+//   console.log(`${key} is a ${value}`);
+// });
+// logs:
+// apple is a Fruit
+// carrot is a Vegetable
+// pear is a Fruit
+// broccoli is a Vegetable
+
+// let nums = [23, 14, 5, 16];
+
+// function sortIt(arr) {
+//   while (true) {
+//     let isSorted = false;
+//     for (let i = 1; i < arr.length; i++) {
+//       if (arr[i - 1] > arr[i]) {
+//         [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+//         isSorted = true;
+//       }
+//     }
+//     if (!isSorted) break;
+//   }
+//   return arr;
+// }
+
+// console.log(sortIt(nums));
+
+let names = ['sally', 'joe', 'bob', 'mike', 'amy'];
+
+function sortIt(arr) {
+  while (true) {
+    let isSorted = false;
+
+    for (let i = 1; i < arr.length; i++) {
+      if (arr[i - 1] > arr[i]) {
+        [arr[i - 1], arr[i]] = [arr[i], arr[i - 1]];
+        isSorted = true;
+      }
+    }
+    if (!isSorted) break
+  }
+  return arr;
+}
+
+console.log(sortIt(names));
